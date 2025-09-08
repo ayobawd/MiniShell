@@ -30,14 +30,9 @@ int ms_loop(t_env **env)
     status = 0;
     while (1)
     {
-        if (isatty(0))
-        {
-            char *p = ms_prompt(*env);
-            line = readline(p);
-            free(p);
-        }
-        else
-            line = readline(NULL);
+        char *p = ms_prompt(*env);
+        line = readline(p);
+        free(p);
         if (!line)
             break ;
         if (*line)

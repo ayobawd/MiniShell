@@ -196,10 +196,10 @@ int ms_exec_parsed(t_cmds *arr, int count, t_env **env)
     /* Special case: single builtin that needs to run in parent */
     if (count == 1 && arr[0].cmds && arr[0].cmds[0] 
         && ms_is_builtin(arr[0].cmds[0])
-        && (!ft_strncmp(arr[0].cmds[0], "cd", 3)
-            || !ft_strncmp(arr[0].cmds[0], "export", 7)
-            || !ft_strncmp(arr[0].cmds[0], "unset", 6)
-            || !ft_strncmp(arr[0].cmds[0], "exit", 5)))
+        && ((!ft_strncmp(arr[0].cmds[0], "cd", 2) && arr[0].cmds[0][2] == '\0')
+            || (!ft_strncmp(arr[0].cmds[0], "export", 6) && arr[0].cmds[0][6] == '\0')
+            || (!ft_strncmp(arr[0].cmds[0], "unset", 5) && arr[0].cmds[0][5] == '\0')
+            || (!ft_strncmp(arr[0].cmds[0], "exit", 4) && arr[0].cmds[0][4] == '\0')))
     {
         t_redir *redirs = convert_redirections(&arr[0]);
         int fds[2] = {-1, -1};
