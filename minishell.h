@@ -142,6 +142,7 @@ int			ms_exec_parsed(t_cmds *arr, int count, t_env **env);
 int			ms_exec_line_raw(char *line, t_env **env);
 
 /* existing parsing functions (reused) */
+char		**quote_aware_split(char *str);
 void		files_saving(t_shell *pipe, t_cmds **tmp);
 int			parsing(t_shell *pipe, t_cmds *cmds, char *input);
 void		copy_env(t_shell *s, char **env);

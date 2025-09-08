@@ -73,6 +73,27 @@ int	expand(char **str, char *expanded, t_variables *var)
         free(code);
         return (1);
     }
+    /* Handle ${VAR} syntax */
+    if ((*str)[var->i] == '{')
+    {
+        var->i++; /* skip '{' */
+        var->len = 0;
+        while ((*str)[var->i] && (*str)[var->i] != '}' && 
+               (ft_isalnum((unsigned char)(*str)[var->i]) || (*str)[var->i] == '_'))
+        {
+            var->len++;
+            var->i++;
+        }
+        if ((*str)[var->i] == '}')
+        {
+            var->i++; /* skip '}' */
+            /* Adjust for the extra '{' and '}' characters */
+            var->len += 2; /* include '{' and '}' in replacement length */
+            return (0); /* proceed with expansion */
+        }
+        /* Invalid syntax, skip */
+        return (1);
+    }
     if (!ft_isalpha((unsigned char)(*str)[var->i]) && (*str)[var->i] != '_')
         return (1);
     var->len = 0;
@@ -135,6 +156,8 @@ void	dollar_expansion(char **str, t_shell *pipe)
 	t_variables	var;
 	char	*tmp;
 	char	*expanded;
+	int		brace_syntax;
+	int		var_start;
 
 	var.len = 0;
 	expanded = NULL;
@@ -146,9 +169,21 @@ void	dollar_expansion(char **str, t_shell *pipe)
 		quotes_check(str, &var);
 		if ((*str)[var.i] == '$' && !var.in_quotes && (*str)[var.i + 1])
 		{
+			brace_syntax = 0;
+			if ((*str)[var.i + 1] == '{')
+				brace_syntax = 1;
 			if (expand(str, expanded, &var))
 				continue ;
-			tmp = ft_substr(*str, var.i - var.len, var.len);
+			/* Extract variable name correctly for both ${VAR} and $VAR */
+			if (brace_syntax)
+			{
+				var_start = var.i - var.len + 1; /* skip '{' */
+				tmp = ft_substr(*str, var_start, var.len - 2); /* exclude '{' and '}' */
+			}
+			else
+			{
+				tmp = ft_substr(*str, var.i - var.len, var.len);
+			}
 			if (generate_string(str, &tmp, &var, pipe))
 				continue ;
 		}
