@@ -13,6 +13,8 @@ SRCS := \
   $(SRC_DIR)/loop/signals.c \
   $(SRC_DIR)/loop/line.c \
   $(SRC_DIR)/env/env.c \
+  $(SRC_DIR)/env/env_utils.c \
+  $(SRC_DIR)/env/env_convert.c \
   $(SRC_DIR)/env/utils.c \
   $(SRC_DIR)/builtins/echo.c \
   $(SRC_DIR)/builtins/cd.c \

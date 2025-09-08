@@ -129,6 +129,10 @@ int			ms_unset(t_env **env, const char *key);
 void		ms_env_free(t_env *env);
 char		**ms_env_to_envp(t_env *env);
 int			ms_is_valid_key(const char *s);
+t_env		*new_kv(const char *k, const char *v);
+void		env_add_back(t_env **lst, t_env *n);
+char		*create_env_string(t_env *cur);
+void		free_envp_on_error(char **envp, size_t i);
 
 /* builtins */
 int			bi_echo(char **argv);
