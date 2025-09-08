@@ -87,6 +87,107 @@ void	utils_saving(t_shell *pipe, t_cmds *cmds, t_variables *v)
 	}
 }
 
+char	**quote_aware_split(char *str)
+{
+	char	**result;
+	int		i, j, start, tokens;
+	int		in_quote;
+	char	quote_char;
+
+	if (!str)
+		return (NULL);
+	
+	/* Count tokens first */
+	tokens = 0;
+	i = 0;
+	in_quote = 0;
+	quote_char = 0;
+	
+	while (str[i])
+	{
+		/* Skip leading spaces */
+		while (str[i] == ' ' || str[i] == '\t')
+			i++;
+		if (!str[i])
+			break;
+		
+		/* Count this token */
+		tokens++;
+		
+		/* Skip to end of token */
+		while (str[i])
+		{
+			if (!in_quote && (str[i] == '"' || str[i] == '\''))
+			{
+				in_quote = 1;
+				quote_char = str[i];
+			}
+			else if (in_quote && str[i] == quote_char)
+			{
+				in_quote = 0;
+				quote_char = 0;
+			}
+			else if (!in_quote && (str[i] == ' ' || str[i] == '\t'))
+				break;
+			i++;
+		}
+	}
+	
+	/* Allocate result array */
+	result = malloc(sizeof(char *) * (tokens + 1));
+	if (!result)
+		return (NULL);
+	
+	/* Extract tokens */
+	i = 0;
+	j = 0;
+	in_quote = 0;
+	quote_char = 0;
+	
+	while (str[i] && j < tokens)
+	{
+		/* Skip leading spaces */
+		while (str[i] == ' ' || str[i] == '\t')
+			i++;
+		if (!str[i])
+			break;
+			
+		start = i;
+		
+		/* Find end of token */
+		while (str[i])
+		{
+			if (!in_quote && (str[i] == '"' || str[i] == '\''))
+			{
+				in_quote = 1;
+				quote_char = str[i];
+			}
+			else if (in_quote && str[i] == quote_char)
+			{
+				in_quote = 0;
+				quote_char = 0;
+			}
+			else if (!in_quote && (str[i] == ' ' || str[i] == '\t'))
+				break;
+			i++;
+		}
+		
+		/* Extract token */
+		result[j] = ft_substr(str, start, i - start);
+		if (!result[j])
+		{
+			while (j > 0)
+				free(result[--j]);
+			free(result);
+			return (NULL);
+		}
+		j++;
+	}
+	
+	result[j] = NULL;
+	return (result);
+}
+
 void	files_saving(t_shell *pipe, t_cmds **tmp)
 {
 	t_cmds	*cmds;
@@ -106,7 +207,7 @@ void	files_saving(t_shell *pipe, t_cmds **tmp)
 		if (cmds[var.j].red_len)
 			cmds[var.j].outs = malloc(sizeof(t_redirect) * cmds[var.j].red_len);
 		utils_saving(pipe, cmds, &var);
-		cmds[var.j].cmds = ft_split(pipe->cmds[var.j], ' ');
+		cmds[var.j].cmds = quote_aware_split(pipe->cmds[var.j]);
 		var.h = 0;
 		while (cmds[var.j].cmds[var.h])
 			clean_quotes(cmds[var.j].cmds[var.h++]);

@@ -69,7 +69,10 @@ void	replace_spaces_tabs(char *str)
 		else if (vars.quote_char == 0)
 			increment(str, &vars);
 		else
+		{
 			str[vars.j++] = str[vars.i];
+			vars.space_found = 0;  /* Reset space_found to preserve spaces in quotes */
+		}
 		vars.i++;
 	}
 	str[vars.j] = '\0';
