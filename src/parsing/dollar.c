@@ -65,7 +65,7 @@ int	expand(char **str, char *expanded, t_variables *var)
     var->i++; /* move to first char after '$' */
     if ((*str)[var->i] == '?')
     {
-        char *code = ft_itoa(exit_code);
+        char *code = ft_itoa(g_exit_code);
         if (!code)
             return (1);
         *str = storing(*str, var->i - 1, 2, code);

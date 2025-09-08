@@ -12,7 +12,7 @@
 
 #include "../minishell.h"
 
-int exit_code = 0;
+int g_exit_code = 0;
 
 int	parsing(t_shell *pipe, t_cmds *cmds, char *input)
 {
@@ -22,14 +22,14 @@ int	parsing(t_shell *pipe, t_cmds *cmds, char *input)
 	{
 		printf("syntax error, unexpected redirection token\n");
 		add_history(input);
-		exit_code = 258;
+		g_exit_code = 258;
 		return (1);
 	}
 	else if (!handle_pipes(pipe, input, cmds))
 	{
 		printf("Error\n");
 		add_history(input);
-		exit_code = 258;
+		g_exit_code = 258;
 		return (1);
 	}
 	return (0);

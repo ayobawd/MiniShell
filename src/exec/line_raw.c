@@ -13,7 +13,7 @@
 #include "minishell.h"
 
 /* Helper functions from parsing */
-extern int exit_code;
+extern int	g_exit_code;
 
 static void free_env_list_only(t_list **lst)
 {
@@ -73,7 +73,7 @@ int ms_exec_line_raw(char *line, t_env **env)
     if (!line || spaces(line))
         return (0);
     
-    exit_code = ms_status_get();
+    g_exit_code = ms_status_get();
     ft_bzero(&ps, sizeof(ps));
     envp_for_parse = set_parse_env_from_env(&ps, *env);
 
