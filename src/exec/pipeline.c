@@ -61,7 +61,7 @@ static void child_exec(t_cmd *cmd, t_env **env, int i, int n, int pipes[][2])
     path = ms_resolve_path(cmd->argv[0], *env);
     envp = ms_env_to_envp(*env);
     if (!cmd->argv[0] || !cmd->argv[0][0])
-        exit(127);
+        exit(0);
     if (path)
     {
         execve(path, cmd->argv, envp);

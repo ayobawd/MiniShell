@@ -1,0 +1,16 @@
+# Build artifacts
+*.o
+*.a
+minishell
+minishell_bonus
+
+# Test artifacts  
+minishell_tester/
+outfiles/
+mini_outfiles/
+bash_outfiles/
+
+# Temp files
+.DS_Store
+*~
+*.tmp
