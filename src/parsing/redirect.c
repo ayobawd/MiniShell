@@ -12,19 +12,17 @@
 
 #include "../minishell.h"
 
-static int is_redirect(char **input, t_variables *v)
+static int	is_redirect(char **input, t_variables *v)
 {
 	if ((*input)[v->i] == '>' || (*input)[v->i] == '<')
 	{
 		v->i++;
-		if (((*input)[v->i] == '<' && \
-			(*input)[v->i - 1] == '<') \
-			|| ((*input)[v->i] == '>' && \
-				(*input)[v->i - 1] == '>'))
+		if (((*input)[v->i] == '<' && (*input)[v->i - 1] == '<')
+			|| ((*input)[v->i] == '>' && (*input)[v->i - 1] == '>'))
 			v->i++;
 		while ((*input)[v->i] == ' ' || (*input)[v->i] == '\t')
 			v->i++;
-		if (((*input)[v->i] == '>' || (*input)[v->i] == '<') \
+		if (((*input)[v->i] == '>' || (*input)[v->i] == '<')
 			&& (!v->in_quotes))
 			return (0);
 		while ((*input)[v->i] == ' ' || (*input)[v->i] == '\t')
@@ -37,7 +35,7 @@ static int is_redirect(char **input, t_variables *v)
 	return (1);
 }
 
-static int check_last(char *input)
+static int	check_last(char *input)
 {
 	int	i;
 
@@ -51,15 +49,14 @@ static int check_last(char *input)
 	return (1);
 }
 
-static int handle_redirections(char **input, t_variables *v)
+static int	handle_redirections(char **input, t_variables *v)
 {
-	if(!check_last(*input))
-	    return (0);
+	if (!check_last(*input))
+		return (0);
 	v->i = 0;
 	while ((*input)[v->i])
 	{
-		if ((*input)[v->i] == '\'' || \
-			(*input)[v->i] == '\"')
+		if ((*input)[v->i] == '\'' || (*input)[v->i] == '\"')
 		{
 			if (!v->in_quotes)
 				v->in_quotes = (*input)[v->i];
