@@ -14,36 +14,36 @@
 
 static void free_redirs(t_redir *r)
 {
-    t_redir *n;
-    while (r)
-    {
-        n = r->next;
-        if (r->fd != -1)
-            close(r->fd);
-        free(r->target);
-        free(r);
-        r = n;
-    }
+	t_redir *n;
+	while (r)
+	{
+	    n = r->next;
+	    if (r->fd != -1)
+	        close(r->fd);
+	    free(r->target);
+	    free(r);
+	    r = n;
+	}
 }
 
 void ms_cmd_free(t_cmd *p)
 {
-    t_cmd *n;
-    int     i;
+	t_cmd *n;
+	int     i;
 
-    while (p)
-    {
-        n = p->next;
-        if (p->argv)
-        {
-            i = 0;
-            while (p->argv[i])
-                free(p->argv[i++]);
-            free(p->argv);
-        }
-        free_redirs(p->redirs);
-        free(p);
-        p = n;
-    }
+	while (p)
+	{
+	    n = p->next;
+	    if (p->argv)
+	    {
+	        i = 0;
+	        while (p->argv[i])
+	            free(p->argv[i++]);
+	        free(p->argv);
+	    }
+	    free_redirs(p->redirs);
+	    free(p);
+	    p = n;
+	}
 }
 

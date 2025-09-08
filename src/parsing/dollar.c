@@ -61,55 +61,55 @@ void	quotes_check(char **str, t_variables *var)
 
 int	expand(char **str, char *expanded, t_variables *var)
 {
-    (void)expanded;
-    var->i++; /* move to first char after '$' */
-    if ((*str)[var->i] == '?')
-    {
-        char *code = ft_itoa(g_exit_code);
-        if (!code)
-            return (1);
-        *str = storing(*str, var->i - 1, 2, code);
-        var->i += ft_strlen(code) - 2;
-        free(code);
-        return (1);
-    }
-    /* Handle ${VAR} syntax */
-    if ((*str)[var->i] == '{')
-    {
-        var->i++; /* skip '{' */
-        var->len = 0;
-        while ((*str)[var->i] && (*str)[var->i] != '}' && 
-               (ft_isalnum((unsigned char)(*str)[var->i]) || (*str)[var->i] == '_'))
-        {
-            var->len++;
-            var->i++;
-        }
-        if ((*str)[var->i] == '}')
-        {
-            var->i++; /* skip '}' */
-            /* Adjust for the extra '{' and '}' characters */
-            var->len += 2; /* include '{' and '}' in replacement length */
-            return (0); /* proceed with expansion */
-        }
-        /* Invalid syntax, skip */
-        return (1);
-    }
-    if (!ft_isalpha((unsigned char)(*str)[var->i]) && (*str)[var->i] != '_')
-        return (1);
-    var->len = 0;
-    while (ft_isalnum((unsigned char)(*str)[var->i]) || (*str)[var->i] == '_')
-    {
-        var->len++;
-        var->i++;
-    }
-    return (0);
+	(void)expanded;
+	var->i++; /* move to first char after '$' */
+	if ((*str)[var->i] == '?')
+	{
+	    char *code = ft_itoa(g_exit_code);
+	    if (!code)
+	        return (1);
+	    *str = storing(*str, var->i - 1, 2, code);
+	    var->i += ft_strlen(code) - 2;
+	    free(code);
+	    return (1);
+	}
+	/* Handle ${VAR} syntax */
+	if ((*str)[var->i] == '{')
+	{
+	    var->i++; /* skip '{' */
+	    var->len = 0;
+	    while ((*str)[var->i] && (*str)[var->i] != '}' &&
+	           (ft_isalnum((unsigned char)(*str)[var->i]) || (*str)[var->i] == '_'))
+	    {
+	        var->len++;
+	        var->i++;
+	    }
+	    if ((*str)[var->i] == '}')
+	    {
+	        var->i++; /* skip '}' */
+	        /* Adjust for the extra '{' and '}' characters */
+	        var->len += 2; /* include '{' and '}' in replacement length */
+	        return (0); /* proceed with expansion */
+	    }
+	    /* Invalid syntax, skip */
+	    return (1);
+	}
+	if (!ft_isalpha((unsigned char)(*str)[var->i]) && (*str)[var->i] != '_')
+	    return (1);
+	var->len = 0;
+	while (ft_isalnum((unsigned char)(*str)[var->i]) || (*str)[var->i] == '_')
+	{
+	    var->len++;
+	    var->i++;
+	}
+	return (0);
 }
 
 void	generate_strings_helper(char **str, char *expanded, t_variables *var)
 {
-    (void)var;
-    *str = storing(*str, var->i - var->len - 1, var->len + 1, expanded);
-    var->i += ft_strlen(expanded) - var->len - 1;
+	(void)var;
+	*str = storing(*str, var->i - var->len - 1, var->len + 1, expanded);
+	var->i += ft_strlen(expanded) - var->len - 1;
 }
 
 int	generate_string(char **str, char **tmp, t_variables *var, t_shell *pipe)

@@ -22,26 +22,26 @@ extern volatile sig_atomic_t g_sig;
 
 static void sigint_handler(int signo)
 {
-    (void)signo;
-    g_sig = SIGINT;
-    write(1, "\n", 1);
-    rl_on_new_line();
-    rl_redisplay();
+	(void)signo;
+	g_sig = SIGINT;
+	write(1, "\n", 1);
+	rl_on_new_line();
+	rl_redisplay();
 }
 
 void    ms_signals_parent(void)
 {
-    struct sigaction sa;
+	struct sigaction sa;
 
-    sa.sa_handler = sigint_handler;
-    sigemptyset(&sa.sa_mask);
-    sa.sa_flags = SA_RESTART;
-    sigaction(SIGINT, &sa, NULL);
-    signal(SIGQUIT, SIG_IGN);
+	sa.sa_handler = sigint_handler;
+	sigemptyset(&sa.sa_mask);
+	sa.sa_flags = SA_RESTART;
+	sigaction(SIGINT, &sa, NULL);
+	signal(SIGQUIT, SIG_IGN);
 }
 
 void    ms_signals_child_default(void)
 {
-    signal(SIGINT, SIG_DFL);
-    signal(SIGQUIT, SIG_DFL);
+	signal(SIGINT, SIG_DFL);
+	signal(SIGQUIT, SIG_DFL);
 }

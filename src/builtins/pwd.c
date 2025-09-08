@@ -16,13 +16,13 @@
 
 int bi_pwd(char **argv)
 {
-    char    buf[PATH_MAX];
-    (void)argv;
-    if (getcwd(buf, sizeof(buf)))
-    {
-        write(1, buf, ft_strlen(buf));
-        write(1, "\n", 1);
-        return (0);
-    }
-    return (1);
+	char    buf[PATH_MAX];
+	(void)argv;
+	if (getcwd(buf, sizeof(buf)))
+	{
+	    write(1, buf, ft_strlen(buf));
+	    write(1, "\n", 1);
+	    return (0);
+	}
+	return (1);
 }

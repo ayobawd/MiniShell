@@ -21,16 +21,16 @@ void	ms_env_free(t_env *env);
 
 int	main(int argc, char **argv, char **environ)
 {
-    t_env   *env;
-    int     status;
+	t_env   *env;
+	int     status;
 
-    (void)argc;
-    (void)argv;
-    env = ms_env_from_environ(environ);
-    if (!env)
-        return (1);
-    status = ms_loop(&env);
-    ms_env_free(env);
-    return (status);
+	(void)argc;
+	(void)argv;
+	env = ms_env_from_environ(environ);
+	if (!env)
+	    return (1);
+	status = ms_loop(&env);
+	ms_env_free(env);
+	return (status);
 }
 

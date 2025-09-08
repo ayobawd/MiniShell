@@ -21,13 +21,13 @@ static char	**quote_aware_pipe_split(char *str)
 
 	if (!str)
 		return (NULL);
-	
+
 	/* Count pipe-separated segments first */
 	segments = 1; /* At least one segment */
 	i = 0;
 	in_quote = 0;
 	quote_char = 0;
-	
+
 	while (str[i])
 	{
 		if (!in_quote && (str[i] == '"' || str[i] == '\''))
@@ -46,23 +46,23 @@ static char	**quote_aware_pipe_split(char *str)
 		}
 		i++;
 	}
-	
+
 	/* Allocate result array */
 	result = malloc(sizeof(char *) * (segments + 1));
 	if (!result)
 		return (NULL);
-	
+
 	/* Extract segments */
 	i = 0;
 	j = 0;
 	in_quote = 0;
 	quote_char = 0;
 	start = 0;
-	
+
 	while (j < segments)
 	{
 		start = i;
-		
+
 		/* Find end of segment (next unquoted pipe or end of string) */
 		while (str[i])
 		{
@@ -82,7 +82,7 @@ static char	**quote_aware_pipe_split(char *str)
 			}
 			i++;
 		}
-		
+
 		/* Extract segment */
 		result[j] = ft_substr(str, start, i - start);
 		if (!result[j])
@@ -93,19 +93,19 @@ static char	**quote_aware_pipe_split(char *str)
 			return (NULL);
 		}
 		j++;
-		
+
 		/* Skip the pipe character for next iteration */
 		if (str[i] == '|')
 			i++;
 	}
-	
+
 	result[j] = NULL;
 	return (result);
 }
 
 static int pipe_from_back(char *input)
 {
-    int	len;
+	int	len;
 	int	i;
 
 	len = ft_strlen(input);
@@ -126,7 +126,7 @@ static int pipe_from_back(char *input)
 
 static int pipe_in_quotes(char *input, int i, int quotes, int j)
 {
-    while (input[i])
+	while (input[i])
 	{
 		if (input[i] == '\"' || input[i] == '\'')
 		{

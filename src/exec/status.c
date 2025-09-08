@@ -16,13 +16,13 @@ static int g_last_status = 0;
 
 int ms_status_get(void)
 {
-    return (g_last_status);
+	return (g_last_status);
 }
 
 void ms_status_set(int st)
 {
-    if (st < 0)
-        g_last_status = 1;
-    else
-        g_last_status = st;
+	if (st < 0)
+	    g_last_status = 1;
+	else
+	    g_last_status = st;
 }
