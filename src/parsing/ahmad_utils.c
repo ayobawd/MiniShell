@@ -26,7 +26,7 @@ int spaces(char *str)
 
 int is_spacee(int c)
 {
-    return (c == ' ' || c == '\t' || c == '\n');
+	return (c == ' ' || c == '\t' || c == '\n');
 }
 
 

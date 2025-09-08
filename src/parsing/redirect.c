@@ -14,7 +14,7 @@
 
 static int is_redirect(char **input, t_variables *v)
 {
-    if ((*input)[v->i] == '>' || (*input)[v->i] == '<')
+	if ((*input)[v->i] == '>' || (*input)[v->i] == '<')
 	{
 		v->i++;
 		if (((*input)[v->i] == '<' && \
@@ -53,9 +53,9 @@ static int check_last(char *input)
 
 static int handle_redirections(char **input, t_variables *v)
 {
-    if(!check_last(*input))
-        return (0);
-    v->i = 0;
+	if(!check_last(*input))
+	    return (0);
+	v->i = 0;
 	while ((*input)[v->i])
 	{
 		if ((*input)[v->i] == '\'' || \

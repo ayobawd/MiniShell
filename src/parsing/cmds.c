@@ -96,13 +96,13 @@ char	**quote_aware_split(char *str)
 
 	if (!str)
 		return (NULL);
-	
+
 	/* Count tokens first */
 	tokens = 0;
 	i = 0;
 	in_quote = 0;
 	quote_char = 0;
-	
+
 	while (str[i])
 	{
 		/* Skip leading spaces */
@@ -110,10 +110,10 @@ char	**quote_aware_split(char *str)
 			i++;
 		if (!str[i])
 			break;
-		
+
 		/* Count this token */
 		tokens++;
-		
+
 		/* Skip to end of token */
 		while (str[i])
 		{
@@ -132,18 +132,18 @@ char	**quote_aware_split(char *str)
 			i++;
 		}
 	}
-	
+
 	/* Allocate result array */
 	result = malloc(sizeof(char *) * (tokens + 1));
 	if (!result)
 		return (NULL);
-	
+
 	/* Extract tokens */
 	i = 0;
 	j = 0;
 	in_quote = 0;
 	quote_char = 0;
-	
+
 	while (str[i] && j < tokens)
 	{
 		/* Skip leading spaces */
@@ -151,9 +151,9 @@ char	**quote_aware_split(char *str)
 			i++;
 		if (!str[i])
 			break;
-			
+
 		start = i;
-		
+
 		/* Find end of token */
 		while (str[i])
 		{
@@ -171,7 +171,7 @@ char	**quote_aware_split(char *str)
 				break;
 			i++;
 		}
-		
+
 		/* Extract token */
 		result[j] = ft_substr(str, start, i - start);
 		if (!result[j])
@@ -183,7 +183,7 @@ char	**quote_aware_split(char *str)
 		}
 		j++;
 	}
-	
+
 	result[j] = NULL;
 	return (result);
 }

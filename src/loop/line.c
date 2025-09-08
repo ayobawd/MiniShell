@@ -23,23 +23,23 @@ void         ms_signals_parent(void);
 
 int ms_loop(t_env **env)
 {
-    char    *line;
-    int     status;
+	char    *line;
+	int     status;
 
-    ms_signals_parent();
-    status = 0;
-    while (1)
-    {
-        char *p = ms_prompt(*env);
-        line = readline(p);
-        free(p);
-        if (!line)
-            break ;
-        if (*line)
-            add_history(line);
-        status = ms_exec_line_raw(line, env);
-        free(line);
-    }
-    write(1, "exit\n", 5);
-    return (status);
+	ms_signals_parent();
+	status = 0;
+	while (1)
+	{
+	    char *p = ms_prompt(*env);
+	    line = readline(p);
+	    free(p);
+	    if (!line)
+	        break ;
+	    if (*line)
+	        add_history(line);
+	    status = ms_exec_line_raw(line, env);
+	    free(line);
+	}
+	write(1, "exit\n", 5);
+	return (status);
 }

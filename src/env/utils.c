@@ -13,16 +13,16 @@
 
 int ms_is_valid_key(const char *s)
 {
-    size_t i;
+	size_t i;
 
-    if (!s || !(ft_isalpha((unsigned char)s[0]) || s[0] == '_'))
-        return (0);
-    i = 1;
-    while (s[i])
-    {
-        if (!(ft_isalnum((unsigned char)s[i]) || s[i] == '_'))
-            return (0);
-        i++;
-    }
-    return (1);
+	if (!s || !(ft_isalpha((unsigned char)s[0]) || s[0] == '_'))
+	    return (0);
+	i = 1;
+	while (s[i])
+	{
+	    if (!(ft_isalnum((unsigned char)s[i]) || s[i] == '_'))
+	        return (0);
+	    i++;
+	}
+	return (1);
 }

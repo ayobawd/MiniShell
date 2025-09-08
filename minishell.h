@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/01 00:00:00 by marvin            #+#    #+#             */
+/*   Updated: 2024/01/01 00:00:00 by marvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
@@ -19,10 +31,10 @@
 /* Exec-side env list */
 typedef struct s_env
 {
-	char		*key;
-	char		*val;
+	char			*key;
+	char			*val;
 	struct s_env	*next;
-} t_env;
+}	t_env;
 
 /* Exec-side redirection types */
 enum e_redir_type
@@ -35,23 +47,23 @@ enum e_redir_type
 
 typedef struct s_redir
 {
-	int			 type;          /* enum e_redir_type */
-	char		*target;        /* filename or heredoc delimiter */
-	int			 fd;            /* for heredoc pipe, else -1 */
-	bool		 quoted_delim;  /* heredoc delimiter quoted? */
-	struct s_redir *next;
-} t_redir;
+	int				type;
+	char			*target;
+	int				fd;
+	bool			quoted_delim;
+	struct s_redir	*next;
+}	t_redir;
 
 typedef struct s_cmd
 {
-	char		**argv;
-	t_redir		*redirs;
-	bool		 is_builtin;
+	char			**argv;
+	t_redir			*redirs;
+	bool			is_builtin;
 	struct s_cmd	*next;
-} t_cmd;
+}	t_cmd;
 
 /* Parsing-side helpers (kept to reuse existing parser) */
-extern int exit_code;
+extern int	g_exit_code;
 enum e_types
 {
 	IN_FILE,
@@ -64,7 +76,7 @@ typedef struct s_redirect
 {
 	int		flag;
 	char	*file_name;
-} t_redirect;
+}	t_redirect;
 
 typedef struct s_cmds
 {
@@ -72,7 +84,7 @@ typedef struct s_cmds
 	int			cmd_len;
 	char		**cmds;
 	t_redirect	*outs;
-} t_cmds;
+}	t_cmds;
 
 typedef struct s_varibles
 {
@@ -88,23 +100,23 @@ typedef struct s_varibles
 	int	xy;
 	int	in_d_quotes;
 	int	in_quotes;
-} t_variables;
+}	t_variables;
 
 typedef struct s_shell
 {
 	int		cmd_len;
 	int		num_cmd;
-	t_list	*environment; /* list of char* "KEY=VAL" for parser */
+	t_list	*environment;
 	int		environment_num;
-	char	**cmds;        /* split pipeline segments */
-} t_shell;
+	char	**cmds;
+}	t_shell;
 
 /* =====================
 ** Public API
 ** ===================== */
 
 /* loop */
-int		ms_loop(t_env **env);
+int			ms_loop(t_env **env);
 char		*ms_prompt(t_env *env);
 void		ms_signals_parent(void);
 void		ms_signals_child_default(void);
