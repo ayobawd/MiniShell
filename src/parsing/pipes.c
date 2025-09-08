@@ -15,50 +15,40 @@
 static char	**quote_aware_pipe_split(char *str)
 {
 	char	**result;
-	int		i, j, start, segments;
-	int		in_quote;
+	int		i;
+	int		j;
+	int		start;
+	int		segments;
 	char	quote_char;
 
 	if (!str)
 		return (NULL);
-
-	/* Count pipe-separated segments first */
-	segments = 1; /* At least one segment */
+	segments = 1;
 	i = 0;
-	in_quote = 0;
 	quote_char = 0;
-
 	while (str[i])
 	{
-		if (!in_quote && (str[i] == '"' || str[i] == '\''))
+		if (!quote_char && (str[i] == '"' || str[i] == '\''))
 		{
-			in_quote = 1;
 			quote_char = str[i];
 		}
-		else if (in_quote && str[i] == quote_char)
+		else if (quote_char && str[i] == quote_char)
 		{
-			in_quote = 0;
 			quote_char = 0;
 		}
-		else if (!in_quote && str[i] == '|')
+		else if (!quote_char && str[i] == '|')
 		{
 			segments++;
 		}
 		i++;
 	}
-
-	/* Allocate result array */
 	result = malloc(sizeof(char *) * (segments + 1));
 	if (!result)
 		return (NULL);
-
-	/* Extract segments */
 	i = 0;
 	j = 0;
-	in_quote = 0;
 	quote_char = 0;
 	start = 0;
-
 	while (j < segments)
 	{
 		start = i;
@@ -66,19 +56,17 @@ static char	**quote_aware_pipe_split(char *str)
 		/* Find end of segment (next unquoted pipe or end of string) */
 		while (str[i])
 		{
-			if (!in_quote && (str[i] == '"' || str[i] == '\''))
+			if (!quote_char && (str[i] == '"' || str[i] == '\''))
 			{
-				in_quote = 1;
 				quote_char = str[i];
 			}
-			else if (in_quote && str[i] == quote_char)
+			else if (quote_char && str[i] == quote_char)
 			{
-				in_quote = 0;
 				quote_char = 0;
 			}
-			else if (!in_quote && str[i] == '|')
+			else if (!quote_char && str[i] == '|')
 			{
-				break; /* Found unquoted pipe, end of this segment */
+				break;
 			}
 			i++;
 		}

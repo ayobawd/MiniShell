@@ -12,7 +12,7 @@
 
 #include "../minishell.h"
 
-int spaces(char *str)
+int	spaces(char *str)
 {
 	int	i;
 
@@ -24,11 +24,10 @@ int spaces(char *str)
 	return (0);
 }
 
-int is_spacee(int c)
+int	is_spacee(int c)
 {
 	return (c == ' ' || c == '\t' || c == '\n');
 }
-
 
 static void	increment(char *str, t_variables *vars)
 {
@@ -71,7 +70,7 @@ void	replace_spaces_tabs(char *str)
 		else
 		{
 			str[vars.j++] = str[vars.i];
-			vars.space_found = 0;  /* Reset space_found to preserve spaces in quotes */
+			vars.space_found = 0;
 		}
 		vars.i++;
 	}
@@ -136,15 +135,9 @@ int	num_of_redirects(char *str)
 
 void	remove_substr(char *s, unsigned int start, size_t len)
 {
-	// printf("start :%d\n", start);
-	// printf("len :%zu\n", len);
 	size_t	i;
 	size_t	j;
-	// /char *str;
 
-	// str = malloc(sizeof(char) * (ft_strlen(s) - (len - start)) + 2);
-	// if (!str || !s)
-	//     return (NULL);
 	i = 0;
 	j = 0;
 	while (s[i])
@@ -157,6 +150,4 @@ void	remove_substr(char *s, unsigned int start, size_t len)
 		i++;
 	}
 	s[j] = '\0';
-	// free(s);
-	// return (str);
 }

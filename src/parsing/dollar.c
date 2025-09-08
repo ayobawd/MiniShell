@@ -20,8 +20,8 @@ char	*storing(char *str, int start, int len, char *replace)
 
 	if (!str || start + len > (int)ft_strlen(str))
 		return (NULL);
-	new_str = malloc(sizeof(char) * \
-		(ft_strlen(str) - len + ft_strlen(replace) + 1));
+	new_str = malloc(sizeof(char)
+			* (ft_strlen(str) - len + ft_strlen(replace) + 1));
 	if (!new_str)
 		return (NULL);
 	i = 0;
@@ -61,46 +61,46 @@ void	quotes_check(char **str, t_variables *var)
 
 int	expand(char **str, char *expanded, t_variables *var)
 {
+	char	*code;
+
 	(void)expanded;
-	var->i++; /* move to first char after '$' */
+	var->i++;
 	if ((*str)[var->i] == '?')
 	{
-	    char *code = ft_itoa(g_exit_code);
-	    if (!code)
-	        return (1);
-	    *str = storing(*str, var->i - 1, 2, code);
-	    var->i += ft_strlen(code) - 2;
-	    free(code);
-	    return (1);
+		code = ft_itoa(g_exit_code);
+		if (!code)
+			return (1);
+		*str = storing(*str, var->i - 1, 2, code);
+		var->i += ft_strlen(code) - 2;
+		free(code);
+		return (1);
 	}
-	/* Handle ${VAR} syntax */
 	if ((*str)[var->i] == '{')
 	{
-	    var->i++; /* skip '{' */
-	    var->len = 0;
-	    while ((*str)[var->i] && (*str)[var->i] != '}' &&
-	           (ft_isalnum((unsigned char)(*str)[var->i]) || (*str)[var->i] == '_'))
-	    {
-	        var->len++;
-	        var->i++;
-	    }
-	    if ((*str)[var->i] == '}')
-	    {
-	        var->i++; /* skip '}' */
-	        /* Adjust for the extra '{' and '}' characters */
-	        var->len += 2; /* include '{' and '}' in replacement length */
-	        return (0); /* proceed with expansion */
-	    }
-	    /* Invalid syntax, skip */
-	    return (1);
+		var->i++;
+		var->len = 0;
+		while ((*str)[var->i] && (*str)[var->i] != '}'
+			&& (ft_isalnum((unsigned char)(*str)[var->i])
+			|| (*str)[var->i] == '_'))
+		{
+			var->len++;
+			var->i++;
+		}
+		if ((*str)[var->i] == '}')
+		{
+			var->i++;
+			var->len += 2;
+			return (0);
+		}
+		return (1);
 	}
 	if (!ft_isalpha((unsigned char)(*str)[var->i]) && (*str)[var->i] != '_')
-	    return (1);
+		return (1);
 	var->len = 0;
 	while (ft_isalnum((unsigned char)(*str)[var->i]) || (*str)[var->i] == '_')
 	{
-	    var->len++;
-	    var->i++;
+		var->len++;
+		var->i++;
 	}
 	return (0);
 }
@@ -114,8 +114,6 @@ void	generate_strings_helper(char **str, char *expanded, t_variables *var)
 
 int	generate_string(char **str, char **tmp, t_variables *var, t_shell *pipe)
 {
-	// char	*joined;
-	// char	*joined2;
 	char	*expanded;
 
 	expanded = NULL;
@@ -125,20 +123,6 @@ int	generate_string(char **str, char **tmp, t_variables *var, t_shell *pipe)
 		if (expanded)
 		{
 			generate_strings_helper(str, expanded, var);
-			// if (!var->in_d_quotes)
-			// {
-			// 	joined = ft_strjoin(expanded, "\"");
-			// 	joined2 = ft_strjoin("\"", joined);
-			// 	*str = storing(*str, var->i - var->len - 1, var->len + 1, joined2);
-			// 	var->i += ft_strlen(expanded) - var->len - 1;
-			// 	free(joined2);
-			// 	free(joined);
-			// }
-			// else
-			// {
-			// 	*str = storing(*str, var->i - var->len - 1, var->len + 1, expanded);
-			// 	var->i += ft_strlen(expanded) - var->len - 1;
-			// }
 		}
 		else if (!expanded)
 		{
@@ -154,10 +138,10 @@ int	generate_string(char **str, char **tmp, t_variables *var, t_shell *pipe)
 void	dollar_expansion(char **str, t_shell *pipe)
 {
 	t_variables	var;
-	char	*tmp;
-	char	*expanded;
-	int		brace_syntax;
-	int		var_start;
+	char		*tmp;
+	char		*expanded;
+	int			brace_syntax;
+	int			var_start;
 
 	var.len = 0;
 	expanded = NULL;
@@ -174,11 +158,10 @@ void	dollar_expansion(char **str, t_shell *pipe)
 				brace_syntax = 1;
 			if (expand(str, expanded, &var))
 				continue ;
-			/* Extract variable name correctly for both ${VAR} and $VAR */
 			if (brace_syntax)
 			{
-				var_start = var.i - var.len + 1; /* skip '{' */
-				tmp = ft_substr(*str, var_start, var.len - 2); /* exclude '{' and '}' */
+				var_start = var.i - var.len + 1;
+				tmp = ft_substr(*str, var_start, var.len - 2);
 			}
 			else
 			{

@@ -39,7 +39,7 @@ void	store_the_file_name(char *str, char **file_name, int i, t_variables *var)
 void	files_fillings(t_shell *pipe, t_cmds *cmds, t_variables *var)
 {
 	var->start = var->x - 1;
-	if (pipe->cmds[var->j][var->x + 1] == '>' \
+	if (pipe->cmds[var->j][var->x + 1] == '>'
 		|| pipe->cmds[var->j][var->x + 1] == '<')
 	{
 		if (pipe->cmds[var->j][var->x + 1] == '>')
@@ -73,11 +73,11 @@ void	utils_saving(t_shell *pipe, t_cmds *cmds, t_variables *v)
 			else if (v->quote_char == pipe->cmds[v->j][v->x])
 				v->quote_char = 0;
 		}
-		if ((pipe->cmds[v->j][v->x] == '>' || \
-			pipe->cmds[v->j][v->x] == '<') && !v->quote_char)
+		if ((pipe->cmds[v->j][v->x] == '>'
+			|| pipe->cmds[v->j][v->x] == '<') && !v->quote_char)
 		{
 			files_fillings(pipe, cmds, v);
-			store_the_file_name(pipe->cmds[v->j], \
+			store_the_file_name(pipe->cmds[v->j],
 				&cmds[v->j].outs[v->xy].file_name, v->x + 1, v);
 			clean_quotes(cmds[v->j].outs[v->xy].file_name);
 			remove_substr(pipe->cmds[v->j], v->start, v->i);
