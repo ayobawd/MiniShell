@@ -126,7 +126,7 @@ static void exec_single_cmd(t_cmds *cmd, int i, int count, int pipes[][2], t_env
     
     /* Execute command */
     if (!cmd->cmds || !cmd->cmds[0] || !cmd->cmds[0][0])
-        exit(127);
+        exit(0);
         
     if (ms_is_builtin(cmd->cmds[0]))
         exit(ms_run_builtin(cmd->cmds, env, false));
