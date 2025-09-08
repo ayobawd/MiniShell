@@ -1,0 +1,3 @@
+cat <<EOF | grep line1
+line1
+EOF
