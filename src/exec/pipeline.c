@@ -74,14 +74,14 @@ static void child_exec(t_cmd *cmd, t_env **env, int i, int n, int pipes[][2])
     {
         write(2, "minishell: ", 11);
         write(2, cmd->argv[0], ft_strlen(cmd->argv[0]));
-        write(2, ": command not found\n", 22);
+        write(2, ": command not found\n", 20);
         exit(127);
     }
     if (errno == EACCES)
     {
         write(2, "minishell: ", 11);
         write(2, cmd->argv[0], ft_strlen(cmd->argv[0]));
-        write(2, ": Permission denied\n", 21);
+        write(2, ": Permission denied\n", 19);
         exit(126);
     }
     exit(126);
