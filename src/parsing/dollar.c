@@ -61,7 +61,7 @@ void	quotes_check(char **str, t_variables *var)
 
 int	expand(char **str, char *expanded, t_variables *var)
 {
-    expanded = NULL;
+    (void)expanded;
     var->i++; /* move to first char after '$' */
     if ((*str)[var->i] == '?')
     {

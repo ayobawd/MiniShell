@@ -23,13 +23,12 @@ static int  parse_ll(const char *s, long long *out)
 {
     int         sign;
     unsigned long long val;
-    unsigned long long limit;
 
     while (is_space((unsigned char)*s)) s++;
     sign = 1;
     if (*s == '+' || *s == '-') { if (*s == '-') sign = -1; s++; }
     if (!*s) return (0);
-    val = 0; limit = (sign > 0) ? (unsigned long long)LLONG_MAX : (unsigned long long)LLONG_MIN;
+    val = 0;
     while (*s)
     {
         if (*s < '0' || *s > '9') return (0);

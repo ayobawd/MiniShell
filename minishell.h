@@ -137,8 +137,9 @@ int			ms_status_get(void);
 void		ms_status_set(int st);
 void		ms_cmd_free(t_cmd *pipeline);
 
-/* parsing adapter */
-t_cmd		*parse_to_pipeline(char *line, t_env *env);
+/* New direct-parser execution interface */
+int			ms_exec_parsed(t_cmds *arr, int count, t_env **env);
+int			ms_exec_line_raw(char *line, t_env **env);
 
 /* existing parsing functions (reused) */
 void		files_saving(t_shell *pipe, t_cmds **tmp);
