@@ -129,6 +129,10 @@ int			ms_unset(t_env **env, const char *key);
 void		ms_env_free(t_env *env);
 char		**ms_env_to_envp(t_env *env);
 int			ms_is_valid_key(const char *s);
+t_env		*new_kv(const char *k, const char *v);
+void		env_add_back(t_env **lst, t_env *n);
+char		*create_env_string(t_env *cur);
+void		free_envp_on_error(char **envp, size_t i);
 
 /* builtins */
 int			bi_echo(char **argv);
@@ -164,6 +168,14 @@ char		*my_getenv(const char *name, t_shell *pipe);
 void		clean_quotes(char *str);
 int			num_of_redirects(char *str);
 void		remove_substr(char *s, unsigned int start, size_t len);
+char		*storing(char *str, int start, int len, char *replace);
+void		quotes_check(char **str, t_variables *var);
+void		generate_strings_helper(char **str, char *expanded, t_variables *var);
+int			generate_string(char **str, char **tmp, t_variables *var, t_shell *pipe);
+int			handle_exit_code(char **str, t_variables *var);
+int			handle_brace_syntax(char **str, t_variables *var);
+void		handle_regular_variable(char **str, t_variables *var);
+void		init_variables(t_variables *var, char **expanded);
 int			spaces(char *str);
 int			is_spacee(int c);
 int			redirections_parse(char *str);
