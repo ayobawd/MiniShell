@@ -12,6 +12,96 @@
 
 #include "../minishell.h"
 
+static char	**quote_aware_pipe_split(char *str)
+{
+	char	**result;
+	int		i, j, start, segments;
+	int		in_quote;
+	char	quote_char;
+
+	if (!str)
+		return (NULL);
+	
+	/* Count pipe-separated segments first */
+	segments = 1; /* At least one segment */
+	i = 0;
+	in_quote = 0;
+	quote_char = 0;
+	
+	while (str[i])
+	{
+		if (!in_quote && (str[i] == '"' || str[i] == '\''))
+		{
+			in_quote = 1;
+			quote_char = str[i];
+		}
+		else if (in_quote && str[i] == quote_char)
+		{
+			in_quote = 0;
+			quote_char = 0;
+		}
+		else if (!in_quote && str[i] == '|')
+		{
+			segments++;
+		}
+		i++;
+	}
+	
+	/* Allocate result array */
+	result = malloc(sizeof(char *) * (segments + 1));
+	if (!result)
+		return (NULL);
+	
+	/* Extract segments */
+	i = 0;
+	j = 0;
+	in_quote = 0;
+	quote_char = 0;
+	start = 0;
+	
+	while (j < segments)
+	{
+		start = i;
+		
+		/* Find end of segment (next unquoted pipe or end of string) */
+		while (str[i])
+		{
+			if (!in_quote && (str[i] == '"' || str[i] == '\''))
+			{
+				in_quote = 1;
+				quote_char = str[i];
+			}
+			else if (in_quote && str[i] == quote_char)
+			{
+				in_quote = 0;
+				quote_char = 0;
+			}
+			else if (!in_quote && str[i] == '|')
+			{
+				break; /* Found unquoted pipe, end of this segment */
+			}
+			i++;
+		}
+		
+		/* Extract segment */
+		result[j] = ft_substr(str, start, i - start);
+		if (!result[j])
+		{
+			while (j > 0)
+				free(result[--j]);
+			free(result);
+			return (NULL);
+		}
+		j++;
+		
+		/* Skip the pipe character for next iteration */
+		if (str[i] == '|')
+			i++;
+	}
+	
+	result[j] = NULL;
+	return (result);
+}
 
 static int pipe_from_back(char *input)
 {
@@ -115,7 +205,7 @@ int	handle_pipes(t_shell *pipe, char *input, t_cmds *cmds)
 		return (0);
 	if (!check_input(input))
 		return (0);
-	pipe->cmds = ft_split(input, '|');
+	pipe->cmds = quote_aware_pipe_split(input);
 	i = 0;
 	while (pipe->cmds[i])
 	{
