@@ -90,25 +90,32 @@ void	utils_saving(t_shell *pipe, t_cmds *cmds, t_variables *v)
 char	**quote_aware_split(char *str)
 {
 	char	**result;
-	int		i;
-	int		j;
-	int		start;
-	int		tokens;
+	int		i, j, start, tokens;
+	int		in_quote;
 	char	quote_char;
 
 	if (!str)
 		return (NULL);
+
+	/* Count tokens first */
 	tokens = 0;
 	i = 0;
+	in_quote = 0;
 	quote_char = 0;
+
 	while (str[i])
 	{
+		/* Skip leading spaces */
 		while (str[i] == ' ' || str[i] == '\t')
 			i++;
 		if (!str[i])
+			break;
 
+		/* Count this token */
 		tokens++;
+
 		/* Skip to end of token */
+		while (str[i])
 		{
 			if (!in_quote && (str[i] == '"' || str[i] == '\''))
 			{
