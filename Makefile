@@ -38,6 +38,7 @@ SRCS := \
   $(SRC_DIR)/parsing/spaces_parsing.c \
   $(SRC_DIR)/parsing/redirect.c \
   $(SRC_DIR)/parsing/pipes.c \
+  $(SRC_DIR)/parsing/pipe_utils.c \
   $(SRC_DIR)/parsing/parser.c \
   $(SRC_DIR)/parsing/env.c \
   $(SRC_DIR)/parsing/dollar.c \
