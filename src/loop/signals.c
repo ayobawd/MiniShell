@@ -10,17 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minishell.h"
 #include <signal.h>
 #include <readline/readline.h>
 #include <readline/history.h>
-/* Some readline variants require manual prototype */
-void rl_replace_line(const char *text, int clear_undo);
 #include <unistd.h>
-#include "minishell.h"
 
-extern volatile sig_atomic_t g_sig;
+void	rl_replace_line(const char *text, int clear_undo);
 
-static void sigint_handler(int signo)
+extern volatile sig_atomic_t	g_sig;
+
+static void	sigint_handler(int signo)
 {
 	(void)signo;
 	g_sig = SIGINT;
@@ -29,9 +29,9 @@ static void sigint_handler(int signo)
 	rl_redisplay();
 }
 
-void    ms_signals_parent(void)
+void	ms_signals_parent(void)
 {
-	struct sigaction sa;
+	struct sigaction	sa;
 
 	sa.sa_handler = sigint_handler;
 	sigemptyset(&sa.sa_mask);
@@ -40,7 +40,7 @@ void    ms_signals_parent(void)
 	signal(SIGQUIT, SIG_IGN);
 }
 
-void    ms_signals_child_default(void)
+void	ms_signals_child_default(void)
 {
 	signal(SIGINT, SIG_DFL);
 	signal(SIGQUIT, SIG_DFL);

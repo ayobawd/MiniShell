@@ -14,15 +14,16 @@
 #include <limits.h>
 #include "minishell.h"
 
-int bi_pwd(char **argv)
+int	bi_pwd(char **argv)
 {
-	char    buf[PATH_MAX];
+	char	buf[PATH_MAX];
+
 	(void)argv;
 	if (getcwd(buf, sizeof(buf)))
 	{
-	    write(1, buf, ft_strlen(buf));
-	    write(1, "\n", 1);
-	    return (0);
+		write(1, buf, ft_strlen(buf));
+		write(1, "\n", 1);
+		return (0);
 	}
 	return (1);
 }
