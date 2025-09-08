@@ -41,6 +41,8 @@ SRCS := \
   $(SRC_DIR)/parsing/parser.c \
   $(SRC_DIR)/parsing/env.c \
   $(SRC_DIR)/parsing/dollar.c \
+  $(SRC_DIR)/parsing/dollar_utils.c \
+  $(SRC_DIR)/parsing/dollar_helper.c \
   $(SRC_DIR)/parsing/cmds.c
 
 OBJS := $(SRCS:.c=.o)
