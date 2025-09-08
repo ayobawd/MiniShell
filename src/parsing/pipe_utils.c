@@ -54,11 +54,19 @@ int	find_segment_end(char *str, int start, char *quote_char)
 	return (i);
 }
 
+static void	cleanup_segments(char **result, int j)
+{
+	while (j > 0)
+		free(result[--j]);
+	free(result);
+}
+
 char	**extract_segments(char *str, int segments)
 {
 	char	**result;
 	int		i;
 	int		j;
+	int		end;
 	char	quote_char;
 
 	result = malloc(sizeof(char *) * (segments + 1));
@@ -69,43 +77,15 @@ char	**extract_segments(char *str, int segments)
 	quote_char = 0;
 	while (j < segments)
 	{
-		result[j] = ft_substr(str, i,
-				find_segment_end(str, i, &quote_char) - i);
+		end = find_segment_end(str, i, &quote_char);
+		result[j] = ft_substr(str, i, end - i);
 		if (!result[j])
-		{
-			while (j > 0)
-				free(result[--j]);
-			free(result);
-			return (NULL);
-		}
-		i = find_segment_end(str, i, &quote_char);
-		if (str[i] == '|')
-			i++;
+			return (cleanup_segments(result, j), NULL);
+		i = end + (str[end] == '|');
 		j++;
 	}
 	result[j] = NULL;
 	return (result);
-}
-
-int	pipe_from_back(char *input)
-{
-	int	len;
-	int	i;
-
-	len = ft_strlen(input);
-	if (!len)
-		return (0);
-	len--;
-	while ((input[len] == ' ' || input[len] == '\t') && len > 0)
-		len--;
-	if (input[len] == '|')
-		return (1);
-	i = 0;
-	while (input[i] == ' ' || input[i] == '\t')
-		i++;
-	if (input[i] == '|')
-		return (1);
-	return (0);
 }
 
 int	pipe_in_quotes(char *input, int i, int quotes, int j)

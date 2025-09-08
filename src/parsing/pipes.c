@@ -12,6 +12,27 @@
 
 #include "../minishell.h"
 
+static int	pipe_from_back(char *input)
+{
+	int	len;
+	int	i;
+
+	len = ft_strlen(input);
+	if (!len)
+		return (0);
+	len--;
+	while ((input[len] == ' ' || input[len] == '\t') && len > 0)
+		len--;
+	if (input[len] == '|')
+		return (1);
+	i = 0;
+	while (input[i] == ' ' || input[i] == '\t')
+		i++;
+	if (input[i] == '|')
+		return (1);
+	return (0);
+}
+
 static char	**quote_aware_pipe_split(char *str)
 {
 	int	segments;

@@ -188,7 +188,12 @@ void		dollar_expansion(char **str, t_shell *pipe);
 int			count_pipe_segments(char *str);
 int			find_segment_end(char *str, int start, char *quote_char);
 char		**extract_segments(char *str, int segments);
-int			pipe_from_back(char *input);
 int			pipe_in_quotes(char *input, int i, int quotes, int j);
+
+/* string_utils.c */
+int			num_of_redirects(char *str);
+void		remove_substr(char *s, unsigned int start, size_t len);
+int			is_spacee(int c);
+int			spaces(char *str);
 
 #endif
