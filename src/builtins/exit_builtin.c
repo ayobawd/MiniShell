@@ -80,8 +80,8 @@ int bi_exit(char **argv, t_env **env, bool in_parent)
     {
         print_err("exit: ", argv[1], ": numeric argument required\n");
         if (in_parent)
-            exit(255);
-        return (255);
+            exit(2);
+        return (2);
     }
     if (ac > 2)
     {
