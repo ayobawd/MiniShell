@@ -24,7 +24,6 @@ void         ms_signals_parent(void);
 int ms_loop(t_env **env)
 {
     char    *line;
-    t_cmd   *pipeline;
     int     status;
 
     ms_signals_parent();
@@ -43,13 +42,8 @@ int ms_loop(t_env **env)
             break ;
         if (*line)
             add_history(line);
-        pipeline = parse_to_pipeline(line, *env);
+        status = ms_exec_line_raw(line, env);
         free(line);
-        if (pipeline)
-        {
-            status = ms_execute_line(pipeline, env);
-            ms_cmd_free(pipeline);
-        }
     }
     write(1, "exit\n", 5);
     return (status);

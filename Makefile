@@ -30,6 +30,8 @@ SRCS := \
   $(SRC_DIR)/exec/parent.c \
   $(SRC_DIR)/exec/status.c \
   $(SRC_DIR)/exec/free.c \
+  $(SRC_DIR)/exec/parsed_exec.c \
+  $(SRC_DIR)/exec/line_raw.c \
   $(SRC_DIR)/parsing/ahmad_utils.c \
   $(SRC_DIR)/parsing/spaces_parsing.c \
   $(SRC_DIR)/parsing/redirect.c \
@@ -37,8 +39,7 @@ SRCS := \
   $(SRC_DIR)/parsing/parser.c \
   $(SRC_DIR)/parsing/env.c \
   $(SRC_DIR)/parsing/dollar.c \
-  $(SRC_DIR)/parsing/cmds.c \
-  $(SRC_DIR)/parsing/adapter.c
+  $(SRC_DIR)/parsing/cmds.c
 
 OBJS := $(SRCS:.c=.o)
 
