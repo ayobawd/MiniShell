@@ -18,18 +18,22 @@
 #include <errno.h>
 
 /* Forward declarations */
-void ms_signals_child_default(void);
-int  ms_run_builtin(char **argv, t_env **env, bool in_parent);
-char *ms_resolve_path(const char *cmd, t_env *env);
-char **ms_env_to_envp(t_env *env);
-int ms_is_builtin(const char *name);
+void	ms_signals_child_default(void);
+int		ms_run_builtin(char **argv, t_env **env, bool in_parent);
+char	*ms_resolve_path(const char *cmd, t_env *env);
+char	**ms_env_to_envp(t_env *env);
+int		ms_is_builtin(const char *name);
 
 /* Convert t_redirect to t_redir for a single command */
-static t_redir *convert_redirections(t_cmds *cmd)
+static t_redir	*convert_redirections(t_cmds *cmd)
 {
-	t_redir *head = NULL;
-	t_redir **pp = &head;
-	int i = 0;
+	t_redir	*head;
+	t_redir	**pp;
+	int		i;
+
+	head = NULL;
+	pp = &head;
+	i = 0;
 
 	while (i < cmd->red_len)
 	{

@@ -16,29 +16,30 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-char    *ms_prompt(t_env *env);
-int          ms_execute_line(t_cmd *pipeline, t_env **env);
-void         ms_cmd_free(t_cmd *pipeline);
-void         ms_signals_parent(void);
+char	*ms_prompt(t_env *env);
+int		ms_execute_line(t_cmd *pipeline, t_env **env);
+void	ms_cmd_free(t_cmd *pipeline);
+void	ms_signals_parent(void);
 
-int ms_loop(t_env **env)
+int	ms_loop(t_env **env)
 {
-	char    *line;
-	int     status;
+	char	*line;
+	char	*p;
+	int		status;
 
 	ms_signals_parent();
 	status = 0;
 	while (1)
 	{
-	    char *p = ms_prompt(*env);
-	    line = readline(p);
-	    free(p);
-	    if (!line)
-	        break ;
-	    if (*line)
-	        add_history(line);
-	    status = ms_exec_line_raw(line, env);
-	    free(line);
+		p = ms_prompt(*env);
+		line = readline(p);
+		free(p);
+		if (!line)
+			break ;
+		if (*line)
+			add_history(line);
+		status = ms_exec_line_raw(line, env);
+		free(line);
 	}
 	write(1, "exit\n", 5);
 	return (status);

@@ -103,7 +103,11 @@ void	files_saving(t_shell *pipe, t_cmds **tmp)
 	t_cmds		*cmds;
 	t_variables	var;
 
-	init_files_saving_vars(&var);
+	var.start = 0;
+	var.quote_char = 0;
+	var.h = 0;
+	var.j = -1;
+	var.x = 0;
 	*tmp = malloc(sizeof(t_cmds) * pipe->cmd_len);
 	cmds = *tmp;
 	cmds->red_len = 0;
