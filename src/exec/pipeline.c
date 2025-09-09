@@ -52,8 +52,14 @@ static void	close_pipes_all(int n, int pipes[][2])
 
 static void	setup_child_pipes(int i, int n, int pipes[][2], int fds[2])
 {
-	fds[0] = (i > 0) ? pipes[i - 1][0] : -1;
-	fds[1] = (i < n - 1) ? pipes[i][1] : -1;
+	if (i > 0)
+		fds[0] = pipes[i - 1][0];
+	else
+		fds[0] = -1;
+	if (i < n - 1)
+		fds[1] = pipes[i][1];
+	else
+		fds[1] = -1;
 	if (i > 0)
 		close(pipes[i - 1][1]);
 	if (i < n - 1)
@@ -79,6 +85,18 @@ static void	handle_exec_error(char *cmd_name)
 	exit(126);
 }
 
+static void	exec_with_path(t_cmd *cmd, char **envp, char *path)
+{
+	if (path)
+	{
+		execve(path, cmd->argv, envp);
+		free(path);
+	}
+	else if (ft_strchr(cmd->argv[0], '/'))
+		execve(cmd->argv[0], cmd->argv, envp);
+	handle_exec_error(cmd->argv[0]);
+}
+
 static void	child_exec(t_cmd *cmd, t_env **env, int i, int n, int pipes[][2])
 {
 	int		fds[2];
@@ -96,14 +114,7 @@ static void	child_exec(t_cmd *cmd, t_env **env, int i, int n, int pipes[][2])
 	envp = ms_env_to_envp(*env);
 	if (!cmd->argv[0] || !cmd->argv[0][0])
 		exit(0);
-	if (path)
-	{
-		execve(path, cmd->argv, envp);
-		free(path);
-	}
-	else if (ft_strchr(cmd->argv[0], '/'))
-		execve(cmd->argv[0], cmd->argv, envp);
-	handle_exec_error(cmd->argv[0]);
+	exec_with_path(cmd, envp, path);
 }
 
 static int	wait_children(int last_pid, int count)
@@ -127,38 +138,70 @@ static int	wait_children(int last_pid, int count)
 	return (ret);
 }
 
-int ms_exec_pipeline(t_cmd *first, t_env **env)
+int	ms_exec_pipeline(t_cmd *first, t_env **env)
 {
-	int     n = 0; t_cmd *cur = first; int i;
-	int     last_pid = -1; int status;
-	int     (*pipes)[2];
+	int		n;
+	t_cmd	*cur;
+	int		i;
+	int		last_pid;
+	int		status;
+	int		(*pipes)[2];
 
-	while (cur) { n++; cur = cur->next; }
+	n = 0;
+	cur = first;
+	while (cur)
+	{
+		n++;
+		cur = cur->next;
+	}
 	pipes = NULL;
 	if (n > 1)
 	{
-	    pipes = (int (*)[2])malloc(sizeof(int[2]) * (n - 1));
-	    if (!pipes) return (1);
-	    if (open_pipes(n - 1, pipes) != 0) { free(pipes); return (1); }
+		pipes = (int (*)[2])malloc(sizeof(int[2]) * (n - 1));
+		if (!pipes)
+			return (1);
+		if (open_pipes(n - 1, pipes) != 0)
+		{
+			free(pipes);
+			return (1);
+		}
 	}
-	i = 0; cur = first;
+	i = 0;
+	cur = first;
+	last_pid = -1;
 	while (cur)
 	{
-	    int pid = fork();
-	    if (pid == 0)
-	        child_exec(cur, env, i, n, pipes);
-	    else if (pid < 0)
-	    { status = 1; break ; }
-	    else
-	    {
-	        last_pid = pid;
-	        if (i > 0) { close(pipes[i - 1][0]); close(pipes[i - 1][1]); }
-	    }
-	    i++; cur = cur->next;
+		status = fork();
+		if (status == 0)
+			child_exec(cur, env, i, n, pipes);
+		else if (status < 0)
+		{
+			status = 1;
+			break ;
+		}
+		else
+		{
+			last_pid = status;
+			if (i > 0)
+			{
+				close(pipes[i - 1][0]);
+				close(pipes[i - 1][1]);
+			}
+		}
+		i++;
+		cur = cur->next;
 	}
-	if (pipes) { if (n > 1) { close(pipes[n - 2][0]); close(pipes[n - 2][1]); } free(pipes); }
+	if (pipes)
+	{
+		if (n > 1)
+		{
+			close(pipes[n - 2][0]);
+			close(pipes[n - 2][1]);
+		}
+		free(pipes);
+	}
 	if (last_pid == -1)
-	    return (1);
+		return (1);
 	status = wait_children(last_pid, n);
 	return (status);
 }
