@@ -76,23 +76,6 @@ fclean: clean
 
 re: fclean all
 
-# Testing targets
-test: $(NAME)
-	@./run_tests.sh all
 
-test-builtins: $(NAME)
-	@./run_tests.sh builtins
 
-test-pipes: $(NAME)
-	@./run_tests.sh pipes
-
-test-redirects: $(NAME)
-	@./run_tests.sh redirects
-
-test-extras: $(NAME)
-	@./run_tests.sh extras
-
-norminette:
-	@./run_tests.sh norminette
-
-.PHONY: all clean fclean re test test-builtins test-pipes test-redirects test-extras norminette
+.PHONY: all clean fclean re 
