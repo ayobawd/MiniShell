@@ -88,6 +88,15 @@ static char	**alloc_and_init_tokens(int tokens, int *i, int *j, t_variables *v)
 	return (result);
 }
 
+/* Handle memory allocation failure */
+static void	handle_alloc_failure(char **result, int j)
+{
+	while (j > 0)
+		free(result[--j]);
+	free(result);
+}
+
+/* Extract all tokens from string */
 char	**extract_tokens(char *str, int tokens)
 {
 	char		**result;
@@ -110,9 +119,7 @@ char	**extract_tokens(char *str, int tokens)
 		result[j] = ft_substr(str, start, i - start);
 		if (!result[j])
 		{
-			while (j > 0)
-				free(result[--j]);
-			free(result);
+			handle_alloc_failure(result, j);
 			return (NULL);
 		}
 		j++;

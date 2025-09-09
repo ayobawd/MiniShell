@@ -35,6 +35,8 @@ SRCS := \
   $(SRC_DIR)/exec/status.c \
   $(SRC_DIR)/exec/free.c \
   $(SRC_DIR)/exec/parsed_exec.c \
+  $(SRC_DIR)/exec/redir_utils.c \
+  $(SRC_DIR)/exec/exec_utils.c \
   $(SRC_DIR)/exec/line_raw.c \
   $(SRC_DIR)/exec/line_raw_helpers.c \
   $(SRC_DIR)/parsing/ahmad_utils.c \
