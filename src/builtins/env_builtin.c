@@ -13,23 +13,23 @@
 #include "minishell.h"
 #include <unistd.h>
 
-int bi_env(char **argv, t_env **env)
+int	bi_env(char **argv, t_env **env)
 {
-	t_env *cur;
+	t_env	*cur;
 
 	if (argv[1])
-	    return (1);
+		return (1);
 	cur = *env;
 	while (cur)
 	{
-	    if (cur->val)
-	    {
-	        write(1, cur->key, ft_strlen(cur->key));
-	        write(1, "=", 1);
-	        write(1, cur->val, ft_strlen(cur->val));
-	        write(1, "\n", 1);
-	    }
-	    cur = cur->next;
+		if (cur->val)
+		{
+			write(1, cur->key, ft_strlen(cur->key));
+			write(1, "=", 1);
+			write(1, cur->val, ft_strlen(cur->val));
+			write(1, "\n", 1);
+		}
+		cur = cur->next;
 	}
 	return (0);
 }

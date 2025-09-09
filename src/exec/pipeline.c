@@ -17,92 +17,112 @@
 #include <signal.h>
 #include <errno.h>
 
-void ms_signals_child_default(void);
-int  ms_apply_redirs(t_redir *rlist, int fds[2]);
-int  ms_run_builtin(char **argv, t_env **env, bool in_parent);
-char *ms_resolve_path(const char *cmd, t_env *env);
-char **ms_env_to_envp(t_env *env);
+void	ms_signals_child_default(void);
+int		ms_apply_redirs(t_redir *rlist, int fds[2]);
+int		ms_run_builtin(char **argv, t_env **env, bool in_parent);
+char	*ms_resolve_path(const char *cmd, t_env *env);
+char	**ms_env_to_envp(t_env *env);
 
-static int open_pipes(int n, int pipes[][2])
+static int	open_pipes(int n, int pipes[][2])
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (i < n)
 	{
-	    if (pipe(pipes[i]) < 0)
-	        return (-1);
-	    i++;
+		if (pipe(pipes[i]) < 0)
+			return (-1);
+		i++;
 	}
 	return (0);
 }
 
-static void close_pipes_all(int n, int pipes[][2])
+static void	close_pipes_all(int n, int pipes[][2])
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (i < n)
-	{ close(pipes[i][0]); close(pipes[i][1]); i++; }
+	{
+		close(pipes[i][0]);
+		close(pipes[i][1]);
+		i++;
+	}
 }
 
-static void child_exec(t_cmd *cmd, t_env **env, int i, int n, int pipes[][2])
+static void	setup_child_pipes(int i, int n, int pipes[][2], int fds[2])
 {
-	int fds[2];
-	char **envp;
-	char *path;
-
-	ms_signals_child_default();
 	fds[0] = (i > 0) ? pipes[i - 1][0] : -1;
 	fds[1] = (i < n - 1) ? pipes[i][1] : -1;
-	if (i > 0) close(pipes[i - 1][1]);
-	if (i < n - 1) close(pipes[i][0]);
-	if (ms_apply_redirs(cmd->redirs, fds) != 0)
-	    exit(1);
-	close_pipes_all(n - 1, pipes);
-	if (cmd->is_builtin)
-	    exit(ms_run_builtin(cmd->argv, env, false));
-	path = ms_resolve_path(cmd->argv[0], *env);
-	envp = ms_env_to_envp(*env);
-	if (!cmd->argv[0] || !cmd->argv[0][0])
-	    exit(0);
-	if (path)
-	{
-	    execve(path, cmd->argv, envp);
-	    free(path);
-	}
-	else if (ft_strchr(cmd->argv[0], '/'))
-	    execve(cmd->argv[0], cmd->argv, envp);
-	/* if execve returns, it's an error */
+	if (i > 0)
+		close(pipes[i - 1][1]);
+	if (i < n - 1)
+		close(pipes[i][0]);
+}
+
+static void	handle_exec_error(char *cmd_name)
+{
 	if (errno == ENOENT)
 	{
-	    write(2, "minishell: ", 11);
-	    write(2, cmd->argv[0], ft_strlen(cmd->argv[0]));
-	    write(2, ": command not found\n", 20);
-	    exit(127);
+		write(2, "minishell: ", 11);
+		write(2, cmd_name, ft_strlen(cmd_name));
+		write(2, ": command not found\n", 20);
+		exit(127);
 	}
 	if (errno == EACCES)
 	{
-	    write(2, "minishell: ", 11);
-	    write(2, cmd->argv[0], ft_strlen(cmd->argv[0]));
-	    write(2, ": Permission denied\n", 19);
-	    exit(126);
+		write(2, "minishell: ", 11);
+		write(2, cmd_name, ft_strlen(cmd_name));
+		write(2, ": Permission denied\n", 19);
+		exit(126);
 	}
 	exit(126);
 }
 
-static int wait_children(int last_pid, int count)
+static void	child_exec(t_cmd *cmd, t_env **env, int i, int n, int pipes[][2])
 {
-	int status;
-	int ret = 0;
-	int pid;
+	int		fds[2];
+	char	**envp;
+	char	*path;
 
+	ms_signals_child_default();
+	setup_child_pipes(i, n, pipes, fds);
+	if (ms_apply_redirs(cmd->redirs, fds) != 0)
+		exit(1);
+	close_pipes_all(n - 1, pipes);
+	if (cmd->is_builtin)
+		exit(ms_run_builtin(cmd->argv, env, false));
+	path = ms_resolve_path(cmd->argv[0], *env);
+	envp = ms_env_to_envp(*env);
+	if (!cmd->argv[0] || !cmd->argv[0][0])
+		exit(0);
+	if (path)
+	{
+		execve(path, cmd->argv, envp);
+		free(path);
+	}
+	else if (ft_strchr(cmd->argv[0], '/'))
+		execve(cmd->argv[0], cmd->argv, envp);
+	handle_exec_error(cmd->argv[0]);
+}
+
+static int	wait_children(int last_pid, int count)
+{
+	int	status;
+	int	ret;
+	int	pid;
+
+	ret = 0;
 	while (count-- > 0)
 	{
-	    pid = wait(&status);
-	    if (pid == last_pid)
-	    {
-	        if (WIFEXITED(status))
-	            ret = WEXITSTATUS(status);
-	        else if (WIFSIGNALED(status))
-	            ret = 128 + WTERMSIG(status);
-	    }
+		pid = wait(&status);
+		if (pid == last_pid)
+		{
+			if (WIFEXITED(status))
+				ret = WEXITSTATUS(status);
+			else if (WIFSIGNALED(status))
+				ret = 128 + WTERMSIG(status);
+		}
 	}
 	return (ret);
 }

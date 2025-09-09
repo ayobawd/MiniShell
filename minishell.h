@@ -206,7 +206,6 @@ void		print_export_err(const char *prefix, const char *name,
 /* cmds_helpers.c */
 int			count_tokens(char *str);
 char		**extract_tokens(char *str, int tokens);
-void		init_files_saving_vars(t_variables *var);
 void		process_cmd_segment(t_shell *pipe, t_cmds *cmds, t_variables *var);
 
 /* cmds.c */

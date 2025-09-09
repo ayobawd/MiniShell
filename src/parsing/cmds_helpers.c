@@ -74,6 +74,20 @@ static void	extract_single_token(char *str, int *i, t_variables *v)
 	}
 }
 
+static char	**alloc_and_init_tokens(int tokens, int *i, int *j, t_variables *v)
+{
+	char	**result;
+
+	result = malloc(sizeof(char *) * (tokens + 1));
+	if (!result)
+		return (NULL);
+	*i = 0;
+	*j = 0;
+	v->in_quotes = 0;
+	v->quote_char = 0;
+	return (result);
+}
+
 char	**extract_tokens(char *str, int tokens)
 {
 	char		**result;
@@ -82,13 +96,9 @@ char	**extract_tokens(char *str, int tokens)
 	int			start;
 	t_variables	v;
 
-	result = malloc(sizeof(char *) * (tokens + 1));
+	result = alloc_and_init_tokens(tokens, &i, &j, &v);
 	if (!result)
 		return (NULL);
-	i = 0;
-	j = 0;
-	v.in_quotes = 0;
-	v.quote_char = 0;
 	while (str[i] && j < tokens)
 	{
 		while (str[i] == ' ' || str[i] == '\t')
@@ -111,17 +121,13 @@ char	**extract_tokens(char *str, int tokens)
 	return (result);
 }
 
-void	init_files_saving_vars(t_variables *var)
+void	process_cmd_segment(t_shell *pipe, t_cmds *cmds, t_variables *var)
 {
 	var->start = 0;
 	var->quote_char = 0;
 	var->h = 0;
 	var->j = -1;
 	var->x = 0;
-}
-
-void	process_cmd_segment(t_shell *pipe, t_cmds *cmds, t_variables *var)
-{
 	cmds[var->j].red_len = num_of_redirects(pipe->cmds[var->j]);
 	if (cmds[var->j].red_len)
 		cmds[var->j].outs = malloc(sizeof(t_redirect) * cmds[var->j].red_len);
