@@ -15,104 +15,68 @@
 /* Helper functions from parsing */
 extern int	g_exit_code;
 
-static void free_env_list_only(t_list **lst)
+static char	**set_parse_env_from_env(t_shell *ps, t_env *env)
 {
-	t_list *n;
-	while (lst && *lst)
-	{
-	    n = (*lst)->next;
-	    free(*lst);
-	    *lst = n;
-	}
-}
-
-static char **set_parse_env_from_env(t_shell *ps, t_env *env)
-{
-	char    **envp;
+	char	**envp;
 
 	envp = ms_env_to_envp(env);
 	if (!envp)
-	    return (NULL);
+		return (NULL);
 	copy_env(ps, envp);
 	return (envp);
 }
 
-static void cleanup_parse_data(t_shell *ps, char **envp_for_parse)
+static int	validate_and_parse(char *line, t_shell *ps, char **envp)
 {
-	int i = 0;
-
-	if (ps->cmds)
+	if (!redirections_parse(line))
 	{
-	    while (ps->cmds[i])
-	    {
-	        free(ps->cmds[i]);
-	        i++;
-	    }
-	    free(ps->cmds);
+		write(2, "syntax error, unexpected redirection token\n", 44);
+		ms_status_set(258);
+		cleanup_parse_data(ps, envp);
+		return (258);
 	}
-
-	if (envp_for_parse)
+	if (!handle_pipes(ps, line, NULL))
 	{
-	    i = 0;
-	    while (envp_for_parse[i])
-	        free(envp_for_parse[i++]);
-	    free(envp_for_parse);
+		write(2, "Error\n", 6);
+		ms_status_set(258);
+		cleanup_parse_data(ps, envp);
+		return (258);
 	}
-
-	free_env_list_only(&ps->environment);
+	return (0);
 }
 
-int ms_exec_line_raw(char *line, t_env **env)
+static void	expand_variables(t_shell *ps)
 {
-	t_shell ps;
-	t_cmds  *arr;
-	int     status;
-	int     j;
-	char    **envp_for_parse;
+	int	j;
+
+	j = 0;
+	while (j < ps->cmd_len)
+	{
+		dollar_expansion(&ps->cmds[j], ps);
+		j++;
+	}
+}
+
+int	ms_exec_line_raw(char *line, t_env **env)
+{
+	t_shell	ps;
+	t_cmds	*arr;
+	int		status;
+	char	**envp_for_parse;
 
 	if (!line || spaces(line))
-	    return (0);
-
+		return (0);
 	g_exit_code = ms_status_get();
 	ft_bzero(&ps, sizeof(ps));
 	envp_for_parse = set_parse_env_from_env(&ps, *env);
-
-	/* redirection syntax check first */
-	if (!redirections_parse(line))
-	{
-	    write(2, "syntax error, unexpected redirection token\n", 44);
-	    ms_status_set(258);
-	    cleanup_parse_data(&ps, envp_for_parse);
-	    return (258);
-	}
-
-	/* split by pipes and normalize spacing */
-	if (!handle_pipes(&ps, line, NULL))
-	{
-	    write(2, "Error\n", 6);
-	    ms_status_set(258);
-	    cleanup_parse_data(&ps, envp_for_parse);
-	    return (258);
-	}
-
-	/* expand variables per segment using parser's logic */
-	j = 0;
-	while (j < ps.cmd_len)
-	{
-	    dollar_expansion(&ps.cmds[j], &ps);
-	    j++;
-	}
-
-	/* build parse command array with redirections and tokens */
+	status = validate_and_parse(line, &ps, envp_for_parse);
+	if (status != 0)
+		return (status);
+	expand_variables(&ps);
 	files_saving(&ps, &arr);
-
-	/* execute the commands directly from parsed structure */
 	status = ms_exec_parsed(arr, ps.cmd_len, env);
-
-	/* cleanup */
 	cleanup_parse_data(&ps, envp_for_parse);
 	free(arr);
-
 	ms_status_set(status);
 	return (status);
 }

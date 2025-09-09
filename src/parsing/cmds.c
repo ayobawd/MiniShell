@@ -90,134 +90,23 @@ void	utils_saving(t_shell *pipe, t_cmds *cmds, t_variables *v)
 
 char	**quote_aware_split(char *str)
 {
-	char	**result;
-	int		i;
-	int		j;
-	int		start;
-	int		tokens;
-	int		in_quote;
-	char	quote_char;
+	int	tokens;
 
 	if (!str)
 		return (NULL);
-
-	/* Count tokens first */
-	tokens = 0;
-	i = 0;
-	in_quote = 0;
-	quote_char = 0;
-
-	while (str[i])
-	{
-		/* Skip leading spaces */
-		while (str[i] == ' ' || str[i] == '\t')
-			i++;
-		if (!str[i])
-			break;
-
-		/* Count this token */
-		tokens++;
-
-		/* Skip to end of token */
-		while (str[i])
-		{
-			if (!in_quote && (str[i] == '"' || str[i] == '\''))
-			{
-				in_quote = 1;
-				quote_char = str[i];
-			}
-			else if (in_quote && str[i] == quote_char)
-			{
-				in_quote = 0;
-				quote_char = 0;
-			}
-			else if (!in_quote && (str[i] == ' ' || str[i] == '\t'))
-				break;
-			i++;
-		}
-	}
-
-	/* Allocate result array */
-	result = malloc(sizeof(char *) * (tokens + 1));
-	if (!result)
-		return (NULL);
-
-	/* Extract tokens */
-	i = 0;
-	j = 0;
-	in_quote = 0;
-	quote_char = 0;
-
-	while (str[i] && j < tokens)
-	{
-		/* Skip leading spaces */
-		while (str[i] == ' ' || str[i] == '\t')
-			i++;
-		if (!str[i])
-			break;
-
-		start = i;
-
-		/* Find end of token */
-		while (str[i])
-		{
-			if (!in_quote && (str[i] == '"' || str[i] == '\''))
-			{
-				in_quote = 1;
-				quote_char = str[i];
-			}
-			else if (in_quote && str[i] == quote_char)
-			{
-				in_quote = 0;
-				quote_char = 0;
-			}
-			else if (!in_quote && (str[i] == ' ' || str[i] == '\t'))
-				break;
-			i++;
-		}
-
-		/* Extract token */
-		result[j] = ft_substr(str, start, i - start);
-		if (!result[j])
-		{
-			while (j > 0)
-				free(result[--j]);
-			free(result);
-			return (NULL);
-		}
-		j++;
-	}
-
-	result[j] = NULL;
-	return (result);
+	tokens = count_tokens(str);
+	return (extract_tokens(str, tokens));
 }
 
 void	files_saving(t_shell *pipe, t_cmds **tmp)
 {
-	t_cmds	*cmds;
+	t_cmds		*cmds;
 	t_variables	var;
 
-	var.start = 0;
-	var.quote_char = 0;
-	var.h = 0;
-	var.j = -1;
-	var.x = 0;
+	init_files_saving_vars(&var);
 	*tmp = malloc(sizeof(t_cmds) * pipe->cmd_len);
 	cmds = *tmp;
-	cmds->red_len = 0; //     echo hi > 'file1   khk' < file2 | cat -e | ls -la
+	cmds->red_len = 0;
 	while (++var.j < pipe->cmd_len)
-	{
-		cmds[var.j].red_len = num_of_redirects(pipe->cmds[var.j]);
-		if (cmds[var.j].red_len)
-			cmds[var.j].outs = malloc(sizeof(t_redirect) * cmds[var.j].red_len);
-		utils_saving(pipe, cmds, &var);
-		cmds[var.j].cmds = quote_aware_split(pipe->cmds[var.j]);
-		var.h = 0;
-		while (cmds[var.j].cmds[var.h])
-			clean_quotes(cmds[var.j].cmds[var.h++]);
-		var.h = 0;
-		while (cmds[var.j].cmds[var.h])
-			var.h++;
-	}
+		process_cmd_segment(pipe, cmds, &var);
 }
-

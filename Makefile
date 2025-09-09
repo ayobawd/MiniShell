@@ -20,6 +20,7 @@ SRCS := \
   $(SRC_DIR)/builtins/cd.c \
   $(SRC_DIR)/builtins/pwd.c \
   $(SRC_DIR)/builtins/export.c \
+  $(SRC_DIR)/builtins/export_helpers.c \
   $(SRC_DIR)/builtins/unset.c \
   $(SRC_DIR)/builtins/env_builtin.c \
   $(SRC_DIR)/builtins/exit_builtin.c \
@@ -34,6 +35,7 @@ SRCS := \
   $(SRC_DIR)/exec/free.c \
   $(SRC_DIR)/exec/parsed_exec.c \
   $(SRC_DIR)/exec/line_raw.c \
+  $(SRC_DIR)/exec/line_raw_helpers.c \
   $(SRC_DIR)/parsing/ahmad_utils.c \
   $(SRC_DIR)/parsing/string_utils.c \
   $(SRC_DIR)/parsing/spaces_parsing.c \
@@ -45,7 +47,8 @@ SRCS := \
   $(SRC_DIR)/parsing/dollar.c \
   $(SRC_DIR)/parsing/dollar_utils.c \
   $(SRC_DIR)/parsing/dollar_helper.c \
-  $(SRC_DIR)/parsing/cmds.c
+  $(SRC_DIR)/parsing/cmds.c \
+  $(SRC_DIR)/parsing/cmds_helpers.c
 
 OBJS := $(SRCS:.c=.o)
 

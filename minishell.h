@@ -196,4 +196,24 @@ void		remove_substr(char *s, unsigned int start, size_t len);
 int			is_spacee(int c);
 int			spaces(char *str);
 
+/* export_helpers.c */
+char		*create_declare_line_with_val(t_env *cur);
+char		*create_declare_line_no_val(t_env *cur);
+void		sort_export_rows(char **rows, int n);
+void		print_export_err(const char *prefix, const char *name,
+				const char *msg);
+
+/* cmds_helpers.c */
+int			count_tokens(char *str);
+char		**extract_tokens(char *str, int tokens);
+void		init_files_saving_vars(t_variables *var);
+void		process_cmd_segment(t_shell *pipe, t_cmds *cmds, t_variables *var);
+
+/* cmds.c */
+void		utils_saving(t_shell *pipe, t_cmds *cmds, t_variables *v);
+
+/* line_raw_helpers.c */
+void		free_env_list_only(t_list **lst);
+void		cleanup_parse_data(t_shell *ps, char **envp_for_parse);
+
 #endif
