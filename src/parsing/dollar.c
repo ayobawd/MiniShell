@@ -70,9 +70,11 @@ void	dollar_expansion(char **str, t_shell *pipe)
 		quotes_check(str, &var);
 		if ((*str)[var.i] == '$' && !var.in_quotes && (*str)[var.i + 1])
 		{
-			if (process_dollar_sign(str, &var, pipe, expanded))
-				continue ;
+			process_dollar_sign(str, &var, pipe, expanded);
 		}
-		var.i++;
+		else
+		{
+			var.i++;
+		}
 	}
 }

@@ -12,6 +12,7 @@
 
 #include "../minishell.h"
 
+/*
 static void	skip_token(char *str, int *i, int *in_quote, char *quote_char)
 {
 	while (str[*i] && ((*in_quote && str[*i] != *quote_char)
@@ -30,6 +31,7 @@ static void	skip_token(char *str, int *i, int *in_quote, char *quote_char)
 		(*i)++;
 	}
 }
+*/
 
 int	count_tokens(char *str)
 {
@@ -44,12 +46,31 @@ int	count_tokens(char *str)
 	quote_char = 0;
 	while (str[i])
 	{
+		/* Skip whitespace */
 		while (str[i] == ' ' || str[i] == '\t')
 			i++;
 		if (!str[i])
-			break ;
+			break;
+		
+		/* Count this token */
 		tokens++;
-		skip_token(str, &i, &in_quote, &quote_char);
+		
+		/* Skip through the token with proper quote handling */
+		while (str[i] && ((in_quote && str[i] != quote_char) 
+			|| (!in_quote && str[i] != ' ' && str[i] != '\t')))
+		{
+			if (!in_quote && (str[i] == '"' || str[i] == '\''))
+			{
+				in_quote = 1;
+				quote_char = str[i];
+			}
+			else if (in_quote && str[i] == quote_char)
+			{
+				in_quote = 0;
+				quote_char = 0;
+			}
+			i++;
+		}
 	}
 	return (tokens);
 }

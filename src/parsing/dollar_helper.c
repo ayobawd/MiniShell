@@ -12,11 +12,13 @@
 
 #include "../minishell.h"
 
+int	ms_status_get(void);
+
 int	handle_exit_code(char **str, t_variables *var)
 {
 	char	*code;
 
-	code = ft_itoa(g_exit_code);
+	code = ft_itoa(ms_status_get());
 	if (!code)
 		return (1);
 	*str = storing(*str, var->i - 1, 2, code);

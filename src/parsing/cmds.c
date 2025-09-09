@@ -81,7 +81,7 @@ void	utils_saving(t_shell *pipe, t_cmds *cmds, t_variables *v)
 			store_the_file_name(pipe->cmds[v->j],
 				&cmds[v->j].outs[v->xy].file_name, v->x + 1, v);
 			clean_quotes(cmds[v->j].outs[v->xy].file_name);
-			remove_substr(pipe->cmds[v->j], v->start, v->i);
+			remove_substr(pipe->cmds[v->j], v->start, v->i - v->start);
 			v->x = v->start - 1;
 			v->xy++;
 		}
