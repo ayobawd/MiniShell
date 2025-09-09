@@ -61,7 +61,6 @@ static int	init_pipes(int n, int (**pipes)[2])
 	return (0);
 }
 
-
 /* Execute fork loop for pipeline */
 static int	exec_fork_loop(t_cmd *first, t_env **env, int n, int (*pipes)[2])
 {
