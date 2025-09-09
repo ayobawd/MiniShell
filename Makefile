@@ -76,4 +76,46 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+# Testing targets
+test: $(NAME)
+	@if [ -d "./minishell_tester" ]; then \
+		echo "Running LucasKuhn/minishell_tester..."; \
+		cd minishell_tester && ./tester; \
+	else \
+		echo "minishell_tester not found. Clone it first with:"; \
+		echo "git clone https://github.com/LucasKuhn/minishell_tester.git"; \
+	fi
+
+test-builtins: $(NAME)
+	@if [ -d "./minishell_tester" ]; then \
+		cd minishell_tester && ./tester builtins; \
+	else \
+		echo "minishell_tester not found."; \
+	fi
+
+test-pipes: $(NAME)
+	@if [ -d "./minishell_tester" ]; then \
+		cd minishell_tester && ./tester pipes; \
+	else \
+		echo "minishell_tester not found."; \
+	fi
+
+test-redirects: $(NAME)
+	@if [ -d "./minishell_tester" ]; then \
+		cd minishell_tester && ./tester redirects; \
+	else \
+		echo "minishell_tester not found."; \
+	fi
+
+test-extras: $(NAME)
+	@if [ -d "./minishell_tester" ]; then \
+		cd minishell_tester && ./tester extras; \
+	else \
+		echo "minishell_tester not found."; \
+	fi
+
+norm:
+	@echo "Running norminette..."
+	@norminette src/ minishell.h libft/ || true
+
+.PHONY: all clean fclean re test test-builtins test-pipes test-redirects test-extras norm

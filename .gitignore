@@ -4,11 +4,11 @@
 minishell
 minishell_bonus
 
-# Test artifacts  
-minishell_tester/
-outfiles/
-mini_outfiles/
-bash_outfiles/
+# Test artifacts (temporary files created by tester)
+minishell_tester/outfiles/
+minishell_tester/mini_outfiles/
+minishell_tester/bash_outfiles/
+minishell_tester/loop.out
 
 # Temp files
 .DS_Store
