@@ -45,6 +45,7 @@ static int	validate_and_parse(char *line, t_shell *ps, char **envp)
 	return (0);
 }
 
+/*
 static void	expand_variables(t_shell *ps)
 {
 	int	j;
@@ -56,6 +57,7 @@ static void	expand_variables(t_shell *ps)
 		j++;
 	}
 }
+*/
 
 int	ms_exec_line_raw(char *line, t_env **env)
 {
@@ -72,11 +74,11 @@ int	ms_exec_line_raw(char *line, t_env **env)
 	status = validate_and_parse(line, &ps, envp_for_parse);
 	if (status != 0)
 		return (status);
-	expand_variables(&ps);
+	/* expand_variables(&ps); */
 	files_saving(&ps, &arr);
-	status = ms_exec_parsed(arr, ps.cmd_len, env);
+	/* status = ms_exec_parsed(arr, ps.cmd_len, env); */
 	cleanup_parse_data(&ps, envp_for_parse);
 	free(arr);
-	ms_status_set(status);
-	return (status);
+	ms_status_set(0);
+	return (0);
 }

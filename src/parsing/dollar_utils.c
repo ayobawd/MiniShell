@@ -43,20 +43,9 @@ char	*storing(char *str, int start, int len, char *replace)
 
 void	quotes_check(char **str, t_variables *var)
 {
-	if ((*str)[var->i] == '\"')
-	{
-		if (!var->in_d_quotes)
-			var->in_d_quotes = 1;
-		else if (var->in_d_quotes)
-			var->in_d_quotes = 0;
-	}
-	if ((*str)[var->i] == '\'' && !var->in_d_quotes)
-	{
-		if (!var->in_quotes)
-			var->in_quotes = 1;
-		else if (var->in_quotes)
-			var->in_quotes = 0;
-	}
+	(void)str;
+	(void)var;
+	/* Temporarily disable quote tracking to debug hang */
 }
 
 static void	generate_strings_helper(char **str, char *expanded,
