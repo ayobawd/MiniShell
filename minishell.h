@@ -152,6 +152,8 @@ char		*ms_resolve_path(const char *cmd, t_env *env);
 int			ms_status_get(void);
 void		ms_status_set(int st);
 void		ms_cmd_free(t_cmd *pipeline);
+int			ms_is_builtin(const char *name);
+int			ms_run_builtin(char **argv, t_env **env, bool in_parent);
 
 /* pipeline utils */
 int			open_pipes(int n, int pipes[][2]);
@@ -159,6 +161,11 @@ void		close_pipes_all(int n, int pipes[][2]);
 void		setup_child_pipes(int i, int n, int pipes[][2], int fds[2]);
 void		handle_exec_error(char *cmd_name);
 int			wait_children(int last_pid, int count);
+void		cleanup_pipes(int n, int (*pipes)[2]);
+void		handle_parent_process(int status, int i, int (*pipes)[2],
+				int *last_pid);
+int			handle_fork_result(int pid, int count, int pipes[][2],
+				int *last_pid);
 
 /* pipeline context structure */
 typedef struct s_child_context
@@ -222,6 +229,14 @@ void		print_export_err(const char *prefix, const char *name,
 int			count_tokens(char *str);
 char		**extract_tokens(char *str, int tokens);
 void		process_cmd_segment(t_shell *pipe, t_cmds *cmds, t_variables *var);
+
+/* exec utils */
+void		setup_child_fds(int i, int count, int pipes[][2], int fds[2]);
+void		exec_with_path(t_cmds *cmd, char **envp, char *path);
+void		setup_child_exec_env(t_cmds *cmd, int i, int count, int pipes[][2]);
+void		do_exec_cmd(t_cmds *cmd, t_env **env);
+void		exec_with_path_cmd(t_cmd *cmd, char **envp, char *path);
+bool		should_run_in_parent(t_cmds *cmd);
 
 /* cmds.c */
 void		utils_saving(t_shell *pipe, t_cmds *cmds, t_variables *v);

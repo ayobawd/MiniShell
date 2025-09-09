@@ -99,29 +99,3 @@ int	wait_children(int last_pid, int count)
 	}
 	return (ret);
 }
-
-/* Cleanup pipes after execution */
-void	cleanup_pipes(int n, int (*pipes)[2])
-{
-	if (pipes)
-	{
-		if (n > 1)
-		{
-			close(pipes[n - 2][0]);
-			close(pipes[n - 2][1]);
-		}
-		free(pipes);
-	}
-}
-
-/* Handle parent process after fork */
-void	handle_parent_process(int status, int i, int (*pipes)[2],
-		int *last_pid)
-{
-	*last_pid = status;
-	if (i > 0)
-	{
-		close(pipes[i - 1][0]);
-		close(pipes[i - 1][1]);
-	}
-}

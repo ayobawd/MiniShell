@@ -70,33 +70,35 @@ static int	exec_single_builtin(t_cmds *cmd, t_env **env)
 }
 
 /* Execute a single command - simple approach */
-static void	exec_cmd_simple(t_cmds *cmd, int i, int count, int pipes[][2], t_env **env)
+static void	exec_cmd_simple(t_cmds *cmd, t_child_context *ctx, t_env **env)
 {
-	setup_child_exec_env(cmd, i, count, pipes);
+	setup_child_exec_env(cmd, ctx->i, ctx->n, ctx->pipes);
 	do_exec_cmd(cmd, env);
 }
 
 /* Fork and execute all commands in pipeline */
-static int	exec_pipeline_commands(t_cmds *arr, int count, int pipes[][2], t_env **env)
+static int	exec_pipeline_commands(t_cmds *arr, int count, t_env **env,
+		int pipes[][2])
 {
-	int	i;
-	int	pid;
-	int	last_pid;
+	int				i;
+	int				pid;
+	int				last_pid;
+	t_child_context	ctx;
 
 	i = 0;
 	last_pid = -1;
+	ctx.n = count;
+	ctx.pipes = pipes;
 	while (i < count)
 	{
 		pid = fork();
 		if (pid == 0)
-			exec_cmd_simple(&arr[i], i, count, pipes, env);
-		else if (pid > 0)
-			last_pid = pid;
-		else
 		{
-			close_pipes_all(count - 1, pipes);
-			return (1);
+			ctx.i = i;
+			exec_cmd_simple(&arr[i], &ctx, env);
 		}
+		else if (handle_fork_result(pid, count, pipes, &last_pid))
+			return (1);
 		i++;
 	}
 	return (last_pid);
@@ -115,7 +117,7 @@ int	ms_exec_parsed(t_cmds *arr, int count, t_env **env)
 		return (exec_single_builtin(&arr[0], env));
 	if (create_pipes(count, pipes) == -1)
 		return (1);
-	last_pid = exec_pipeline_commands(arr, count, pipes, env);
+	last_pid = exec_pipeline_commands(arr, count, env, pipes);
 	close_pipes_all(count - 1, pipes);
 	if (last_pid == -1)
 		return (1);
