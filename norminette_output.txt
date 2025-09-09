@@ -1,0 +1,1821 @@
+Setting locale to en_US
+minishell.h: OK!
+Notice: GLOBAL_VAR_DETECTED  (line:  66, col:   1):	Global variable present in file. Make sure it is a reasonable choice.
+main.c: OK!
+Notice: GLOBAL_VAR_DETECTED  (line:  16, col:   1):	Global variable present in file. Make sure it is a reasonable choice.
+redirect.c: OK!
+string_utils.c: OK!
+dollar_helper.c: OK!
+dollar.c: OK!
+cmds.c: Error!
+Error: TOO_MANY_VARS_FUNC   (line:  98, col:   1):	[91mToo many variables declarations in a function[0m
+Error: TOO_MANY_VARS_FUNC   (line:  99, col:   1):	[91mToo many variables declarations in a function[0m
+Error: EMPTY_LINE_FUNCTION  (line: 103, col:   1):	Empty line in function
+Error: WRONG_SCOPE_COMMENT  (line: 104, col:   5):	[95mComment is invalid in this scope[0m
+Error: EMPTY_LINE_FUNCTION  (line: 109, col:   1):	Empty line in function
+Error: WRONG_SCOPE_COMMENT  (line: 112, col:   9):	[95mComment is invalid in this scope[0m
+Error: SPACE_AFTER_KW       (line: 116, col:  13):	Missing space after keyword
+Error: EMPTY_LINE_FUNCTION  (line: 117, col:   1):	Empty line in function
+Error: WRONG_SCOPE_COMMENT  (line: 118, col:   9):	[95mComment is invalid in this scope[0m
+Error: EMPTY_LINE_FUNCTION  (line: 120, col:   1):	Empty line in function
+Error: WRONG_SCOPE_COMMENT  (line: 121, col:   9):	[95mComment is invalid in this scope[0m
+Error: SPACE_AFTER_KW       (line: 135, col:  17):	Missing space after keyword
+Error: EMPTY_LINE_FUNCTION  (line: 139, col:   1):	Empty line in function
+Error: WRONG_SCOPE_COMMENT  (line: 140, col:   5):	[95mComment is invalid in this scope[0m
+Error: EMPTY_LINE_FUNCTION  (line: 144, col:   1):	Empty line in function
+Error: WRONG_SCOPE_COMMENT  (line: 145, col:   5):	[95mComment is invalid in this scope[0m
+Error: EMPTY_LINE_FUNCTION  (line: 150, col:   1):	Empty line in function
+Error: WRONG_SCOPE_COMMENT  (line: 153, col:   9):	[95mComment is invalid in this scope[0m
+Error: SPACE_AFTER_KW       (line: 157, col:  13):	Missing space after keyword
+Error: EMPTY_LINE_FUNCTION  (line: 158, col:   1):	Empty line in function
+Error: EMPTY_LINE_FUNCTION  (line: 160, col:   1):	Empty line in function
+Error: WRONG_SCOPE_COMMENT  (line: 161, col:   9):	[95mComment is invalid in this scope[0m
+Error: SPACE_AFTER_KW       (line: 175, col:  17):	Missing space after keyword
+Error: EMPTY_LINE_FUNCTION  (line: 178, col:   1):	Empty line in function
+Error: WRONG_SCOPE_COMMENT  (line: 179, col:   9):	[95mComment is invalid in this scope[0m
+Error: EMPTY_LINE_FUNCTION  (line: 190, col:   1):	Empty line in function
+Error: TOO_MANY_LINES       (line: 193, col:   1):	Function has more than 25 lines
+Error: MISALIGNED_VAR_DECL  (line: 198, col:  17):	Misaligned variable declaration
+Error: WRONG_SCOPE_COMMENT  (line: 207, col:  24):	[95mComment is invalid in this scope[0m
+Error: WRONG_SCOPE_COMMENT  (line: 207, col:  24):	[95mComment is invalid in this scope[0m
+Error: EMPTY_LINE_EOF       (line: 223, col:   1):	Empty line at end of file
+env.c: OK!
+pipes.c: OK!
+parser.c: OK!
+Notice: GLOBAL_VAR_DETECTED  (line:  15, col:   1):	Global variable present in file. Make sure it is a reasonable choice.
+pipe_utils.c: OK!
+spaces_parsing.c: OK!
+ahmad_utils.c: OK!
+signals.c: OK!
+dollar_utils.c: OK!
+env_utils.c: OK!
+env.c: OK!
+utils.c: OK!
+env_convert.c: OK!
+dispatch.c: OK!
+heredoc.c: Error!
+Error: SPACE_REPLACE_TAB    (line:  18, col:   4):	Found space when expecting tab
+Error: SPACE_BEFORE_FUNC    (line:  20, col:  12):	[94mFound space when expecting tab before function name[0m
+Error: SPACE_BEFORE_FUNC    (line:  26, col:   4):	[94mFound space when expecting tab before function name[0m
+Error: CONSECUTIVE_SPC      (line:  28, col:   8):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  28, col:   8):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  29, col:   9):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  29, col:   9):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  30, col:  11):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  30, col:  11):	Found space when expecting tab
+Error: MIXED_SPACE_TAB      (line:  33, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  33, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  33, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  37, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  37, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  37, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  38, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  38, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  38, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  39, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  39, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  39, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  40, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  40, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  40, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  41, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  41, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  41, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: BRACE_SHOULD_EOL     (line:  41, col:  10):	Expected newline after brace
+Error: TOO_FEW_TAB          (line:  41, col:  11):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  41, col:  11):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  41, col:  23):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  41, col:  23):	Too many instructions on a single line
+Error: NO_SPC_BFR_OPR       (line:  41, col:  29):	[94mextra space before operator[0m
+Error: TOO_FEW_TAB          (line:  41, col:  31):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  41, col:  31):	Too many instructions on a single line
+Error: MIXED_SPACE_TAB      (line:  42, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  42, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  42, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  43, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  43, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  43, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: LINE_TOO_LONG        (line:  44, col:   1):	[94mline too long[0m
+Error: MIXED_SPACE_TAB      (line:  44, col:   1):	[93mMixed spaces and tabs[0m
+Error: WRONG_SCOPE_COMMENT  (line:  44, col:   1):	[95mComment is invalid in this scope[0m
+Error: CONSECUTIVE_SPC      (line:  44, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: LINE_TOO_LONG        (line:  44, col:  85):	[94mline too long[0m
+Error: MIXED_SPACE_TAB      (line:  45, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  45, col:   1):	Missing tabs for indent level
+Error: WRONG_SCOPE_VAR      (line:  45, col:   1):	Variable declared in incorrect scope
+Error: CONSECUTIVE_SPC      (line:  45, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  45, col:  17):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  45, col:  23):	Declaration and assignation on a single line
+Error: MIXED_SPACE_TAB      (line:  46, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  46, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  46, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: NO_SPC_AFR_PAR       (line:  46, col:  20):	[94mExtra space after parenthesis (brace/bracket)[0m
+Error: TOO_FEW_TAB          (line:  46, col:  22):	Missing tabs for indent level
+Error: BRACE_SHOULD_EOL     (line:  46, col:  23):	Expected newline after brace
+Error: TOO_FEW_TAB          (line:  46, col:  24):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  46, col:  24):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line:  46, col:  34):	Expected newline after control structure
+Error: TOO_FEW_TAB          (line:  46, col:  36):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  46, col:  36):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  46, col:  48):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  46, col:  48):	Too many instructions on a single line
+Error: MIXED_SPACE_TAB      (line:  47, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  47, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  47, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  48, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  48, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  48, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  49, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  49, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  49, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  50, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  50, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  50, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: TOO_MANY_LINES       (line:  55, col:   1):	Function has more than 25 lines
+status.c: OK!
+Notice: GLOBAL_VAR_DETECTED  (line:  15, col:   1):	Global variable present in file. Make sure it is a reasonable choice.
+pipeline.c: Error!
+Error: SPACE_REPLACE_TAB    (line:  20, col:   5):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  21, col:   4):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  21, col:   4):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  22, col:   4):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  22, col:   4):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  23, col:   5):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  24, col:   5):	Found space when expecting tab
+Error: SPACE_BEFORE_FUNC    (line:  26, col:  11):	[94mFound space when expecting tab before function name[0m
+Error: SPACE_REPLACE_TAB    (line:  28, col:   8):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  28, col:  11):	Declaration and assignation on a single line
+Error: NL_AFTER_VAR_DECL    (line:  29, col:   1):	Variable declarations must be followed by a newline
+Error: MIXED_SPACE_TAB      (line:  31, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  31, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  31, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  32, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  32, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  32, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  33, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  33, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  33, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_BEFORE_FUNC    (line:  38, col:  12):	[94mFound space when expecting tab before function name[0m
+Error: SPACE_REPLACE_TAB    (line:  40, col:   8):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  40, col:  11):	Declaration and assignation on a single line
+Error: NL_AFTER_VAR_DECL    (line:  41, col:   1):	Variable declarations must be followed by a newline
+Error: BRACE_SHOULD_EOL     (line:  42, col:   6):	Expected newline after brace
+Error: TOO_FEW_TAB          (line:  42, col:   7):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  42, col:   7):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  42, col:  27):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  42, col:  27):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  42, col:  47):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  42, col:  47):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  42, col:  52):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  42, col:  52):	Too many instructions on a single line
+Error: SPACE_BEFORE_FUNC    (line:  45, col:  12):	[94mFound space when expecting tab before function name[0m
+Error: TOO_MANY_ARGS        (line:  45, col:  78):	[91mFunction has more than 4 arguments[0m
+Error: SPACE_REPLACE_TAB    (line:  47, col:   8):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  48, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  48, col:  10):	Misaligned variable declaration
+Error: SPACE_REPLACE_TAB    (line:  49, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  49, col:  10):	Misaligned variable declaration
+Error: TERNARY_FBIDDEN      (line:  52, col:  22):	Ternaries are forbidden
+Error: TERNARY_FBIDDEN      (line:  53, col:  26):	Ternaries are forbidden
+Error: TOO_FEW_TAB          (line:  54, col:  16):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  54, col:  16):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line:  54, col:  38):	Expected newline after control structure
+Error: TOO_FEW_TAB          (line:  55, col:  20):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  55, col:  20):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line:  55, col:  38):	Expected newline after control structure
+Error: MIXED_SPACE_TAB      (line:  57, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  57, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  57, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  60, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  60, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  60, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  64, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  64, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  64, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  67, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  67, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  67, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  68, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  68, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  68, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  71, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  71, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  71, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: WRONG_SCOPE_COMMENT  (line:  72, col:   5):	[95mComment is invalid in this scope[0m
+Error: MIXED_SPACE_TAB      (line:  75, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  75, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  75, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  76, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  76, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  76, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  77, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  77, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  77, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  78, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  78, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  78, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  82, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  82, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  82, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  83, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  83, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  83, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  84, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  84, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  84, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  85, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  85, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  85, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: TOO_MANY_LINES       (line:  88, col:   1):	Function has more than 25 lines
+Error: SPACE_BEFORE_FUNC    (line:  90, col:  11):	[94mFound space when expecting tab before function name[0m
+Error: SPACE_REPLACE_TAB    (line:  92, col:   8):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  93, col:   8):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  93, col:  13):	Declaration and assignation on a single line
+Error: SPACE_REPLACE_TAB    (line:  94, col:   8):	Found space when expecting tab
+Error: MIXED_SPACE_TAB      (line:  98, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  98, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  98, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  99, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  99, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  99, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 100, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 100, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 100, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 101, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 101, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 101, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 102, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 102, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 102, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 103, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 103, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 103, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 104, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 104, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 104, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 105, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 105, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 105, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_BEFORE_FUNC    (line: 110, col:   4):	[94mFound space when expecting tab before function name[0m
+Error: CONSECUTIVE_SPC      (line: 112, col:   8):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line: 112, col:   8):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line: 112, col:  15):	Declaration and assignation on a single line
+Error: TOO_FEW_TAB          (line: 112, col:  20):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 112, col:  20):	Too many instructions on a single line
+Error: SPACE_REPLACE_TAB    (line: 112, col:  25):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line: 112, col:  26):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line: 112, col:  31):	Declaration and assignation on a single line
+Error: TOO_FEW_TAB          (line: 112, col:  40):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 112, col:  40):	Too many instructions on a single line
+Error: SPACE_REPLACE_TAB    (line: 112, col:  43):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line: 112, col:  44):	Misaligned variable declaration
+Error: CONSECUTIVE_SPC      (line: 113, col:   8):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line: 113, col:   8):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line: 113, col:  22):	Declaration and assignation on a single line
+Error: TOO_FEW_TAB          (line: 113, col:  28):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 113, col:  28):	Too many instructions on a single line
+Error: SPACE_REPLACE_TAB    (line: 113, col:  31):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line: 113, col:  32):	Misaligned variable declaration
+Error: TOO_MANY_VARS_FUNC   (line: 114, col:   1):	[91mToo many variables declarations in a function[0m
+Error: CONSECUTIVE_SPC      (line: 114, col:   8):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line: 114, col:   8):	Found space when expecting tab
+Error: NO_SPC_AFR_PAR       (line: 116, col:  15):	[94mExtra space after parenthesis (brace/bracket)[0m
+Error: TOO_FEW_TAB          (line: 116, col:  17):	Missing tabs for indent level
+Error: BRACE_SHOULD_EOL     (line: 116, col:  18):	Expected newline after brace
+Error: TOO_FEW_TAB          (line: 116, col:  19):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 116, col:  19):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line: 116, col:  22):	Expected newline after control structure
+Error: TOO_FEW_TAB          (line: 116, col:  24):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 116, col:  24):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line: 116, col:  41):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 116, col:  41):	Too many instructions on a single line
+Error: MIXED_SPACE_TAB      (line: 120, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 120, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 120, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_AFTER_KW       (line: 120, col:  43):	Missing space after keyword
+Error: SPC_BFR_PAR          (line: 120, col:  46):	[94mMissing space before parenthesis (brace/bracket)[0m
+Error: MIXED_SPACE_TAB      (line: 121, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 121, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 121, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: TOO_FEW_TAB          (line: 121, col:  21):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 121, col:  21):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line: 121, col:  31):	Expected newline after control structure
+Error: MIXED_SPACE_TAB      (line: 122, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 122, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 122, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: NO_SPC_AFR_PAR       (line: 122, col:  42):	[94mExtra space after parenthesis (brace/bracket)[0m
+Error: TOO_FEW_TAB          (line: 122, col:  44):	Missing tabs for indent level
+Error: BRACE_SHOULD_EOL     (line: 122, col:  45):	Expected newline after brace
+Error: TOO_FEW_TAB          (line: 122, col:  46):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 122, col:  46):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line: 122, col:  57):	Expected newline after control structure
+Error: TOO_FEW_TAB          (line: 122, col:  59):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 122, col:  59):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line: 122, col:  71):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 122, col:  71):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line: 124, col:  12):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 124, col:  12):	Too many instructions on a single line
+Error: MIXED_SPACE_TAB      (line: 127, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 127, col:   1):	Missing tabs for indent level
+Error: WRONG_SCOPE_VAR      (line: 127, col:   1):	Variable declared in incorrect scope
+Error: CONSECUTIVE_SPC      (line: 127, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line: 127, col:  12):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line: 127, col:  17):	Declaration and assignation on a single line
+Error: MIXED_SPACE_TAB      (line: 128, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 128, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 128, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 129, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 129, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 129, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 130, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 130, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 130, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 131, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 131, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 131, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: BRACE_SHOULD_EOL     (line: 131, col:  10):	Expected newline after brace
+Error: TOO_FEW_TAB          (line: 131, col:  11):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 131, col:  11):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line: 131, col:  23):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 131, col:  23):	Too many instructions on a single line
+Error: NO_SPC_BFR_OPR       (line: 131, col:  29):	[94mextra space before operator[0m
+Error: TOO_FEW_TAB          (line: 131, col:  31):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 131, col:  31):	Too many instructions on a single line
+Error: MIXED_SPACE_TAB      (line: 132, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 132, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 132, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 133, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 133, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 133, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 134, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 134, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 134, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 135, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 135, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 135, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: NO_SPC_AFR_PAR       (line: 135, col:  22):	[94mExtra space after parenthesis (brace/bracket)[0m
+Error: TOO_FEW_TAB          (line: 135, col:  24):	Missing tabs for indent level
+Error: BRACE_SHOULD_EOL     (line: 135, col:  25):	Expected newline after brace
+Error: TOO_FEW_TAB          (line: 135, col:  26):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 135, col:  26):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line: 135, col:  48):	Expected newline after control structure
+Error: TOO_FEW_TAB          (line: 135, col:  50):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 135, col:  50):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line: 135, col:  74):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 135, col:  74):	Too many instructions on a single line
+Error: MIXED_SPACE_TAB      (line: 136, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 136, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 136, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 137, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 137, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 137, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: TOO_FEW_TAB          (line: 137, col:  14):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 137, col:  14):	Too many instructions on a single line
+Error: NO_SPC_AFR_PAR       (line: 139, col:  14):	[94mExtra space after parenthesis (brace/bracket)[0m
+Error: TOO_FEW_TAB          (line: 139, col:  16):	Missing tabs for indent level
+Error: BRACE_SHOULD_EOL     (line: 139, col:  17):	Expected newline after brace
+Error: TOO_FEW_TAB          (line: 139, col:  18):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 139, col:  18):	Too many instructions on a single line
+Error: NO_SPC_AFR_PAR       (line: 139, col:  27):	[94mExtra space after parenthesis (brace/bracket)[0m
+Error: TOO_FEW_TAB          (line: 139, col:  29):	Missing tabs for indent level
+Error: BRACE_SHOULD_EOL     (line: 139, col:  30):	Expected newline after brace
+Error: TOO_FEW_TAB          (line: 139, col:  31):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 139, col:  31):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line: 139, col:  53):	Expected newline after control structure
+Error: EXP_NEWLINE          (line: 139, col:  53):	Expected newline after control structure
+Error: TOO_FEW_TAB          (line: 139, col:  55):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 139, col:  55):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line: 139, col:  79):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 139, col:  79):	Too many instructions on a single line
+Error: BRACE_SHOULD_EOL     (line: 139, col:  80):	Expected newline after brace
+Error: TOO_FEW_TAB          (line: 139, col:  81):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 139, col:  81):	Too many instructions on a single line
+Error: LINE_TOO_LONG        (line: 139, col:  85):	[94mline too long[0m
+Error: LINE_TOO_LONG        (line: 139, col:  94):	[94mline too long[0m
+Error: TOO_FEW_TAB          (line: 139, col:  94):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 139, col:  94):	Too many instructions on a single line
+Error: MIXED_SPACE_TAB      (line: 141, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 141, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 141, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: TOO_MANY_LINES       (line: 144, col:   1):	Function has more than 25 lines
+path.c: Error!
+Error: SPACE_BEFORE_FUNC    (line:  17, col:  12):	[94mFound space when expecting tab before function name[0m
+Error: SPACE_REPLACE_TAB    (line:  19, col:   9):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  19, col:  16):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  19, col:  16):	Too many instructions on a single line
+Error: SPACE_REPLACE_TAB    (line:  19, col:  20):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  19, col:  21):	Misaligned variable declaration
+Error: NL_AFTER_VAR_DECL    (line:  20, col:   1):	Variable declarations must be followed by a newline
+Error: TOO_FEW_TAB          (line:  21, col:  15):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  21, col:  15):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line:  21, col:  28):	Expected newline after control structure
+Error: SPACE_BEFORE_FUNC    (line:  27, col:   5):	[94mFound space when expecting tab before function name[0m
+Error: CONSECUTIVE_SPC      (line:  29, col:   9):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  29, col:   9):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  29, col:  22):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  29, col:  22):	Too many instructions on a single line
+Error: SPACE_REPLACE_TAB    (line:  29, col:  26):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  29, col:  27):	Misaligned variable declaration
+Error: TOO_FEW_TAB          (line:  29, col:  38):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  29, col:  38):	Too many instructions on a single line
+Error: SPACE_REPLACE_TAB    (line:  29, col:  41):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  29, col:  42):	Misaligned variable declaration
+Error: TOO_FEW_TAB          (line:  29, col:  45):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  29, col:  45):	Too many instructions on a single line
+Error: SPACE_REPLACE_TAB    (line:  29, col:  49):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  29, col:  50):	Misaligned variable declaration
+Error: MIXED_SPACE_TAB      (line:  32, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  32, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  32, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  34, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  34, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  34, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  37, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  37, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  37, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: TOO_FEW_TAB          (line:  39, col:  17):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  39, col:  17):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line:  39, col:  30):	Expected newline after control structure
+Error: MIXED_SPACE_TAB      (line:  43, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  43, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  43, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  44, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  44, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  44, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  45, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  45, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  45, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  46, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  46, col:   1):	Missing tabs for indent level
+Error: WRONG_SCOPE_VAR      (line:  46, col:   1):	Variable declared in incorrect scope
+Error: CONSECUTIVE_SPC      (line:  46, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  46, col:  16):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  46, col:  19):	Declaration and assignation on a single line
+Error: TOO_FEW_TAB          (line:  46, col:  24):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  46, col:  24):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  46, col:  41):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  46, col:  41):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line:  46, col:  57):	Expected newline after control structure
+Error: TOO_FEW_TAB          (line:  46, col:  59):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  46, col:  59):	Too many instructions on a single line
+Error: MIXED_SPACE_TAB      (line:  47, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  47, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  47, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  48, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  48, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  48, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  49, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  49, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  49, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  50, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  50, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  50, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: TOO_FEW_TAB          (line:  52, col:  12):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  52, col:  12):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  52, col:  29):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  52, col:  29):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line:  52, col:  45):	Expected newline after control structure
+Error: TOO_FEW_TAB          (line:  52, col:  47):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  52, col:  47):	Too many instructions on a single line
+parent.c: OK!
+parsed_exec.c: Error!
+Error: SPACE_REPLACE_TAB    (line:  21, col:   5):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  22, col:   4):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  22, col:   4):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  23, col:   5):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  24, col:   5):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  25, col:   4):	Found space when expecting tab
+Error: SPACE_BEFORE_FUNC    (line:  28, col:  15):	[94mFound space when expecting tab before function name[0m
+Error: SPACE_REPLACE_TAB    (line:  30, col:  12):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  30, col:  19):	Declaration and assignation on a single line
+Error: SPACE_REPLACE_TAB    (line:  31, col:  12):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  31, col:  18):	Declaration and assignation on a single line
+Error: SPACE_REPLACE_TAB    (line:  32, col:   8):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  32, col:   9):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  32, col:  11):	Declaration and assignation on a single line
+Error: MIXED_SPACE_TAB      (line:  36, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  36, col:   1):	Missing tabs for indent level
+Error: WRONG_SCOPE_VAR      (line:  36, col:   1):	Variable declared in incorrect scope
+Error: CONSECUTIVE_SPC      (line:  36, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  36, col:  16):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  36, col:  20):	Declaration and assignation on a single line
+Error: MIXED_SPACE_TAB      (line:  37, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  37, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  37, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  38, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  38, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  38, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  39, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  39, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  39, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  40, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  40, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  40, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  41, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  41, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  41, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  42, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  42, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  42, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  43, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  43, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  43, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  44, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  44, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  44, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  45, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  45, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  45, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  46, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  46, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  46, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  47, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  47, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  47, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  48, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  48, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  48, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: WRONG_SCOPE_COMMENT  (line:  48, col:  14):	[95mComment is invalid in this scope[0m
+Error: WRONG_SCOPE_COMMENT  (line:  48, col:  14):	[95mComment is invalid in this scope[0m
+Error: MIXED_SPACE_TAB      (line:  49, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  49, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  49, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  50, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  50, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  50, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  51, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  51, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  51, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  52, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  52, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  52, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  53, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  53, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  53, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: TOO_MANY_LINES       (line:  56, col:   1):	Function has more than 25 lines
+Error: SPACE_BEFORE_FUNC    (line:  59, col:  12):	[94mFound space when expecting tab before function name[0m
+Error: SPACE_REPLACE_TAB    (line:  61, col:  12):	Found space when expecting tab
+Error: NL_AFTER_VAR_DECL    (line:  62, col:   1):	Variable declarations must be followed by a newline
+Error: MIXED_SPACE_TAB      (line:  64, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  64, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  64, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  65, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  65, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  65, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  66, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  66, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  66, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  67, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  67, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  67, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_BEFORE_FUNC    (line:  72, col:  11):	[94mFound space when expecting tab before function name[0m
+Error: SPACE_REPLACE_TAB    (line:  74, col:   8):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  74, col:  11):	Declaration and assignation on a single line
+Error: NL_AFTER_VAR_DECL    (line:  75, col:   1):	Variable declarations must be followed by a newline
+Error: MIXED_SPACE_TAB      (line:  77, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  77, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  77, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  78, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  78, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  78, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  79, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  79, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  79, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_BEFORE_FUNC    (line:  85, col:  12):	[94mFound space when expecting tab before function name[0m
+Error: SPACE_REPLACE_TAB    (line:  87, col:   8):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  87, col:  11):	Declaration and assignation on a single line
+Error: NL_AFTER_VAR_DECL    (line:  88, col:   1):	Variable declarations must be followed by a newline
+Error: MIXED_SPACE_TAB      (line:  90, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  90, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  90, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  91, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  91, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  91, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  92, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  92, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  92, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_BEFORE_FUNC    (line:  97, col:  12):	[94mFound space when expecting tab before function name[0m
+Error: LINE_TOO_LONG        (line:  97, col:  82):	[94mline too long[0m
+Error: TOO_MANY_ARGS        (line:  97, col:  88):	[91mFunction has more than 4 arguments[0m
+Error: SPACE_REPLACE_TAB    (line:  99, col:   8):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  99, col:  16):	Declaration and assignation on a single line
+Error: SPACE_REPLACE_TAB    (line: 100, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line: 100, col:  10):	Misaligned variable declaration
+Error: SPACE_REPLACE_TAB    (line: 101, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line: 101, col:  10):	Misaligned variable declaration
+Error: EMPTY_LINE_FUNCTION  (line: 104, col:   1):	Empty line in function
+Error: WRONG_SCOPE_COMMENT  (line: 105, col:   5):	[95mComment is invalid in this scope[0m
+Error: MIXED_SPACE_TAB      (line: 107, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 107, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 107, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 109, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 109, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 109, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: EMPTY_LINE_FUNCTION  (line: 110, col:   1):	Empty line in function
+Error: WRONG_SCOPE_COMMENT  (line: 111, col:   5):	[95mComment is invalid in this scope[0m
+Error: TOO_FEW_TAB          (line: 112, col:  16):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 112, col:  16):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line: 112, col:  38):	Expected newline after control structure
+Error: TOO_FEW_TAB          (line: 113, col:  24):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 113, col:  24):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line: 113, col:  42):	Expected newline after control structure
+Error: EMPTY_LINE_FUNCTION  (line: 114, col:   1):	Empty line in function
+Error: WRONG_SCOPE_COMMENT  (line: 115, col:   5):	[95mComment is invalid in this scope[0m
+Error: VAR_DECL_START_FUNC  (line: 116, col:   1):	Variable declaration not at start of function
+Error: SPACE_REPLACE_TAB    (line: 116, col:  12):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line: 116, col:  13):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line: 116, col:  21):	Declaration and assignation on a single line
+Error: MIXED_SPACE_TAB      (line: 119, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 119, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 119, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 120, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 120, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 120, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: EMPTY_LINE_FUNCTION  (line: 123, col:   1):	Empty line in function
+Error: WRONG_SCOPE_COMMENT  (line: 124, col:   5):	[95mComment is invalid in this scope[0m
+Error: EMPTY_LINE_FUNCTION  (line: 126, col:   1):	Empty line in function
+Error: WRONG_SCOPE_COMMENT  (line: 127, col:   5):	[95mComment is invalid in this scope[0m
+Error: MIXED_SPACE_TAB      (line: 129, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 129, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 129, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: EMPTY_LINE_FUNCTION  (line: 130, col:   1):	Empty line in function
+Error: MIXED_SPACE_TAB      (line: 132, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 132, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 132, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: EMPTY_LINE_FUNCTION  (line: 133, col:   1):	Empty line in function
+Error: EMPTY_LINE_FUNCTION  (line: 136, col:   1):	Empty line in function
+Error: MIXED_SPACE_TAB      (line: 139, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 139, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 139, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 140, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 140, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 140, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 143, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 143, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 143, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: EMPTY_LINE_FUNCTION  (line: 144, col:   1):	Empty line in function
+Error: WRONG_SCOPE_COMMENT  (line: 145, col:   5):	[95mComment is invalid in this scope[0m
+Error: MIXED_SPACE_TAB      (line: 148, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 148, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 148, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 149, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 149, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 149, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 150, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 150, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 150, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 151, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 151, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 151, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 155, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 155, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 155, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 156, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 156, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 156, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 157, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 157, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 157, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 158, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 158, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 158, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: TOO_MANY_LINES       (line: 161, col:   1):	Function has more than 25 lines
+Error: TOO_MANY_FUNCS       (line: 164, col:   1):	[92mToo many functions in file[0m
+Error: SPACE_BEFORE_FUNC    (line: 164, col:  11):	[94mFound space when expecting tab before function name[0m
+Error: SPACE_REPLACE_TAB    (line: 166, col:   8):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line: 167, col:   8):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line: 167, col:  13):	Declaration and assignation on a single line
+Error: SPACE_REPLACE_TAB    (line: 168, col:   8):	Found space when expecting tab
+Error: MIXED_SPACE_TAB      (line: 172, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 172, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 172, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 173, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 173, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 173, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 174, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 174, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 174, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 175, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 175, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 175, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 176, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 176, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 176, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 177, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 177, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 177, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 178, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 178, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 178, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 179, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 179, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 179, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: TOO_MANY_FUNCS       (line: 185, col:   1):	[92mToo many functions in file[0m
+Error: SPACE_BEFORE_FUNC    (line: 185, col:   4):	[94mFound space when expecting tab before function name[0m
+Error: SPACE_REPLACE_TAB    (line: 187, col:   8):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line: 187, col:  23):	[94mTwo or more consecutives spaces[0m
+Error: WRONG_SCOPE_COMMENT  (line: 187, col:  25):	[95mComment is invalid in this scope[0m
+Error: WRONG_SCOPE_COMMENT  (line: 187, col:  25):	[95mComment is invalid in this scope[0m
+Error: VAR_DECL_START_FUNC  (line: 188, col:   1):	Variable declaration not at start of function
+Error: SPACE_REPLACE_TAB    (line: 188, col:   8):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line: 188, col:  11):	Declaration and assignation on a single line
+Error: VAR_DECL_START_FUNC  (line: 189, col:   1):	Variable declaration not at start of function
+Error: SPACE_REPLACE_TAB    (line: 189, col:   8):	Found space when expecting tab
+Error: VAR_DECL_START_FUNC  (line: 190, col:   1):	Variable declaration not at start of function
+Error: SPACE_REPLACE_TAB    (line: 190, col:   8):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line: 190, col:  18):	Declaration and assignation on a single line
+Error: VAR_DECL_START_FUNC  (line: 191, col:   1):	Variable declaration not at start of function
+Error: SPACE_REPLACE_TAB    (line: 191, col:   8):	Found space when expecting tab
+Error: MIXED_SPACE_TAB      (line: 194, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 194, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 194, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: EMPTY_LINE_FUNCTION  (line: 195, col:   1):	Empty line in function
+Error: WRONG_SCOPE_COMMENT  (line: 196, col:   5):	[95mComment is invalid in this scope[0m
+Error: MIXED_SPACE_TAB      (line: 198, col:   1):	[93mMixed spaces and tabs[0m
+Error: CONSECUTIVE_SPC      (line: 198, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: TOO_FEW_TAB          (line: 198, col:   5):	Missing tabs for indent level
+Error: TOO_FEW_TAB          (line: 199, col:   5):	Missing tabs for indent level
+Error: TOO_FEW_TAB          (line: 200, col:   5):	Missing tabs for indent level
+Error: LINE_TOO_LONG        (line: 200, col:  82):	[94mline too long[0m
+Error: LINE_TOO_LONG        (line: 201, col:  85):	[94mline too long[0m
+Error: LINE_TOO_LONG        (line: 202, col:  84):	[94mline too long[0m
+Error: MIXED_SPACE_TAB      (line: 204, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 204, col:   1):	Missing tabs for indent level
+Error: WRONG_SCOPE_VAR      (line: 204, col:   1):	Variable declared in incorrect scope
+Error: CONSECUTIVE_SPC      (line: 204, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line: 204, col:  16):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line: 204, col:  25):	Declaration and assignation on a single line
+Error: MIXED_SPACE_TAB      (line: 205, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 205, col:   1):	Missing tabs for indent level
+Error: WRONG_SCOPE_VAR      (line: 205, col:   1):	Variable declared in incorrect scope
+Error: CONSECUTIVE_SPC      (line: 205, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line: 205, col:  12):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line: 205, col:  13):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line: 205, col:  20):	Declaration and assignation on a single line
+Error: MIXED_SPACE_TAB      (line: 206, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 206, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 206, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 207, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 207, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 207, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 208, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 208, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 208, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 209, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 209, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 209, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 210, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 210, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 210, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 211, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 211, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 211, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 212, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 212, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 212, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 213, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 213, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 213, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: EMPTY_LINE_FUNCTION  (line: 215, col:   1):	Empty line in function
+Error: WRONG_SCOPE_COMMENT  (line: 216, col:   5):	[95mComment is invalid in this scope[0m
+Error: MIXED_SPACE_TAB      (line: 218, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 218, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 218, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: EMPTY_LINE_FUNCTION  (line: 219, col:   1):	Empty line in function
+Error: WRONG_SCOPE_COMMENT  (line: 220, col:   5):	[95mComment is invalid in this scope[0m
+Error: MIXED_SPACE_TAB      (line: 223, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 223, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 223, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 224, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 224, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 224, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 225, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 225, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 225, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 226, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 226, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 226, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 227, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 227, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 227, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 228, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 228, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 228, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 229, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 229, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 229, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 230, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 230, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 230, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 231, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 231, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 231, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 232, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 232, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 232, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 233, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 233, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 233, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: EMPTY_LINE_FUNCTION  (line: 235, col:   1):	Empty line in function
+Error: WRONG_SCOPE_COMMENT  (line: 236, col:   5):	[95mComment is invalid in this scope[0m
+Error: EMPTY_LINE_FUNCTION  (line: 238, col:   1):	Empty line in function
+Error: WRONG_SCOPE_COMMENT  (line: 239, col:   5):	[95mComment is invalid in this scope[0m
+Error: BRACE_SHOULD_EOL     (line: 242, col:   1):	Expected newline after brace
+Error: TOO_MANY_LINES       (line: 242, col:   1):	Function has more than 25 lines
+free.c: Error!
+Error: SPACE_BEFORE_FUNC    (line:  15, col:  12):	[94mFound space when expecting tab before function name[0m
+Error: SPACE_REPLACE_TAB    (line:  17, col:  12):	Found space when expecting tab
+Error: NL_AFTER_VAR_DECL    (line:  18, col:   1):	Variable declarations must be followed by a newline
+Error: MIXED_SPACE_TAB      (line:  20, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  20, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  20, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  21, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  21, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  21, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  22, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  22, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  22, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  23, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  23, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  23, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  24, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  24, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  24, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  25, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  25, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  25, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_BEFORE_FUNC    (line:  29, col:   5):	[94mFound space when expecting tab before function name[0m
+Error: SPACE_REPLACE_TAB    (line:  31, col:  10):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  32, col:   8):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  32, col:   8):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  32, col:  13):	Misaligned variable declaration
+Error: MIXED_SPACE_TAB      (line:  36, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  36, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  36, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  37, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  37, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  37, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  38, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  38, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  38, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  39, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  39, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  39, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  40, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  40, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  40, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  41, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  41, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  41, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  42, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  42, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  42, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  43, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  43, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  43, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  44, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  44, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  44, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  45, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  45, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  45, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  46, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  46, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  46, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: EMPTY_LINE_EOF       (line:  49, col:   1):	Empty line at end of file
+redir.c: Error!
+Error: SPACE_REPLACE_TAB    (line:  18, col:   4):	Found space when expecting tab
+Error: SPACE_BEFORE_FUNC    (line:  20, col:  11):	[94mFound space when expecting tab before function name[0m
+Error: SPACE_REPLACE_TAB    (line:  22, col:   8):	Found space when expecting tab
+Error: NL_AFTER_VAR_DECL    (line:  23, col:   1):	Variable declarations must be followed by a newline
+Error: MIXED_SPACE_TAB      (line:  24, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  24, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  24, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  26, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  26, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  26, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_BEFORE_FUNC    (line:  30, col:   4):	[94mFound space when expecting tab before function name[0m
+Error: SPACE_REPLACE_TAB    (line:  32, col:   8):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  33, col:  12):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  33, col:  13):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  33, col:  16):	Declaration and assignation on a single line
+Error: BRACE_SHOULD_EOL     (line:  36, col:   6):	Expected newline after brace
+Error: TOO_FEW_TAB          (line:  36, col:   7):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  36, col:   7):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  36, col:  32):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  36, col:  32):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line:  36, col:  43):	Expected newline after control structure
+Error: TOO_FEW_TAB          (line:  36, col:  45):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  36, col:  45):	Too many instructions on a single line
+Error: BRACE_SHOULD_EOL     (line:  38, col:   6):	Expected newline after brace
+Error: TOO_FEW_TAB          (line:  38, col:   7):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  38, col:   7):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  38, col:  32):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  38, col:  32):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line:  38, col:  43):	Expected newline after control structure
+Error: TOO_FEW_TAB          (line:  38, col:  45):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  38, col:  45):	Too many instructions on a single line
+Error: MIXED_SPACE_TAB      (line:  41, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  41, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  41, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  42, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  42, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  42, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  43, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  43, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  43, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  44, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  44, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  44, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: TOO_FEW_TAB          (line:  44, col:  44):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  44, col:  44):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line:  44, col:  55):	Expected newline after control structure
+Error: MIXED_SPACE_TAB      (line:  45, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  45, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  45, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  46, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  46, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  46, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  47, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  47, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  47, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  48, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  48, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  48, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  49, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  49, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  49, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  50, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  50, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  50, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: TOO_FEW_TAB          (line:  50, col:  44):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  50, col:  44):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line:  50, col:  55):	Expected newline after control structure
+Error: MIXED_SPACE_TAB      (line:  51, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  51, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  51, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  52, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  52, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  52, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  53, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  53, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  53, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  54, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  54, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  54, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  55, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  55, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  55, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  56, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  56, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  56, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  57, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  57, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  57, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  58, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  58, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  58, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  59, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  59, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  59, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: NO_SPC_AFR_PAR       (line:  59, col:  32):	[94mExtra space after parenthesis (brace/bracket)[0m
+Error: TOO_FEW_TAB          (line:  59, col:  34):	Missing tabs for indent level
+Error: BRACE_SHOULD_EOL     (line:  59, col:  35):	Expected newline after brace
+Error: TOO_FEW_TAB          (line:  59, col:  36):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  59, col:  36):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line:  59, col:  45):	Expected newline after control structure
+Error: TOO_FEW_TAB          (line:  59, col:  47):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  59, col:  47):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  59, col:  60):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  59, col:  60):	Too many instructions on a single line
+Error: MIXED_SPACE_TAB      (line:  60, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  60, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  60, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  61, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  61, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  61, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  62, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  62, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  62, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: TOO_MANY_LINES       (line:  65, col:   1):	Function has more than 25 lines
+line_raw.c: Error!
+Notice: GLOBAL_VAR_DETECTED  (line:  16, col:   1):	Global variable present in file. Make sure it is a reasonable choice.
+Error: SPACE_BEFORE_FUNC    (line:  18, col:  12):	[94mFound space when expecting tab before function name[0m
+Error: SPACE_REPLACE_TAB    (line:  20, col:  11):	Found space when expecting tab
+Error: NL_AFTER_VAR_DECL    (line:  21, col:   1):	Variable declarations must be followed by a newline
+Error: MIXED_SPACE_TAB      (line:  23, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  23, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  23, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  24, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  24, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  24, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  25, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  25, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  25, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_BEFORE_FUNC    (line:  29, col:  12):	[94mFound space when expecting tab before function name[0m
+Error: CONSECUTIVE_SPC      (line:  31, col:   9):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  31, col:   9):	Found space when expecting tab
+Error: MIXED_SPACE_TAB      (line:  35, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  35, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  35, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_BEFORE_FUNC    (line:  40, col:  12):	[94mFound space when expecting tab before function name[0m
+Error: SPACE_REPLACE_TAB    (line:  42, col:   8):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  42, col:  11):	Declaration and assignation on a single line
+Error: MIXED_SPACE_TAB      (line:  46, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  46, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  46, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  47, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  47, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  47, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  48, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  48, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  48, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  49, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  49, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  49, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  50, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  50, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  50, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  51, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  51, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  51, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: EMPTY_LINE_FUNCTION  (line:  53, col:   1):	Empty line in function
+Error: MIXED_SPACE_TAB      (line:  56, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  56, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  56, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  57, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  57, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  57, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  58, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  58, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  58, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  59, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  59, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  59, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: EMPTY_LINE_FUNCTION  (line:  61, col:   1):	Empty line in function
+Error: SPACE_BEFORE_FUNC    (line:  65, col:   4):	[94mFound space when expecting tab before function name[0m
+Error: SPACE_REPLACE_TAB    (line:  67, col:  12):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  68, col:  11):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  68, col:  11):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  69, col:   8):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  69, col:   8):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  70, col:   8):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  70, col:   8):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  71, col:   9):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  71, col:   9):	Found space when expecting tab
+Error: MIXED_SPACE_TAB      (line:  74, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  74, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  74, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: EMPTY_LINE_FUNCTION  (line:  75, col:   1):	Empty line in function
+Error: EMPTY_LINE_FUNCTION  (line:  79, col:   1):	Empty line in function
+Error: WRONG_SCOPE_COMMENT  (line:  80, col:   5):	[95mComment is invalid in this scope[0m
+Error: MIXED_SPACE_TAB      (line:  83, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  83, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  83, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  84, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  84, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  84, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  85, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  85, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  85, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  86, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  86, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  86, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: EMPTY_LINE_FUNCTION  (line:  88, col:   1):	Empty line in function
+Error: WRONG_SCOPE_COMMENT  (line:  89, col:   5):	[95mComment is invalid in this scope[0m
+Error: MIXED_SPACE_TAB      (line:  92, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  92, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  92, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  93, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  93, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  93, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  94, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  94, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  94, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  95, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  95, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  95, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: EMPTY_LINE_FUNCTION  (line:  97, col:   1):	Empty line in function
+Error: WRONG_SCOPE_COMMENT  (line:  98, col:   5):	[95mComment is invalid in this scope[0m
+Error: MIXED_SPACE_TAB      (line: 102, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 102, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 102, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 103, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 103, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 103, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: EMPTY_LINE_FUNCTION  (line: 105, col:   1):	Empty line in function
+Error: WRONG_SCOPE_COMMENT  (line: 106, col:   5):	[95mComment is invalid in this scope[0m
+Error: EMPTY_LINE_FUNCTION  (line: 108, col:   1):	Empty line in function
+Error: WRONG_SCOPE_COMMENT  (line: 109, col:   5):	[95mComment is invalid in this scope[0m
+Error: EMPTY_LINE_FUNCTION  (line: 111, col:   1):	Empty line in function
+Error: WRONG_SCOPE_COMMENT  (line: 112, col:   5):	[95mComment is invalid in this scope[0m
+Error: EMPTY_LINE_FUNCTION  (line: 115, col:   1):	Empty line in function
+Error: BRACE_SHOULD_EOL     (line: 118, col:   1):	Expected newline after brace
+Error: TOO_MANY_LINES       (line: 118, col:   1):	Function has more than 25 lines
+child.c: OK!
+line.c: Error!
+Error: CONSECUTIVE_SPC      (line:  19, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  19, col:   5):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  20, col:   4):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  20, col:   4):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  21, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  21, col:   5):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  22, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  22, col:   5):	Found space when expecting tab
+Error: SPACE_BEFORE_FUNC    (line:  24, col:   4):	[94mFound space when expecting tab before function name[0m
+Error: CONSECUTIVE_SPC      (line:  26, col:   9):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  26, col:   9):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  27, col:   8):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  27, col:   8):	Found space when expecting tab
+Error: MIXED_SPACE_TAB      (line:  33, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  33, col:   1):	Missing tabs for indent level
+Error: WRONG_SCOPE_VAR      (line:  33, col:   1):	Variable declared in incorrect scope
+Error: CONSECUTIVE_SPC      (line:  33, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  33, col:  13):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  33, col:  17):	Declaration and assignation on a single line
+Error: MIXED_SPACE_TAB      (line:  34, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  34, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  34, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  35, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  35, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  35, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  36, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  36, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  36, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  37, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  37, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  37, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  38, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  38, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  38, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  39, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  39, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  39, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  40, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  40, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  40, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  41, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  41, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  41, col:   5):	[94mTwo or more consecutives spaces[0m
+prompt.c: Error!
+Error: CONSECUTIVE_SPC      (line:  18, col:  14):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_BEFORE_FUNC    (line:  18, col:  15):	[94mFound space when expecting tab before function name[0m
+Error: SPACE_REPLACE_TAB    (line:  20, col:  11):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  20, col:  14):	Declaration and assignation on a single line
+Error: NL_AFTER_VAR_DECL    (line:  21, col:   1):	Variable declarations must be followed by a newline
+Error: MIXED_SPACE_TAB      (line:  22, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  22, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  22, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_BEFORE_FUNC    (line:  26, col:  12):	[94mFound space when expecting tab before function name[0m
+Error: SPACE_REPLACE_TAB    (line:  28, col:  11):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  28, col:  15):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  28, col:  34):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  28, col:  53):	Declaration and assignation on a single line
+Error: SPACE_REPLACE_TAB    (line:  29, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  29, col:  10):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  29, col:  13):	Declaration and assignation on a single line
+Error: SPACE_REPLACE_TAB    (line:  30, col:  11):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  30, col:  14):	Declaration and assignation on a single line
+Error: TOO_FEW_TAB          (line:  30, col:  19):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  30, col:  19):	Too many instructions on a single line
+Error: SPACE_REPLACE_TAB    (line:  30, col:  25):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  30, col:  26):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  30, col:  28):	Declaration and assignation on a single line
+Error: NL_AFTER_VAR_DECL    (line:  31, col:   1):	Variable declarations must be followed by a newline
+Error: MIXED_SPACE_TAB      (line:  32, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  32, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  32, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: NO_SPC_AFR_PAR       (line:  33, col:  18):	[94mExtra space after parenthesis (brace/bracket)[0m
+Error: TOO_FEW_TAB          (line:  33, col:  20):	Missing tabs for indent level
+Error: BRACE_SHOULD_EOL     (line:  33, col:  21):	Expected newline after brace
+Error: TOO_FEW_TAB          (line:  33, col:  22):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  33, col:  22):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line:  33, col:  33):	Expected newline after control structure
+Error: TOO_FEW_TAB          (line:  33, col:  35):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  33, col:  35):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  33, col:  40):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  33, col:  40):	Too many instructions on a single line
+Error: NO_SPC_AFR_PAR       (line:  34, col:  18):	[94mExtra space after parenthesis (brace/bracket)[0m
+Error: TOO_FEW_TAB          (line:  34, col:  20):	Missing tabs for indent level
+Error: BRACE_SHOULD_EOL     (line:  34, col:  21):	Expected newline after brace
+Error: TOO_FEW_TAB          (line:  34, col:  22):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  34, col:  22):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line:  34, col:  37):	Expected newline after control structure
+Error: TOO_FEW_TAB          (line:  34, col:  39):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  34, col:  39):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  34, col:  44):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  34, col:  44):	Too many instructions on a single line
+Error: NO_SPC_AFR_PAR       (line:  36, col:  18):	[94mExtra space after parenthesis (brace/bracket)[0m
+Error: TOO_FEW_TAB          (line:  36, col:  20):	Missing tabs for indent level
+Error: BRACE_SHOULD_EOL     (line:  36, col:  21):	Expected newline after brace
+Error: TOO_FEW_TAB          (line:  36, col:  22):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  36, col:  22):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line:  36, col:  42):	Expected newline after control structure
+Error: TOO_FEW_TAB          (line:  36, col:  44):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  36, col:  44):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  36, col:  49):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  36, col:  49):	Too many instructions on a single line
+Error: CONSECUTIVE_SPC      (line:  41, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_BEFORE_FUNC    (line:  41, col:   8):	[94mFound space when expecting tab before function name[0m
+Error: CONSECUTIVE_SPC      (line:  43, col:   9):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  43, col:   9):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  44, col:   9):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  44, col:   9):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  45, col:   9):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  45, col:   9):	Found space when expecting tab
+Error: NL_AFTER_VAR_DECL    (line:  46, col:   1):	Variable declarations must be followed by a newline
+Error: MIXED_SPACE_TAB      (line:  48, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  48, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  48, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  50, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  50, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  50, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  53, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  53, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  53, col:   5):	[94mTwo or more consecutives spaces[0m
+signals.c: OK!
+Notice: GLOBAL_VAR_DETECTED  (line:  21, col:   1):	Global variable present in file. Make sure it is a reasonable choice.
+echo.c: Error!
+Error: SPACE_BEFORE_FUNC    (line:  16, col:  11):	[94mFound space when expecting tab before function name[0m
+Error: SPACE_REPLACE_TAB    (line:  18, col:  11):	Found space when expecting tab
+Error: MIXED_SPACE_TAB      (line:  21, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  21, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  21, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  25, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  25, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  25, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  26, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  26, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  26, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  27, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  27, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  27, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_BEFORE_FUNC    (line:  32, col:   4):	[94mFound space when expecting tab before function name[0m
+Error: SPACE_REPLACE_TAB    (line:  34, col:   8):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  35, col:   8):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  36, col:   8):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  41, col:   6):	[94mTwo or more consecutives spaces[0m
+Error: BRACE_SHOULD_EOL     (line:  41, col:   8):	Expected newline after brace
+Error: TOO_FEW_TAB          (line:  41, col:   9):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  41, col:   9):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  41, col:  22):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  41, col:  22):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  41, col:  27):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  41, col:  27):	Too many instructions on a single line
+Error: MIXED_SPACE_TAB      (line:  45, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  45, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  45, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  46, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  46, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  46, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  47, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  47, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  47, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  48, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  48, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  48, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  49, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  49, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  49, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  52, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  52, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  52, col:   5):	[94mTwo or more consecutives spaces[0m
+pwd.c: OK!
+env_builtin.c: Error!
+Error: SPACE_BEFORE_FUNC    (line:  16, col:   4):	[94mFound space when expecting tab before function name[0m
+Error: SPACE_REPLACE_TAB    (line:  18, col:  10):	Found space when expecting tab
+Error: MIXED_SPACE_TAB      (line:  21, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  21, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  21, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  25, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  25, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  25, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  26, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  26, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  26, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  27, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  27, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  27, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  28, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  28, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  28, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  29, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  29, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  29, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  30, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  30, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  30, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  31, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  31, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  31, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  32, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  32, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  32, col:   5):	[94mTwo or more consecutives spaces[0m
+cd.c: Error!
+Error: SPACE_BEFORE_FUNC    (line:  17, col:  12):	[94mFound space when expecting tab before function name[0m
+Error: CONSECUTIVE_SPC      (line:  19, col:   9):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  19, col:   9):	Found space when expecting tab
+Error: NL_AFTER_VAR_DECL    (line:  20, col:   1):	Variable declarations must be followed by a newline
+Error: MIXED_SPACE_TAB      (line:  21, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  21, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  21, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  23, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  23, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  23, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_BEFORE_FUNC    (line:  26, col:   4):	[94mFound space when expecting tab before function name[0m
+Error: CONSECUTIVE_SPC      (line:  28, col:  15):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  28, col:  15):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  29, col:   9):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  29, col:   9):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  30, col:   9):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  30, col:   9):	Found space when expecting tab
+Error: MIXED_SPACE_TAB      (line:  34, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  34, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  34, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  35, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  35, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  35, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  38, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  38, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  38, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  41, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  41, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  41, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  42, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  42, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  42, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  43, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  43, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  43, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  44, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  44, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  44, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  45, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  45, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  45, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  46, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  46, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  46, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  47, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  47, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  47, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  50, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  50, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  50, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  53, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  53, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  53, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  54, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  54, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  54, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  55, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  55, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  55, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  56, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  56, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  56, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: TOO_MANY_LINES       (line:  60, col:   1):	Function has more than 25 lines
+unset.c: Error!
+Error: SPACE_REPLACE_TAB    (line:  16, col:   4):	Found space when expecting tab
+Error: SPACE_BEFORE_FUNC    (line:  18, col:   4):	[94mFound space when expecting tab before function name[0m
+Error: SPACE_REPLACE_TAB    (line:  20, col:   8):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  21, col:   8):	Found space when expecting tab
+Error: MIXED_SPACE_TAB      (line:  27, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  27, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  27, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  28, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  28, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  28, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  29, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  29, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  29, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  30, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  30, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  30, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  31, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  31, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  31, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  32, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  32, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  32, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  33, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  33, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  33, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  34, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  34, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  34, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  35, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  35, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  35, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  36, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  36, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  36, col:   5):	[94mTwo or more consecutives spaces[0m
+export.c: Error!
+Error: SPACE_REPLACE_TAB    (line:  16, col:   4):	Found space when expecting tab
+Error: SPACE_BEFORE_FUNC    (line:  18, col:  12):	[94mFound space when expecting tab before function name[0m
+Error: SPACE_BEFORE_FUNC    (line:  25, col:  12):	[94mFound space when expecting tab before function name[0m
+Error: SPACE_REPLACE_TAB    (line:  27, col:  10):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  28, col:   8):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  28, col:   8):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  28, col:  13):	Misaligned variable declaration
+Error: CONSECUTIVE_SPC      (line:  29, col:   8):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  29, col:   8):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  29, col:  13):	Misaligned variable declaration
+Error: CONSECUTIVE_SPC      (line:  30, col:   9):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  30, col:   9):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  31, col:   9):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  31, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  31, col:  12):	Misaligned variable declaration
+Error: TOO_FEW_TAB          (line:  33, col:  12):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  33, col:  12):	Too many instructions on a single line
+Error: NO_SPC_AFR_PAR       (line:  34, col:  15):	[94mExtra space after parenthesis (brace/bracket)[0m
+Error: TOO_FEW_TAB          (line:  34, col:  17):	Missing tabs for indent level
+Error: BRACE_SHOULD_EOL     (line:  34, col:  18):	Expected newline after brace
+Error: TOO_FEW_TAB          (line:  34, col:  19):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  34, col:  19):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line:  34, col:  22):	Expected newline after control structure
+Error: TOO_FEW_TAB          (line:  34, col:  24):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  34, col:  24):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  34, col:  41):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  34, col:  41):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  36, col:  16):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  36, col:  16):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line:  36, col:  23):	Expected newline after control structure
+Error: TOO_FEW_TAB          (line:  37, col:  12):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  37, col:  12):	Too many instructions on a single line
+Error: MIXED_SPACE_TAB      (line:  40, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  40, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  40, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  41, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  41, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  41, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  42, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  42, col:   1):	Missing tabs for indent level
+Error: WRONG_SCOPE_VAR      (line:  42, col:   1):	Variable declared in incorrect scope
+Error: CONSECUTIVE_SPC      (line:  42, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  42, col:  17):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  42, col:  26):	Declaration and assignation on a single line
+Error: MIXED_SPACE_TAB      (line:  43, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  43, col:   1):	Missing tabs for indent level
+Error: WRONG_SCOPE_VAR      (line:  43, col:   1):	Variable declared in incorrect scope
+Error: CONSECUTIVE_SPC      (line:  43, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  43, col:  17):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  43, col:  22):	Declaration and assignation on a single line
+Error: MIXED_SPACE_TAB      (line:  44, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  44, col:   1):	Missing tabs for indent level
+Error: WRONG_SCOPE_VAR      (line:  44, col:   1):	Variable declared in incorrect scope
+Error: CONSECUTIVE_SPC      (line:  44, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  44, col:  17):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  44, col:  23):	Declaration and assignation on a single line
+Error: MIXED_SPACE_TAB      (line:  45, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  45, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  45, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  46, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  46, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  46, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: TOO_FEW_TAB          (line:  46, col:  27):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  46, col:  27):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  46, col:  37):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  46, col:  37):	Too many instructions on a single line
+Error: MIXED_SPACE_TAB      (line:  47, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  47, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  47, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  48, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  48, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  48, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  49, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  49, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  49, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  50, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  50, col:   1):	Missing tabs for indent level
+Error: WRONG_SCOPE_VAR      (line:  50, col:   1):	Variable declared in incorrect scope
+Error: CONSECUTIVE_SPC      (line:  50, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  50, col:  17):	Found space when expecting tab
+Error: DECL_ASSIGN_LINE     (line:  50, col:  26):	Declaration and assignation on a single line
+Error: MIXED_SPACE_TAB      (line:  51, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  51, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  51, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  52, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  52, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  52, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  53, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  53, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  53, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  54, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  54, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  54, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  55, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  55, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  55, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: WRONG_SCOPE_COMMENT  (line:  57, col:   5):	[95mComment is invalid in this scope[0m
+Error: TOO_MANY_VARS_FUNC   (line:  58, col:   1):	[91mToo many variables declarations in a function[0m
+Error: VAR_DECL_START_FUNC  (line:  58, col:   1):	Variable declaration not at start of function
+Error: SPACE_REPLACE_TAB    (line:  58, col:   8):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  58, col:   9):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  58, col:  17):	Declaration and assignation on a single line
+Error: TOO_FEW_TAB          (line:  58, col:  22):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  58, col:  22):	Too many instructions on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  58, col:  22):	[91mToo many variables declarations in a function[0m
+Error: VAR_DECL_START_FUNC  (line:  58, col:  22):	Variable declaration not at start of function
+Error: SPACE_REPLACE_TAB    (line:  58, col:  26):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  58, col:  27):	Misaligned variable declaration
+Error: MIXED_SPACE_TAB      (line:  61, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  61, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  61, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  62, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  62, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  62, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: FORBIDDEN_CS         (line:  62, col:   9):	Forbidden control structure
+Error: MIXED_SPACE_TAB      (line:  63, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  63, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  63, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  64, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  64, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  64, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: LINE_TOO_LONG        (line:  64, col:  82):	[94mline too long[0m
+Error: MIXED_SPACE_TAB      (line:  65, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  65, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  65, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: BRACE_SHOULD_EOL     (line:  65, col:  14):	Expected newline after brace
+Error: TOO_FEW_TAB          (line:  65, col:  15):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  65, col:  15):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  65, col:  34):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  65, col:  34):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  65, col:  57):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  65, col:  57):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  65, col:  72):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  65, col:  72):	Too many instructions on a single line
+Error: LINE_TOO_LONG        (line:  65, col:  82):	[94mline too long[0m
+Error: LINE_TOO_LONG        (line:  65, col:  85):	[94mline too long[0m
+Error: TOO_FEW_TAB          (line:  65, col:  85):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  65, col:  85):	Too many instructions on a single line
+Error: MIXED_SPACE_TAB      (line:  66, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  66, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  66, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: FORBIDDEN_CS         (line:  68, col:   5):	Forbidden control structure
+Error: BRACE_SHOULD_EOL     (line:  69, col:   6):	Expected newline after brace
+Error: TOO_FEW_TAB          (line:  69, col:   7):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  69, col:   7):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  69, col:  46):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  69, col:  46):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  69, col:  61):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  69, col:  61):	Too many instructions on a single line
+Error: TOO_MANY_LINES       (line:  71, col:   1):	Function has more than 25 lines
+Error: SPACE_BEFORE_FUNC    (line:  73, col:   4):	[94mFound space when expecting tab before function name[0m
+Error: CONSECUTIVE_SPC      (line:  75, col:   8):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  75, col:   8):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  76, col:   8):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  76, col:   8):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  77, col:   9):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  77, col:   9):	Found space when expecting tab
+Error: MIXED_SPACE_TAB      (line:  83, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  83, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  83, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  84, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  84, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  84, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  88, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  88, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  88, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  89, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  89, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  89, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  90, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  90, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  90, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  91, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  91, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  91, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  92, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  92, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  92, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  93, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  93, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  93, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: BRACE_SHOULD_EOL     (line:  93, col:  14):	Expected newline after brace
+Error: TOO_FEW_TAB          (line:  93, col:  15):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  93, col:  15):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  93, col:  24):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  93, col:  24):	Too many instructions on a single line
+Error: LINE_TOO_LONG        (line:  93, col:  85):	[94mline too long[0m
+Error: LINE_TOO_LONG        (line:  93, col:  88):	[94mline too long[0m
+Error: TOO_FEW_TAB          (line:  93, col:  88):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  93, col:  88):	Too many instructions on a single line
+Error: MIXED_SPACE_TAB      (line:  94, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  94, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  94, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  95, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  95, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  95, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  96, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  96, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  96, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  97, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  97, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  97, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  98, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  98, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  98, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  99, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  99, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  99, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 100, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 100, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 100, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 101, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 101, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 101, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: BRACE_SHOULD_EOL     (line: 101, col:  14):	Expected newline after brace
+Error: TOO_FEW_TAB          (line: 101, col:  15):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 101, col:  15):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line: 101, col:  24):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 101, col:  24):	Too many instructions on a single line
+Error: LINE_TOO_LONG        (line: 101, col:  85):	[94mline too long[0m
+Error: LINE_TOO_LONG        (line: 101, col:  88):	[94mline too long[0m
+Error: TOO_FEW_TAB          (line: 101, col:  88):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line: 101, col:  88):	Too many instructions on a single line
+Error: MIXED_SPACE_TAB      (line: 102, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 102, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 102, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 103, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 103, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 103, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 104, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 104, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 104, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line: 105, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line: 105, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line: 105, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: TOO_MANY_LINES       (line: 108, col:   1):	Function has more than 25 lines
+exit_builtin.c: Error!
+Error: SPACE_REPLACE_TAB    (line:  18, col:   4):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  20, col:  11):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_BEFORE_FUNC    (line:  20, col:  12):	[94mFound space when expecting tab before function name[0m
+Error: BRACE_NEWLINE        (line:  20, col:  29):	[93mExpected newline before brace[0m
+Error: BRACE_SHOULD_EOL     (line:  20, col:  30):	Expected newline after brace
+Error: TOO_FEW_TAB          (line:  20, col:  31):	Missing tabs for indent level
+Error: TOO_FEW_TAB          (line:  20, col:  31):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  20, col:  31):	Too many instructions on a single line
+Error: TOO_MANY_INSTR       (line:  20, col:  78):	Too many instructions on a single line
+Error: CONSECUTIVE_SPC      (line:  22, col:  11):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_BEFORE_FUNC    (line:  22, col:  12):	[94mFound space when expecting tab before function name[0m
+Error: CONSECUTIVE_SPC      (line:  24, col:   8):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  24, col:   8):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  25, col:  23):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  25, col:  24):	Misaligned variable declaration
+Error: TOO_FEW_TAB          (line:  27, col:  41):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  27, col:  41):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line:  27, col:  44):	Expected newline after control structure
+Error: NO_SPC_AFR_PAR       (line:  29, col:  31):	[94mExtra space after parenthesis (brace/bracket)[0m
+Error: TOO_FEW_TAB          (line:  29, col:  33):	Missing tabs for indent level
+Error: BRACE_SHOULD_EOL     (line:  29, col:  34):	Expected newline after brace
+Error: TOO_FEW_TAB          (line:  29, col:  35):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  29, col:  35):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  29, col:  50):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  29, col:  50):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line:  29, col:  59):	Expected newline after control structure
+Error: EXP_NEWLINE          (line:  29, col:  59):	Expected newline after control structure
+Error: TOO_FEW_TAB          (line:  29, col:  61):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  29, col:  61):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  29, col:  66):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  29, col:  66):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  30, col:  14):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  30, col:  14):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line:  30, col:  24):	Expected newline after control structure
+Error: MIXED_SPACE_TAB      (line:  34, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  34, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  34, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: TOO_FEW_TAB          (line:  34, col:  35):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  34, col:  35):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line:  34, col:  45):	Expected newline after control structure
+Error: MIXED_SPACE_TAB      (line:  35, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  35, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  35, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  36, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  36, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  36, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  37, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  37, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  37, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  38, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  38, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  38, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  39, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  39, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  39, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  40, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  40, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  40, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  41, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  41, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  41, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  42, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  42, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  42, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  45, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  45, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  45, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  48, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  48, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  48, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  49, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  49, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  49, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  50, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  50, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  50, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  51, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  51, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  51, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: TOO_MANY_LINES       (line:  54, col:   1):	Function has more than 25 lines
+Error: SPACE_BEFORE_FUNC    (line:  56, col:  12):	[94mFound space when expecting tab before function name[0m
+Error: SPACE_BEFORE_FUNC    (line:  63, col:   4):	[94mFound space when expecting tab before function name[0m
+Error: CONSECUTIVE_SPC      (line:  65, col:  14):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  65, col:  14):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  66, col:   8):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  66, col:   8):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  67, col:   8):	[94mTwo or more consecutives spaces[0m
+Error: SPACE_REPLACE_TAB    (line:  67, col:   8):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  70, col:  13):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  70, col:  13):	Too many instructions on a single line
+Error: TOO_FEW_TAB          (line:  70, col:  30):	Missing tabs for indent level
+Error: TOO_MANY_INSTR       (line:  70, col:  30):	Too many instructions on a single line
+Error: EXP_NEWLINE          (line:  70, col:  34):	Expected newline after control structure
+Error: MIXED_SPACE_TAB      (line:  74, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  74, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  74, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  75, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  75, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  75, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  76, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  76, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  76, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  77, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  77, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  77, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  81, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  81, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  81, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  82, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  82, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  82, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  83, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  83, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  83, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  84, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  84, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  84, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  88, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  88, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  88, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  89, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  89, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  89, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: MIXED_SPACE_TAB      (line:  93, col:   1):	[93mMixed spaces and tabs[0m
+Error: TOO_FEW_TAB          (line:  93, col:   1):	Missing tabs for indent level
+Error: CONSECUTIVE_SPC      (line:  93, col:   5):	[94mTwo or more consecutives spaces[0m
+Error: TOO_MANY_LINES       (line:  95, col:   1):	Function has more than 25 lines
+ft_strtrim.c: OK!
+ft_lstsize.c: OK!
+ft_lstadd_front.c: OK!
+ft_strnstr.c: OK!
+ft_calloc.c: OK!
+ft_isalnum.c: OK!
+ft_strrchr.c: OK!
+ft_tolower.c: OK!
+ft_isprint.c: OK!
+ft_lstclear.c: OK!
+ft_strlen.c: OK!
+ft_isdigit.c: OK!
+ft_isascii.c: OK!
+ft_split.c: OK!
+ft_putendl_fd.c: OK!
+ft_substr.c: OK!
+ft_putnbr_fd.c: OK!
+ft_strchr.c: OK!
+ft_lstadd_back.c: OK!
+ft_lstlast.c: OK!
+ft_strlcat.c: OK!
+ft_itoa.c: OK!
+ft_memset.c: OK!
+ft_strncmp.c: OK!
+ft_strjoin.c: OK!
+ft_lstnew.c: OK!
+ft_lstdelone.c: OK!
+libft.h: OK!
+ft_lstmap.c: OK!
+ft_memcpy.c: OK!
+ft_toupper.c: OK!
+ft_lstiter.c: OK!
+ft_striteri.c: OK!
+ft_bzero.c: OK!
+ft_putchar_fd.c: OK!
+ft_atoi.c: OK!
+ft_strmapi.c: OK!
+ft_memchr.c: OK!
+ft_memcmp.c: OK!
+ft_strlcpy.c: OK!
+ft_memmove.c: OK!
+ft_putstr_fd.c: OK!
+ft_isalpha.c: OK!
+ft_strdup.c: OK!
