@@ -192,8 +192,6 @@ int			num_of_redirects(char *str);
 void		remove_substr(char *s, unsigned int start, size_t len);
 char		*storing(char *str, int start, int len, char *replace);
 void		quotes_check(char **str, t_variables *var);
-void		generate_strings_helper(char **str, char *expanded,
-				t_variables *var);
 int			generate_string(char **str, char **tmp, t_variables *var,
 				t_shell *pipe);
 int			handle_exit_code(char **str, t_variables *var);
