@@ -27,6 +27,7 @@ SRCS := \
   $(SRC_DIR)/exec/dispatch.c \
   $(SRC_DIR)/exec/pipeline.c \
   $(SRC_DIR)/exec/pipeline_utils.c \
+  $(SRC_DIR)/exec/pipeline_helpers.c \
   $(SRC_DIR)/exec/redir.c \
   $(SRC_DIR)/exec/heredoc.c \
   $(SRC_DIR)/exec/path.c \
@@ -37,6 +38,7 @@ SRCS := \
   $(SRC_DIR)/exec/parsed_exec.c \
   $(SRC_DIR)/exec/redir_utils.c \
   $(SRC_DIR)/exec/exec_utils.c \
+  $(SRC_DIR)/exec/exec_conditions.c \
   $(SRC_DIR)/exec/line_raw.c \
   $(SRC_DIR)/exec/line_raw_helpers.c \
   $(SRC_DIR)/parsing/ahmad_utils.c \
@@ -52,7 +54,8 @@ SRCS := \
   $(SRC_DIR)/parsing/dollar_utils.c \
   $(SRC_DIR)/parsing/dollar_helper.c \
   $(SRC_DIR)/parsing/cmds.c \
-  $(SRC_DIR)/parsing/cmds_helpers.c
+  $(SRC_DIR)/parsing/cmds_helpers.c \
+  $(SRC_DIR)/parsing/token_extraction.c
 
 OBJS := $(SRCS:.c=.o)
 

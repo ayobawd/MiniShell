@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token_utils.c                                      :+:      :+:    :+:   */
+/*   pipeline_helpers.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: 42 <student@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,46 +10,46 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "minishell.h"
+#include <unistd.h>
+#include <stdlib.h>
 
-static void	skip_token(char *str, int *i, int *in_quote, char *quote_char)
+/* Cleanup pipes after execution */
+void	cleanup_pipes(int n, int (*pipes)[2])
 {
-	while (str[*i] && ((*in_quote && str[*i] != *quote_char)
-			|| (!*in_quote && str[*i] != ' ' && str[*i] != '\t')))
+	if (pipes)
 	{
-		if (!*in_quote && (str[*i] == '"' || str[*i] == '\''))
+		if (n > 1)
 		{
-			*in_quote = 1;
-			*quote_char = str[*i];
+			close(pipes[n - 2][0]);
+			close(pipes[n - 2][1]);
 		}
-		else if (*in_quote && str[*i] == *quote_char)
-		{
-			*in_quote = 0;
-			*quote_char = 0;
-		}
-		(*i)++;
+		free(pipes);
 	}
 }
 
-int	count_tokens(char *str)
+/* Handle fork result for pipeline command */
+int	handle_fork_result(int pid, int count, int pipes[][2],
+		int *last_pid)
 {
-	int		i;
-	int		tokens;
-	int		in_quote;
-	char	quote_char;
-
-	tokens = 0;
-	i = 0;
-	in_quote = 0;
-	quote_char = 0;
-	while (str[i])
+	if (pid > 0)
+		*last_pid = pid;
+	else
 	{
-		while (str[i] == ' ' || str[i] == '\t')
-			i++;
-		if (!str[i])
-			break ;
-		tokens++;
-		skip_token(str, &i, &in_quote, &quote_char);
+		close_pipes_all(count - 1, pipes);
+		return (1);
 	}
-	return (tokens);
+	return (0);
+}
+
+/* Handle parent process after fork */
+void	handle_parent_process(int status, int i, int (*pipes)[2],
+		int *last_pid)
+{
+	*last_pid = status;
+	if (i > 0)
+	{
+		close(pipes[i - 1][0]);
+		close(pipes[i - 1][1]);
+	}
 }

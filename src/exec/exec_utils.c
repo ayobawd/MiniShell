@@ -98,19 +98,3 @@ void	exec_with_path_cmd(t_cmd *cmd, char **envp, char *path)
 		execve(cmd->argv[0], cmd->argv, envp);
 	handle_exec_error(cmd->argv[0]);
 }
-
-/* Check if command should run in parent process */
-bool	should_run_in_parent(t_cmds *cmd)
-{
-	if (!cmd->cmds || !cmd->cmds[0] || !ms_is_builtin(cmd->cmds[0]))
-		return (false);
-	if (!ft_strncmp(cmd->cmds[0], "cd", 2) && cmd->cmds[0][2] == '\0')
-		return (true);
-	if (!ft_strncmp(cmd->cmds[0], "export", 6) && cmd->cmds[0][6] == '\0')
-		return (true);
-	if (!ft_strncmp(cmd->cmds[0], "unset", 5) && cmd->cmds[0][5] == '\0')
-		return (true);
-	if (!ft_strncmp(cmd->cmds[0], "exit", 4) && cmd->cmds[0][4] == '\0')
-		return (true);
-	return (false);
-}

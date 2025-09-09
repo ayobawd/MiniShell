@@ -61,18 +61,6 @@ static int	init_pipes(int n, int (**pipes)[2])
 	return (0);
 }
 
-/* Handle parent process after fork */
-static void	handle_parent_process(int status, int i, int (*pipes)[2],
-		int *last_pid)
-{
-	*last_pid = status;
-	if (i > 0)
-	{
-		close(pipes[i - 1][0]);
-		close(pipes[i - 1][1]);
-	}
-}
-
 /* Execute fork loop for pipeline */
 static int	exec_fork_loop(t_cmd *first, t_env **env, int n, int (*pipes)[2])
 {
