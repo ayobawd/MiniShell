@@ -12,36 +12,6 @@
 
 #include "../minishell.h"
 
-static void	skip_whitespace(char *str, int *i)
-{
-	while (str[*i] == ' ' || str[*i] == '\t')
-		(*i)++;
-}
-
-static void	handle_quote(char *str, int *i, int *in_quote, char *quote_char)
-{
-	if (!*in_quote && (str[*i] == '"' || str[*i] == '\''))
-	{
-		*in_quote = 1;
-		*quote_char = str[*i];
-	}
-	else if (*in_quote && str[*i] == *quote_char)
-	{
-		*in_quote = 0;
-		*quote_char = 0;
-	}
-}
-
-static void	skip_token(char *str, int *i, int *in_quote, char *quote_char)
-{
-	while (str[*i] && ((*in_quote && str[*i] != *quote_char)
-			|| (!*in_quote && str[*i] != ' ' && str[*i] != '\t')))
-	{
-		handle_quote(str, i, in_quote, quote_char);
-		(*i)++;
-	}
-}
-
 int	count_tokens(char *str)
 {
 	int		i;
@@ -55,11 +25,26 @@ int	count_tokens(char *str)
 	quote_char = 0;
 	while (str[i])
 	{
-		skip_whitespace(str, &i);
+		while (str[i] == ' ' || str[i] == '\t')
+			i++;
 		if (!str[i])
 			break ;
 		tokens++;
-		skip_token(str, &i, &in_quote, &quote_char);
+		while (str[i] && ((in_quote && str[i] != quote_char)
+				|| (!in_quote && str[i] != ' ' && str[i] != '\t')))
+		{
+			if (!in_quote && (str[i] == '"' || str[i] == '\''))
+			{
+				in_quote = 1;
+				quote_char = str[i];
+			}
+			else if (in_quote && str[i] == quote_char)
+			{
+				in_quote = 0;
+				quote_char = 0;
+			}
+			i++;
+		}
 	}
 	return (tokens);
 }
