@@ -23,8 +23,6 @@ int		ms_run_builtin(char **argv, t_env **env, bool in_parent);
 char	*ms_resolve_path(const char *cmd, t_env *env);
 char	**ms_env_to_envp(t_env *env);
 
-
-
 static void	exec_with_path(t_cmd *cmd, char **envp, char *path)
 {
 	if (path)
@@ -37,17 +35,19 @@ static void	exec_with_path(t_cmd *cmd, char **envp, char *path)
 	handle_exec_error(cmd->argv[0]);
 }
 
-static void	child_exec(t_cmd *cmd, t_env **env, int i, int n, int pipes[][2])
+
+
+static void	child_exec(t_cmd *cmd, t_env **env, t_child_context *ctx)
 {
 	int		fds[2];
 	char	**envp;
 	char	*path;
 
 	ms_signals_child_default();
-	setup_child_pipes(i, n, pipes, fds);
+	setup_child_pipes(ctx->i, ctx->n, ctx->pipes, fds);
 	if (ms_apply_redirs(cmd->redirs, fds) != 0)
 		exit(1);
-	close_pipes_all(n - 1, pipes);
+	close_pipes_all(ctx->n - 1, ctx->pipes);
 	if (cmd->is_builtin)
 		exit(ms_run_builtin(cmd->argv, env, false));
 	path = ms_resolve_path(cmd->argv[0], *env);
@@ -57,49 +57,43 @@ static void	child_exec(t_cmd *cmd, t_env **env, int i, int n, int pipes[][2])
 	exec_with_path(cmd, envp, path);
 }
 
-
-
-int	ms_exec_pipeline(t_cmd *first, t_env **env)
+static int	init_pipes(int n, int (**pipes)[2])
 {
-	int		n;
-	t_cmd	*cur;
-	int		i;
-	int		last_pid;
-	int		status;
-	int		(*pipes)[2];
-
-	n = 0;
-	cur = first;
-	while (cur)
-	{
-		n++;
-		cur = cur->next;
-	}
-	pipes = NULL;
 	if (n > 1)
 	{
-		pipes = (int (*)[2])malloc(sizeof(int[2]) * (n - 1));
-		if (!pipes)
+		*pipes = (int (*)[2])malloc(sizeof(int[2]) * (n - 1));
+		if (!*pipes)
 			return (1);
-		if (open_pipes(n - 1, pipes) != 0)
+		if (open_pipes(n - 1, *pipes) != 0)
 		{
-			free(pipes);
+			free(*pipes);
 			return (1);
 		}
 	}
+	return (0);
+}
+
+static int	exec_fork_loop(t_cmd *first, t_env **env, int n, int (*pipes)[2])
+{
+	t_cmd				*cur;
+	int					i;
+	int					status;
+	int					last_pid;
+	t_child_context		ctx;
+
+	ctx.pipes = pipes;
+	ctx.n = n;
 	i = 0;
 	cur = first;
 	last_pid = -1;
 	while (cur)
 	{
+		ctx.i = i;
 		status = fork();
 		if (status == 0)
-			child_exec(cur, env, i, n, pipes);
+			child_exec(cur, env, &ctx);
 		else if (status < 0)
-		{
-			status = 1;
-			break ;
-		}
+			return (-1);
 		else
 		{
 			last_pid = status;
@@ -112,6 +106,25 @@ int	ms_exec_pipeline(t_cmd *first, t_env **env)
 		i++;
 		cur = cur->next;
 	}
+	return (last_pid);
+}
+
+int	ms_exec_pipeline(t_cmd *first, t_env **env)
+{
+	int		n;
+	t_cmd	*cur;
+	int		(*pipes)[2];
+	int		last_pid;
+	int		status;
+
+	n = 0;
+	cur = first;
+	while (cur && ++n)
+		cur = cur->next;
+	pipes = NULL;
+	if (init_pipes(n, &pipes) != 0)
+		return (1);
+	last_pid = exec_fork_loop(first, env, n, pipes);
 	if (pipes)
 	{
 		if (n > 1)

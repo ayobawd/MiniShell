@@ -160,6 +160,14 @@ void		setup_child_pipes(int i, int n, int pipes[][2], int fds[2]);
 void		handle_exec_error(char *cmd_name);
 int			wait_children(int last_pid, int count);
 
+/* pipeline context structure */
+typedef struct s_child_context
+{
+	int	i;
+	int	n;
+	int	(*pipes)[2];
+}	t_child_context;
+
 /* New direct-parser execution interface */
 int			ms_exec_parsed(t_cmds *arr, int count, t_env **env);
 int			ms_exec_line_raw(char *line, t_env **env);
