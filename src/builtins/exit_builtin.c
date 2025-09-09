@@ -15,81 +15,71 @@
 #include <limits.h>
 #include <stdlib.h>
 
-int ms_status_get(void);
+int	ms_status_get(void);
 
-static int  is_space(int c) { return (c == ' ' || (c >= '\t' && c <= '\r')); }
-
-static int  parse_ll(const char *s, long long *out)
+static int	is_valid_number(const char *str)
 {
-	int         sign;
-	unsigned long long val;
+	int	i;
 
-	while (is_space((unsigned char)*s)) s++;
-	sign = 1;
-	if (*s == '+' || *s == '-') { if (*s == '-') sign = -1; s++; }
-	if (!*s) return (0);
-	val = 0;
-	while (*s)
+	i = 0;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	if (!str[i])
+		return (0);
+	while (str[i])
 	{
-	    if (*s < '0' || *s > '9') return (0);
-	    if (val > (unsigned long long)LLONG_MAX / 10ULL)
-	        return (0);
-	    val = val * 10ULL + (unsigned long long)(*s - '0');
-	    if (sign > 0 && val > (unsigned long long)LLONG_MAX)
-	        return (0);
-	    if (sign < 0 && val > (unsigned long long)LLONG_MAX + 1ULL)
-	        return (0);
-	    s++;
-	}
-	if (sign > 0)
-	    *out = (long long)val;
-	else
-	{
-	    if (val == (unsigned long long)LLONG_MAX + 1ULL)
-	        *out = LLONG_MIN;
-	    else
-	        *out = -(long long)val;
+		if (str[i] < '0' || str[i] > '9')
+			return (0);
+		i++;
 	}
 	return (1);
 }
 
-static void print_err(const char *a, const char *b, const char *c)
+static void	print_exit_error(char *arg)
 {
-	write(2, a, ft_strlen(a));
-	write(2, b, ft_strlen(b));
-	write(2, c, ft_strlen(c));
+	write(2, "exit: ", 6);
+	write(2, arg, ft_strlen(arg));
+	write(2, ": numeric argument required\n", 28);
 }
 
-int bi_exit(char **argv, t_env **env, bool in_parent)
+static int	handle_exit_args(char **argv, int ac, bool in_parent)
 {
-	long long   code_ll;
-	int         ac;
-	int         status;
+	int	status;
 
-	(void)env;
-	ac = 0; while (argv[ac]) ac++;
-	write(1, "exit\n", 5);
-	if (ac == 1)
+	if (!is_valid_number(argv[1]))
 	{
-	    status = ms_status_get();
-	    if (in_parent)
-	        exit(status);
-	    return (status);
-	}
-	if (!parse_ll(argv[1], &code_ll))
-	{
-	    print_err("exit: ", argv[1], ": numeric argument required\n");
-	    if (in_parent)
-	        exit(2);
-	    return (2);
+		print_exit_error(argv[1]);
+		if (in_parent)
+			exit(2);
+		return (2);
 	}
 	if (ac > 2)
 	{
-	    print_err("exit: ", "", "too many arguments\n");
-	    return (1);
+		write(2, "exit: too many arguments\n", 25);
+		return (1);
 	}
-	status = (int)((unsigned char)(code_ll & 0xFF));
+	status = ft_atoi(argv[1]) & 0xFF;
 	if (in_parent)
-	    exit(status);
+		exit(status);
 	return (status);
+}
+
+int	bi_exit(char **argv, t_env **env, bool in_parent)
+{
+	int	ac;
+	int	status;
+
+	(void)env;
+	ac = 0;
+	while (argv[ac])
+		ac++;
+	write(1, "exit\n", 5);
+	if (ac == 1)
+	{
+		status = ms_status_get();
+		if (in_parent)
+			exit(status);
+		return (status);
+	}
+	return (handle_exit_args(argv, ac, in_parent));
 }
