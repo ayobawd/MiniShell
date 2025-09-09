@@ -14,41 +14,64 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-static char *join_path(const char *dir, const char *cmd)
+static char	*join_path(const char *dir, const char *cmd)
 {
-	char *tmp; char *res;
+	char	*tmp;
+	char	*res;
+
 	tmp = ft_strjoin(dir, "/");
-	if (!tmp) return (NULL);
+	if (!tmp)
+		return (NULL);
 	res = ft_strjoin(tmp, cmd);
 	free(tmp);
 	return (res);
 }
 
-char *ms_resolve_path(const char *cmd, t_env *env)
+static void	free_paths(char **paths)
 {
-	char    **paths; char *path_env; int i; char *full;
+	int	i;
 
-	if (!cmd || !*cmd)
-	    return (NULL);
-	if (ft_strchr(cmd, '/'))
-	    return (ft_strdup(cmd));
-	path_env = ms_env_get(env, "PATH");
-	if (!path_env)
-	    return (NULL);
-	paths = ft_split(path_env, ':');
-	if (!paths) return (NULL);
+	i = 0;
+	while (paths[i])
+		free(paths[i++]);
+	free(paths);
+}
+
+static char	*search_in_paths(char **paths, const char *cmd)
+{
+	int		i;
+	char	*full;
+
 	i = 0;
 	while (paths[i])
 	{
-	    full = join_path(paths[i], cmd);
-	    if (full && access(full, X_OK) == 0)
-	    {
-	        int j = 0; while (paths[j]) free(paths[j++]); free(paths);
-	        return (full);
-	    }
-	    free(full);
-	    i++;
+		full = join_path(paths[i], cmd);
+		if (full && access(full, X_OK) == 0)
+		{
+			free_paths(paths);
+			return (full);
+		}
+		free(full);
+		i++;
 	}
-	i = 0; while (paths[i]) free(paths[i++]); free(paths);
+	free_paths(paths);
 	return (NULL);
+}
+
+char	*ms_resolve_path(const char *cmd, t_env *env)
+{
+	char	**paths;
+	char	*path_env;
+
+	if (!cmd || !*cmd)
+		return (NULL);
+	if (ft_strchr(cmd, '/'))
+		return (ft_strdup(cmd));
+	path_env = ms_env_get(env, "PATH");
+	if (!path_env)
+		return (NULL);
+	paths = ft_split(path_env, ':');
+	if (!paths)
+		return (NULL);
+	return (search_in_paths(paths, cmd));
 }
