@@ -196,4 +196,15 @@ void		remove_substr(char *s, unsigned int start, size_t len);
 int			is_spacee(int c);
 int			spaces(char *str);
 
+/* export_helpers.c */
+char		*create_declare_line_with_val(t_env *cur);
+char		*create_declare_line_no_val(t_env *cur);
+void		sort_export_rows(char **rows, int n);
+void		print_export_err(const char *prefix, const char *name,
+				const char *msg);
+
+/* cmds_helpers.c */
+int			count_tokens(char *str);
+char		**extract_tokens(char *str, int tokens);
+
 #endif

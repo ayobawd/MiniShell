@@ -20,6 +20,7 @@ SRCS := \
   $(SRC_DIR)/builtins/cd.c \
   $(SRC_DIR)/builtins/pwd.c \
   $(SRC_DIR)/builtins/export.c \
+  $(SRC_DIR)/builtins/export_helpers.c \
   $(SRC_DIR)/builtins/unset.c \
   $(SRC_DIR)/builtins/env_builtin.c \
   $(SRC_DIR)/builtins/exit_builtin.c \
@@ -45,7 +46,8 @@ SRCS := \
   $(SRC_DIR)/parsing/dollar.c \
   $(SRC_DIR)/parsing/dollar_utils.c \
   $(SRC_DIR)/parsing/dollar_helper.c \
-  $(SRC_DIR)/parsing/cmds.c
+  $(SRC_DIR)/parsing/cmds.c \
+  $(SRC_DIR)/parsing/cmds_helpers.c
 
 OBJS := $(SRCS:.c=.o)
 

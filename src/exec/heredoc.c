@@ -15,39 +15,55 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-int ms_status_get(void);
+int	ms_status_get(void);
 
-static char *expand_env_default(const char *s)
+static char	*expand_env_default(const char *s)
 {
 	(void)s;
 	return (NULL);
 }
 
-int ms_run_heredoc(const char *delim, bool quoted, int *out_fd)
+static int	process_heredoc_line(const char *line, const char *delim,
+	size_t dlen, bool quoted)
 {
-	int     p[2];
-	char    *line;
-	size_t  dlen;
+	char	*tmp;
+
+	if (!ft_strncmp(line, delim, dlen + 1))
+		return (1);
+	if (!quoted)
+	{
+		tmp = expand_env_default(line);
+		if (tmp)
+		{
+			free((char *)line);
+			line = tmp;
+		}
+	}
+	return (0);
+}
+
+int	ms_run_heredoc(const char *delim, bool quoted, int *out_fd)
+{
+	int		p[2];
+	char	*line;
+	size_t	dlen;
 
 	if (pipe(p) < 0)
-	    return (-1);
+		return (-1);
 	dlen = ft_strlen(delim);
 	while (1)
 	{
-	    line = readline("heredoc> ");
-	    if (!line)
-	        break ;
-	    if (!ft_strncmp(line, delim, dlen + 1))
-	    { free(line); break ; }
-	    if (!quoted)
-	    {
-	        /* Best-effort expansion using process env; adapter should pre-expand */
-	        char *tmp = expand_env_default(line);
-	        if (tmp) { free(line); line = tmp; }
-	    }
-	    write(p[1], line, ft_strlen(line));
-	    write(p[1], "\n", 1);
-	    free(line);
+		line = readline("heredoc> ");
+		if (!line)
+			break ;
+		if (process_heredoc_line(line, delim, dlen, quoted))
+		{
+			free(line);
+			break ;
+		}
+		write(p[1], line, ft_strlen(line));
+		write(p[1], "\n", 1);
+		free(line);
 	}
 	close(p[1]);
 	*out_fd = p[0];
