@@ -85,17 +85,6 @@ static int create_pipes(int count, int pipes[][2])
 	return (0);
 }
 
-/* Close all pipes */
-static void close_pipes_all(int count, int pipes[][2])
-{
-	int i = 0;
-	while (i < count)
-	{
-	    close(pipes[i][0]);
-	    close(pipes[i][1]);
-	    i++;
-	}
-}
 
 /* Execute a single command in the pipeline */
 static void exec_single_cmd(t_cmds *cmd, int i, int count, int pipes[][2], t_env **env)
@@ -164,26 +153,7 @@ static void exec_single_cmd(t_cmds *cmd, int i, int count, int pipes[][2], t_env
 	exit(126);
 }
 
-/* Wait for all children and return last exit status */
-static int wait_children(int last_pid, int count)
-{
-	int status;
-	int ret = 0;
-	int pid;
 
-	while (count-- > 0)
-	{
-	    pid = wait(&status);
-	    if (pid == last_pid)
-	    {
-	        if (WIFEXITED(status))
-	            ret = WEXITSTATUS(status);
-	        else if (WIFSIGNALED(status))
-	            ret = 128 + WTERMSIG(status);
-	    }
-	}
-	return (ret);
-}
 
 /* Execute commands directly from parsed structure */
 int ms_exec_parsed(t_cmds *arr, int count, t_env **env)

@@ -23,67 +23,7 @@ int		ms_run_builtin(char **argv, t_env **env, bool in_parent);
 char	*ms_resolve_path(const char *cmd, t_env *env);
 char	**ms_env_to_envp(t_env *env);
 
-static int	open_pipes(int n, int pipes[][2])
-{
-	int	i;
 
-	i = 0;
-	while (i < n)
-	{
-		if (pipe(pipes[i]) < 0)
-			return (-1);
-		i++;
-	}
-	return (0);
-}
-
-static void	close_pipes_all(int n, int pipes[][2])
-{
-	int	i;
-
-	i = 0;
-	while (i < n)
-	{
-		close(pipes[i][0]);
-		close(pipes[i][1]);
-		i++;
-	}
-}
-
-static void	setup_child_pipes(int i, int n, int pipes[][2], int fds[2])
-{
-	if (i > 0)
-		fds[0] = pipes[i - 1][0];
-	else
-		fds[0] = -1;
-	if (i < n - 1)
-		fds[1] = pipes[i][1];
-	else
-		fds[1] = -1;
-	if (i > 0)
-		close(pipes[i - 1][1]);
-	if (i < n - 1)
-		close(pipes[i][0]);
-}
-
-static void	handle_exec_error(char *cmd_name)
-{
-	if (errno == ENOENT)
-	{
-		write(2, "minishell: ", 11);
-		write(2, cmd_name, ft_strlen(cmd_name));
-		write(2, ": command not found\n", 20);
-		exit(127);
-	}
-	if (errno == EACCES)
-	{
-		write(2, "minishell: ", 11);
-		write(2, cmd_name, ft_strlen(cmd_name));
-		write(2, ": Permission denied\n", 19);
-		exit(126);
-	}
-	exit(126);
-}
 
 static void	exec_with_path(t_cmd *cmd, char **envp, char *path)
 {
@@ -117,26 +57,7 @@ static void	child_exec(t_cmd *cmd, t_env **env, int i, int n, int pipes[][2])
 	exec_with_path(cmd, envp, path);
 }
 
-static int	wait_children(int last_pid, int count)
-{
-	int	status;
-	int	ret;
-	int	pid;
 
-	ret = 0;
-	while (count-- > 0)
-	{
-		pid = wait(&status);
-		if (pid == last_pid)
-		{
-			if (WIFEXITED(status))
-				ret = WEXITSTATUS(status);
-			else if (WIFSIGNALED(status))
-				ret = 128 + WTERMSIG(status);
-		}
-	}
-	return (ret);
-}
 
 int	ms_exec_pipeline(t_cmd *first, t_env **env)
 {

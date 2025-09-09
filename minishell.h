@@ -153,6 +153,13 @@ int			ms_status_get(void);
 void		ms_status_set(int st);
 void		ms_cmd_free(t_cmd *pipeline);
 
+/* pipeline utils */
+int			open_pipes(int n, int pipes[][2]);
+void		close_pipes_all(int n, int pipes[][2]);
+void		setup_child_pipes(int i, int n, int pipes[][2], int fds[2]);
+void		handle_exec_error(char *cmd_name);
+int			wait_children(int last_pid, int count);
+
 /* New direct-parser execution interface */
 int			ms_exec_parsed(t_cmds *arr, int count, t_env **env);
 int			ms_exec_line_raw(char *line, t_env **env);
