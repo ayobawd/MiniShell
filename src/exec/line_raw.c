@@ -15,18 +15,6 @@
 /* Helper functions from parsing */
 extern int	g_exit_code;
 
-static void	free_env_list_only(t_list **lst)
-{
-	t_list	*n;
-
-	while (lst && *lst)
-	{
-		n = (*lst)->next;
-		free(*lst);
-		*lst = n;
-	}
-}
-
 static char	**set_parse_env_from_env(t_shell *ps, t_env *env)
 {
 	char	**envp;
@@ -36,30 +24,6 @@ static char	**set_parse_env_from_env(t_shell *ps, t_env *env)
 		return (NULL);
 	copy_env(ps, envp);
 	return (envp);
-}
-
-static void	cleanup_parse_data(t_shell *ps, char **envp_for_parse)
-{
-	int	i;
-
-	i = 0;
-	if (ps->cmds)
-	{
-		while (ps->cmds[i])
-		{
-			free(ps->cmds[i]);
-			i++;
-		}
-		free(ps->cmds);
-	}
-	if (envp_for_parse)
-	{
-		i = 0;
-		while (envp_for_parse[i])
-			free(envp_for_parse[i++]);
-		free(envp_for_parse);
-	}
-	free_env_list_only(&ps->environment);
 }
 
 static int	validate_and_parse(char *line, t_shell *ps, char **envp)

@@ -103,27 +103,10 @@ void	files_saving(t_shell *pipe, t_cmds **tmp)
 	t_cmds		*cmds;
 	t_variables	var;
 
-	var.start = 0;
-	var.quote_char = 0;
-	var.h = 0;
-	var.j = -1;
-	var.x = 0;
+	init_files_saving_vars(&var);
 	*tmp = malloc(sizeof(t_cmds) * pipe->cmd_len);
 	cmds = *tmp;
 	cmds->red_len = 0;
 	while (++var.j < pipe->cmd_len)
-	{
-		cmds[var.j].red_len = num_of_redirects(pipe->cmds[var.j]);
-		if (cmds[var.j].red_len)
-			cmds[var.j].outs = malloc(sizeof(t_redirect)
-					* cmds[var.j].red_len);
-		utils_saving(pipe, cmds, &var);
-		cmds[var.j].cmds = quote_aware_split(pipe->cmds[var.j]);
-		var.h = 0;
-		while (cmds[var.j].cmds[var.h])
-			clean_quotes(cmds[var.j].cmds[var.h++]);
-		var.h = 0;
-		while (cmds[var.j].cmds[var.h])
-			var.h++;
-	}
+		process_cmd_segment(pipe, cmds, &var);
 }
