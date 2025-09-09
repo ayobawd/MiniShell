@@ -12,7 +12,8 @@
 
 #include "../minishell.h"
 
-void	store_the_file_name(char *str, char **file_name, int i, t_variables *var)
+void	store_the_file_name(char *str, char **file_name, int i,
+			t_variables *var)
 {
 	int	start;
 	int	in_quote;
@@ -90,7 +91,10 @@ void	utils_saving(t_shell *pipe, t_cmds *cmds, t_variables *v)
 char	**quote_aware_split(char *str)
 {
 	char	**result;
-	int		i, j, start, tokens;
+	int		i;
+	int		j;
+	int		start;
+	int		tokens;
 	int		in_quote;
 	char	quote_char;
 

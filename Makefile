@@ -35,9 +35,11 @@ SRCS := \
   $(SRC_DIR)/exec/parsed_exec.c \
   $(SRC_DIR)/exec/line_raw.c \
   $(SRC_DIR)/parsing/ahmad_utils.c \
+  $(SRC_DIR)/parsing/string_utils.c \
   $(SRC_DIR)/parsing/spaces_parsing.c \
   $(SRC_DIR)/parsing/redirect.c \
   $(SRC_DIR)/parsing/pipes.c \
+  $(SRC_DIR)/parsing/pipe_utils.c \
   $(SRC_DIR)/parsing/parser.c \
   $(SRC_DIR)/parsing/env.c \
   $(SRC_DIR)/parsing/dollar.c \

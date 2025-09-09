@@ -12,86 +12,7 @@
 
 #include "../minishell.h"
 
-static char	**quote_aware_pipe_split(char *str)
-{
-	char	**result;
-	int		i;
-	int		j;
-	int		start;
-	int		segments;
-	char	quote_char;
-
-	if (!str)
-		return (NULL);
-	segments = 1;
-	i = 0;
-	quote_char = 0;
-	while (str[i])
-	{
-		if (!quote_char && (str[i] == '"' || str[i] == '\''))
-		{
-			quote_char = str[i];
-		}
-		else if (quote_char && str[i] == quote_char)
-		{
-			quote_char = 0;
-		}
-		else if (!quote_char && str[i] == '|')
-		{
-			segments++;
-		}
-		i++;
-	}
-	result = malloc(sizeof(char *) * (segments + 1));
-	if (!result)
-		return (NULL);
-	i = 0;
-	j = 0;
-	quote_char = 0;
-	start = 0;
-	while (j < segments)
-	{
-		start = i;
-
-		/* Find end of segment (next unquoted pipe or end of string) */
-		while (str[i])
-		{
-			if (!quote_char && (str[i] == '"' || str[i] == '\''))
-			{
-				quote_char = str[i];
-			}
-			else if (quote_char && str[i] == quote_char)
-			{
-				quote_char = 0;
-			}
-			else if (!quote_char && str[i] == '|')
-			{
-				break;
-			}
-			i++;
-		}
-
-		/* Extract segment */
-		result[j] = ft_substr(str, start, i - start);
-		if (!result[j])
-		{
-			while (j > 0)
-				free(result[--j]);
-			free(result);
-			return (NULL);
-		}
-		j++;
-
-		/* Skip the pipe character for next iteration */
-		if (str[i] == '|')
-			i++;
-	}
-
-	result[j] = NULL;
-	return (result);
-}
-
-static int pipe_from_back(char *input)
+static int	pipe_from_back(char *input)
 {
 	int	len;
 	int	i;
@@ -112,30 +33,14 @@ static int pipe_from_back(char *input)
 	return (0);
 }
 
-static int pipe_in_quotes(char *input, int i, int quotes, int j)
+static char	**quote_aware_pipe_split(char *str)
 {
-	while (input[i])
-	{
-		if (input[i] == '\"' || input[i] == '\'')
-		{
-			if (quotes == 0)
-				quotes = input[i];
-			else if (!quotes)
-				quotes = 0;
-			i++;
-			continue ;
-		}
-		if (input[i] == '|' && !quotes)
-		{
-			j = i + 1;
-			while (input[j] == ' ' || input[j] == '\t')
-				j++;
-			if (input[j] == '\0' || input[j] == '|')
-				return (0);
-		}
-		i++;
-	}
-	return (1);
+	int	segments;
+
+	segments = count_pipe_segments(str);
+	if (segments == 0)
+		return (NULL);
+	return (extract_segments(str, segments));
 }
 
 static int	check_input_helper(char *input, int in_quote, int in_dquote, int i)
