@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmds_helpers.c                                     :+:      :+:    :+:   */
+/*   pipeline_helpers.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: 42 <student@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,23 +10,46 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "minishell.h"
+#include <unistd.h>
+#include <stdlib.h>
 
-void	process_cmd_segment(t_shell *pipe, t_cmds *cmds, t_variables *var)
+/* Cleanup pipes after execution */
+void	cleanup_pipes(int n, int (*pipes)[2])
 {
-	var->start = 0;
-	var->quote_char = 0;
-	var->h = 0;
-	var->x = 0;
-	cmds[var->j].red_len = num_of_redirects(pipe->cmds[var->j]);
-	if (cmds[var->j].red_len)
-		cmds[var->j].outs = malloc(sizeof(t_redirect) * cmds[var->j].red_len);
-	utils_saving(pipe, cmds, var);
-	cmds[var->j].cmds = quote_aware_split(pipe->cmds[var->j]);
-	var->h = 0;
-	while (cmds[var->j].cmds[var->h])
-		clean_quotes(cmds[var->j].cmds[var->h++]);
-	var->h = 0;
-	while (cmds[var->j].cmds[var->h])
-		var->h++;
+	if (pipes)
+	{
+		if (n > 1)
+		{
+			close(pipes[n - 2][0]);
+			close(pipes[n - 2][1]);
+		}
+		free(pipes);
+	}
+}
+
+/* Handle fork result for pipeline command */
+int	handle_fork_result(int pid, int count, int pipes[][2],
+		int *last_pid)
+{
+	if (pid > 0)
+		*last_pid = pid;
+	else
+	{
+		close_pipes_all(count - 1, pipes);
+		return (1);
+	}
+	return (0);
+}
+
+/* Handle parent process after fork */
+void	handle_parent_process(int status, int i, int (*pipes)[2],
+		int *last_pid)
+{
+	*last_pid = status;
+	if (i > 0)
+	{
+		close(pipes[i - 1][0]);
+		close(pipes[i - 1][1]);
+	}
 }

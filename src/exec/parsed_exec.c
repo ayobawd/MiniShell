@@ -23,224 +23,104 @@ int		ms_run_builtin(char **argv, t_env **env, bool in_parent);
 char	*ms_resolve_path(const char *cmd, t_env *env);
 char	**ms_env_to_envp(t_env *env);
 int		ms_is_builtin(const char *name);
-
-/* Convert t_redirect to t_redir for a single command */
-static t_redir	*convert_redirections(t_cmds *cmd)
-{
-	t_redir	*head;
-	t_redir	**pp;
-	int		i;
-
-	head = NULL;
-	pp = &head;
-	i = 0;
-
-	while (i < cmd->red_len)
-	{
-	    t_redir *r = (t_redir *)malloc(sizeof(t_redir));
-	    if (!r)
-	        return (head);
-	    r->next = NULL;
-	    r->fd = -1;
-	    r->quoted_delim = false;
-	    if (cmd->outs[i].flag == IN_FILE)
-	        r->type = R_IN;
-	    else if (cmd->outs[i].flag == OUT_FILE)
-	        r->type = R_OUT_TRUNC;
-	    else if (cmd->outs[i].flag == APPEND)
-	        r->type = R_OUT_APPEND;
-	    else /* HERE_DOC */
-	        r->type = R_HEREDOC;
-	    r->target = ft_strdup(cmd->outs[i].file_name);
-	    *pp = r;
-	    pp = &r->next;
-	    i++;
-	}
-	return (head);
-}
-
-/* Free redirection list */
-static void free_redirs(t_redir *redirs)
-{
-	t_redir *next;
-	while (redirs)
-	{
-	    next = redirs->next;
-	    free(redirs->target);
-	    free(redirs);
-	    redirs = next;
-	}
-}
+void	close_pipes_all(int n, int pipes[][2]);
+int		wait_children(int last_pid, int count);
+t_redir	*convert_redirections(t_cmds *cmd);
+void	free_redirs(t_redir *redirs);
+void	setup_child_fds(int i, int count, int pipes[][2], int fds[2]);
+void	handle_exec_error(char *cmd_name);
+void	exec_with_path(t_cmds *cmd, char **envp, char *path);
+bool	should_run_in_parent(t_cmds *cmd);
+void	setup_child_exec_env(t_cmds *cmd, int i, int count, int pipes[][2]);
+void	do_exec_cmd(t_cmds *cmd, t_env **env);
 
 /* Create pipes for pipeline */
-static int create_pipes(int count, int pipes[][2])
+static int	create_pipes(int count, int pipes[][2])
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (i < count - 1)
 	{
-	    if (pipe(pipes[i]) == -1)
-	        return (-1);
-	    i++;
+		if (pipe(pipes[i]) == -1)
+			return (-1);
+		i++;
 	}
 	return (0);
 }
 
-/* Close all pipes */
-static void close_pipes_all(int count, int pipes[][2])
+/* Execute single builtin in parent */
+static int	exec_single_builtin(t_cmds *cmd, t_env **env)
 {
-	int i = 0;
-	while (i < count)
-	{
-	    close(pipes[i][0]);
-	    close(pipes[i][1]);
-	    i++;
-	}
-}
+	t_redir	*redirs;
+	int		fds[2];
+	int		status;
 
-/* Execute a single command in the pipeline */
-static void exec_single_cmd(t_cmds *cmd, int i, int count, int pipes[][2], t_env **env)
-{
-	int fds[2] = {-1, -1};
-	char *path;
-	char **envp;
-
-	ms_signals_child_default();
-
-	/* Set up pipes */
-	if (i > 0)
-	    fds[0] = pipes[i - 1][0];
-	if (i < count - 1)
-	    fds[1] = pipes[i][1];
-
-	/* Close other pipe ends */
-	if (i > 0) close(pipes[i - 1][1]);
-	if (i < count - 1) close(pipes[i][0]);
-
-	/* Convert and apply redirections */
-	t_redir *redirs = convert_redirections(cmd);
+	fds[0] = -1;
+	fds[1] = -1;
+	redirs = convert_redirections(cmd);
 	if (ms_apply_redirs(redirs, fds) != 0)
 	{
-	    free_redirs(redirs);
-	    exit(1);
+		free_redirs(redirs);
+		return (1);
 	}
+	status = ms_run_builtin(cmd->cmds, env, true);
 	free_redirs(redirs);
-
-	/* Close remaining pipes */
-	close_pipes_all(count - 1, pipes);
-
-	/* Execute command */
-	if (!cmd->cmds || !cmd->cmds[0] || !cmd->cmds[0][0])
-	    exit(0);
-
-	if (ms_is_builtin(cmd->cmds[0]))
-	    exit(ms_run_builtin(cmd->cmds, env, false));
-
-	path = ms_resolve_path(cmd->cmds[0], *env);
-	envp = ms_env_to_envp(*env);
-
-	if (path)
-	{
-	    execve(path, cmd->cmds, envp);
-	    free(path);
-	}
-	else if (ft_strchr(cmd->cmds[0], '/'))
-	    execve(cmd->cmds[0], cmd->cmds, envp);
-
-	/* if execve returns, it's an error */
-	if (errno == ENOENT)
-	{
-	    write(2, "minishell: ", 11);
-	    write(2, cmd->cmds[0], ft_strlen(cmd->cmds[0]));
-	    write(2, ": command not found\n", 20);
-	    exit(127);
-	}
-	if (errno == EACCES)
-	{
-	    write(2, "minishell: ", 11);
-	    write(2, cmd->cmds[0], ft_strlen(cmd->cmds[0]));
-	    write(2, ": Permission denied\n", 19);
-	    exit(126);
-	}
-	exit(126);
+	return (status);
 }
 
-/* Wait for all children and return last exit status */
-static int wait_children(int last_pid, int count)
+/* Execute a single command - simple approach */
+static void	exec_cmd_simple(t_cmds *cmd, t_child_context *ctx, t_env **env)
 {
-	int status;
-	int ret = 0;
-	int pid;
+	setup_child_exec_env(cmd, ctx->i, ctx->n, ctx->pipes);
+	do_exec_cmd(cmd, env);
+}
 
-	while (count-- > 0)
+/* Fork and execute all commands in pipeline */
+static int	exec_pipeline_commands(t_cmds *arr, int count, t_env **env,
+		int pipes[][2])
+{
+	int				i;
+	int				pid;
+	int				last_pid;
+	t_child_context	ctx;
+
+	i = 0;
+	last_pid = -1;
+	ctx.n = count;
+	ctx.pipes = pipes;
+	while (i < count)
 	{
-	    pid = wait(&status);
-	    if (pid == last_pid)
-	    {
-	        if (WIFEXITED(status))
-	            ret = WEXITSTATUS(status);
-	        else if (WIFSIGNALED(status))
-	            ret = 128 + WTERMSIG(status);
-	    }
+		pid = fork();
+		if (pid == 0)
+		{
+			ctx.i = i;
+			exec_cmd_simple(&arr[i], &ctx, env);
+		}
+		else if (handle_fork_result(pid, count, pipes, &last_pid))
+			return (1);
+		i++;
 	}
-	return (ret);
+	return (last_pid);
 }
 
 /* Execute commands directly from parsed structure */
-int ms_exec_parsed(t_cmds *arr, int count, t_env **env)
+int	ms_exec_parsed(t_cmds *arr, int count, t_env **env)
 {
-	int pipes[255][2];  /* Arbitrary limit like in original */
-	int i = 0;
-	int pid;
-	int last_pid = -1;
-	int status;
+	int	pipes[255][2];
+	int	last_pid;
+	int	status;
 
 	if (!arr || count <= 0)
-	    return (0);
-
-	/* Special case: single builtin that needs to run in parent */
-	if (count == 1 && arr[0].cmds && arr[0].cmds[0]
-	    && ms_is_builtin(arr[0].cmds[0])
-	    && ((!ft_strncmp(arr[0].cmds[0], "cd", 2) && arr[0].cmds[0][2] == '\0')
-	        || (!ft_strncmp(arr[0].cmds[0], "export", 6) && arr[0].cmds[0][6] == '\0')
-	        || (!ft_strncmp(arr[0].cmds[0], "unset", 5) && arr[0].cmds[0][5] == '\0')
-	        || (!ft_strncmp(arr[0].cmds[0], "exit", 4) && arr[0].cmds[0][4] == '\0')))
-	{
-	    t_redir *redirs = convert_redirections(&arr[0]);
-	    int fds[2] = {-1, -1};
-	    if (ms_apply_redirs(redirs, fds) != 0)
-	    {
-	        free_redirs(redirs);
-	        return (1);
-	    }
-	    status = ms_run_builtin(arr[0].cmds, env, true);
-	    free_redirs(redirs);
-	    return (status);
-	}
-
-	/* Create pipes for pipeline */
+		return (0);
+	if (count == 1 && should_run_in_parent(&arr[0]))
+		return (exec_single_builtin(&arr[0], env));
 	if (create_pipes(count, pipes) == -1)
-	    return (1);
-
-	/* Fork and execute each command */
-	while (i < count)
-	{
-	    pid = fork();
-	    if (pid == 0)
-	        exec_single_cmd(&arr[i], i, count, pipes, env);
-	    else if (pid > 0)
-	        last_pid = pid;
-	    else
-	    {
-	        close_pipes_all(count - 1, pipes);
-	        return (1);
-	    }
-	    i++;
-	}
-
-	/* Close all pipes in parent */
+		return (1);
+	last_pid = exec_pipeline_commands(arr, count, env, pipes);
 	close_pipes_all(count - 1, pipes);
-
-	/* Wait for all children */
+	if (last_pid == -1)
+		return (1);
 	status = wait_children(last_pid, count);
 	return (status);
 }
