@@ -103,20 +103,6 @@ static int	exec_fork_loop(t_cmd *first, t_env **env, int n, int (*pipes)[2])
 	return (last_pid);
 }
 
-/* Cleanup pipes after execution */
-static void	cleanup_pipes(int n, int (*pipes)[2])
-{
-	if (pipes)
-	{
-		if (n > 1)
-		{
-			close(pipes[n - 2][0]);
-			close(pipes[n - 2][1]);
-		}
-		free(pipes);
-	}
-}
-
 int	ms_exec_pipeline(t_cmd *first, t_env **env)
 {
 	int		n;

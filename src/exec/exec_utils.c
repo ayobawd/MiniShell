@@ -38,26 +38,6 @@ void	setup_child_fds(int i, int count, int pipes[][2], int fds[2])
 		close(pipes[i][0]);
 }
 
-/* Handle command execution errors */
-void	handle_exec_error(char *cmd_name)
-{
-	if (errno == ENOENT)
-	{
-		write(2, "minishell: ", 11);
-		write(2, cmd_name, ft_strlen(cmd_name));
-		write(2, ": command not found\n", 20);
-		exit(127);
-	}
-	if (errno == EACCES)
-	{
-		write(2, "minishell: ", 11);
-		write(2, cmd_name, ft_strlen(cmd_name));
-		write(2, ": Permission denied\n", 19);
-		exit(126);
-	}
-	exit(126);
-}
-
 /* Execute command with path resolution */
 void	exec_with_path(t_cmds *cmd, char **envp, char *path)
 {
@@ -117,4 +97,20 @@ void	exec_with_path_cmd(t_cmd *cmd, char **envp, char *path)
 	else if (ft_strchr(cmd->argv[0], '/'))
 		execve(cmd->argv[0], cmd->argv, envp);
 	handle_exec_error(cmd->argv[0]);
+}
+
+/* Check if command should run in parent process */
+bool	should_run_in_parent(t_cmds *cmd)
+{
+	if (!cmd->cmds || !cmd->cmds[0] || !ms_is_builtin(cmd->cmds[0]))
+		return (false);
+	if (!ft_strncmp(cmd->cmds[0], "cd", 2) && cmd->cmds[0][2] == '\0')
+		return (true);
+	if (!ft_strncmp(cmd->cmds[0], "export", 6) && cmd->cmds[0][6] == '\0')
+		return (true);
+	if (!ft_strncmp(cmd->cmds[0], "unset", 5) && cmd->cmds[0][5] == '\0')
+		return (true);
+	if (!ft_strncmp(cmd->cmds[0], "exit", 4) && cmd->cmds[0][4] == '\0')
+		return (true);
+	return (false);
 }
