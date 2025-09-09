@@ -59,7 +59,8 @@ void	quotes_check(char **str, t_variables *var)
 	}
 }
 
-void	generate_strings_helper(char **str, char *expanded, t_variables *var)
+static void	generate_strings_helper(char **str, char *expanded,
+		t_variables *var)
 {
 	(void)var;
 	*str = storing(*str, var->i - var->len - 1, var->len + 1, expanded);
