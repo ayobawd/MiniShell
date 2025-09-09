@@ -36,7 +36,7 @@ int	count_pipe_segments(char *str)
 	return (segments);
 }
 
-int	find_segment_end(char *str, int start, char *quote_char)
+static int	find_segment_end(char *str, int start, char *quote_char)
 {
 	int	i;
 

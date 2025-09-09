@@ -206,7 +206,6 @@ void		dollar_expansion(char **str, t_shell *pipe);
 
 /* pipe_utils.c */
 int			count_pipe_segments(char *str);
-int			find_segment_end(char *str, int start, char *quote_char);
 char		**extract_segments(char *str, int segments);
 int			pipe_in_quotes(char *input, int i, int quotes, int j);
 
