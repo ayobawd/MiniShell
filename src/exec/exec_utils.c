@@ -105,3 +105,16 @@ void	do_exec_cmd(t_cmds *cmd, t_env **env)
 	envp = ms_env_to_envp(*env);
 	exec_with_path(cmd, envp, path);
 }
+
+/* Execute command with path resolution (for t_cmd structure) */
+void	exec_with_path_cmd(t_cmd *cmd, char **envp, char *path)
+{
+	if (path)
+	{
+		execve(path, cmd->argv, envp);
+		free(path);
+	}
+	else if (ft_strchr(cmd->argv[0], '/'))
+		execve(cmd->argv[0], cmd->argv, envp);
+	handle_exec_error(cmd->argv[0]);
+}
