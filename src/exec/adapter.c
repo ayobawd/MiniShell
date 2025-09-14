@@ -13,6 +13,9 @@
 #include "../../minishell.h"
 #include <stdlib.h>
 
+/* Forward declarations */
+/* static void	update_shell_env(t_shell *shell, t_env *env); -- Disabled */
+
 /* Convert t_shell environment to t_env linked list */
 t_env	*convert_shell_env(t_shell *shell)
 {
@@ -112,8 +115,11 @@ int	execute_integrated(t_cmds *cmds, int cmd_count, t_shell *shell)
 	/* Execute the pipeline */
 	status = ms_execute_line(pipeline, &env);
 	
-	/* Update global exit code */
+	/* Update global exit code for parsing system */
 	g_exit_code = status;
+	
+	/* TODO: Update shell environment with any changes from export/unset */
+	/* update_shell_env(shell, env); -- Disabled for now due to memory issues */
 	
 	/* Cleanup */
 	ms_cmd_free_no_argv(pipeline);
@@ -121,6 +127,52 @@ int	execute_integrated(t_cmds *cmds, int cmd_count, t_shell *shell)
 	
 	return (status);
 }
+
+/* Update shell environment from execution environment */
+/* Disabled for now due to memory management issues */
+/*
+static void	update_shell_env(t_shell *shell, t_env *env)
+{
+	t_env	*curr;
+	char	*env_str;
+	char	*temp;
+	t_list	*new_node;
+	t_list	*old_env;
+
+	old_env = shell->environment;
+	shell->environment = NULL;
+	shell->environment_num = 0;
+	
+	curr = env;
+	while (curr)
+	{
+		if (curr->key && curr->value)
+		{
+			temp = ft_strjoin(curr->key, "=");
+			if (temp)
+			{
+				env_str = ft_strjoin(temp, curr->value);
+				free(temp);
+				if (env_str)
+				{
+					new_node = ft_lstnew(env_str);
+					if (new_node)
+					{
+						ft_lstadd_back(&shell->environment, new_node);
+						shell->environment_num++;
+					}
+					else
+						free(env_str);
+				}
+			}
+		}
+		curr = curr->next;
+	}
+	
+	if (old_env)
+		ft_lstclear(&old_env, free);
+}
+*/
 
 /* Free redirection list */
 static void	free_redirs(t_redir *redirs)
