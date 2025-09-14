@@ -10,20 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
-#include <unistd.h>
-#include <stdlib.h>
-#include <sys/wait.h>
-#include <signal.h>
-#include <errno.h>
+/*
+ * DISABLED: This pipeline system has too many missing dependencies
+ * and competes with the main parsing system. The execution is now
+ * handled by simple_execute() which works with the parsing output.
+ */
 
-void	ms_signals_child_default(void);
-int		ms_apply_redirs(t_redir *rlist, int fds[2]);
-int		ms_run_builtin(char **argv, t_env **env, bool in_parent);
-char	*ms_resolve_path(const char *cmd, t_env *env);
-char	**ms_env_to_envp(t_env *env);
-void	exec_with_path_cmd(t_cmd *cmd, char **envp, char *path);
-void	cleanup_pipes(int n, int (*pipes)[2]);
+#if 0
 
 static void	child_exec(t_cmd *cmd, t_env **env, t_child_context *ctx)
 {
@@ -113,3 +106,4 @@ int	ms_exec_pipeline(t_cmd *first, t_env **env)
 	status = wait_children(last_pid, n);
 	return (status);
 }
+#endif /* 0 - disabled incomplete pipeline system */
