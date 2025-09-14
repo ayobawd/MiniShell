@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aradwan <aradwan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/24 16:44:29 by aradwan           #+#    #+#             */
-/*   Updated: 2025/08/15 21:17:36 by aradwan          ###   ########.fr       */
+/*   Created: 2025/09/04 18:25:01 by aradwan           #+#    #+#             */
+/*   Updated: 2025/09/14 16:03:09 by aradwan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "minishell.h"
 
-int	g_exit_code = 0;
-
-int	parsing(t_shell *pipe, t_cmds *cmds, char *input)
+int	main(int ac, char **av, char **env)
 {
-	if (spaces(input))
-		return (1);
-	if (!redirections_parse(input))
+	char		*input;
+	t_shell		s;
+	t_cmds		*cmd;
+
+	(void)av;
+	if (ac != 1)
+		return (0);
+	copy_env(&s, env);
+	while (1)
 	{
-		printf("syntax error, unexpected redirection token\n");
+		signal(SIGINT, handle_signals);
+		signal(SIGQUIT, SIG_IGN);
+		input = readline("minishell> ");
+		if (!input)
+			return (printf("exit\n"), 0);
+		if (parsing(&s, cmd, input))
+			continue ;
+		init_commands(&s, &cmd);
+		free_all(&s, cmd);
 		add_history(input);
-		g_exit_code = 258;
-		return (1);
-	}
-	else if (!handle_pipes(pipe, input, cmds))
-	{
-		printf("Error\n");
-		add_history(input);
-		g_exit_code = 258;
-		return (1);
 	}
 	return (0);
 }

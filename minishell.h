@@ -2,68 +2,37 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/01 00:00:00 by marvin            #+#    #+#             */
-/*   Updated: 2024/01/01 00:00:00 by marvin           ###   ########.fr       */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: aradwan <aradwan@student.42.fr>            +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
+/*   Created: 2025/06/24 16:18:39 by aradwan           #+#    #+#             */
+/*   Updated: 2025/08/15 20:16:07 by aradwan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdbool.h>
-# include <string.h>
-# include <signal.h>
+# include "libft/libft.h"
 # include <errno.h>
 # include <limits.h>
-# include "libft/libft.h"
-# include <readline/readline.h>
+# include <pthread.h>
 # include <readline/history.h>
+# include <readline/readline.h>
+# include <signal.h>
+# include <stdbool.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <sys/time.h>
+# include <time.h>
+# include <unistd.h>
 
-/* =====================
-** Public Data Structures
-** ===================== */
-
-/* Exec-side env list */
-typedef struct s_env
-{
-	char			*key;
-	char			*val;
-	struct s_env	*next;
-}	t_env;
-
-/* Exec-side redirection types */
-enum e_redir_type
-{
-	R_IN = 0,
-	R_OUT_TRUNC,
-	R_OUT_APPEND,
-	R_HEREDOC
-};
-
-typedef struct s_redir
-{
-	int				type;
-	char			*target;
-	int				fd;
-	bool			quoted_delim;
-	struct s_redir	*next;
-}	t_redir;
-
-typedef struct s_cmd
-{
-	char			**argv;
-	t_redir			*redirs;
-	bool			is_builtin;
-	struct s_cmd	*next;
-}	t_cmd;
-
-/* Parsing-side helpers (kept to reuse existing parser) */
 extern int	g_exit_code;
+
 enum e_types
 {
 	IN_FILE,
@@ -86,15 +55,15 @@ typedef struct s_cmds
 	t_redirect	*outs;
 }	t_cmds;
 
-typedef struct s_varibles
+typedef struct s_variables
 {
 	int	i;
-	int	j;
-	int	h;
-	int	empty;
+	int	indx;
+	int	cmd_i;
+	int	arg_i;
 	int	space_found;
 	int	quote_char;
-	int	x;
+	int	char_i;
 	int	start;
 	int	len;
 	int	xy;
@@ -111,28 +80,37 @@ typedef struct s_shell
 	char	**cmds;
 }	t_shell;
 
-/* =====================
-** Public API
-** ===================== */
+//           environment              \\.
+int		parsing(t_shell *pipe, t_cmds *cmds, char *input);
+void	copy_env(t_shell *s, char **env);
+char	*ft_add_spaces(char *input);
+void	replace_spaces_tabs(char *str);
+char	*my_getenv(const char *name, t_shell *pipe);
+void	clean_quotes(char *str);
 
-/* loop */
-int			ms_loop(t_env **env);
-char		*ms_prompt(t_env *env);
-void		ms_signals_parent(void);
-void		ms_signals_child_default(void);
+//            utils             \\.
+int		spaces(char *str);
+int		is_spacee(int c);
+void	free_all(t_shell *pipe, t_cmds *cmd);
+void	free_strings(char **av);
+void	remove_substr(char *s, unsigned int start, size_t len);
 
-/* env */
-t_env		*ms_env_from_environ(char **environ);
-char		*ms_env_get(t_env *env, const char *key);
-int			ms_export(t_env **env, const char *key, const char *val);
-int			ms_unset(t_env **env, const char *key);
-void		ms_env_free(t_env *env);
-char		**ms_env_to_envp(t_env *env);
-int			ms_is_valid_key(const char *s);
-t_env		*new_kv(const char *k, const char *v);
-void		env_add_back(t_env **lst, t_env *n);
-char		*create_env_string(t_env *cur);
-void		free_envp_on_error(char **envp, size_t i);
+//            signals            \\.
+void	handle_signals(int signal);
+
+//            redirect           \\.
+int		redirections_parse(char *str);
+int		num_of_redirects(char *str);
+
+//             pipes             \\.
+int		handle_pipes(t_shell *pipe, char *input, t_cmds *cmds);
+
+//             cmds              \\.
+void	init_commands(t_shell *pipe, t_cmds **tmp);
+
+void	rl_replace_line(const char *text, int clear_undo);
+void	rl_redisplay(void);
+void	quotes_check(char **str, t_variables *v);
 
 /* builtins */
 int			bi_echo(char **argv);
@@ -154,92 +132,5 @@ void		ms_status_set(int st);
 void		ms_cmd_free(t_cmd *pipeline);
 int			ms_is_builtin(const char *name);
 int			ms_run_builtin(char **argv, t_env **env, bool in_parent);
-
-/* pipeline utils */
-int			open_pipes(int n, int pipes[][2]);
-void		close_pipes_all(int n, int pipes[][2]);
-void		setup_child_pipes(int i, int n, int pipes[][2], int fds[2]);
-void		handle_exec_error(char *cmd_name);
-int			wait_children(int last_pid, int count);
-void		cleanup_pipes(int n, int (*pipes)[2]);
-void		handle_parent_process(int status, int i, int (*pipes)[2],
-				int *last_pid);
-int			handle_fork_result(int pid, int count, int pipes[][2],
-				int *last_pid);
-
-/* pipeline context structure */
-typedef struct s_child_context
-{
-	int	i;
-	int	n;
-	int	(*pipes)[2];
-}	t_child_context;
-
-/* New direct-parser execution interface */
-int			ms_exec_parsed(t_cmds *arr, int count, t_env **env);
-int			ms_exec_line_raw(char *line, t_env **env);
-
-/* existing parsing functions (reused) */
-char		**quote_aware_split(char *str);
-void		files_saving(t_shell *pipe, t_cmds **tmp);
-int			parsing(t_shell *pipe, t_cmds *cmds, char *input);
-void		copy_env(t_shell *s, char **env);
-char		*ft_add_spaces(char *input);
-void		replace_spaces_tabs(char *str);
-char		*my_getenv(const char *name, t_shell *pipe);
-void		clean_quotes(char *str);
-int			num_of_redirects(char *str);
-void		remove_substr(char *s, unsigned int start, size_t len);
-char		*storing(char *str, int start, int len, char *replace);
-void		quotes_check(char **str, t_variables *var);
-int			generate_string(char **str, char **tmp, t_variables *var,
-				t_shell *pipe);
-int			handle_exit_code(char **str, t_variables *var);
-int			handle_brace_syntax(char **str, t_variables *var);
-void		handle_regular_variable(char **str, t_variables *var);
-void		init_variables(t_variables *var, char **expanded);
-int			spaces(char *str);
-int			is_spacee(int c);
-int			redirections_parse(char *str);
-int			handle_pipes(t_shell *pipe, char *input, t_cmds *cmds);
-void		dollar_expansion(char **str, t_shell *pipe);
-
-/* pipe_utils.c */
-int			count_pipe_segments(char *str);
-char		**extract_segments(char *str, int segments);
-int			pipe_in_quotes(char *input, int i, int quotes, int j);
-
-/* string_utils.c */
-int			num_of_redirects(char *str);
-void		remove_substr(char *s, unsigned int start, size_t len);
-int			is_spacee(int c);
-int			spaces(char *str);
-
-/* export_helpers.c */
-char		*create_declare_line_with_val(t_env *cur);
-char		*create_declare_line_no_val(t_env *cur);
-void		sort_export_rows(char **rows, int n);
-void		print_export_err(const char *prefix, const char *name,
-				const char *msg);
-
-/* cmds_helpers.c */
-int			count_tokens(char *str);
-char		**extract_tokens(char *str, int tokens);
-void		process_cmd_segment(t_shell *pipe, t_cmds *cmds, t_variables *var);
-
-/* exec utils */
-void		setup_child_fds(int i, int count, int pipes[][2], int fds[2]);
-void		exec_with_path(t_cmds *cmd, char **envp, char *path);
-void		setup_child_exec_env(t_cmds *cmd, int i, int count, int pipes[][2]);
-void		do_exec_cmd(t_cmds *cmd, t_env **env);
-void		exec_with_path_cmd(t_cmd *cmd, char **envp, char *path);
-bool		should_run_in_parent(t_cmds *cmd);
-
-/* cmds.c */
-void		utils_saving(t_shell *pipe, t_cmds *cmds, t_variables *v);
-
-/* line_raw_helpers.c */
-void		free_env_list_only(t_list **lst);
-void		cleanup_parse_data(t_shell *ps, char **envp_for_parse);
 
 #endif

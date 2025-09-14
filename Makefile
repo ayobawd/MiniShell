@@ -1,81 +1,22 @@
-NAME := minishell
-CC := cc
-CFLAGS := -Wall -Wextra -Werror
+NAME = minishell
+SRCS =	minishell.c parsing/signals.c  parsing/utils.c  parsing/parser.c parsing/redirect.c  parsing/spaces_parsing.c \
+ parsing/env.c  free_all.c  parsing/pipes.c parsing/dollar.c parsing/cmds.c parsing/utils2.c
+OBJS = $(SRCS:.c=.o)
+CC = cc
 
-SRC_DIR := src
-LIBFT_DIR := libft
-INC := -I. -I$(LIBFT_DIR)
-CFLAGS += $(INC)
+CFLAGS = -Wall -Wextra -Werror -g
 
-SRCS := \
-  $(SRC_DIR)/main.c \
-  $(SRC_DIR)/loop/prompt.c \
-  $(SRC_DIR)/loop/signals.c \
-  $(SRC_DIR)/loop/line.c \
-  $(SRC_DIR)/env/env.c \
-  $(SRC_DIR)/env/env_utils.c \
-  $(SRC_DIR)/env/env_convert.c \
-  $(SRC_DIR)/env/utils.c \
-  $(SRC_DIR)/builtins/echo.c \
-  $(SRC_DIR)/builtins/cd.c \
-  $(SRC_DIR)/builtins/pwd.c \
-  $(SRC_DIR)/builtins/export.c \
-  $(SRC_DIR)/builtins/export_helpers.c \
-  $(SRC_DIR)/builtins/unset.c \
-  $(SRC_DIR)/builtins/env_builtin.c \
-  $(SRC_DIR)/builtins/exit_builtin.c \
-  $(SRC_DIR)/exec/dispatch.c \
-  $(SRC_DIR)/exec/pipeline.c \
-  $(SRC_DIR)/exec/pipeline_utils.c \
-  $(SRC_DIR)/exec/pipeline_helpers.c \
-  $(SRC_DIR)/exec/redir.c \
-  $(SRC_DIR)/exec/heredoc.c \
-  $(SRC_DIR)/exec/path.c \
-  $(SRC_DIR)/exec/child.c \
-  $(SRC_DIR)/exec/parent.c \
-  $(SRC_DIR)/exec/status.c \
-  $(SRC_DIR)/exec/free.c \
-  $(SRC_DIR)/exec/parsed_exec.c \
-  $(SRC_DIR)/exec/redir_utils.c \
-  $(SRC_DIR)/exec/exec_utils.c \
-  $(SRC_DIR)/exec/exec_conditions.c \
-  $(SRC_DIR)/exec/line_raw.c \
-  $(SRC_DIR)/exec/line_raw_helpers.c \
-  $(SRC_DIR)/parsing/ahmad_utils.c \
-  $(SRC_DIR)/parsing/string_utils.c \
-  $(SRC_DIR)/parsing/token_utils.c \
-  $(SRC_DIR)/parsing/spaces_parsing.c \
-  $(SRC_DIR)/parsing/redirect.c \
-  $(SRC_DIR)/parsing/pipes.c \
-  $(SRC_DIR)/parsing/pipe_utils.c \
-  $(SRC_DIR)/parsing/parser.c \
-  $(SRC_DIR)/parsing/env.c \
-  $(SRC_DIR)/parsing/dollar.c \
-  $(SRC_DIR)/parsing/dollar_utils.c \
-  $(SRC_DIR)/parsing/dollar_helper.c \
-  $(SRC_DIR)/parsing/cmds.c \
-  $(SRC_DIR)/parsing/cmds_helpers.c \
-  $(SRC_DIR)/parsing/token_extraction.c
-
-OBJS := $(SRCS:.c=.o)
-
-all: $(NAME)
-
+all : $(NAME)
 
 $(NAME): $(OBJS)
-	$(MAKE) -C $(LIBFT_DIR) bonus
-	$(CC) $(CFLAGS) $(INC) $(OBJS) -L$(LIBFT_DIR) -lft -lreadline -o $(NAME)
+	make -C ./libft && make bonus -C ./libft
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L ./libft -lft -lreadline -I.brew/opt/readline/include -L/opt/vagrant/embedded/lib -lreadline
 
 clean:
-	$(MAKE) -C $(LIBFT_DIR) clean
+	cd libft && make fclean
 	rm -f $(OBJS)
 
 fclean: clean
-	$(MAKE) -C $(LIBFT_DIR) fclean
 	rm -f $(NAME)
 
 re: fclean all
-
-
-
-.PHONY: all clean fclean re 
