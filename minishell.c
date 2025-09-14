@@ -29,11 +29,16 @@ int	main(int ac, char **av, char **env)
 		input = readline("minishell> ");
 		if (!input)
 			return (printf("exit\n"), 0);
+		cmd = NULL;  // Initialize cmd to NULL
 		if (parsing(&s, cmd, input))
+		{
+			free(input);
 			continue ;
+		}
 		init_commands(&s, &cmd);
 		free_all(&s, cmd);
 		add_history(input);
+		free(input);
 	}
 	return (0);
 }

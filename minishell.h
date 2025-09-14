@@ -80,6 +80,49 @@ typedef struct s_shell
 	char	**cmds;
 }	t_shell;
 
+/* Environment variable structure for exec system */
+typedef struct s_env
+{
+	char			*key;
+	char			*value;
+	struct s_env	*next;
+}	t_env;
+
+/* Redirection types for exec system */
+typedef enum e_redir_type
+{
+	R_IN,
+	R_OUT_TRUNC,
+	R_OUT_APPEND,
+	R_HEREDOC
+}	t_redir_type;
+
+/* Redirection structure for exec system */
+typedef struct s_redir
+{
+	t_redir_type		type;
+	char				*target;
+	bool				quoted_delim;
+	int					fd;
+	struct s_redir		*next;
+}	t_redir;
+
+/* Command structure for exec system */
+typedef struct s_cmd
+{
+	char			**argv;
+	t_redir			*redirs;
+	struct s_cmd	*next;
+}	t_cmd;
+
+/* Child execution context */
+typedef struct s_child_context
+{
+	int		i;
+	int		n;
+	int		(*pipes)[2];
+}	t_child_context;
+
 //           environment              \\.
 int		parsing(t_shell *pipe, t_cmds *cmds, char *input);
 void	copy_env(t_shell *s, char **env);

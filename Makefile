@@ -1,10 +1,10 @@
 NAME = minishell
-SRCS =	minishell.c parsing/signals.c  parsing/utils.c  parsing/parser.c parsing/redirect.c  parsing/spaces_parsing.c \
- parsing/env.c  free_all.c  parsing/pipes.c parsing/dollar.c parsing/cmds.c parsing/utils2.c
+SRCS =	minishell.c src/parsing/signals.c  src/parsing/utils.c  src/parsing/parser.c src/parsing/redirect.c  src/parsing/spaces_parsing.c \
+ src/parsing/env.c  free_all.c  src/parsing/pipes.c src/parsing/dollar.c src/parsing/cmds.c src/parsing/utils2.c
 OBJS = $(SRCS:.c=.o)
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g -I.
 
 all : $(NAME)
 
