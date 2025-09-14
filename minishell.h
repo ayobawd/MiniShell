@@ -176,7 +176,6 @@ void		ms_cmd_free(t_cmd *pipeline);
 int			ms_is_builtin(const char *name);
 int			ms_run_builtin(char **argv, t_env **env, bool in_parent);
 
-/* Simple execution for basic functionality */
-int			simple_execute(t_cmds *cmds, int cmd_count, t_shell *shell);
+
 
 #endif
