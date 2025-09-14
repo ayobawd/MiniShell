@@ -38,8 +38,8 @@ int	main(int ac, char **av, char **env)
 			continue ;
 		}
 		init_commands(&s, &cmd);
-		/* Execute the commands */
-		simple_execute(cmd, s.cmd_len, &s);
+		/* Execute the commands using integrated execution system */
+		execute_integrated(cmd, s.cmd_len, &s);
 		free_all(&s, cmd);
 		add_history(input);
 		free(input);

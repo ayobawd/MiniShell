@@ -40,7 +40,7 @@ static void	fill_rows_array(t_env *env, char **rows)
 	cur = env;
 	while (cur)
 	{
-		if (cur->val)
+		if (cur->value)
 			rows[i] = create_declare_line_with_val(cur);
 		else
 			rows[i] = create_declare_line_no_val(cur);

@@ -112,6 +112,7 @@ typedef struct s_cmd
 {
 	char			**argv;
 	t_redir			*redirs;
+	bool			is_builtin;
 	struct s_cmd	*next;
 }	t_cmd;
 
@@ -164,6 +165,12 @@ int			bi_unset(char **argv, t_env **env);
 int			bi_env(char **argv, t_env **env);
 int			bi_exit(char **argv, t_env **env, bool in_parent);
 
+/* export helpers */
+char		*create_declare_line_with_val(t_env *cur);
+char		*create_declare_line_no_val(t_env *cur);
+void		sort_export_rows(char **rows, int n);
+void		print_export_err(const char *prefix, const char *name, const char *msg);
+
 /* exec */
 int			ms_execute_line(t_cmd *pipeline, t_env **env);
 int			ms_exec_pipeline(t_cmd *first, t_env **env);
@@ -176,6 +183,30 @@ void		ms_cmd_free(t_cmd *pipeline);
 int			ms_is_builtin(const char *name);
 int			ms_run_builtin(char **argv, t_env **env, bool in_parent);
 
+/* Environment utilities */
+char		*ms_env_get(t_env *env, const char *key);
+char		**ms_env_to_envp(t_env *env);
+void		ms_export(t_env **env, const char *key, const char *value);
+void		ms_unset(t_env **env, const char *key);
+void		ms_env_free(t_env *env);
+t_env		*convert_shell_env(t_shell *shell);
+int			ms_is_valid_key(const char *key);
+
+/* Adapter function */
+int			execute_integrated(t_cmds *cmds, int cmd_count, t_shell *shell);
+void		ms_cmd_free_no_argv(t_cmd *p);
+t_redir		*convert_redirections(t_cmds *cmd);
+
+/* Signal handling */
+void		ms_signals_child_default(void);
+
+/* Pipeline utilities */
+int			open_pipes(int n, int pipes[][2]);
+void		close_pipes_all(int n, int pipes[][2]);
+void		setup_child_pipes(int i, int n, int pipes[][2], int fds[2]);
+void		handle_exec_error(char *cmd_name);
+int			wait_children(int last_pid, int count);
+void		handle_parent_process(int status, int i, int (*pipes)[2], int *last_pid);
 
 
 #endif

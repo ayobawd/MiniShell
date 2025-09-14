@@ -22,7 +22,7 @@ char	*create_declare_line_with_val(t_env *cur)
 
 	prefix = ft_strjoin("declare -x ", cur->key);
 	eq = ft_strjoin(prefix, "=\"");
-	val = ft_strjoin(eq, cur->val);
+	val = ft_strjoin(eq, cur->value);
 	line = ft_strjoin(val, "\"\n");
 	free(prefix);
 	free(eq);
