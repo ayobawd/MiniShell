@@ -10,7 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+/*
+ * DISABLED: This file is part of the incomplete exec pipeline system
+ * that depends on missing structures and functions. The execution is
+ * now handled by simple_execute() which works with parsing output.
+ */
+
+#if 0
 
 int		ms_status_get(void);
 void	ms_status_set(int st);
@@ -88,3 +94,4 @@ int	ms_execute_line(t_cmd *pipeline, t_env **env)
 	ms_status_set(status);
 	return (status);
 }
+#endif /* 0 - disabled incomplete exec dispatch */

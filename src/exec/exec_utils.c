@@ -10,20 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
-#include <unistd.h>
-#include <errno.h>
-#include <stdlib.h>
+/*
+ * DISABLED: This file contains utilities for the incomplete exec pipeline
+ * system that has many missing dependencies. The execution is now handled
+ * by simple_execute() which works directly with parsing output.
+ */
 
-/* Forward declarations */
-void	ms_signals_child_default(void);
-int		ms_run_builtin(char **argv, t_env **env, bool in_parent);
-char	*ms_resolve_path(const char *cmd, t_env *env);
-char	**ms_env_to_envp(t_env *env);
-int		ms_is_builtin(const char *name);
-void	close_pipes_all(int n, int pipes[][2]);
-t_redir	*convert_redirections(t_cmds *cmd);
-void	free_redirs(t_redir *redirs);
+#if 0
 
 /* Setup pipes for child process */
 void	setup_child_fds(int i, int count, int pipes[][2], int fds[2])
@@ -98,3 +91,4 @@ void	exec_with_path_cmd(t_cmd *cmd, char **envp, char *path)
 		execve(cmd->argv[0], cmd->argv, envp);
 	handle_exec_error(cmd->argv[0]);
 }
+#endif /* 0 - disabled incomplete exec utils */

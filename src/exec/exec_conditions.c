@@ -10,7 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+/*
+ * DISABLED: This file is part of the incomplete exec system that depends
+ * on missing functions. The execution is now handled by simple_execute().
+ */
+
+#if 0
 
 /* Check if command should run in parent process */
 bool	should_run_in_parent(t_cmds *cmd)
@@ -27,3 +32,4 @@ bool	should_run_in_parent(t_cmds *cmd)
 		return (true);
 	return (false);
 }
+#endif /* 0 - disabled incomplete exec conditions */
