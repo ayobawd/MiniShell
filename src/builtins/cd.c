@@ -12,7 +12,7 @@
 
 #include <unistd.h>
 #include <stdlib.h>
-#include "minishell.h"
+#include "../../minishell.h"
 
 static void	update_pwd_vars(t_env **env, const char *oldpwd)
 {

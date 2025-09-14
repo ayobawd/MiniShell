@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../minishell.h"
 #include <unistd.h>
 
 int	bi_env(char **argv, t_env **env)
@@ -22,11 +22,11 @@ int	bi_env(char **argv, t_env **env)
 	cur = *env;
 	while (cur)
 	{
-		if (cur->val)
+		if (cur->value)
 		{
 			write(1, cur->key, ft_strlen(cur->key));
 			write(1, "=", 1);
-			write(1, cur->val, ft_strlen(cur->val));
+			write(1, cur->value, ft_strlen(cur->value));
 			write(1, "\n", 1);
 		}
 		cur = cur->next;

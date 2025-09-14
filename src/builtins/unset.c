@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../minishell.h"
 #include <unistd.h>
 
 int	ms_is_valid_key(const char *s);

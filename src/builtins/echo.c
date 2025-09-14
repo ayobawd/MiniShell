@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include "minishell.h"
+#include "../../minishell.h"
 
 static int	is_n_flag(const char *s)
 {

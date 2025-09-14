@@ -12,7 +12,7 @@
 
 #include <unistd.h>
 #include <limits.h>
-#include "minishell.h"
+#include "../../minishell.h"
 
 int	bi_pwd(char **argv)
 {

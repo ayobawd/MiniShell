@@ -10,6 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../minishell.h"
 
 /* Parent-side helpers integrated into pipeline.c */

@@ -17,6 +17,7 @@
 # define MINISHELL_H
 
 # include "libft/libft.h"
+# include "exec_types.h"
 # include <errno.h>
 # include <limits.h>
 # include <pthread.h>
@@ -121,6 +122,12 @@ int			bi_unset(char **argv, t_env **env);
 int			bi_env(char **argv, t_env **env);
 int			bi_exit(char **argv, t_env **env, bool in_parent);
 
+/* builtin helpers */
+char		*create_declare_line_with_val(t_env *cur);
+char		*create_declare_line_no_val(t_env *cur);
+void		sort_export_rows(char **rows, int n);
+void		print_export_err(const char *prefix, const char *name, const char *msg);
+
 /* exec */
 int			ms_execute_line(t_cmd *pipeline, t_env **env);
 int			ms_exec_pipeline(t_cmd *first, t_env **env);
@@ -132,5 +139,21 @@ void		ms_status_set(int st);
 void		ms_cmd_free(t_cmd *pipeline);
 int			ms_is_builtin(const char *name);
 int			ms_run_builtin(char **argv, t_env **env, bool in_parent);
+
+/* exec helpers */
+char		*ms_env_get(t_env *env, const char *key);
+int			ms_export(t_env **env, const char *key, const char *value);
+char		**ms_env_to_envp(t_env *env);
+int			ms_exec_parsed(t_cmds *arr, int count, t_env **env);
+void		ms_signals_child_default(void);
+int			ms_is_valid_key(const char *s);
+void		ms_unset(t_env **env, const char *key);
+void		handle_exec_error(const char *cmd);
+int			handle_fork_result(int pid, int count, int pipes[][2], int *last_pid);
+void		close_pipes_all(int n, int pipes[][2]);
+
+/* environment conversion */
+t_env		*shell_to_exec_env(t_shell *shell);
+void		free_exec_env(t_env *env);
 
 #endif

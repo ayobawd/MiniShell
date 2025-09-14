@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../minishell.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <sys/wait.h>
@@ -28,7 +28,7 @@ int		wait_children(int last_pid, int count);
 t_redir	*convert_redirections(t_cmds *cmd);
 void	free_redirs(t_redir *redirs);
 void	setup_child_fds(int i, int count, int pipes[][2], int fds[2]);
-void	handle_exec_error(char *cmd_name);
+void	handle_exec_error(const char *cmd_name);
 void	exec_with_path(t_cmds *cmd, char **envp, char *path);
 bool	should_run_in_parent(t_cmds *cmd);
 void	setup_child_exec_env(t_cmds *cmd, int i, int count, int pipes[][2]);

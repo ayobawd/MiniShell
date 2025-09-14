@@ -10,6 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../minishell.h"
 
 /* Intentionally left minimal; child logic lives in pipeline.c */
