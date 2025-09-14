@@ -39,6 +39,10 @@ int	simple_execute(t_cmds *cmds, int cmd_count, t_shell *shell)
 		{
 			bi_pwd(cmds[i].cmds);
 		}
+		else if (!ft_strncmp(cmds[i].cmds[0], "exit", 4) && cmds[i].cmds[0][4] == '\0')
+		{
+			exit(bi_exit(cmds[i].cmds, NULL, true));
+		}
 		else
 		{
 			/* Fork and exec for external commands */
