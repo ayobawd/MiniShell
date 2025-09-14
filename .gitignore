@@ -1,0 +1,15 @@
+# Build artifacts
+*.o
+minishell
+
+# Library build artifacts 
+libft/*.o
+libft/libft.a
+
+# System files
+.DS_Store
+
+# Temporary files
+*~
+*.swp
+*.tmp

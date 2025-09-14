@@ -83,6 +83,7 @@ void	utils_saving(t_shell *pipe, t_cmds *cmds, t_variables *v)
 	v->char_i = -1;
 	while (pipe->cmds[v->cmd_i][++v->char_i])
 	{
+		v->i = v->char_i;  // Sync v->i with v->char_i for quotes_check
 		quotes_check(&pipe->cmds[v->cmd_i], v);
 		if ((pipe->cmds[v->cmd_i][v->char_i] == '>' || \
 pipe->cmds[v->cmd_i][v->char_i] == '<') && !v->quote_char)
@@ -111,21 +112,35 @@ void	init_commands(t_shell *pipe, t_cmds **tmp)
 	v.cmd_i = -1;
 	v.char_i = 0;
 	*tmp = malloc(sizeof(t_cmds) * pipe->cmd_len);
+	if (!*tmp)
+		return;
 	cmds = *tmp;
 	cmds->red_len = 0;
 	while (++v.cmd_i < pipe->cmd_len)
 	{
+		if (!pipe->cmds || !pipe->cmds[v.cmd_i])
+			break;
 		cmds[v.cmd_i].red_len = num_of_redirects(pipe->cmds[v.cmd_i]);
 		if (cmds[v.cmd_i].red_len)
+		{
 			cmds[v.cmd_i].outs = malloc(sizeof(t_redirect) * \
 cmds[v.cmd_i].red_len);
+		}
+		else
+		{
+			cmds[v.cmd_i].outs = NULL;
+		}
 		utils_saving(pipe, cmds, &v);
 		cmds[v.cmd_i].cmds = ft_split(pipe->cmds[v.cmd_i], ' ');
 		v.arg_i = 0;
 		while (cmds[v.cmd_i].cmds[v.arg_i])
+		{
 			clean_quotes(cmds[v.cmd_i].cmds[v.arg_i++]);
+		}
+		/* Debug prints commented out
 		v.arg_i = 0;
 		while (cmds[v.cmd_i].cmds[v.arg_i])
 			puts(cmds[v.cmd_i].cmds[v.arg_i++]);
+		*/
 	}
 }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../minishell.h"
 #include <unistd.h>
 
 char	*create_declare_line_with_val(t_env *cur)

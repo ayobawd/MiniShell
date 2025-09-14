@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../minishell.h"
 
 /* Check if command should run in parent process */
 bool	should_run_in_parent(t_cmds *cmd)

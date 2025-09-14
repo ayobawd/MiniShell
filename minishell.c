@@ -22,6 +22,8 @@ int	main(int ac, char **av, char **env)
 	if (ac != 1)
 		return (0);
 	copy_env(&s, env);
+	s.cmd_len = 0; // Initialize cmd_len
+	s.cmds = NULL; // Initialize cmds
 	while (1)
 	{
 		signal(SIGINT, handle_signals);
@@ -36,6 +38,8 @@ int	main(int ac, char **av, char **env)
 			continue ;
 		}
 		init_commands(&s, &cmd);
+		/* Execute the commands */
+		simple_execute(cmd, s.cmd_len, &s);
 		free_all(&s, cmd);
 		add_history(input);
 		free(input);
