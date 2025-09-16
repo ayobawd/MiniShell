@@ -23,7 +23,9 @@ SRCS = \
 	$(EXECUTION_DIR)/env_utils.c \
 	$(EXECUTION_DIR)/env_helpers.c \
 	$(EXECUTION_DIR)/redirections.c \
-	$(EXECUTION_DIR)/pipelines.c
+	$(EXECUTION_DIR)/pipelines.c \
+	$(EXECUTION_DIR)/pipelines_utils.c \
+	$(EXECUTION_DIR)/pipelines_exec.c
 
 OBJS = $(SRCS:.c=.o)
 CC = cc

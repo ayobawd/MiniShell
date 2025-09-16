@@ -52,26 +52,12 @@ int	is_builtin(char *cmd)
 	return (0);
 }
 
-char	*find_command_path(char *cmd, t_shell *shell)
+static char	*search_in_paths(char *cmd, char **paths)
 {
-	char	*path_env;
-	char	**paths;
 	char	*full_path;
 	char	*temp;
 	int		i;
 
-	if (ft_strchr(cmd, '/'))
-	{
-		if (access(cmd, F_OK | X_OK) == 0)
-			return (ft_strdup(cmd));
-		return (NULL);
-	}
-	path_env = my_getenv("PATH", shell);
-	if (!path_env)
-		return (NULL);
-	paths = ft_split(path_env, ':');
-	if (!paths)
-		return (NULL);
 	i = 0;
 	while (paths[i])
 	{
@@ -93,10 +79,39 @@ char	*find_command_path(char *cmd, t_shell *shell)
 	return (NULL);
 }
 
+char	*find_command_path(char *cmd, t_shell *shell)
+{
+	char	*path_env;
+	char	**paths;
+
+	if (ft_strchr(cmd, '/'))
+	{
+		if (access(cmd, F_OK | X_OK) == 0)
+			return (ft_strdup(cmd));
+		return (NULL);
+	}
+	path_env = my_getenv("PATH", shell);
+	if (!path_env)
+		return (NULL);
+	paths = ft_split(path_env, ':');
+	if (!paths)
+		return (NULL);
+	return (search_in_paths(cmd, paths));
+}
+
+static int	wait_for_child(pid_t pid)
+{
+	int	status;
+
+	waitpid(pid, &status, 0);
+	if (WIFEXITED(status))
+		return (WEXITSTATUS(status));
+	return (1);
+}
+
 static int	fork_and_execute(char *cmd_path, char **cmd_args, char **env_array)
 {
 	pid_t	pid;
-	int		status;
 
 	pid = fork();
 	if (pid == 0)
@@ -108,19 +123,13 @@ static int	fork_and_execute(char *cmd_path, char **cmd_args, char **env_array)
 		}
 	}
 	else if (pid > 0)
-	{
-		waitpid(pid, &status, 0);
-		if (WIFEXITED(status))
-			status = WEXITSTATUS(status);
-		else
-			status = 1;
-	}
+		return (wait_for_child(pid));
 	else
 	{
 		perror("fork");
-		status = 1;
+		return (1);
 	}
-	return (status);
+	return (0);
 }
 
 int	execute_external_command(t_shell *shell, t_cmds *cmd)
