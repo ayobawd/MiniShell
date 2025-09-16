@@ -18,7 +18,9 @@ SRCS = \
 	$(PARSING_DIR)/utils2.c \
 	$(EXECUTION_DIR)/execution.c \
 	$(EXECUTION_DIR)/builtins.c \
-	$(EXECUTION_DIR)/env_utils.c
+	$(EXECUTION_DIR)/env_utils.c \
+	$(EXECUTION_DIR)/redirections.c \
+	$(EXECUTION_DIR)/pipelines.c
 
 OBJS = $(SRCS:.c=.o)
 CC = cc

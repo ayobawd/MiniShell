@@ -1,0 +1,245 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipelines.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aradwan <aradwan@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/XX XX:XX:XX by aradwan           #+#    #+#             */
+/*   Updated: 2025/01/XX XX:XX:XX by aradwan          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../minishell.h"
+
+int	execute_pipeline(t_shell *shell, t_cmds *cmds, int cmd_count)
+{
+	int		**pipes;
+	pid_t	*pids;
+	int		i;
+	int		status;
+
+	if (cmd_count == 1)
+		return (execute_single_command_with_redirections(shell, &cmds[0]));
+
+	pipes = create_pipes(cmd_count - 1);
+	if (!pipes)
+		return (1);
+
+	pids = malloc(sizeof(pid_t) * cmd_count);
+	if (!pids)
+	{
+		free_pipes(pipes, cmd_count - 1);
+		return (1);
+	}
+
+	i = 0;
+	while (i < cmd_count)
+	{
+		pids[i] = fork();
+		if (pids[i] == 0)
+		{
+			// Child process
+			setup_pipe_redirections(pipes, i, cmd_count);
+			close_all_pipes(pipes, cmd_count - 1);
+			
+			if (setup_redirections(&cmds[i]) == -1)
+				exit(1);
+				
+			if (is_builtin(cmds[i].cmds[0]))
+			{
+				exit(execute_builtin(shell, &cmds[i]));
+			}
+			else
+			{
+				exit(execute_external_command(shell, &cmds[i]));
+			}
+		}
+		else if (pids[i] == -1)
+		{
+			perror("fork");
+			free_pipes(pipes, cmd_count - 1);
+			free(pids);
+			return (1);
+		}
+		i++;
+	}
+
+	// Parent process - close all pipes and wait for children
+	close_all_pipes(pipes, cmd_count - 1);
+	status = wait_for_children(pids, cmd_count);
+
+	free_pipes(pipes, cmd_count - 1);
+	free(pids);
+	return (status);
+}
+
+int	execute_single_command_with_redirections(t_shell *shell, t_cmds *cmd)
+{
+	pid_t	pid;
+	int		status;
+	int		saved_stdin;
+	int		saved_stdout;
+
+	// Save original file descriptors
+	saved_stdin = dup(STDIN_FILENO);
+	saved_stdout = dup(STDOUT_FILENO);
+
+	// Handle built-ins differently (no fork for some)
+	if (is_builtin(cmd->cmds[0]) && should_fork_builtin(cmd))
+	{
+		if (setup_redirections(cmd) == -1)
+		{
+			restore_fds(saved_stdin, saved_stdout);
+			return (1);
+		}
+		
+		status = execute_builtin(shell, cmd);
+		restore_fds(saved_stdin, saved_stdout);
+		return (status);
+	}
+
+	// Fork for external commands or built-ins that need isolation
+	pid = fork();
+	if (pid == 0)
+	{
+		// Child process
+		if (setup_redirections(cmd) == -1)
+			exit(1);
+			
+		if (is_builtin(cmd->cmds[0]))
+			exit(execute_builtin(shell, cmd));
+		else
+			exit(execute_external_command(shell, cmd));
+	}
+	else if (pid > 0)
+	{
+		// Parent process
+		waitpid(pid, &status, 0);
+		if (WIFEXITED(status))
+			status = WEXITSTATUS(status);
+		else
+			status = 1;
+	}
+	else
+	{
+		perror("fork");
+		status = 1;
+	}
+
+	restore_fds(saved_stdin, saved_stdout);
+	return (status);
+}
+
+int	**create_pipes(int num_pipes)
+{
+	int	**pipes;
+	int	i;
+
+	pipes = malloc(sizeof(int *) * num_pipes);
+	if (!pipes)
+		return (NULL);
+
+	i = 0;
+	while (i < num_pipes)
+	{
+		pipes[i] = malloc(sizeof(int) * 2);
+		if (!pipes[i] || pipe(pipes[i]) == -1)
+		{
+			free_pipes(pipes, i);
+			return (NULL);
+		}
+		i++;
+	}
+
+	return (pipes);
+}
+
+void	setup_pipe_redirections(int **pipes, int cmd_index, int cmd_count)
+{
+	// If not first command, read from previous pipe
+	if (cmd_index > 0)
+	{
+		dup2(pipes[cmd_index - 1][0], STDIN_FILENO);
+	}
+
+	// If not last command, write to next pipe
+	if (cmd_index < cmd_count - 1)
+	{
+		dup2(pipes[cmd_index][1], STDOUT_FILENO);
+	}
+}
+
+void	close_all_pipes(int **pipes, int num_pipes)
+{
+	int	i;
+
+	i = 0;
+	while (i < num_pipes)
+	{
+		close(pipes[i][0]);
+		close(pipes[i][1]);
+		i++;
+	}
+}
+
+void	free_pipes(int **pipes, int num_pipes)
+{
+	int	i;
+
+	if (!pipes)
+		return;
+
+	i = 0;
+	while (i < num_pipes)
+	{
+		free(pipes[i]);
+		i++;
+	}
+	free(pipes);
+}
+
+int	wait_for_children(pid_t *pids, int count)
+{
+	int	i;
+	int	status;
+	int	last_status;
+
+	last_status = 0;
+	i = 0;
+	while (i < count)
+	{
+		waitpid(pids[i], &status, 0);
+		if (WIFEXITED(status))
+			last_status = WEXITSTATUS(status);
+		else
+			last_status = 1;
+		i++;
+	}
+
+	return (last_status);
+}
+
+int	should_fork_builtin(t_cmds *cmd)
+{
+	// Some built-ins like cd, export, unset should not be forked
+	// as they need to modify the parent shell's environment
+	if (ft_strncmp(cmd->cmds[0], "cd", 3) == 0)
+		return (0);
+	if (ft_strncmp(cmd->cmds[0], "export", 7) == 0)
+		return (0);
+	if (ft_strncmp(cmd->cmds[0], "unset", 6) == 0)
+		return (0);
+	if (ft_strncmp(cmd->cmds[0], "exit", 5) == 0)
+		return (0);
+
+	return (1);
+}
+
+void	restore_fds(int saved_stdin, int saved_stdout)
+{
+	dup2(saved_stdin, STDIN_FILENO);
+	dup2(saved_stdout, STDOUT_FILENO);
+	close(saved_stdin);
+	close(saved_stdout);
+}
