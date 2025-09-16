@@ -93,26 +93,15 @@ char	*find_command_path(char *cmd, t_shell *shell)
 	return (NULL);
 }
 
-int	execute_external_command(t_shell *shell, t_cmds *cmd)
+static int	fork_and_execute(char *cmd_path, char **cmd_args, char **env_array)
 {
-	pid_t pid;
-	int status;
-	char *cmd_path;
-	char **env_array;
-
-	cmd_path = find_command_path(cmd->cmds[0], shell);
-	if (!cmd_path)
-	{
-		printf("minishell: %s: command not found\n", cmd->cmds[0]);
-		return (127);
-	}
-
-	env_array = create_env_array(shell);
+	pid_t	pid;
+	int		status;
 
 	pid = fork();
 	if (pid == 0)
 	{
-		if (execve(cmd_path, cmd->cmds, env_array) == -1)
+		if (execve(cmd_path, cmd_args, env_array) == -1)
 		{
 			perror("minishell");
 			exit(126);
@@ -131,7 +120,23 @@ int	execute_external_command(t_shell *shell, t_cmds *cmd)
 		perror("fork");
 		status = 1;
 	}
+	return (status);
+}
 
+int	execute_external_command(t_shell *shell, t_cmds *cmd)
+{
+	char	*cmd_path;
+	char	**env_array;
+	int		status;
+
+	cmd_path = find_command_path(cmd->cmds[0], shell);
+	if (!cmd_path)
+	{
+		printf("minishell: %s: command not found\n", cmd->cmds[0]);
+		return (127);
+	}
+	env_array = create_env_array(shell);
+	status = fork_and_execute(cmd_path, cmd->cmds, env_array);
 	free(cmd_path);
 	free_strings(env_array);
 	return (status);

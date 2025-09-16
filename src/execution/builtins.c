@@ -112,12 +112,38 @@ int	builtin_env(t_shell *shell)
 	return (0);
 }
 
-int	builtin_export(t_shell *shell, t_cmds *cmd)
+static int	process_export_arg(t_shell *shell, char *arg)
 {
-	int		i;
 	char	*equal_pos;
 	char	*key;
 	char	*value;
+
+	equal_pos = ft_strchr(arg, '=');
+	if (equal_pos)
+	{
+		key = ft_substr(arg, 0, equal_pos - arg);
+		value = ft_strdup(equal_pos + 1);
+		if (key && value)
+		{
+			set_env_var(shell, key, value);
+		}
+		free(key);
+		free(value);
+	}
+	else
+	{
+		if (!is_valid_identifier(arg))
+		{
+			printf("export: `%s': not a valid identifier\n", arg);
+			return (1);
+		}
+	}
+	return (0);
+}
+
+int	builtin_export(t_shell *shell, t_cmds *cmd)
+{
+	int	i;
 
 	if (!cmd->cmds[1])
 	{
@@ -126,29 +152,8 @@ int	builtin_export(t_shell *shell, t_cmds *cmd)
 	i = 1;
 	while (cmd->cmds[i])
 	{
-		equal_pos = ft_strchr(cmd->cmds[i], '=');
-		if (equal_pos)
-		{
-			key = ft_substr(cmd->cmds[i], 0, equal_pos - cmd->cmds[i]);
-			value = ft_strdup(equal_pos + 1);
-			if (key && value)
-			{
-				set_env_var(shell, key, value);
-			}
-			free(key);
-			free(value);
-		}
-		else
-		{
-			if (is_valid_identifier(cmd->cmds[i]))
-			{
-			}
-			else
-			{
-				printf("export: `%s': not a valid identifier\n", cmd->cmds[i]);
-				return (1);
-			}
-		}
+		if (process_export_arg(shell, cmd->cmds[i]) != 0)
+			return (1);
 		i++;
 	}
 	return (0);
@@ -179,15 +184,13 @@ int	builtin_unset(t_shell *shell, t_cmds *cmd)
 
 int	builtin_exit(t_cmds *cmd)
 {
-	int exit_code;
+	int	exit_code;
 
 	exit_code = 0;
-
 	if (cmd->cmds[1])
 	{
 		exit_code = ft_atoi(cmd->cmds[1]);
 	}
-
 	printf("exit\n");
 	exit(exit_code);
 	return (exit_code);

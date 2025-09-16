@@ -3,28 +3,18 @@ NORMINETTE REPORT
 
 SUMMARY:
 Category A (parsing - READ-ONLY): 0 findings
-Category B (non-parsing - FIX REQUIRED): 36 findings
+Category B (non-parsing - FIX REQUIRED): 23 findings
 
 CATEGORY B (NON-PARSING - FIX REQUIRED):
 ----------------------------------------
   minishell.h:38 - GLOBAL_VAR_DETECTED
-  env_utils.c:98 - TOO_MANY_LINES
-  env_utils.c:113 - TOO_MANY_TAB
-  redirections.c:54 - TOO_MANY_LINES
-  redirections.c:91 - TOO_MANY_LINES
+  env_utils.c:116 - TOO_MANY_FUNCS
+  env_utils.c:145 - TOO_MANY_FUNCS
+  redirections.c:43 - TOO_MANY_LINES
   execution.c:94 - TOO_MANY_LINES
-  execution.c:98 - SPACE_REPLACE_TAB
-  execution.c:99 - SPACE_REPLACE_TAB
-  execution.c:99 - MISALIGNED_VAR_DECL
-  execution.c:100 - SPACE_REPLACE_TAB
-  execution.c:100 - MISALIGNED_VAR_DECL
-  execution.c:101 - SPACE_REPLACE_TAB
-  execution.c:101 - MISALIGNED_VAR_DECL
-  execution.c:109 - EMPTY_LINE_FUNCTION
-  execution.c:111 - EMPTY_LINE_FUNCTION
-  execution.c:134 - EMPTY_LINE_FUNCTION
-  execution.c:138 - BRACE_SHOULD_EOL
-  execution.c:138 - TOO_MANY_LINES
+  execution.c:124 - TOO_MANY_LINES
+  execution.c:126 - TOO_MANY_FUNCS
+  execution.c:143 - BRACE_SHOULD_EOL
   pipelines.c:66 - TOO_MANY_LINES
   pipelines.c:113 - TOO_MANY_LINES
   pipelines.c:162 - TOO_MANY_FUNCS
@@ -33,13 +23,10 @@ CATEGORY B (NON-PARSING - FIX REQUIRED):
   pipelines.c:210 - TOO_MANY_FUNCS
   pipelines.c:216 - BRACE_SHOULD_EOL
   builtins.c:115 - TOO_MANY_FUNCS
-  builtins.c:155 - TOO_MANY_LINES
-  builtins.c:157 - TOO_MANY_FUNCS
-  builtins.c:180 - TOO_MANY_FUNCS
-  builtins.c:182 - SPACE_REPLACE_TAB
-  builtins.c:185 - EMPTY_LINE_FUNCTION
-  builtins.c:190 - EMPTY_LINE_FUNCTION
-  builtins.c:194 - BRACE_SHOULD_EOL
+  builtins.c:144 - TOO_MANY_FUNCS
+  builtins.c:162 - TOO_MANY_FUNCS
+  builtins.c:185 - TOO_MANY_FUNCS
+  builtins.c:197 - BRACE_SHOULD_EOL
   cmds.c:89 - TOO_MANY_TAB
   cmds.c:142 - TOO_MANY_LINES
   parser.c:15 - GLOBAL_VAR_DETECTED

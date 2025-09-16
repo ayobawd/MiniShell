@@ -12,58 +12,57 @@
 
 #include "../../minishell.h"
 
+static int	handle_single_redirection(t_redirect redir)
+{
+	int	fd;
+
+	if (redir.flag == IN_FILE)
+	{
+		fd = open(redir.file_name, O_RDONLY);
+		if (fd == -1 || dup2(fd, STDIN_FILENO) == -1)
+			return (perror(redir.file_name), close(fd), -1);
+		close(fd);
+	}
+	else if (redir.flag == OUT_FILE)
+	{
+		fd = open(redir.file_name, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+		if (fd == -1 || dup2(fd, STDOUT_FILENO) == -1)
+			return (perror(redir.file_name), close(fd), -1);
+		close(fd);
+	}
+	else if (redir.flag == APPEND)
+	{
+		fd = open(redir.file_name, O_WRONLY | O_CREAT | O_APPEND, 0644);
+		if (fd == -1 || dup2(fd, STDOUT_FILENO) == -1)
+			return (perror(redir.file_name), close(fd), -1);
+		close(fd);
+	}
+	else if (redir.flag == HERE_DOC && setup_heredoc(redir.file_name) == -1)
+		return (-1);
+	return (0);
+}
+
 int	setup_redirections(t_cmds *cmd)
 {
 	int	i;
-	int	fd;
 
 	if (!cmd || !cmd->outs)
 		return (0);
 	i = 0;
 	while (i < cmd->red_len)
 	{
-		if (cmd->outs[i].flag == IN_FILE)
-		{
-			fd = open(cmd->outs[i].file_name, O_RDONLY);
-			if (fd == -1 || dup2(fd, STDIN_FILENO) == -1)
-				return (perror(cmd->outs[i].file_name), close(fd), -1);
-			close(fd);
-		}
-		else if (cmd->outs[i].flag == OUT_FILE)
-		{
-			fd = open(cmd->outs[i].file_name, O_WRONLY | O_CREAT | O_TRUNC,
-					0644);
-			if (fd == -1 || dup2(fd, STDOUT_FILENO) == -1)
-				return (perror(cmd->outs[i].file_name), close(fd), -1);
-			close(fd);
-		}
-		else if (cmd->outs[i].flag == APPEND)
-		{
-			fd = open(cmd->outs[i].file_name, O_WRONLY | O_CREAT | O_APPEND,
-					0644);
-			if (fd == -1 || dup2(fd, STDOUT_FILENO) == -1)
-				return (perror(cmd->outs[i].file_name), close(fd), -1);
-			close(fd);
-		}
-		else if (cmd->outs[i].flag == HERE_DOC
-			&& setup_heredoc(cmd->outs[i].file_name) == -1)
+		if (handle_single_redirection(cmd->outs[i]) == -1)
 			return (-1);
 		i++;
 	}
 	return (0);
 }
 
-int	setup_heredoc(char *delimiter)
+static void	read_heredoc_input(int write_fd, char *delimiter)
 {
-	int		pipefd[2];
 	char	*line;
 	int		delim_len;
 
-	if (pipe(pipefd) == -1)
-	{
-		perror("pipe");
-		return (-1);
-	}
 	delim_len = ft_strlen(delimiter);
 	while (1)
 	{
@@ -75,10 +74,22 @@ int	setup_heredoc(char *delimiter)
 			free(line);
 			break ;
 		}
-		write(pipefd[1], line, ft_strlen(line));
-		write(pipefd[1], "\n", 1);
+		write(write_fd, line, ft_strlen(line));
+		write(write_fd, "\n", 1);
 		free(line);
 	}
+}
+
+int	setup_heredoc(char *delimiter)
+{
+	int	pipefd[2];
+
+	if (pipe(pipefd) == -1)
+	{
+		perror("pipe");
+		return (-1);
+	}
+	read_heredoc_input(pipefd[1], delimiter);
 	close(pipefd[1]);
 	if (dup2(pipefd[0], STDIN_FILENO) == -1)
 	{

@@ -8,28 +8,21 @@
   },
   {
     "path": "env_utils.c",
-    "line": 98,
-    "rule": "TOO_MANY_LINES",
+    "line": 116,
+    "rule": "TOO_MANY_FUNCS",
     "category": "B",
     "type": "error"
   },
   {
     "path": "env_utils.c",
-    "line": 113,
-    "rule": "TOO_MANY_TAB",
+    "line": 145,
+    "rule": "TOO_MANY_FUNCS",
     "category": "B",
     "type": "error"
   },
   {
     "path": "redirections.c",
-    "line": 54,
-    "rule": "TOO_MANY_LINES",
-    "category": "B",
-    "type": "error"
-  },
-  {
-    "path": "redirections.c",
-    "line": 91,
+    "line": 43,
     "rule": "TOO_MANY_LINES",
     "category": "B",
     "type": "error"
@@ -43,85 +36,22 @@
   },
   {
     "path": "execution.c",
-    "line": 98,
-    "rule": "SPACE_REPLACE_TAB",
-    "category": "B",
-    "type": "error"
-  },
-  {
-    "path": "execution.c",
-    "line": 99,
-    "rule": "SPACE_REPLACE_TAB",
-    "category": "B",
-    "type": "error"
-  },
-  {
-    "path": "execution.c",
-    "line": 99,
-    "rule": "MISALIGNED_VAR_DECL",
-    "category": "B",
-    "type": "error"
-  },
-  {
-    "path": "execution.c",
-    "line": 100,
-    "rule": "SPACE_REPLACE_TAB",
-    "category": "B",
-    "type": "error"
-  },
-  {
-    "path": "execution.c",
-    "line": 100,
-    "rule": "MISALIGNED_VAR_DECL",
-    "category": "B",
-    "type": "error"
-  },
-  {
-    "path": "execution.c",
-    "line": 101,
-    "rule": "SPACE_REPLACE_TAB",
-    "category": "B",
-    "type": "error"
-  },
-  {
-    "path": "execution.c",
-    "line": 101,
-    "rule": "MISALIGNED_VAR_DECL",
-    "category": "B",
-    "type": "error"
-  },
-  {
-    "path": "execution.c",
-    "line": 109,
-    "rule": "EMPTY_LINE_FUNCTION",
-    "category": "B",
-    "type": "error"
-  },
-  {
-    "path": "execution.c",
-    "line": 111,
-    "rule": "EMPTY_LINE_FUNCTION",
-    "category": "B",
-    "type": "error"
-  },
-  {
-    "path": "execution.c",
-    "line": 134,
-    "rule": "EMPTY_LINE_FUNCTION",
-    "category": "B",
-    "type": "error"
-  },
-  {
-    "path": "execution.c",
-    "line": 138,
-    "rule": "BRACE_SHOULD_EOL",
-    "category": "B",
-    "type": "error"
-  },
-  {
-    "path": "execution.c",
-    "line": 138,
+    "line": 124,
     "rule": "TOO_MANY_LINES",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "execution.c",
+    "line": 126,
+    "rule": "TOO_MANY_FUNCS",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "execution.c",
+    "line": 143,
+    "rule": "BRACE_SHOULD_EOL",
     "category": "B",
     "type": "error"
   },
@@ -183,49 +113,28 @@
   },
   {
     "path": "builtins.c",
-    "line": 155,
-    "rule": "TOO_MANY_LINES",
-    "category": "B",
-    "type": "error"
-  },
-  {
-    "path": "builtins.c",
-    "line": 157,
+    "line": 144,
     "rule": "TOO_MANY_FUNCS",
     "category": "B",
     "type": "error"
   },
   {
     "path": "builtins.c",
-    "line": 180,
+    "line": 162,
     "rule": "TOO_MANY_FUNCS",
-    "category": "B",
-    "type": "error"
-  },
-  {
-    "path": "builtins.c",
-    "line": 182,
-    "rule": "SPACE_REPLACE_TAB",
     "category": "B",
     "type": "error"
   },
   {
     "path": "builtins.c",
     "line": 185,
-    "rule": "EMPTY_LINE_FUNCTION",
+    "rule": "TOO_MANY_FUNCS",
     "category": "B",
     "type": "error"
   },
   {
     "path": "builtins.c",
-    "line": 190,
-    "rule": "EMPTY_LINE_FUNCTION",
-    "category": "B",
-    "type": "error"
-  },
-  {
-    "path": "builtins.c",
-    "line": 194,
+    "line": 197,
     "rule": "BRACE_SHOULD_EOL",
     "category": "B",
     "type": "error"
