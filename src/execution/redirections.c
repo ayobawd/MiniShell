@@ -12,31 +12,37 @@
 
 #include "../../minishell.h"
 
-static int	handle_single_redirection(t_redirect redir)
+static int	handle_input_redirection(t_redirect redir)
 {
 	int	fd;
 
-	if (redir.flag == IN_FILE)
-	{
-		fd = open(redir.file_name, O_RDONLY);
-		if (fd == -1 || dup2(fd, STDIN_FILENO) == -1)
-			return (perror(redir.file_name), close(fd), -1);
-		close(fd);
-	}
-	else if (redir.flag == OUT_FILE)
-	{
+	fd = open(redir.file_name, O_RDONLY);
+	if (fd == -1 || dup2(fd, STDIN_FILENO) == -1)
+		return (perror(redir.file_name), close(fd), -1);
+	close(fd);
+	return (0);
+}
+
+static int	handle_output_redirection(t_redirect redir)
+{
+	int	fd;
+
+	if (redir.flag == OUT_FILE)
 		fd = open(redir.file_name, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-		if (fd == -1 || dup2(fd, STDOUT_FILENO) == -1)
-			return (perror(redir.file_name), close(fd), -1);
-		close(fd);
-	}
-	else if (redir.flag == APPEND)
-	{
+	else
 		fd = open(redir.file_name, O_WRONLY | O_CREAT | O_APPEND, 0644);
-		if (fd == -1 || dup2(fd, STDOUT_FILENO) == -1)
-			return (perror(redir.file_name), close(fd), -1);
-		close(fd);
-	}
+	if (fd == -1 || dup2(fd, STDOUT_FILENO) == -1)
+		return (perror(redir.file_name), close(fd), -1);
+	close(fd);
+	return (0);
+}
+
+static int	handle_single_redirection(t_redirect redir)
+{
+	if (redir.flag == IN_FILE)
+		return (handle_input_redirection(redir));
+	else if (redir.flag == OUT_FILE || redir.flag == APPEND)
+		return (handle_output_redirection(redir));
 	else if (redir.flag == HERE_DOC && setup_heredoc(redir.file_name) == -1)
 		return (-1);
 	return (0);
