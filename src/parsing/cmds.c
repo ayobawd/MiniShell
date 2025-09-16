@@ -135,6 +135,7 @@ cmds[v.cmd_i].red_len);
 		v.arg_i = 0;
 		while (cmds[v.cmd_i].cmds[v.arg_i])
 		{
+			dollar_expansion(&cmds[v.cmd_i].cmds[v.arg_i], pipe);
 			clean_quotes(cmds[v.cmd_i].cmds[v.arg_i++]);
 		}
 		/* Debug prints commented out

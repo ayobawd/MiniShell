@@ -14,22 +14,14 @@
 
 int	execute_commands(t_shell *shell, t_cmds *cmds)
 {
-	int	i;
 	int	status;
 
 	if (!shell || !cmds || shell->cmd_len == 0)
 		return (0);
 	
-	status = 0;
-	i = 0;
-	while (i < shell->cmd_len)
-	{
-		if (cmds[i].cmds && cmds[i].cmds[0])
-		{
-			status = execute_single_command(shell, &cmds[i]);
-		}
-		i++;
-	}
+	// Execute pipeline (handles single commands and pipes)
+	status = execute_pipeline(shell, cmds, shell->cmd_len);
+	
 	return (status);
 }
 

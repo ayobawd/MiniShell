@@ -93,6 +93,7 @@ char	*ft_add_spaces(char *input);
 void	replace_spaces_tabs(char *str);
 char	*my_getenv(const char *name, t_shell *pipe);
 void	clean_quotes(char *str);
+void	dollar_expansion(char **str, t_shell *pipe);
 
 //            utils             \\.
 int		spaces(char *str);
@@ -120,6 +121,22 @@ int		execute_single_command(t_shell *shell, t_cmds *cmd);
 int		execute_external_command(t_shell *shell, t_cmds *cmd);
 int		is_builtin(char *cmd);
 char	*find_command_path(char *cmd, t_shell *shell);
+
+//          redirections        \\.
+int		setup_redirections(t_cmds *cmd);
+int		setup_heredoc(char *delimiter);
+int		restore_std_fds(void);
+
+//          pipelines           \\.
+int		execute_pipeline(t_shell *shell, t_cmds *cmds, int cmd_count);
+int		execute_single_command_with_redirections(t_shell *shell, t_cmds *cmd);
+int		**create_pipes(int num_pipes);
+void	setup_pipe_redirections(int **pipes, int cmd_index, int cmd_count);
+void	close_all_pipes(int **pipes, int num_pipes);
+void	free_pipes(int **pipes, int num_pipes);
+int		wait_for_children(pid_t *pids, int count);
+int		should_fork_builtin(t_cmds *cmd);
+void	restore_fds(int saved_stdin, int saved_stdout);
 
 //           builtins            \\.
 int		execute_builtin(t_shell *shell, t_cmds *cmd);
