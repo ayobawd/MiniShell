@@ -38,7 +38,8 @@ int	main(int ac, char **av, char **env)
 			continue ;
 		}
 		init_commands(&s, &cmd);
-		/* Parsing-only mode: commands are prepared but not executed */
+		/* Execute the parsed commands */
+		g_exit_code = execute_commands(&s, cmd);
 		free_all(&s, cmd);
 		add_history(input);
 		free(input);

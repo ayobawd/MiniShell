@@ -28,6 +28,10 @@
 # include <stdlib.h>
 # include <string.h>
 # include <sys/time.h>
+# include <sys/wait.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+# include <dirent.h>
 # include <time.h>
 # include <unistd.h>
 
@@ -109,6 +113,30 @@ int		handle_pipes(t_shell *pipe, char *input, t_cmds *cmds);
 
 //             cmds              \\.
 void	init_commands(t_shell *pipe, t_cmds **tmp);
+
+//           execution           \\.
+int		execute_commands(t_shell *shell, t_cmds *cmds);
+int		execute_single_command(t_shell *shell, t_cmds *cmd);
+int		execute_external_command(t_shell *shell, t_cmds *cmd);
+int		is_builtin(char *cmd);
+char	*find_command_path(char *cmd, t_shell *shell);
+
+//           builtins            \\.
+int		execute_builtin(t_shell *shell, t_cmds *cmd);
+int		builtin_echo(t_cmds *cmd);
+int		builtin_cd(t_shell *shell, t_cmds *cmd);
+int		builtin_pwd(void);
+int		builtin_env(t_shell *shell);
+int		builtin_export(t_shell *shell, t_cmds *cmd);
+int		builtin_unset(t_shell *shell, t_cmds *cmd);
+int		builtin_exit(t_cmds *cmd);
+
+//          env_utils           \\.
+char	**create_env_array(t_shell *shell);
+int		print_export_env(t_shell *shell);
+int		set_env_var(t_shell *shell, char *key, char *value);
+int		unset_env_var(t_shell *shell, char *key);
+int		is_valid_identifier(char *str);
 
 void	rl_replace_line(const char *text, int clear_undo);
 void	rl_redisplay(void);
