@@ -44,8 +44,8 @@ void	store_the_file_name(char *str, char **file_name, int i, t_variables *v)
 	{
 		qv.i = i;
 		quotes_check(&str, &qv);
-		if ((str[i] == ' ' || str[i] == '\t') && \
-!qv.in_quotes && !qv.in_d_quotes)
+		if ((str[i] == ' ' || str[i] == '\t') && !qv.in_quotes
+			&& !qv.in_d_quotes)
 			break ;
 		i++;
 	}
@@ -56,8 +56,8 @@ void	store_the_file_name(char *str, char **file_name, int i, t_variables *v)
 void	files_fillings(t_shell *pipe, t_cmds *cmds, t_variables *v)
 {
 	v->start = v->char_i - 1;
-	if (pipe->cmds[v->cmd_i][v->char_i + 1] == '>' \
-|| pipe->cmds[v->cmd_i][v->char_i + 1] == '<')
+	if (pipe->cmds[v->cmd_i][v->char_i + 1] == '>'
+		|| pipe->cmds[v->cmd_i][v->char_i + 1] == '<')
 	{
 		if (pipe->cmds[v->cmd_i][v->char_i + 1] == '>')
 			cmds[v->cmd_i].outs[v->xy].flag = APPEND;
@@ -83,19 +83,19 @@ void	utils_saving(t_shell *pipe, t_cmds *cmds, t_variables *v)
 	v->char_i = -1;
 	while (pipe->cmds[v->cmd_i][++v->char_i])
 	{
-		v->i = v->char_i;  // Sync v->i with v->char_i for quotes_check
+		v->i = v->char_i;
 		quotes_check(&pipe->cmds[v->cmd_i], v);
-		if ((pipe->cmds[v->cmd_i][v->char_i] == '>' || \
-pipe->cmds[v->cmd_i][v->char_i] == '<') && !v->quote_char)
+		if ((pipe->cmds[v->cmd_i][v->char_i] == '>'
+				|| pipe->cmds[v->cmd_i][v->char_i] == '<') && !v->quote_char)
 		{
 			files_fillings(pipe, cmds, v);
-			store_the_file_name(pipe->cmds[v->cmd_i], \
-&cmds[v->cmd_i].outs[v->xy].file_name, v->char_i + 1, v);
+			store_the_file_name(pipe->cmds[v->cmd_i],
+				&cmds[v->cmd_i].outs[v->xy].file_name, v->char_i + 1, v);
 			clean_quotes(cmds[v->cmd_i].outs[v->xy].file_name);
 			remove_substr(pipe->cmds[v->cmd_i], v->start, v->i);
 			v->char_i = v->start - 1;
 			printf("file name : %s\n", cmds[v->cmd_i].outs[v->xy].file_name);
-			printf("flag	  : %d\n", cmds[v->cmd_i].outs[v->xy].flag);
+			printf("flag		: %d\n", cmds[v->cmd_i].outs[v->xy].flag);
 			v->xy++;
 		}
 	}
@@ -113,18 +113,18 @@ void	init_commands(t_shell *pipe, t_cmds **tmp)
 	v.char_i = 0;
 	*tmp = malloc(sizeof(t_cmds) * pipe->cmd_len);
 	if (!*tmp)
-		return;
+		return ;
 	cmds = *tmp;
 	cmds->red_len = 0;
 	while (++v.cmd_i < pipe->cmd_len)
 	{
 		if (!pipe->cmds || !pipe->cmds[v.cmd_i])
-			break;
+			break ;
 		cmds[v.cmd_i].red_len = num_of_redirects(pipe->cmds[v.cmd_i]);
 		if (cmds[v.cmd_i].red_len)
 		{
-			cmds[v.cmd_i].outs = malloc(sizeof(t_redirect) * \
-cmds[v.cmd_i].red_len);
+			cmds[v.cmd_i].outs = malloc(sizeof(t_redirect)
+					* cmds[v.cmd_i].red_len);
 		}
 		else
 		{
@@ -138,10 +138,5 @@ cmds[v.cmd_i].red_len);
 			dollar_expansion(&cmds[v.cmd_i].cmds[v.arg_i], pipe);
 			clean_quotes(cmds[v.cmd_i].cmds[v.arg_i++]);
 		}
-		/* Debug prints commented out
-		v.arg_i = 0;
-		while (cmds[v.cmd_i].cmds[v.arg_i])
-			puts(cmds[v.cmd_i].cmds[v.arg_i++]);
-		*/
 	}
 }

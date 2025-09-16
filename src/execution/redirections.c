@@ -31,16 +31,16 @@ int	setup_redirections(t_cmds *cmd)
 		}
 		else if (cmd->outs[i].flag == OUT_FILE)
 		{
-			fd = open(cmd->outs[i].file_name,
-					O_WRONLY | O_CREAT | O_TRUNC, 0644);
+			fd = open(cmd->outs[i].file_name, O_WRONLY | O_CREAT | O_TRUNC,
+					0644);
 			if (fd == -1 || dup2(fd, STDOUT_FILENO) == -1)
 				return (perror(cmd->outs[i].file_name), close(fd), -1);
 			close(fd);
 		}
 		else if (cmd->outs[i].flag == APPEND)
 		{
-			fd = open(cmd->outs[i].file_name,
-					O_WRONLY | O_CREAT | O_APPEND, 0644);
+			fd = open(cmd->outs[i].file_name, O_WRONLY | O_CREAT | O_APPEND,
+					0644);
 			if (fd == -1 || dup2(fd, STDOUT_FILENO) == -1)
 				return (perror(cmd->outs[i].file_name), close(fd), -1);
 			close(fd);

@@ -18,10 +18,7 @@ int	execute_commands(t_shell *shell, t_cmds *cmds)
 
 	if (!shell || !cmds || shell->cmd_len == 0)
 		return (0);
-	
-	// Execute pipeline (handles single commands and pipes)
 	status = execute_pipeline(shell, cmds, shell->cmd_len);
-	
 	return (status);
 }
 
@@ -29,12 +26,8 @@ int	execute_single_command(t_shell *shell, t_cmds *cmd)
 {
 	if (!cmd || !cmd->cmds || !cmd->cmds[0])
 		return (0);
-		
-	// Check if it's a builtin command
 	if (is_builtin(cmd->cmds[0]))
 		return (execute_builtin(shell, cmd));
-	
-	// Execute external command
 	return (execute_external_command(shell, cmd));
 }
 
@@ -42,7 +35,6 @@ int	is_builtin(char *cmd)
 {
 	if (!cmd)
 		return (0);
-	
 	if (ft_strncmp(cmd, "echo", 5) == 0)
 		return (1);
 	if (ft_strncmp(cmd, "cd", 3) == 0)
@@ -57,7 +49,6 @@ int	is_builtin(char *cmd)
 		return (1);
 	if (ft_strncmp(cmd, "exit", 5) == 0)
 		return (1);
-	
 	return (0);
 }
 
@@ -69,23 +60,18 @@ char	*find_command_path(char *cmd, t_shell *shell)
 	char	*temp;
 	int		i;
 
-	// Check if command is already a full path or relative path
 	if (ft_strchr(cmd, '/'))
 	{
 		if (access(cmd, F_OK | X_OK) == 0)
 			return (ft_strdup(cmd));
 		return (NULL);
 	}
-
-	// Get PATH environment variable
 	path_env = my_getenv("PATH", shell);
 	if (!path_env)
 		return (NULL);
-
 	paths = ft_split(path_env, ':');
 	if (!paths)
 		return (NULL);
-
 	i = 0;
 	while (paths[i])
 	{
@@ -103,17 +89,16 @@ char	*find_command_path(char *cmd, t_shell *shell)
 		}
 		i++;
 	}
-	
 	free_strings(paths);
 	return (NULL);
 }
 
 int	execute_external_command(t_shell *shell, t_cmds *cmd)
 {
-	pid_t	pid;
-	int		status;
-	char	*cmd_path;
-	char	**env_array;
+	pid_t pid;
+	int status;
+	char *cmd_path;
+	char **env_array;
 
 	cmd_path = find_command_path(cmd->cmds[0], shell);
 	if (!cmd_path)
@@ -123,11 +108,10 @@ int	execute_external_command(t_shell *shell, t_cmds *cmd)
 	}
 
 	env_array = create_env_array(shell);
-	
+
 	pid = fork();
 	if (pid == 0)
 	{
-		// Child process
 		if (execve(cmd_path, cmd->cmds, env_array) == -1)
 		{
 			perror("minishell");
@@ -136,7 +120,6 @@ int	execute_external_command(t_shell *shell, t_cmds *cmd)
 	}
 	else if (pid > 0)
 	{
-		// Parent process
 		waitpid(pid, &status, 0);
 		if (WIFEXITED(status))
 			status = WEXITSTATUS(status);

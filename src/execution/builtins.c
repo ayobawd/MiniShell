@@ -16,7 +16,6 @@ int	execute_builtin(t_shell *shell, t_cmds *cmd)
 {
 	if (!cmd || !cmd->cmds || !cmd->cmds[0])
 		return (0);
-
 	if (ft_strncmp(cmd->cmds[0], "echo", 5) == 0)
 		return (builtin_echo(cmd));
 	if (ft_strncmp(cmd->cmds[0], "cd", 3) == 0)
@@ -31,7 +30,6 @@ int	execute_builtin(t_shell *shell, t_cmds *cmd)
 		return (builtin_env(shell));
 	if (ft_strncmp(cmd->cmds[0], "exit", 5) == 0)
 		return (builtin_exit(cmd));
-
 	return (0);
 }
 
@@ -42,15 +40,11 @@ int	builtin_echo(t_cmds *cmd)
 
 	newline = 1;
 	i = 1;
-
-	// Check for -n flag
 	if (cmd->cmds[1] && ft_strncmp(cmd->cmds[1], "-n", 3) == 0)
 	{
 		newline = 0;
 		i = 2;
 	}
-
-	// Print arguments
 	while (cmd->cmds[i])
 	{
 		printf("%s", cmd->cmds[i]);
@@ -58,10 +52,8 @@ int	builtin_echo(t_cmds *cmd)
 			printf(" ");
 		i++;
 	}
-
 	if (newline)
 		printf("\n");
-
 	return (0);
 }
 
@@ -72,7 +64,6 @@ int	builtin_cd(t_shell *shell, t_cmds *cmd)
 
 	if (!cmd->cmds[1])
 	{
-		// No argument - go to HOME
 		home = my_getenv("HOME", shell);
 		if (!home)
 		{
@@ -85,13 +76,11 @@ int	builtin_cd(t_shell *shell, t_cmds *cmd)
 	{
 		path = cmd->cmds[1];
 	}
-
 	if (chdir(path) != 0)
 	{
 		perror("cd");
 		return (1);
 	}
-
 	return (0);
 }
 
@@ -105,7 +94,6 @@ int	builtin_pwd(void)
 		perror("pwd");
 		return (1);
 	}
-
 	printf("%s\n", cwd);
 	free(cwd);
 	return (0);
@@ -121,7 +109,6 @@ int	builtin_env(t_shell *shell)
 		printf("%s\n", (char *)current->content);
 		current = current->next;
 	}
-
 	return (0);
 }
 
@@ -134,35 +121,27 @@ int	builtin_export(t_shell *shell, t_cmds *cmd)
 
 	if (!cmd->cmds[1])
 	{
-		// No arguments - print all environment variables in export format
 		return (print_export_env(shell));
 	}
-
 	i = 1;
 	while (cmd->cmds[i])
 	{
 		equal_pos = ft_strchr(cmd->cmds[i], '=');
 		if (equal_pos)
 		{
-			// Variable assignment
 			key = ft_substr(cmd->cmds[i], 0, equal_pos - cmd->cmds[i]);
 			value = ft_strdup(equal_pos + 1);
-			
 			if (key && value)
 			{
 				set_env_var(shell, key, value);
 			}
-			
 			free(key);
 			free(value);
 		}
 		else
 		{
-			// Just declare variable (no assignment)
 			if (is_valid_identifier(cmd->cmds[i]))
 			{
-				// For now, just ignore declarations without assignment
-				// In full bash implementation, this would mark variable for export
 			}
 			else
 			{
@@ -172,7 +151,6 @@ int	builtin_export(t_shell *shell, t_cmds *cmd)
 		}
 		i++;
 	}
-
 	return (0);
 }
 
@@ -182,7 +160,6 @@ int	builtin_unset(t_shell *shell, t_cmds *cmd)
 
 	if (!cmd->cmds[1])
 		return (0);
-
 	i = 1;
 	while (cmd->cmds[i])
 	{
@@ -197,23 +174,21 @@ int	builtin_unset(t_shell *shell, t_cmds *cmd)
 		}
 		i++;
 	}
-
 	return (0);
 }
 
 int	builtin_exit(t_cmds *cmd)
 {
-	int	exit_code;
+	int exit_code;
 
 	exit_code = 0;
 
 	if (cmd->cmds[1])
 	{
 		exit_code = ft_atoi(cmd->cmds[1]);
-		// TODO: Validate that argument is numeric
 	}
 
 	printf("exit\n");
 	exit(exit_code);
-	return (exit_code); // Never reached
+	return (exit_code);
 }

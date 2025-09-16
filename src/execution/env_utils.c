@@ -53,8 +53,8 @@ int	print_export_env(t_shell *shell)
 		equal_pos = ft_strchr((char *)current->content, '=');
 		if (equal_pos)
 		{
-			key = ft_substr((char *)current->content, 0,
-					equal_pos - (char *)current->content);
+			key = ft_substr((char *)current->content, 0, equal_pos
+					- (char *)current->content);
 			value = ft_strdup(equal_pos + 1);
 			printf("declare -x %s=\"%s\"\n", key, value);
 			free(key);
@@ -110,7 +110,7 @@ int	unset_env_var(t_shell *shell, char *key)
 	key_len = ft_strlen(key);
 	while (current && (ft_strncmp((char *)current->content, key, key_len) != 0
 			|| (((char *)current->content)[key_len] != '='
-			&& ((char *)current->content)[key_len] != '\0')))
+				&& ((char *)current->content)[key_len] != '\0')))
 	{
 		prev = current;
 		current = current->next;
