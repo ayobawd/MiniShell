@@ -66,9 +66,9 @@ static int	fork_and_execute(char *cmd_path, char **cmd_args, char **env_array)
 
 int	execute_external_command(t_shell *shell, t_cmds *cmd)
 {
-	char *cmd_path;
-	char **env_array;
-	int status;
+	char	*cmd_path;
+	char	**env_array;
+	int		status;
 
 	cmd_path = find_command_path(cmd->cmds[0], shell);
 	if (!cmd_path)

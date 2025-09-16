@@ -99,7 +99,7 @@ int	unset_env_var(t_shell *shell, char *key)
 	key_len = ft_strlen(key);
 	while (current && (ft_strncmp((char *)current->content, key, key_len) != 0
 			|| (((char *)current->content)[key_len] != '='
-				&& ((char *)current->content)[key_len] != '\0')))
+			&& ((char *)current->content)[key_len] != '\0')))
 	{
 		prev = current;
 		current = current->next;

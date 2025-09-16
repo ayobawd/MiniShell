@@ -41,7 +41,7 @@ int	print_export_env(t_shell *shell)
 
 int	is_valid_identifier(char *str)
 {
-	int i;
+	int	i;
 
 	if (!str || !str[0])
 		return (0);
