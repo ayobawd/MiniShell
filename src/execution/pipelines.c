@@ -86,7 +86,7 @@ int	execute_single_command_with_redirections(t_shell *shell, t_cmds *cmd)
 	saved_stdout = dup(STDOUT_FILENO);
 
 	// Handle built-ins differently (no fork for some)
-	if (is_builtin(cmd->cmds[0]) && should_fork_builtin(cmd))
+	if (is_builtin(cmd->cmds[0]) && !should_fork_builtin(cmd))
 	{
 		if (setup_redirections(cmd) == -1)
 		{

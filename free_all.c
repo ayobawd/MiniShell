@@ -29,7 +29,6 @@ void	free_strings(char **av)
 void	free_all(t_shell *pipe, t_cmds *cmd)
 {
 	int		i;
-	t_list	*tmp;
 
 	if (pipe && pipe->cmds)
 	{
@@ -51,10 +50,22 @@ void	free_all(t_shell *pipe, t_cmds *cmd)
 		}
 		free(cmd);
 	}
+	// Don't free environment during normal operation
+	// Environment should only be freed at shell exit
+}
+
+void	free_environment(t_shell *pipe)
+{
+	t_list	*tmp;
+
 	while (pipe && pipe->environment)
 	{
 		tmp = pipe->environment->next;
-		// environment strings are borrowed from envp; do not free content
+		// For dynamically allocated environment variables, we need to free content
+		// For original environment variables, they should not be freed
+		// To be safe, we assume all are dynamically allocated after modifications
+		if (pipe->environment->content)
+			free(pipe->environment->content);
 		free(pipe->environment);
 		pipe->environment = tmp;
 	}
