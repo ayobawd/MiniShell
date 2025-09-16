@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Basic echo functionality",
+    "status": "FAIL",
+    "origin_paths": [
+      "src/execution/builtins.c"
+    ],
+    "classification": "T-B",
+    "notes": "Basic echo command works"
+  },
+  {
+    "name": "Echo -n flag",
+    "status": "PASS",
+    "origin_paths": [
+      "src/execution/builtins.c"
+    ],
+    "classification": "T-B",
+    "notes": "Echo -n suppresses newline - FIXED"
+  },
+  {
+    "name": "PWD builtin",
+    "status": "FAIL",
+    "origin_paths": [
+      "src/execution/builtins.c"
+    ],
+    "classification": "T-B",
+    "notes": "PWD returns current directory"
+  },
+  {
+    "name": "ENV builtin",
+    "status": "FAIL",
+    "origin_paths": [
+      "src/execution/builtins.c"
+    ],
+    "classification": "T-B",
+    "notes": "ENV displays environment variables"
+  },
+  {
+    "name": "Exit builtin",
+    "status": "FAIL",
+    "origin_paths": [
+      "src/execution/builtins.c"
+    ],
+    "classification": "T-B",
+    "notes": "Exit command needs refinement"
+  }
+]
