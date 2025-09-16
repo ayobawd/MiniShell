@@ -12,6 +12,23 @@
 
 #include "../../minishell.h"
 
+static void	execute_child_process(t_shell *shell, t_cmds *cmds, int **pipes,
+		int i, int cmd_count)
+{
+	setup_pipe_redirections(pipes, i, cmd_count);
+	close_all_pipes(pipes, cmd_count - 1);
+	if (setup_redirections(&cmds[i]) == -1)
+		exit(1);
+	if (is_builtin(cmds[i].cmds[0]))
+	{
+		exit(execute_builtin(shell, &cmds[i]));
+	}
+	else
+	{
+		exit(execute_external_command(shell, &cmds[i]));
+	}
+}
+
 int	execute_pipeline(t_shell *shell, t_cmds *cmds, int cmd_count)
 {
 	int		**pipes;
@@ -35,20 +52,7 @@ int	execute_pipeline(t_shell *shell, t_cmds *cmds, int cmd_count)
 	{
 		pids[i] = fork();
 		if (pids[i] == 0)
-		{
-			setup_pipe_redirections(pipes, i, cmd_count);
-			close_all_pipes(pipes, cmd_count - 1);
-			if (setup_redirections(&cmds[i]) == -1)
-				exit(1);
-			if (is_builtin(cmds[i].cmds[0]))
-			{
-				exit(execute_builtin(shell, &cmds[i]));
-			}
-			else
-			{
-				exit(execute_external_command(shell, &cmds[i]));
-			}
-		}
+			execute_child_process(shell, cmds, pipes, i, cmd_count);
 		else if (pids[i] == -1)
 		{
 			perror("fork");
@@ -65,26 +69,26 @@ int	execute_pipeline(t_shell *shell, t_cmds *cmds, int cmd_count)
 	return (status);
 }
 
-int	execute_single_command_with_redirections(t_shell *shell, t_cmds *cmd)
+static int	execute_builtin_with_redirect(t_shell *shell, t_cmds *cmd,
+		int saved_stdin, int saved_stdout)
+{
+	int	status;
+
+	if (setup_redirections(cmd) == -1)
+	{
+		restore_fds(saved_stdin, saved_stdout);
+		return (1);
+	}
+	status = execute_builtin(shell, cmd);
+	restore_fds(saved_stdin, saved_stdout);
+	return (status);
+}
+
+static int	fork_and_execute_command(t_shell *shell, t_cmds *cmd)
 {
 	pid_t	pid;
 	int		status;
-	int		saved_stdin;
-	int		saved_stdout;
 
-	saved_stdin = dup(STDIN_FILENO);
-	saved_stdout = dup(STDOUT_FILENO);
-	if (is_builtin(cmd->cmds[0]) && !should_fork_builtin(cmd))
-	{
-		if (setup_redirections(cmd) == -1)
-		{
-			restore_fds(saved_stdin, saved_stdout);
-			return (1);
-		}
-		status = execute_builtin(shell, cmd);
-		restore_fds(saved_stdin, saved_stdout);
-		return (status);
-	}
 	pid = fork();
 	if (pid == 0)
 	{
@@ -108,7 +112,25 @@ int	execute_single_command_with_redirections(t_shell *shell, t_cmds *cmd)
 		perror("fork");
 		status = 1;
 	}
-	restore_fds(saved_stdin, saved_stdout);
+	return (status);
+}
+
+int	execute_single_command_with_redirections(t_shell *shell, t_cmds *cmd)
+{
+	int	saved_stdin;
+	int	saved_stdout;
+	int	status;
+
+	saved_stdin = dup(STDIN_FILENO);
+	saved_stdout = dup(STDOUT_FILENO);
+	if (is_builtin(cmd->cmds[0]) && !should_fork_builtin(cmd))
+		status = execute_builtin_with_redirect(shell, cmd,
+				saved_stdin, saved_stdout);
+	else
+	{
+		status = fork_and_execute_command(shell, cmd);
+		restore_fds(saved_stdin, saved_stdout);
+	}
 	return (status);
 }
 

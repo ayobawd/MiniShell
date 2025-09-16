@@ -57,84 +57,112 @@
   },
   {
     "path": "pipelines.c",
-    "line": 66,
+    "line": 16,
+    "rule": "TOO_MANY_ARGS",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 70,
     "rule": "TOO_MANY_LINES",
     "category": "B",
     "type": "error"
   },
   {
     "path": "pipelines.c",
-    "line": 113,
+    "line": 116,
     "rule": "TOO_MANY_LINES",
     "category": "B",
     "type": "error"
   },
   {
     "path": "pipelines.c",
-    "line": 162,
+    "line": 137,
     "rule": "TOO_MANY_FUNCS",
     "category": "B",
     "type": "error"
   },
   {
     "path": "pipelines.c",
-    "line": 177,
+    "line": 159,
     "rule": "TOO_MANY_FUNCS",
     "category": "B",
     "type": "error"
   },
   {
     "path": "pipelines.c",
-    "line": 197,
+    "line": 171,
     "rule": "TOO_MANY_FUNCS",
     "category": "B",
     "type": "error"
   },
   {
     "path": "pipelines.c",
-    "line": 210,
+    "line": 184,
     "rule": "TOO_MANY_FUNCS",
     "category": "B",
     "type": "error"
   },
   {
     "path": "pipelines.c",
-    "line": 216,
+    "line": 199,
+    "rule": "TOO_MANY_FUNCS",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 219,
+    "rule": "TOO_MANY_FUNCS",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 232,
+    "rule": "TOO_MANY_FUNCS",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 238,
     "rule": "BRACE_SHOULD_EOL",
     "category": "B",
     "type": "error"
   },
   {
     "path": "builtins.c",
-    "line": 115,
+    "line": 116,
     "rule": "TOO_MANY_FUNCS",
     "category": "B",
     "type": "error"
   },
   {
     "path": "builtins.c",
-    "line": 144,
+    "line": 145,
     "rule": "TOO_MANY_FUNCS",
     "category": "B",
     "type": "error"
   },
   {
     "path": "builtins.c",
-    "line": 162,
+    "line": 163,
     "rule": "TOO_MANY_FUNCS",
     "category": "B",
     "type": "error"
   },
   {
     "path": "builtins.c",
-    "line": 185,
+    "line": 186,
     "rule": "TOO_MANY_FUNCS",
     "category": "B",
     "type": "error"
   },
   {
     "path": "builtins.c",
-    "line": 197,
+    "line": 198,
     "rule": "BRACE_SHOULD_EOL",
     "category": "B",
     "type": "error"
