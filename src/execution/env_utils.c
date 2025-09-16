@@ -21,11 +21,8 @@ char	**create_env_array(t_shell *shell)
 
 	count = 0;
 	current = shell->environment;
-	while (current)
-	{
-		count++;
+	while (current && ++count)
 		current = current->next;
-	}
 	env_array = malloc(sizeof(char *) * (count + 1));
 	if (!env_array)
 		return (NULL);
@@ -35,10 +32,7 @@ char	**create_env_array(t_shell *shell)
 	{
 		env_array[i] = ft_strdup((char *)current->content);
 		if (!env_array[i])
-		{
-			free_strings(env_array);
-			return (NULL);
-		}
+			return (free_strings(env_array), NULL);
 		current = current->next;
 		i++;
 	}
@@ -90,23 +84,15 @@ int	set_env_var(t_shell *shell, char *key, char *value)
 	if (!new_var)
 		return (1);
 	current = shell->environment;
-	while (current)
-	{
-		if (ft_strncmp((char *)current->content, key, ft_strlen(key)) == 0
-			&& ((char *)current->content)[ft_strlen(key)] == '=')
-		{
-			free(current->content);
-			current->content = new_var;
-			return (0);
-		}
+	while (current && (ft_strncmp((char *)current->content, key,
+				ft_strlen(key)) != 0
+			|| ((char *)current->content)[ft_strlen(key)] != '='))
 		current = current->next;
-	}
+	if (current)
+		return (free(current->content), current->content = new_var, 0);
 	new_node = ft_lstnew(new_var);
 	if (!new_node)
-	{
-		free(new_var);
-		return (1);
-	}
+		return (free(new_var), 1);
 	ft_lstadd_back(&shell->environment, new_node);
 	return (0);
 }
@@ -122,23 +108,21 @@ int	unset_env_var(t_shell *shell, char *key)
 	current = shell->environment;
 	prev = NULL;
 	key_len = ft_strlen(key);
-	while (current)
+	while (current && (ft_strncmp((char *)current->content, key, key_len) != 0
+			|| (((char *)current->content)[key_len] != '='
+			&& ((char *)current->content)[key_len] != '\0')))
 	{
-		if (ft_strncmp((char *)current->content, key, key_len) == 0
-			&& (((char *)current->content)[key_len] == '='
-			|| ((char *)current->content)[key_len] == '\0'))
-		{
-			if (prev)
-				prev->next = current->next;
-			else
-				shell->environment = current->next;
-			free(current->content);
-			free(current);
-			return (0);
-		}
 		prev = current;
 		current = current->next;
 	}
+	if (!current)
+		return (0);
+	if (prev)
+		prev->next = current->next;
+	else
+		shell->environment = current->next;
+	free(current->content);
+	free(current);
 	return (0);
 }
 
