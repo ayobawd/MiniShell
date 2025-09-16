@@ -84,6 +84,15 @@ typedef struct s_shell
 	char	**cmds;
 }	t_shell;
 
+typedef struct s_pipe_context
+{
+	t_shell		*shell;
+	t_cmds		*cmds;
+	int			**pipes;
+	int			cmd_index;
+	int			cmd_count;
+}	t_pipe_context;
+
 /* Removed non-parsing exec related structures per cleanup */
 
 //           environment              \\.
