@@ -1,6 +1,7 @@
 NAME = minishell
 
 PARSING_DIR = src/parsing
+EXECUTION_DIR = src/execution
 
 SRCS = \
 	minishell.c \
@@ -14,7 +15,10 @@ SRCS = \
 	$(PARSING_DIR)/pipes.c \
 	$(PARSING_DIR)/dollar.c \
 	$(PARSING_DIR)/cmds.c \
-	$(PARSING_DIR)/utils2.c
+	$(PARSING_DIR)/utils2.c \
+	$(EXECUTION_DIR)/execution.c \
+	$(EXECUTION_DIR)/builtins.c \
+	$(EXECUTION_DIR)/env_utils.c
 
 OBJS = $(SRCS:.c=.o)
 CC = cc
