@@ -62,7 +62,7 @@ int	builtin_cd(t_shell *shell, t_cmds *cmd)
 
 int	builtin_exit(t_cmds *cmd)
 {
-	int	exit_code;
+	int exit_code;
 
 	exit_code = 0;
 	if (cmd->cmds[1])

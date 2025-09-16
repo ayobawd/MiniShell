@@ -7,6 +7,3 @@ libft/libft.a
 .DS_Store
 *~
 .*.swp
-
-# Analysis artifacts (keep reports)
-/tmp/

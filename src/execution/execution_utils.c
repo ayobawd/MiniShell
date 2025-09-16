@@ -62,8 +62,8 @@ static char	*search_in_paths(char *cmd, char **paths)
 
 char	*find_command_path(char *cmd, t_shell *shell)
 {
-	char	*path_env;
-	char	**paths;
+	char *path_env;
+	char **paths;
 
 	if (ft_strchr(cmd, '/'))
 	{

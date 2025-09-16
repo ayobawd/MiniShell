@@ -98,8 +98,8 @@ int	execute_single_command_with_redirections(t_shell *shell, t_cmds *cmd)
 	saved_stdin = dup(STDIN_FILENO);
 	saved_stdout = dup(STDOUT_FILENO);
 	if (is_builtin(cmd->cmds[0]) && !should_fork_builtin(cmd))
-		status = execute_builtin_with_redirect(shell, cmd,
-				saved_stdin, saved_stdout);
+		status = execute_builtin_with_redirect(shell, cmd, saved_stdin,
+				saved_stdout);
 	else
 	{
 		status = fork_and_execute_command(shell, cmd);
@@ -107,3 +107,4 @@ int	execute_single_command_with_redirections(t_shell *shell, t_cmds *cmd)
 	}
 	return (status);
 }
+

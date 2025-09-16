@@ -40,8 +40,6 @@ char	**create_env_array(t_shell *shell)
 	return (env_array);
 }
 
-
-
 static t_list	*find_env_var(t_shell *shell, char *key)
 {
 	t_list	*current;
@@ -101,7 +99,7 @@ int	unset_env_var(t_shell *shell, char *key)
 	key_len = ft_strlen(key);
 	while (current && (ft_strncmp((char *)current->content, key, key_len) != 0
 			|| (((char *)current->content)[key_len] != '='
-			&& ((char *)current->content)[key_len] != '\0')))
+				&& ((char *)current->content)[key_len] != '\0')))
 	{
 		prev = current;
 		current = current->next;
@@ -116,5 +114,3 @@ int	unset_env_var(t_shell *shell, char *key)
 	free(current);
 	return (0);
 }
-
-

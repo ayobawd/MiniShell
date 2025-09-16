@@ -98,18 +98,3 @@ int	execute_pipeline(t_shell *shell, t_cmds *cmds, int cmd_count)
 	free(pids);
 	return (status);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

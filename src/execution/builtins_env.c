@@ -61,7 +61,7 @@ int	builtin_export(t_shell *shell, t_cmds *cmd)
 
 int	builtin_unset(t_shell *shell, t_cmds *cmd)
 {
-	int	i;
+	int i;
 
 	if (!cmd->cmds[1])
 		return (0);
