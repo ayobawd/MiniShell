@@ -80,48 +80,7 @@ typedef struct s_shell
 	char	**cmds;
 }	t_shell;
 
-/* Environment variable structure for exec system */
-typedef struct s_env
-{
-	char			*key;
-	char			*value;
-	struct s_env	*next;
-}	t_env;
-
-/* Redirection types for exec system */
-typedef enum e_redir_type
-{
-	R_IN,
-	R_OUT_TRUNC,
-	R_OUT_APPEND,
-	R_HEREDOC
-}	t_redir_type;
-
-/* Redirection structure for exec system */
-typedef struct s_redir
-{
-	t_redir_type		type;
-	char				*target;
-	bool				quoted_delim;
-	int					fd;
-	struct s_redir		*next;
-}	t_redir;
-
-/* Command structure for exec system */
-typedef struct s_cmd
-{
-	char			**argv;
-	t_redir			*redirs;
-	struct s_cmd	*next;
-}	t_cmd;
-
-/* Child execution context */
-typedef struct s_child_context
-{
-	int		i;
-	int		n;
-	int		(*pipes)[2];
-}	t_child_context;
+/* Removed non-parsing exec related structures per cleanup */
 
 //           environment              \\.
 int		parsing(t_shell *pipe, t_cmds *cmds, char *input);
@@ -155,26 +114,6 @@ void	rl_replace_line(const char *text, int clear_undo);
 void	rl_redisplay(void);
 void	quotes_check(char **str, t_variables *v);
 
-/* builtins */
-int			bi_echo(char **argv);
-int			bi_cd(char **argv, t_env **env);
-int			bi_pwd(char **argv);
-int			bi_export(char **argv, t_env **env);
-int			bi_unset(char **argv, t_env **env);
-int			bi_env(char **argv, t_env **env);
-int			bi_exit(char **argv, t_env **env, bool in_parent);
-
-/* exec */
-int			ms_execute_line(t_cmd *pipeline, t_env **env);
-int			ms_exec_pipeline(t_cmd *first, t_env **env);
-int			ms_apply_redirs(t_redir *rlist, int fds[2]);
-int			ms_run_heredoc(const char *delim, bool quoted, int *out_fd);
-char		*ms_resolve_path(const char *cmd, t_env *env);
-int			ms_status_get(void);
-void		ms_status_set(int st);
-void		ms_cmd_free(t_cmd *pipeline);
-int			ms_is_builtin(const char *name);
-int			ms_run_builtin(char **argv, t_env **env, bool in_parent);
 
 
 

@@ -1,20 +1,33 @@
 NAME = minishell
-SRCS =	minishell.c src/parsing/signals.c  src/parsing/utils.c  src/parsing/parser.c src/parsing/redirect.c  src/parsing/spaces_parsing.c \
- src/parsing/env.c  free_all.c  src/parsing/pipes.c src/parsing/dollar.c src/parsing/cmds.c src/parsing/utils2.c \
- src/builtins/echo.c
+
+PARSING_DIR = src/parsing
+
+SRCS = \
+	minishell.c \
+	free_all.c \
+	$(PARSING_DIR)/signals.c \
+	$(PARSING_DIR)/utils.c \
+	$(PARSING_DIR)/parser.c \
+	$(PARSING_DIR)/redirect.c \
+	$(PARSING_DIR)/spaces_parsing.c \
+	$(PARSING_DIR)/env.c \
+	$(PARSING_DIR)/pipes.c \
+	$(PARSING_DIR)/dollar.c \
+	$(PARSING_DIR)/cmds.c \
+	$(PARSING_DIR)/utils2.c
+
 OBJS = $(SRCS:.c=.o)
 CC = cc
-
 CFLAGS = -Wall -Wextra -Werror -g -I.
 
-all : $(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJS)
-	make -C ./libft && make bonus -C ./libft
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L ./libft -lft -lreadline -I.brew/opt/readline/include -L/opt/vagrant/embedded/lib -lreadline
+	$(MAKE) -C ./libft && $(MAKE) bonus -C ./libft
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L ./libft -lft -lreadline
 
 clean:
-	cd libft && make fclean
+	$(MAKE) -C libft fclean
 	rm -f $(OBJS)
 
 fclean: clean

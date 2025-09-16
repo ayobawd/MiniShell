@@ -1,57 +1,61 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   free_all.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aradwan <aradwan@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/17 00:00:00 by aradwan           #+#    #+#             */
-/*   Updated: 2025/01/17 00:00:00 by aradwan          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "minishell.h"
+
+static void free_redirects(t_cmds *cmd)
+{
+	int i;
+
+	i = 0;
+	while (i < cmd->red_len)
+	{
+		if (cmd->outs && cmd->outs[i].file_name)
+			free(cmd->outs[i].file_name);
+		i++;
+	}
+	free(cmd->outs);
+}
 
 void	free_strings(char **av)
 {
-	int	i;
+	int i;
 
 	if (!av)
-		return ;
+		return;
 	i = 0;
 	while (av[i])
 		free(av[i++]);
 	free(av);
 }
 
-static void	free_redirections(t_redirect *outs, int red_len)
-{
-	int	i;
-
-	if (!outs)
-		return ;
-	i = 0;
-	while (i < red_len)
-	{
-		if (outs[i].file_name)
-			free(outs[i].file_name);
-		i++;
-	}
-	free(outs);
-}
-
 void	free_all(t_shell *pipe, t_cmds *cmd)
 {
-	int	i;
+	int		i;
+	t_list	*tmp;
 
-	if (!cmd)
-		return ;
-	i = 0;
-	while (i < pipe->cmd_len)
+	if (pipe && pipe->cmds)
 	{
-		free_strings(cmd[i].cmds);
-		free_redirections(cmd[i].outs, cmd[i].red_len);
-		i++;
+		i = 0;
+		while (i < pipe->cmd_len)
+			free(pipe->cmds[i++]);
+		free(pipe->cmds);
+		pipe->cmds = NULL;
 	}
-	free(cmd);
+	if (cmd)
+	{
+		i = 0;
+		while (i < pipe->cmd_len)
+		{
+			free_strings(cmd[i].cmds);
+			if (cmd[i].outs)
+				free_redirects(&cmd[i]);
+			i++;
+		}
+		free(cmd);
+	}
+	while (pipe && pipe->environment)
+	{
+		tmp = pipe->environment->next;
+		// environment strings are borrowed from envp; do not free content
+		free(pipe->environment);
+		pipe->environment = tmp;
+	}
 }

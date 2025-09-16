@@ -22,8 +22,8 @@ int	main(int ac, char **av, char **env)
 	if (ac != 1)
 		return (0);
 	copy_env(&s, env);
-	s.cmd_len = 0; // Initialize cmd_len
-	s.cmds = NULL; // Initialize cmds
+	s.cmd_len = 0;
+	s.cmds = NULL;
 	while (1)
 	{
 		signal(SIGINT, handle_signals);
@@ -31,15 +31,14 @@ int	main(int ac, char **av, char **env)
 		input = readline("minishell> ");
 		if (!input)
 			return (printf("exit\n"), 0);
-		cmd = NULL;  // Initialize cmd to NULL
+		cmd = NULL;
 		if (parsing(&s, cmd, input))
 		{
 			free(input);
 			continue ;
 		}
 		init_commands(&s, &cmd);
-		/* Execute the commands */
-		simple_execute(cmd, s.cmd_len, &s);
+		/* Parsing-only mode: commands are prepared but not executed */
 		free_all(&s, cmd);
 		add_history(input);
 		free(input);
