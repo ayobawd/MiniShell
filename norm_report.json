@@ -1,0 +1,254 @@
+[
+  {
+    "path": "minishell.h",
+    "line": 38,
+    "rule": "GLOBAL_VAR_DETECTED",
+    "category": "B",
+    "type": "notice"
+  },
+  {
+    "path": "env_utils.c",
+    "line": 98,
+    "rule": "TOO_MANY_LINES",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "env_utils.c",
+    "line": 113,
+    "rule": "TOO_MANY_TAB",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "redirections.c",
+    "line": 54,
+    "rule": "TOO_MANY_LINES",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "redirections.c",
+    "line": 91,
+    "rule": "TOO_MANY_LINES",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "execution.c",
+    "line": 94,
+    "rule": "TOO_MANY_LINES",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "execution.c",
+    "line": 98,
+    "rule": "SPACE_REPLACE_TAB",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "execution.c",
+    "line": 99,
+    "rule": "SPACE_REPLACE_TAB",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "execution.c",
+    "line": 99,
+    "rule": "MISALIGNED_VAR_DECL",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "execution.c",
+    "line": 100,
+    "rule": "SPACE_REPLACE_TAB",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "execution.c",
+    "line": 100,
+    "rule": "MISALIGNED_VAR_DECL",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "execution.c",
+    "line": 101,
+    "rule": "SPACE_REPLACE_TAB",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "execution.c",
+    "line": 101,
+    "rule": "MISALIGNED_VAR_DECL",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "execution.c",
+    "line": 109,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "execution.c",
+    "line": 111,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "execution.c",
+    "line": 134,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "execution.c",
+    "line": 138,
+    "rule": "BRACE_SHOULD_EOL",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "execution.c",
+    "line": 138,
+    "rule": "TOO_MANY_LINES",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 66,
+    "rule": "TOO_MANY_LINES",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 113,
+    "rule": "TOO_MANY_LINES",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 162,
+    "rule": "TOO_MANY_FUNCS",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 177,
+    "rule": "TOO_MANY_FUNCS",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 197,
+    "rule": "TOO_MANY_FUNCS",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 210,
+    "rule": "TOO_MANY_FUNCS",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 216,
+    "rule": "BRACE_SHOULD_EOL",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "builtins.c",
+    "line": 115,
+    "rule": "TOO_MANY_FUNCS",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "builtins.c",
+    "line": 155,
+    "rule": "TOO_MANY_LINES",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "builtins.c",
+    "line": 157,
+    "rule": "TOO_MANY_FUNCS",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "builtins.c",
+    "line": 180,
+    "rule": "TOO_MANY_FUNCS",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "builtins.c",
+    "line": 182,
+    "rule": "SPACE_REPLACE_TAB",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "builtins.c",
+    "line": 185,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "builtins.c",
+    "line": 190,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "builtins.c",
+    "line": 194,
+    "rule": "BRACE_SHOULD_EOL",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "cmds.c",
+    "line": 89,
+    "rule": "TOO_MANY_TAB",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "cmds.c",
+    "line": 142,
+    "rule": "TOO_MANY_LINES",
+    "category": "B",
+    "type": "error"
+  },
+  {
+    "path": "parser.c",
+    "line": 15,
+    "rule": "GLOBAL_VAR_DETECTED",
+    "category": "B",
+    "type": "notice"
+  }
+]
