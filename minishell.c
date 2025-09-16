@@ -12,11 +12,38 @@
 
 #include "minishell.h"
 
+static void	shell_loop(t_shell *s)
+{
+	char	*input;
+	t_cmds	*cmd;
+
+	while (1)
+	{
+		signal(SIGINT, handle_signals);
+		signal(SIGQUIT, SIG_IGN);
+		input = readline("minishell> ");
+		if (!input)
+		{
+			printf("exit\n");
+			return ;
+		}
+		cmd = NULL;
+		if (parsing(s, cmd, input))
+		{
+			free(input);
+			continue ;
+		}
+		init_commands(s, &cmd);
+		g_exit_code = execute_commands(s, cmd);
+		free_all(s, cmd);
+		add_history(input);
+		free(input);
+	}
+}
+
 int	main(int ac, char **av, char **env)
 {
-	char		*input;
-	t_shell		s;
-	t_cmds		*cmd;
+	t_shell	s;
 
 	(void)av;
 	if (ac != 1)
@@ -24,25 +51,6 @@ int	main(int ac, char **av, char **env)
 	copy_env(&s, env);
 	s.cmd_len = 0;
 	s.cmds = NULL;
-	while (1)
-	{
-		signal(SIGINT, handle_signals);
-		signal(SIGQUIT, SIG_IGN);
-		input = readline("minishell> ");
-		if (!input)
-			return (printf("exit\n"), 0);
-		cmd = NULL;
-		if (parsing(&s, cmd, input))
-		{
-			free(input);
-			continue ;
-		}
-		init_commands(&s, &cmd);
-		/* Execute the parsed commands */
-		g_exit_code = execute_commands(&s, cmd);
-		free_all(&s, cmd);
-		add_history(input);
-		free(input);
-	}
+	shell_loop(&s);
 	return (0);
 }
