@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aradwan <aradwan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ayal-awa <ayal-awa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/XX XX:XX:XX by aradwan           #+#    #+#             */
-/*   Updated: 2025/01/XX XX:XX:XX by aradwan          ###   ########.fr       */
+/*   Created: 2025/09/16 11:19:22 by ayal-awa          #+#    #+#             */
+/*   Updated: 2025/09/16 11:19:22 by ayal-awa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
