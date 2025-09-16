@@ -1,0 +1,124 @@
+42 Minishell Norm Compliance Report
+==================================================
+
+SUMMARY:
+Category A (parsing-origin): 7 errors (IGNORED by policy)
+Category B (non-parsing): 98 errors (REQUIRE FIXES)
+
+CATEGORY A - PARSING ORIGIN (IGNORED):
+----------------------------------------
+cmds.c:86 - CONSECUTIVE_SPC: [94mTwo or more consecutives spaces[0m
+cmds.c:86 - WRONG_SCOPE_COMMENT: [95mComment is invalid in this scope[0m
+cmds.c:86 - WRONG_SCOPE_COMMENT: [95mComment is invalid in this scope[0m
+cmds.c:116 - SPACE_AFTER_KW: Missing space after keyword
+cmds.c:122 - SPACE_AFTER_KW: Missing space after keyword
+cmds.c:141 - WRONG_SCOPE_COMMENT: [95mComment is invalid in this scope[0m
+cmds.c:147 - TOO_MANY_LINES: Function has more than 25 lines
+
+CATEGORY B - NON-PARSING (REQUIRE FIXES):
+----------------------------------------
+env_utils.c:47 - TOO_MANY_LINES: Function has more than 25 lines
+env_utils.c:75 - EMPTY_LINE_FUNCTION: Empty line in function
+env_utils.c:77 - TOO_MANY_LINES: Function has more than 25 lines
+env_utils.c:115 - TOO_MANY_LINES: Function has more than 25 lines
+redirections.c:22 - EMPTY_LINE_FUNCTION: Empty line in function
+redirections.c:44 - LINE_TOO_LONG: [94mline too long[0m
+redirections.c:60 - LINE_TOO_LONG: [94mline too long[0m
+redirections.c:81 - EMPTY_LINE_FUNCTION: Empty line in function
+redirections.c:83 - TOO_MANY_LINES: Function has more than 25 lines
+redirections.c:96 - EMPTY_LINE_FUNCTION: Empty line in function
+redirections.c:98 - EMPTY_LINE_FUNCTION: Empty line in function
+redirections.c:104 - SPACE_AFTER_KW: Missing space after keyword
+redirections.c:106 - EMPTY_LINE_FUNCTION: Empty line in function
+redirections.c:106 - SPACE_EMPTY_LINE: Space on empty line
+redirections.c:110 - SPACE_AFTER_KW: Missing space after keyword
+redirections.c:112 - EMPTY_LINE_FUNCTION: Empty line in function
+redirections.c:112 - SPACE_EMPTY_LINE: Space on empty line
+redirections.c:117 - EMPTY_LINE_FUNCTION: Empty line in function
+redirections.c:119 - EMPTY_LINE_FUNCTION: Empty line in function
+redirections.c:119 - SPACE_EMPTY_LINE: Space on empty line
+redirections.c:126 - EMPTY_LINE_FUNCTION: Empty line in function
+redirections.c:126 - SPACE_EMPTY_LINE: Space on empty line
+redirections.c:129 - TOO_MANY_LINES: Function has more than 25 lines
+redirections.c:141 - EMPTY_LINE_FUNCTION: Empty line in function
+redirections.c:146 - EMPTY_LINE_FUNCTION: Empty line in function
+redirections.c:148 - BRACE_SHOULD_EOL: Expected newline after brace
+execution.c:21 - EMPTY_LINE_FUNCTION: Empty line in function
+execution.c:21 - SPACE_EMPTY_LINE: Space on empty line
+execution.c:22 - WRONG_SCOPE_COMMENT: [95mComment is invalid in this scope[0m
+execution.c:24 - EMPTY_LINE_FUNCTION: Empty line in function
+execution.c:24 - SPACE_EMPTY_LINE: Space on empty line
+execution.c:32 - EMPTY_LINE_FUNCTION: Empty line in function
+execution.c:32 - SPACE_EMPTY_LINE: Space on empty line
+execution.c:33 - WRONG_SCOPE_COMMENT: [95mComment is invalid in this scope[0m
+execution.c:36 - EMPTY_LINE_FUNCTION: Empty line in function
+execution.c:36 - SPACE_EMPTY_LINE: Space on empty line
+execution.c:37 - WRONG_SCOPE_COMMENT: [95mComment is invalid in this scope[0m
+execution.c:45 - EMPTY_LINE_FUNCTION: Empty line in function
+execution.c:45 - SPACE_EMPTY_LINE: Space on empty line
+execution.c:60 - EMPTY_LINE_FUNCTION: Empty line in function
+execution.c:60 - SPACE_EMPTY_LINE: Space on empty line
+execution.c:72 - WRONG_SCOPE_COMMENT: [95mComment is invalid in this scope[0m
+execution.c:79 - EMPTY_LINE_FUNCTION: Empty line in function
+execution.c:80 - WRONG_SCOPE_COMMENT: [95mComment is invalid in this scope[0m
+execution.c:84 - EMPTY_LINE_FUNCTION: Empty line in function
+execution.c:88 - EMPTY_LINE_FUNCTION: Empty line in function
+execution.c:106 - EMPTY_LINE_FUNCTION: Empty line in function
+execution.c:106 - SPACE_EMPTY_LINE: Space on empty line
+execution.c:109 - TOO_MANY_LINES: Function has more than 25 lines
+execution.c:124 - EMPTY_LINE_FUNCTION: Empty line in function
+execution.c:126 - EMPTY_LINE_FUNCTION: Empty line in function
+execution.c:126 - SPACE_EMPTY_LINE: Space on empty line
+execution.c:130 - WRONG_SCOPE_COMMENT: [95mComment is invalid in this scope[0m
+execution.c:139 - WRONG_SCOPE_COMMENT: [95mComment is invalid in this scope[0m
+execution.c:151 - EMPTY_LINE_FUNCTION: Empty line in function
+execution.c:155 - BRACE_SHOULD_EOL: Expected newline after brace
+execution.c:155 - TOO_MANY_LINES: Function has more than 25 lines
+pipelines.c:24 - EMPTY_LINE_FUNCTION: Empty line in function
+pipelines.c:28 - EMPTY_LINE_FUNCTION: Empty line in function
+pipelines.c:35 - EMPTY_LINE_FUNCTION: Empty line in function
+pipelines.c:42 - WRONG_SCOPE_COMMENT: [95mComment is invalid in this scope[0m
+pipelines.c:45 - EMPTY_LINE_FUNCTION: Empty line in function
+pipelines.c:45 - SPACE_EMPTY_LINE: Space on empty line
+pipelines.c:48 - EMPTY_LINE_FUNCTION: Empty line in function
+pipelines.c:48 - SPACE_EMPTY_LINE: Space on empty line
+pipelines.c:67 - EMPTY_LINE_FUNCTION: Empty line in function
+pipelines.c:68 - WRONG_SCOPE_COMMENT: [95mComment is invalid in this scope[0m
+pipelines.c:71 - EMPTY_LINE_FUNCTION: Empty line in function
+pipelines.c:75 - TOO_MANY_LINES: Function has more than 25 lines
+pipelines.c:84 - WRONG_SCOPE_COMMENT: [95mComment is invalid in this scope[0m
+pipelines.c:87 - EMPTY_LINE_FUNCTION: Empty line in function
+pipelines.c:88 - WRONG_SCOPE_COMMENT: [95mComment is invalid in this scope[0m
+pipelines.c:96 - EMPTY_LINE_FUNCTION: Empty line in function
+pipelines.c:96 - SPACE_EMPTY_LINE: Space on empty line
+pipelines.c:101 - EMPTY_LINE_FUNCTION: Empty line in function
+pipelines.c:102 - WRONG_SCOPE_COMMENT: [95mComment is invalid in this scope[0m
+pipelines.c:106 - WRONG_SCOPE_COMMENT: [95mComment is invalid in this scope[0m
+pipelines.c:109 - EMPTY_LINE_FUNCTION: Empty line in function
+pipelines.c:109 - SPACE_EMPTY_LINE: Space on empty line
+pipelines.c:117 - WRONG_SCOPE_COMMENT: [95mComment is invalid in this scope[0m
+pipelines.c:129 - EMPTY_LINE_FUNCTION: Empty line in function
+pipelines.c:132 - TOO_MANY_LINES: Function has more than 25 lines
+pipelines.c:142 - EMPTY_LINE_FUNCTION: Empty line in function
+pipelines.c:154 - EMPTY_LINE_FUNCTION: Empty line in function
+pipelines.c:160 - WRONG_SCOPE_COMMENT: [95mComment is invalid in this scope[0m
+pipelines.c:165 - EMPTY_LINE_FUNCTION: Empty line in function
+pipelines.c:166 - WRONG_SCOPE_COMMENT: [95mComment is invalid in this scope[0m
+pipelines.c:186 - TOO_MANY_FUNCS: [92mToo many functions in file[0m
+pipelines.c:191 - SPACE_AFTER_KW: Missing space after keyword
+pipelines.c:192 - EMPTY_LINE_FUNCTION: Empty line in function
+pipelines.c:202 - TOO_MANY_FUNCS: [92mToo many functions in file[0m
+pipelines.c:219 - EMPTY_LINE_FUNCTION: Empty line in function
+pipelines.c:223 - TOO_MANY_FUNCS: [92mToo many functions in file[0m
+pipelines.c:225 - WRONG_SCOPE_COMMENT: [95mComment is invalid in this scope[0m
+pipelines.c:226 - WRONG_SCOPE_COMMENT: [95mComment is invalid in this scope[0m
+pipelines.c:235 - EMPTY_LINE_FUNCTION: Empty line in function
+pipelines.c:239 - TOO_MANY_FUNCS: [92mToo many functions in file[0m
+pipelines.c:245 - BRACE_SHOULD_EOL: Expected newline after brace
+
+FILES REQUIRING FIXES:
+-------------------------
+env_utils.c: 4 errors
+redirections.c: 22 errors
+execution.c: 31 errors
+pipelines.c: 41 errors

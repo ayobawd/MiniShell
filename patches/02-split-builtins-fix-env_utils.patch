@@ -1,0 +1,356 @@
+diff --git a/Makefile b/Makefile
+index e04412e..8f97e6c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -18,6 +18,7 @@ SRCS = \
+ 	$(PARSING_DIR)/utils2.c \
+ 	$(EXECUTION_DIR)/execution.c \
+ 	$(EXECUTION_DIR)/builtins.c \
++	$(EXECUTION_DIR)/builtins_env.c \
+ 	$(EXECUTION_DIR)/env_utils.c \
+ 	$(EXECUTION_DIR)/redirections.c \
+ 	$(EXECUTION_DIR)/pipelines.c
+diff --git a/src/execution/builtins.c b/src/execution/builtins.c
+index f792e94..93a8ba7 100644
+--- a/src/execution/builtins.c
++++ b/src/execution/builtins.c
+@@ -111,96 +111,3 @@ int	builtin_env(t_shell *shell)
+ 	}
+ 	return (0);
+ }
+-
+-int	builtin_export(t_shell *shell, t_cmds *cmd)
+-{
+-	int		i;
+-	char	*equal_pos;
+-	char	*key;
+-	char	*value;
+-
+-	if (!cmd->cmds[1])
+-	{
+-		// No arguments - print all environment variables in export format
+-		return (print_export_env(shell));
+-	}
+-
+-	i = 1;
+-	while (cmd->cmds[i])
+-	{
+-		equal_pos = ft_strchr(cmd->cmds[i], '=');
+-		if (equal_pos)
+-		{
+-			// Variable assignment
+-			key = ft_substr(cmd->cmds[i], 0, equal_pos - cmd->cmds[i]);
+-			value = ft_strdup(equal_pos + 1);
+-			
+-			if (key && value)
+-			{
+-				set_env_var(shell, key, value);
+-			}
+-			
+-			free(key);
+-			free(value);
+-		}
+-		else
+-		{
+-			// Just declare variable (no assignment)
+-			if (is_valid_identifier(cmd->cmds[i]))
+-			{
+-				// For now, just ignore declarations without assignment
+-				// In full bash implementation, this would mark variable for export
+-			}
+-			else
+-			{
+-				printf("export: `%s': not a valid identifier\n", cmd->cmds[i]);
+-				return (1);
+-			}
+-		}
+-		i++;
+-	}
+-
+-	return (0);
+-}
+-
+-int	builtin_unset(t_shell *shell, t_cmds *cmd)
+-{
+-	int	i;
+-
+-	if (!cmd->cmds[1])
+-		return (0);
+-
+-	i = 1;
+-	while (cmd->cmds[i])
+-	{
+-		if (is_valid_identifier(cmd->cmds[i]))
+-		{
+-			unset_env_var(shell, cmd->cmds[i]);
+-		}
+-		else
+-		{
+-			printf("unset: `%s': not a valid identifier\n", cmd->cmds[i]);
+-			return (1);
+-		}
+-		i++;
+-	}
+-
+-	return (0);
+-}
+-
+-int	builtin_exit(t_cmds *cmd)
+-{
+-	int	exit_code;
+-
+-	exit_code = 0;
+-
+-	if (cmd->cmds[1])
+-	{
+-		exit_code = ft_atoi(cmd->cmds[1]);
+-		// TODO: Validate that argument is numeric
+-	}
+-
+-	printf("exit\n");
+-	exit(exit_code);
+-	return (exit_code); // Never reached
+-}
+\ No newline at end of file
+diff --git a/src/execution/builtins_env.c b/src/execution/builtins_env.c
+new file mode 100644
+index 0000000..d176688
+--- /dev/null
++++ b/src/execution/builtins_env.c
+@@ -0,0 +1,91 @@
++/* ************************************************************************** */
++/*                                                                            */
++/*                                                        :::      ::::::::   */
++/*   builtins_env.c                                     :+:      :+:    :+:   */
++/*                                                    +:+ +:+         +:+     */
++/*   By: aradwan <aradwan@student.42.fr>            +#+  +:+       +#+        */
++/*                                                +#+#+#+#+#+   +#+           */
++/*   Created: 2025/01/XX XX:XX:XX by aradwan           #+#    #+#             */
++/*   Updated: 2025/01/XX XX:XX:XX by aradwan          ###   ########.fr       */
++/*                                                                            */
++/* ************************************************************************** */
++
++#include "../../minishell.h"
++
++static int	process_export_assignment(t_shell *shell, char *arg)
++{
++	char	*equal_pos;
++	char	*key;
++	char	*value;
++
++	equal_pos = ft_strchr(arg, '=');
++	if (equal_pos)
++	{
++		key = ft_substr(arg, 0, equal_pos - arg);
++		value = ft_strdup(equal_pos + 1);
++		if (key && value)
++			set_env_var(shell, key, value);
++		free(key);
++		free(value);
++	}
++	else
++	{
++		if (!is_valid_identifier(arg))
++		{
++			printf("export: `%s': not a valid identifier\n", arg);
++			return (1);
++		}
++	}
++	return (0);
++}
++
++int	builtin_export(t_shell *shell, t_cmds *cmd)
++{
++	int	i;
++	int	result;
++
++	if (!cmd->cmds[1])
++		return (print_export_env(shell));
++	i = 1;
++	while (cmd->cmds[i])
++	{
++		result = process_export_assignment(shell, cmd->cmds[i]);
++		if (result != 0)
++			return (result);
++		i++;
++	}
++	return (0);
++}
++
++int	builtin_unset(t_shell *shell, t_cmds *cmd)
++{
++	int	i;
++
++	if (!cmd->cmds[1])
++		return (0);
++	i = 1;
++	while (cmd->cmds[i])
++	{
++		if (is_valid_identifier(cmd->cmds[i]))
++			unset_env_var(shell, cmd->cmds[i]);
++		else
++		{
++			printf("unset: `%s': not a valid identifier\n", cmd->cmds[i]);
++			return (1);
++		}
++		i++;
++	}
++	return (0);
++}
++
++int	builtin_exit(t_cmds *cmd)
++{
++	int	exit_code;
++
++	exit_code = 0;
++	if (cmd->cmds[1])
++		exit_code = ft_atoi(cmd->cmds[1]);
++	printf("exit\n");
++	exit(exit_code);
++	return (exit_code);
++}
+diff --git a/src/execution/env_utils.c b/src/execution/env_utils.c
+index 3e836d1..e0472a8 100644
+--- a/src/execution/env_utils.c
++++ b/src/execution/env_utils.c
+@@ -19,7 +19,6 @@ char	**create_env_array(t_shell *shell)
+ 	int		count;
+ 	int		i;
+ 
+-	// Count environment variables
+ 	count = 0;
+ 	current = shell->environment;
+ 	while (current)
+@@ -27,13 +26,9 @@ char	**create_env_array(t_shell *shell)
+ 		count++;
+ 		current = current->next;
+ 	}
+-
+-	// Allocate array
+ 	env_array = malloc(sizeof(char *) * (count + 1));
+ 	if (!env_array)
+ 		return (NULL);
+-
+-	// Fill array
+ 	i = 0;
+ 	current = shell->environment;
+ 	while (current)
+@@ -48,7 +43,6 @@ char	**create_env_array(t_shell *shell)
+ 		i++;
+ 	}
+ 	env_array[i] = NULL;
+-
+ 	return (env_array);
+ }
+ 
+@@ -65,7 +59,8 @@ int	print_export_env(t_shell *shell)
+ 		equal_pos = ft_strchr((char *)current->content, '=');
+ 		if (equal_pos)
+ 		{
+-			key = ft_substr((char *)current->content, 0, equal_pos - (char *)current->content);
++			key = ft_substr((char *)current->content, 0,
++					equal_pos - (char *)current->content);
+ 			value = ft_strdup(equal_pos + 1);
+ 			printf("declare -x %s=\"%s\"\n", key, value);
+ 			free(key);
+@@ -90,8 +85,6 @@ int	set_env_var(t_shell *shell, char *key, char *value)
+ 
+ 	if (!key || !value)
+ 		return (1);
+-
+-	// Create new environment string
+ 	temp = ft_strjoin(key, "=");
+ 	if (!temp)
+ 		return (1);
+@@ -99,23 +92,18 @@ int	set_env_var(t_shell *shell, char *key, char *value)
+ 	free(temp);
+ 	if (!new_var)
+ 		return (1);
+-
+-	// Check if variable already exists
+ 	current = shell->environment;
+ 	while (current)
+ 	{
+-		if (ft_strncmp((char *)current->content, key, ft_strlen(key)) == 0 &&
+-			((char *)current->content)[ft_strlen(key)] == '=')
++		if (ft_strncmp((char *)current->content, key, ft_strlen(key)) == 0
++			&& ((char *)current->content)[ft_strlen(key)] == '=')
+ 		{
+-			// Replace existing variable
+ 			free(current->content);
+ 			current->content = new_var;
+ 			return (0);
+ 		}
+ 		current = current->next;
+ 	}
+-
+-	// Add new variable
+ 	new_node = ft_lstnew(new_var);
+ 	if (!new_node)
+ 	{
+@@ -123,7 +111,6 @@ int	set_env_var(t_shell *shell, char *key, char *value)
+ 		return (1);
+ 	}
+ 	ft_lstadd_back(&shell->environment, new_node);
+-
+ 	return (0);
+ }
+ 
+@@ -134,22 +121,18 @@ int	unset_env_var(t_shell *shell, char *key)
+ 
+ 	if (!key)
+ 		return (1);
+-
+ 	current = shell->environment;
+ 	prev = NULL;
+-
+ 	while (current)
+ 	{
+-		if (ft_strncmp((char *)current->content, key, ft_strlen(key)) == 0 &&
+-			(((char *)current->content)[ft_strlen(key)] == '=' ||
+-			 ((char *)current->content)[ft_strlen(key)] == '\0'))
++		if (ft_strncmp((char *)current->content, key, ft_strlen(key)) == 0
++			&& (((char *)current->content)[ft_strlen(key)] == '='
++			|| ((char *)current->content)[ft_strlen(key)] == '\0'))
+ 		{
+-			// Found variable to remove
+ 			if (prev)
+ 				prev->next = current->next;
+ 			else
+ 				shell->environment = current->next;
+-			
+ 			free(current->content);
+ 			free(current);
+ 			return (0);
+@@ -157,8 +140,7 @@ int	unset_env_var(t_shell *shell, char *key)
+ 		prev = current;
+ 		current = current->next;
+ 	}
+-
+-	return (0); // Variable not found is not an error
++	return (0);
+ }
+ 
+ int	is_valid_identifier(char *str)
+@@ -167,12 +149,8 @@ int	is_valid_identifier(char *str)
+ 
+ 	if (!str || !str[0])
+ 		return (0);
+-
+-	// First character must be letter or underscore
+ 	if (!ft_isalpha(str[0]) && str[0] != '_')
+ 		return (0);
+-
+-	// Rest can be letters, digits, or underscores
+ 	i = 1;
+ 	while (str[i])
+ 	{
+@@ -180,6 +158,5 @@ int	is_valid_identifier(char *str)
+ 			return (0);
+ 		i++;
+ 	}
+-
+ 	return (1);
+-}
+\ No newline at end of file
++}

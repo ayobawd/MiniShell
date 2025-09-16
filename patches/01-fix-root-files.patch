@@ -1,0 +1,221 @@
+diff --git a/free_all.c b/free_all.c
+index 5178720..eab441c 100644
+--- a/free_all.c
++++ b/free_all.c
+@@ -1,8 +1,20 @@
++/* ************************************************************************** */
++/*                                                                            */
++/*                                                        :::      ::::::::   */
++/*   free_all.c                                         :+:      :+:    :+:   */
++/*                                                    +:+ +:+         +:+     */
++/*   By: aradwan <aradwan@student.42.fr>            +#+  +:+       +#+        */
++/*                                                +#+#+#+#+#+   +#+           */
++/*   Created: 2025/01/XX XX:XX:XX by aradwan           #+#    #+#             */
++/*   Updated: 2025/01/XX XX:XX:XX by aradwan          ###   ########.fr       */
++/*                                                                            */
++/* ************************************************************************** */
++
+ #include "minishell.h"
+ 
+-static void free_redirects(t_cmds *cmd)
++static void	free_redirects(t_cmds *cmd)
+ {
+-	int i;
++	int	i;
+ 
+ 	i = 0;
+ 	while (i < cmd->red_len)
+@@ -16,10 +28,10 @@ static void free_redirects(t_cmds *cmd)
+ 
+ void	free_strings(char **av)
+ {
+-	int i;
++	int	i;
+ 
+ 	if (!av)
+-		return;
++		return ;
+ 	i = 0;
+ 	while (av[i])
+ 		free(av[i++]);
+@@ -50,8 +62,13 @@ void	free_all(t_shell *pipe, t_cmds *cmd)
+ 		}
+ 		free(cmd);
+ 	}
+-	// Don't free environment during normal operation
+-	// Environment should only be freed at shell exit
++}
++
++static void	free_env_content(t_list *env_node)
++{
++	if (env_node->content)
++		free(env_node->content);
++	free(env_node);
+ }
+ 
+ void	free_environment(t_shell *pipe)
+@@ -61,12 +78,7 @@ void	free_environment(t_shell *pipe)
+ 	while (pipe && pipe->environment)
+ 	{
+ 		tmp = pipe->environment->next;
+-		// For dynamically allocated environment variables, we need to free content
+-		// For original environment variables, they should not be freed
+-		// To be safe, we assume all are dynamically allocated after modifications
+-		if (pipe->environment->content)
+-			free(pipe->environment->content);
+-		free(pipe->environment);
++		free_env_content(pipe->environment);
+ 		pipe->environment = tmp;
+ 	}
+ }
+diff --git a/minishell.c b/minishell.c
+index 6fdffb5..d246399 100644
+--- a/minishell.c
++++ b/minishell.c
+@@ -12,11 +12,27 @@
+ 
+ #include "minishell.h"
+ 
++static void	process_input(t_shell *s, char *input)
++{
++	t_cmds	*cmd;
++
++	cmd = NULL;
++	if (parsing(s, cmd, input))
++	{
++		free(input);
++		return ;
++	}
++	init_commands(s, &cmd);
++	g_exit_code = execute_commands(s, cmd);
++	free_all(s, cmd);
++	add_history(input);
++	free(input);
++}
++
+ int	main(int ac, char **av, char **env)
+ {
+ 	char		*input;
+ 	t_shell		s;
+-	t_cmds		*cmd;
+ 
+ 	(void)av;
+ 	if (ac != 1)
+@@ -31,18 +47,7 @@ int	main(int ac, char **av, char **env)
+ 		input = readline("minishell> ");
+ 		if (!input)
+ 			return (printf("exit\n"), 0);
+-		cmd = NULL;
+-		if (parsing(&s, cmd, input))
+-		{
+-			free(input);
+-			continue ;
+-		}
+-		init_commands(&s, &cmd);
+-		/* Execute the parsed commands */
+-		g_exit_code = execute_commands(&s, cmd);
+-		free_all(&s, cmd);
+-		add_history(input);
+-		free(input);
++		process_input(&s, input);
+ 	}
+ 	return (0);
+ }
+diff --git a/minishell.h b/minishell.h
+index 4887204..5b468cc 100644
+--- a/minishell.h
++++ b/minishell.h
+@@ -159,7 +159,4 @@ void	rl_replace_line(const char *text, int clear_undo);
+ void	rl_redisplay(void);
+ void	quotes_check(char **str, t_variables *v);
+ 
+-
+-
+-
+ #endif
+\ No newline at end of file
+diff --git a/src/execution/builtins.c b/src/execution/builtins.c
+index 961d876..f792e94 100644
+--- a/src/execution/builtins.c
++++ b/src/execution/builtins.c
+@@ -16,7 +16,6 @@ int	execute_builtin(t_shell *shell, t_cmds *cmd)
+ {
+ 	if (!cmd || !cmd->cmds || !cmd->cmds[0])
+ 		return (0);
+-
+ 	if (ft_strncmp(cmd->cmds[0], "echo", 5) == 0)
+ 		return (builtin_echo(cmd));
+ 	if (ft_strncmp(cmd->cmds[0], "cd", 3) == 0)
+@@ -31,7 +30,6 @@ int	execute_builtin(t_shell *shell, t_cmds *cmd)
+ 		return (builtin_env(shell));
+ 	if (ft_strncmp(cmd->cmds[0], "exit", 5) == 0)
+ 		return (builtin_exit(cmd));
+-
+ 	return (0);
+ }
+ 
+@@ -42,15 +40,11 @@ int	builtin_echo(t_cmds *cmd)
+ 
+ 	newline = 1;
+ 	i = 1;
+-
+-	// Check for -n flag
+ 	if (cmd->cmds[1] && ft_strncmp(cmd->cmds[1], "-n", 3) == 0)
+ 	{
+ 		newline = 0;
+ 		i = 2;
+ 	}
+-
+-	// Print arguments
+ 	while (cmd->cmds[i])
+ 	{
+ 		printf("%s", cmd->cmds[i]);
+@@ -58,10 +52,8 @@ int	builtin_echo(t_cmds *cmd)
+ 			printf(" ");
+ 		i++;
+ 	}
+-
+ 	if (newline)
+ 		printf("\n");
+-
+ 	return (0);
+ }
+ 
+@@ -72,7 +64,6 @@ int	builtin_cd(t_shell *shell, t_cmds *cmd)
+ 
+ 	if (!cmd->cmds[1])
+ 	{
+-		// No argument - go to HOME
+ 		home = my_getenv("HOME", shell);
+ 		if (!home)
+ 		{
+@@ -85,13 +76,11 @@ int	builtin_cd(t_shell *shell, t_cmds *cmd)
+ 	{
+ 		path = cmd->cmds[1];
+ 	}
+-
+ 	if (chdir(path) != 0)
+ 	{
+ 		perror("cd");
+ 		return (1);
+ 	}
+-
+ 	return (0);
+ }
+ 
+@@ -105,7 +94,6 @@ int	builtin_pwd(void)
+ 		perror("pwd");
+ 		return (1);
+ 	}
+-
+ 	printf("%s\n", cwd);
+ 	free(cwd);
+ 	return (0);
+@@ -121,7 +109,6 @@ int	builtin_env(t_shell *shell)
+ 		printf("%s\n", (char *)current->content);
+ 		current = current->next;
+ 	}
+-
+ 	return (0);
+ }
+ 

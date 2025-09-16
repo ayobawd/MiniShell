@@ -1,0 +1,33 @@
+42 Minishell Test Results Report
+==================================================
+
+TEST SUMMARY:
+Echo Builtin Tests: 17 PASS / 22 FAIL
+Other tests: Not yet run
+
+T-A (parsing-origin): 0 failures (REPORT ONLY)
+T-B (non-parsing): 4 failures (REQUIRE FIXES)
+
+FAILED TESTS REQUIRING FIXES (T-B):
+----------------------------------------
+• echo (no args)
+  Origin: src/execution/builtins.c
+  Notes: Basic echo without arguments fails - likely issue with argument parsing
+
+• echo with arguments
+  Origin: src/execution/builtins.c
+  Notes: Multiple echo tests with basic arguments fail
+
+• echo -n flag handling
+  Origin: src/execution/builtins.c
+  Notes: Multiple -n flags not handled correctly (e.g., -nnnnn should be treated as single -n)
+
+• echo with quotes
+  Origin: src/execution/builtins.c, src/parsing/
+  Notes: Quote handling in echo arguments may involve parsing but implementation in execution
+
+NEXT STEPS:
+1. Fix echo builtin implementation for proper -n flag handling
+2. Fix basic echo functionality (no args and with args)
+3. Run full test suite on other builtins (cd, pwd, env, export, unset, exit)
+4. Test pipeline and redirection functionality

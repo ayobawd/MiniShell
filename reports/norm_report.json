@@ -1,0 +1,737 @@
+[
+  {
+    "path": "env_utils.c",
+    "line": 47,
+    "rule": "TOO_MANY_LINES",
+    "category": "B",
+    "description": "Function has more than 25 lines"
+  },
+  {
+    "path": "env_utils.c",
+    "line": 75,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "env_utils.c",
+    "line": 77,
+    "rule": "TOO_MANY_LINES",
+    "category": "B",
+    "description": "Function has more than 25 lines"
+  },
+  {
+    "path": "env_utils.c",
+    "line": 115,
+    "rule": "TOO_MANY_LINES",
+    "category": "B",
+    "description": "Function has more than 25 lines"
+  },
+  {
+    "path": "redirections.c",
+    "line": 22,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "redirections.c",
+    "line": 44,
+    "rule": "LINE_TOO_LONG",
+    "category": "B",
+    "description": "\u001b[94mline too long\u001b[0m"
+  },
+  {
+    "path": "redirections.c",
+    "line": 60,
+    "rule": "LINE_TOO_LONG",
+    "category": "B",
+    "description": "\u001b[94mline too long\u001b[0m"
+  },
+  {
+    "path": "redirections.c",
+    "line": 81,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "redirections.c",
+    "line": 83,
+    "rule": "TOO_MANY_LINES",
+    "category": "B",
+    "description": "Function has more than 25 lines"
+  },
+  {
+    "path": "redirections.c",
+    "line": 96,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "redirections.c",
+    "line": 98,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "redirections.c",
+    "line": 104,
+    "rule": "SPACE_AFTER_KW",
+    "category": "B",
+    "description": "Missing space after keyword"
+  },
+  {
+    "path": "redirections.c",
+    "line": 106,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "redirections.c",
+    "line": 106,
+    "rule": "SPACE_EMPTY_LINE",
+    "category": "B",
+    "description": "Space on empty line"
+  },
+  {
+    "path": "redirections.c",
+    "line": 110,
+    "rule": "SPACE_AFTER_KW",
+    "category": "B",
+    "description": "Missing space after keyword"
+  },
+  {
+    "path": "redirections.c",
+    "line": 112,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "redirections.c",
+    "line": 112,
+    "rule": "SPACE_EMPTY_LINE",
+    "category": "B",
+    "description": "Space on empty line"
+  },
+  {
+    "path": "redirections.c",
+    "line": 117,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "redirections.c",
+    "line": 119,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "redirections.c",
+    "line": 119,
+    "rule": "SPACE_EMPTY_LINE",
+    "category": "B",
+    "description": "Space on empty line"
+  },
+  {
+    "path": "redirections.c",
+    "line": 126,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "redirections.c",
+    "line": 126,
+    "rule": "SPACE_EMPTY_LINE",
+    "category": "B",
+    "description": "Space on empty line"
+  },
+  {
+    "path": "redirections.c",
+    "line": 129,
+    "rule": "TOO_MANY_LINES",
+    "category": "B",
+    "description": "Function has more than 25 lines"
+  },
+  {
+    "path": "redirections.c",
+    "line": 141,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "redirections.c",
+    "line": 146,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "redirections.c",
+    "line": 148,
+    "rule": "BRACE_SHOULD_EOL",
+    "category": "B",
+    "description": "Expected newline after brace"
+  },
+  {
+    "path": "execution.c",
+    "line": 21,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "execution.c",
+    "line": 21,
+    "rule": "SPACE_EMPTY_LINE",
+    "category": "B",
+    "description": "Space on empty line"
+  },
+  {
+    "path": "execution.c",
+    "line": 22,
+    "rule": "WRONG_SCOPE_COMMENT",
+    "category": "B",
+    "description": "\u001b[95mComment is invalid in this scope\u001b[0m"
+  },
+  {
+    "path": "execution.c",
+    "line": 24,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "execution.c",
+    "line": 24,
+    "rule": "SPACE_EMPTY_LINE",
+    "category": "B",
+    "description": "Space on empty line"
+  },
+  {
+    "path": "execution.c",
+    "line": 32,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "execution.c",
+    "line": 32,
+    "rule": "SPACE_EMPTY_LINE",
+    "category": "B",
+    "description": "Space on empty line"
+  },
+  {
+    "path": "execution.c",
+    "line": 33,
+    "rule": "WRONG_SCOPE_COMMENT",
+    "category": "B",
+    "description": "\u001b[95mComment is invalid in this scope\u001b[0m"
+  },
+  {
+    "path": "execution.c",
+    "line": 36,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "execution.c",
+    "line": 36,
+    "rule": "SPACE_EMPTY_LINE",
+    "category": "B",
+    "description": "Space on empty line"
+  },
+  {
+    "path": "execution.c",
+    "line": 37,
+    "rule": "WRONG_SCOPE_COMMENT",
+    "category": "B",
+    "description": "\u001b[95mComment is invalid in this scope\u001b[0m"
+  },
+  {
+    "path": "execution.c",
+    "line": 45,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "execution.c",
+    "line": 45,
+    "rule": "SPACE_EMPTY_LINE",
+    "category": "B",
+    "description": "Space on empty line"
+  },
+  {
+    "path": "execution.c",
+    "line": 60,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "execution.c",
+    "line": 60,
+    "rule": "SPACE_EMPTY_LINE",
+    "category": "B",
+    "description": "Space on empty line"
+  },
+  {
+    "path": "execution.c",
+    "line": 72,
+    "rule": "WRONG_SCOPE_COMMENT",
+    "category": "B",
+    "description": "\u001b[95mComment is invalid in this scope\u001b[0m"
+  },
+  {
+    "path": "execution.c",
+    "line": 79,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "execution.c",
+    "line": 80,
+    "rule": "WRONG_SCOPE_COMMENT",
+    "category": "B",
+    "description": "\u001b[95mComment is invalid in this scope\u001b[0m"
+  },
+  {
+    "path": "execution.c",
+    "line": 84,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "execution.c",
+    "line": 88,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "execution.c",
+    "line": 106,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "execution.c",
+    "line": 106,
+    "rule": "SPACE_EMPTY_LINE",
+    "category": "B",
+    "description": "Space on empty line"
+  },
+  {
+    "path": "execution.c",
+    "line": 109,
+    "rule": "TOO_MANY_LINES",
+    "category": "B",
+    "description": "Function has more than 25 lines"
+  },
+  {
+    "path": "execution.c",
+    "line": 124,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "execution.c",
+    "line": 126,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "execution.c",
+    "line": 126,
+    "rule": "SPACE_EMPTY_LINE",
+    "category": "B",
+    "description": "Space on empty line"
+  },
+  {
+    "path": "execution.c",
+    "line": 130,
+    "rule": "WRONG_SCOPE_COMMENT",
+    "category": "B",
+    "description": "\u001b[95mComment is invalid in this scope\u001b[0m"
+  },
+  {
+    "path": "execution.c",
+    "line": 139,
+    "rule": "WRONG_SCOPE_COMMENT",
+    "category": "B",
+    "description": "\u001b[95mComment is invalid in this scope\u001b[0m"
+  },
+  {
+    "path": "execution.c",
+    "line": 151,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "execution.c",
+    "line": 155,
+    "rule": "BRACE_SHOULD_EOL",
+    "category": "B",
+    "description": "Expected newline after brace"
+  },
+  {
+    "path": "execution.c",
+    "line": 155,
+    "rule": "TOO_MANY_LINES",
+    "category": "B",
+    "description": "Function has more than 25 lines"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 24,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 28,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 35,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 42,
+    "rule": "WRONG_SCOPE_COMMENT",
+    "category": "B",
+    "description": "\u001b[95mComment is invalid in this scope\u001b[0m"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 45,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 45,
+    "rule": "SPACE_EMPTY_LINE",
+    "category": "B",
+    "description": "Space on empty line"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 48,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 48,
+    "rule": "SPACE_EMPTY_LINE",
+    "category": "B",
+    "description": "Space on empty line"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 67,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 68,
+    "rule": "WRONG_SCOPE_COMMENT",
+    "category": "B",
+    "description": "\u001b[95mComment is invalid in this scope\u001b[0m"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 71,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 75,
+    "rule": "TOO_MANY_LINES",
+    "category": "B",
+    "description": "Function has more than 25 lines"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 84,
+    "rule": "WRONG_SCOPE_COMMENT",
+    "category": "B",
+    "description": "\u001b[95mComment is invalid in this scope\u001b[0m"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 87,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 88,
+    "rule": "WRONG_SCOPE_COMMENT",
+    "category": "B",
+    "description": "\u001b[95mComment is invalid in this scope\u001b[0m"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 96,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 96,
+    "rule": "SPACE_EMPTY_LINE",
+    "category": "B",
+    "description": "Space on empty line"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 101,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 102,
+    "rule": "WRONG_SCOPE_COMMENT",
+    "category": "B",
+    "description": "\u001b[95mComment is invalid in this scope\u001b[0m"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 106,
+    "rule": "WRONG_SCOPE_COMMENT",
+    "category": "B",
+    "description": "\u001b[95mComment is invalid in this scope\u001b[0m"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 109,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 109,
+    "rule": "SPACE_EMPTY_LINE",
+    "category": "B",
+    "description": "Space on empty line"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 117,
+    "rule": "WRONG_SCOPE_COMMENT",
+    "category": "B",
+    "description": "\u001b[95mComment is invalid in this scope\u001b[0m"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 129,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 132,
+    "rule": "TOO_MANY_LINES",
+    "category": "B",
+    "description": "Function has more than 25 lines"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 142,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 154,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 160,
+    "rule": "WRONG_SCOPE_COMMENT",
+    "category": "B",
+    "description": "\u001b[95mComment is invalid in this scope\u001b[0m"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 165,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 166,
+    "rule": "WRONG_SCOPE_COMMENT",
+    "category": "B",
+    "description": "\u001b[95mComment is invalid in this scope\u001b[0m"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 186,
+    "rule": "TOO_MANY_FUNCS",
+    "category": "B",
+    "description": "\u001b[92mToo many functions in file\u001b[0m"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 191,
+    "rule": "SPACE_AFTER_KW",
+    "category": "B",
+    "description": "Missing space after keyword"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 192,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 202,
+    "rule": "TOO_MANY_FUNCS",
+    "category": "B",
+    "description": "\u001b[92mToo many functions in file\u001b[0m"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 219,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 223,
+    "rule": "TOO_MANY_FUNCS",
+    "category": "B",
+    "description": "\u001b[92mToo many functions in file\u001b[0m"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 225,
+    "rule": "WRONG_SCOPE_COMMENT",
+    "category": "B",
+    "description": "\u001b[95mComment is invalid in this scope\u001b[0m"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 226,
+    "rule": "WRONG_SCOPE_COMMENT",
+    "category": "B",
+    "description": "\u001b[95mComment is invalid in this scope\u001b[0m"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 235,
+    "rule": "EMPTY_LINE_FUNCTION",
+    "category": "B",
+    "description": "Empty line in function"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 239,
+    "rule": "TOO_MANY_FUNCS",
+    "category": "B",
+    "description": "\u001b[92mToo many functions in file\u001b[0m"
+  },
+  {
+    "path": "pipelines.c",
+    "line": 245,
+    "rule": "BRACE_SHOULD_EOL",
+    "category": "B",
+    "description": "Expected newline after brace"
+  },
+  {
+    "path": "cmds.c",
+    "line": 86,
+    "rule": "CONSECUTIVE_SPC",
+    "category": "A",
+    "description": "\u001b[94mTwo or more consecutives spaces\u001b[0m"
+  },
+  {
+    "path": "cmds.c",
+    "line": 86,
+    "rule": "WRONG_SCOPE_COMMENT",
+    "category": "A",
+    "description": "\u001b[95mComment is invalid in this scope\u001b[0m"
+  },
+  {
+    "path": "cmds.c",
+    "line": 86,
+    "rule": "WRONG_SCOPE_COMMENT",
+    "category": "A",
+    "description": "\u001b[95mComment is invalid in this scope\u001b[0m"
+  },
+  {
+    "path": "cmds.c",
+    "line": 116,
+    "rule": "SPACE_AFTER_KW",
+    "category": "A",
+    "description": "Missing space after keyword"
+  },
+  {
+    "path": "cmds.c",
+    "line": 122,
+    "rule": "SPACE_AFTER_KW",
+    "category": "A",
+    "description": "Missing space after keyword"
+  },
+  {
+    "path": "cmds.c",
+    "line": 141,
+    "rule": "WRONG_SCOPE_COMMENT",
+    "category": "A",
+    "description": "\u001b[95mComment is invalid in this scope\u001b[0m"
+  },
+  {
+    "path": "cmds.c",
+    "line": 147,
+    "rule": "TOO_MANY_LINES",
+    "category": "A",
+    "description": "Function has more than 25 lines"
+  }
+]

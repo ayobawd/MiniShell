@@ -1,0 +1,35 @@
+[
+  {
+    "name": "echo (no args)",
+    "origin_paths": [
+      "src/execution/builtins.c"
+    ],
+    "classification": "T-B",
+    "notes": "Basic echo without arguments fails - likely issue with argument parsing"
+  },
+  {
+    "name": "echo with arguments",
+    "origin_paths": [
+      "src/execution/builtins.c"
+    ],
+    "classification": "T-B",
+    "notes": "Multiple echo tests with basic arguments fail"
+  },
+  {
+    "name": "echo -n flag handling",
+    "origin_paths": [
+      "src/execution/builtins.c"
+    ],
+    "classification": "T-B",
+    "notes": "Multiple -n flags not handled correctly (e.g., -nnnnn should be treated as single -n)"
+  },
+  {
+    "name": "echo with quotes",
+    "origin_paths": [
+      "src/execution/builtins.c",
+      "src/parsing/"
+    ],
+    "classification": "T-B",
+    "notes": "Quote handling in echo arguments may involve parsing but implementation in execution"
+  }
+]
