@@ -1,0 +1,121 @@
+diff --git a/src/execution/builtins.c b/src/execution/builtins.c
+index 4382c49..5b5c053 100644
+--- a/src/execution/builtins.c
++++ b/src/execution/builtins.c
+@@ -62,7 +62,7 @@ int	builtin_cd(t_shell *shell, t_cmds *cmd)
+ 
+ int	builtin_exit(t_cmds *cmd)
+ {
+-	int exit_code;
++	int	exit_code;
+ 
+ 	exit_code = 0;
+ 	if (cmd->cmds[1])
+diff --git a/src/execution/builtins_basic.c b/src/execution/builtins_basic.c
+index 6c30026..a6879b5 100644
+--- a/src/execution/builtins_basic.c
++++ b/src/execution/builtins_basic.c
+@@ -54,7 +54,7 @@ int	builtin_pwd(void)
+ 
+ int	builtin_env(t_shell *shell)
+ {
+-	t_list *current;
++	t_list	*current;
+ 
+ 	current = shell->environment;
+ 	while (current)
+diff --git a/src/execution/builtins_env.c b/src/execution/builtins_env.c
+index 23372cc..a2ea30a 100644
+--- a/src/execution/builtins_env.c
++++ b/src/execution/builtins_env.c
+@@ -61,7 +61,7 @@ int	builtin_export(t_shell *shell, t_cmds *cmd)
+ 
+ int	builtin_unset(t_shell *shell, t_cmds *cmd)
+ {
+-	int i;
++	int	i;
+ 
+ 	if (!cmd->cmds[1])
+ 		return (0);
+diff --git a/src/execution/env_helpers.c b/src/execution/env_helpers.c
+index c8eec20..a4adc1e 100644
+--- a/src/execution/env_helpers.c
++++ b/src/execution/env_helpers.c
+@@ -41,7 +41,7 @@ int	print_export_env(t_shell *shell)
+ 
+ int	is_valid_identifier(char *str)
+ {
+-	int i;
++	int	i;
+ 
+ 	if (!str || !str[0])
+ 		return (0);
+diff --git a/src/execution/env_utils.c b/src/execution/env_utils.c
+index 9ab57c4..dcfae9f 100644
+--- a/src/execution/env_utils.c
++++ b/src/execution/env_utils.c
+@@ -99,7 +99,7 @@ int	unset_env_var(t_shell *shell, char *key)
+ 	key_len = ft_strlen(key);
+ 	while (current && (ft_strncmp((char *)current->content, key, key_len) != 0
+ 			|| (((char *)current->content)[key_len] != '='
+-				&& ((char *)current->content)[key_len] != '\0')))
++			&& ((char *)current->content)[key_len] != '\0')))
+ 	{
+ 		prev = current;
+ 		current = current->next;
+diff --git a/src/execution/execution.c b/src/execution/execution.c
+index 24f9826..7a5e094 100644
+--- a/src/execution/execution.c
++++ b/src/execution/execution.c
+@@ -66,9 +66,9 @@ static int	fork_and_execute(char *cmd_path, char **cmd_args, char **env_array)
+ 
+ int	execute_external_command(t_shell *shell, t_cmds *cmd)
+ {
+-	char *cmd_path;
+-	char **env_array;
+-	int status;
++	char	*cmd_path;
++	char	**env_array;
++	int		status;
+ 
+ 	cmd_path = find_command_path(cmd->cmds[0], shell);
+ 	if (!cmd_path)
+diff --git a/src/execution/execution_utils.c b/src/execution/execution_utils.c
+index a41c7f2..c168d9f 100644
+--- a/src/execution/execution_utils.c
++++ b/src/execution/execution_utils.c
+@@ -62,8 +62,8 @@ static char	*search_in_paths(char *cmd, char **paths)
+ 
+ char	*find_command_path(char *cmd, t_shell *shell)
+ {
+-	char *path_env;
+-	char **paths;
++	char	*path_env;
++	char	**paths;
+ 
+ 	if (ft_strchr(cmd, '/'))
+ 	{
+diff --git a/src/execution/pipelines_exec.c b/src/execution/pipelines_exec.c
+index b50aa2e..8cbdf8b 100644
+--- a/src/execution/pipelines_exec.c
++++ b/src/execution/pipelines_exec.c
+@@ -107,4 +107,3 @@ int	execute_single_command_with_redirections(t_shell *shell, t_cmds *cmd)
+ 	}
+ 	return (status);
+ }
+-
+diff --git a/src/execution/redirection_utils.c b/src/execution/redirection_utils.c
+index d94bbcf..cd65bed 100644
+--- a/src/execution/redirection_utils.c
++++ b/src/execution/redirection_utils.c
+@@ -57,8 +57,8 @@ int	setup_heredoc(char *delimiter)
+ 
+ int	restore_std_fds(void)
+ {
+-	static int saved_stdin = -1;
+-	static int saved_stdout = -1;
++	static int	saved_stdin = -1;
++	static int	saved_stdout = -1;
+ 
+ 	if (saved_stdin == -1)
+ 	{
