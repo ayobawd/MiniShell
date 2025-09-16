@@ -159,7 +159,4 @@ void	rl_replace_line(const char *text, int clear_undo);
 void	rl_redisplay(void);
 void	quotes_check(char **str, t_variables *v);
 
-
-
-
 #endif

@@ -16,7 +16,6 @@ int	execute_builtin(t_shell *shell, t_cmds *cmd)
 {
 	if (!cmd || !cmd->cmds || !cmd->cmds[0])
 		return (0);
-
 	if (ft_strncmp(cmd->cmds[0], "echo", 5) == 0)
 		return (builtin_echo(cmd));
 	if (ft_strncmp(cmd->cmds[0], "cd", 3) == 0)
@@ -31,7 +30,6 @@ int	execute_builtin(t_shell *shell, t_cmds *cmd)
 		return (builtin_env(shell));
 	if (ft_strncmp(cmd->cmds[0], "exit", 5) == 0)
 		return (builtin_exit(cmd));
-
 	return (0);
 }
 
@@ -42,15 +40,11 @@ int	builtin_echo(t_cmds *cmd)
 
 	newline = 1;
 	i = 1;
-
-	// Check for -n flag
 	if (cmd->cmds[1] && ft_strncmp(cmd->cmds[1], "-n", 3) == 0)
 	{
 		newline = 0;
 		i = 2;
 	}
-
-	// Print arguments
 	while (cmd->cmds[i])
 	{
 		printf("%s", cmd->cmds[i]);
@@ -58,10 +52,8 @@ int	builtin_echo(t_cmds *cmd)
 			printf(" ");
 		i++;
 	}
-
 	if (newline)
 		printf("\n");
-
 	return (0);
 }
 
@@ -72,7 +64,6 @@ int	builtin_cd(t_shell *shell, t_cmds *cmd)
 
 	if (!cmd->cmds[1])
 	{
-		// No argument - go to HOME
 		home = my_getenv("HOME", shell);
 		if (!home)
 		{
@@ -85,13 +76,11 @@ int	builtin_cd(t_shell *shell, t_cmds *cmd)
 	{
 		path = cmd->cmds[1];
 	}
-
 	if (chdir(path) != 0)
 	{
 		perror("cd");
 		return (1);
 	}
-
 	return (0);
 }
 
@@ -105,7 +94,6 @@ int	builtin_pwd(void)
 		perror("pwd");
 		return (1);
 	}
-
 	printf("%s\n", cwd);
 	free(cwd);
 	return (0);
@@ -121,7 +109,6 @@ int	builtin_env(t_shell *shell)
 		printf("%s\n", (char *)current->content);
 		current = current->next;
 	}
-
 	return (0);
 }
 
