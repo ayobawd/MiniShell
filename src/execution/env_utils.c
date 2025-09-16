@@ -67,27 +67,43 @@ int	print_export_env(t_shell *shell)
 	return (0);
 }
 
-int	set_env_var(t_shell *shell, char *key, char *value)
+static t_list	*find_env_var(t_shell *shell, char *key)
 {
-	char	*new_var;
-	char	*temp;
 	t_list	*current;
-	t_list	*new_node;
 
-	if (!key || !value)
-		return (1);
-	temp = ft_strjoin(key, "=");
-	if (!temp)
-		return (1);
-	new_var = ft_strjoin(temp, value);
-	free(temp);
-	if (!new_var)
-		return (1);
 	current = shell->environment;
 	while (current && (ft_strncmp((char *)current->content, key,
 				ft_strlen(key)) != 0
 			|| ((char *)current->content)[ft_strlen(key)] != '='))
 		current = current->next;
+	return (current);
+}
+
+static char	*create_env_string(char *key, char *value)
+{
+	char	*new_var;
+	char	*temp;
+
+	temp = ft_strjoin(key, "=");
+	if (!temp)
+		return (NULL);
+	new_var = ft_strjoin(temp, value);
+	free(temp);
+	return (new_var);
+}
+
+int	set_env_var(t_shell *shell, char *key, char *value)
+{
+	char	*new_var;
+	t_list	*current;
+	t_list	*new_node;
+
+	if (!key || !value)
+		return (1);
+	new_var = create_env_string(key, value);
+	if (!new_var)
+		return (1);
+	current = find_env_var(shell, key);
 	if (current)
 		return (free(current->content), current->content = new_var, 0);
 	new_node = ft_lstnew(new_var);
@@ -110,7 +126,7 @@ int	unset_env_var(t_shell *shell, char *key)
 	key_len = ft_strlen(key);
 	while (current && (ft_strncmp((char *)current->content, key, key_len) != 0
 			|| (((char *)current->content)[key_len] != '='
-				&& ((char *)current->content)[key_len] != '\0')))
+			&& ((char *)current->content)[key_len] != '\0')))
 	{
 		prev = current;
 		current = current->next;

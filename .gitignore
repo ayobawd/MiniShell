@@ -1,0 +1,12 @@
+# Build artifacts
+*.o
+minishell
+libft/libft.a
+
+# Temporary files
+.DS_Store
+*~
+.*.swp
+
+# Analysis artifacts (keep reports)
+/tmp/
