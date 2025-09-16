@@ -19,7 +19,6 @@ char	**create_env_array(t_shell *shell)
 	int		count;
 	int		i;
 
-	// Count environment variables
 	count = 0;
 	current = shell->environment;
 	while (current)
@@ -27,13 +26,9 @@ char	**create_env_array(t_shell *shell)
 		count++;
 		current = current->next;
 	}
-
-	// Allocate array
 	env_array = malloc(sizeof(char *) * (count + 1));
 	if (!env_array)
 		return (NULL);
-
-	// Fill array
 	i = 0;
 	current = shell->environment;
 	while (current)
@@ -48,7 +43,6 @@ char	**create_env_array(t_shell *shell)
 		i++;
 	}
 	env_array[i] = NULL;
-
 	return (env_array);
 }
 
@@ -65,19 +59,17 @@ int	print_export_env(t_shell *shell)
 		equal_pos = ft_strchr((char *)current->content, '=');
 		if (equal_pos)
 		{
-			key = ft_substr((char *)current->content, 0, equal_pos - (char *)current->content);
+			key = ft_substr((char *)current->content, 0,
+					equal_pos - (char *)current->content);
 			value = ft_strdup(equal_pos + 1);
 			printf("declare -x %s=\"%s\"\n", key, value);
 			free(key);
 			free(value);
 		}
 		else
-		{
 			printf("declare -x %s\n", (char *)current->content);
-		}
 		current = current->next;
 	}
-
 	return (0);
 }
 
@@ -90,8 +82,6 @@ int	set_env_var(t_shell *shell, char *key, char *value)
 
 	if (!key || !value)
 		return (1);
-
-	// Create new environment string
 	temp = ft_strjoin(key, "=");
 	if (!temp)
 		return (1);
@@ -99,23 +89,18 @@ int	set_env_var(t_shell *shell, char *key, char *value)
 	free(temp);
 	if (!new_var)
 		return (1);
-
-	// Check if variable already exists
 	current = shell->environment;
 	while (current)
 	{
-		if (ft_strncmp((char *)current->content, key, ft_strlen(key)) == 0 &&
-			((char *)current->content)[ft_strlen(key)] == '=')
+		if (ft_strncmp((char *)current->content, key, ft_strlen(key)) == 0
+			&& ((char *)current->content)[ft_strlen(key)] == '=')
 		{
-			// Replace existing variable
 			free(current->content);
 			current->content = new_var;
 			return (0);
 		}
 		current = current->next;
 	}
-
-	// Add new variable
 	new_node = ft_lstnew(new_var);
 	if (!new_node)
 	{
@@ -123,7 +108,6 @@ int	set_env_var(t_shell *shell, char *key, char *value)
 		return (1);
 	}
 	ft_lstadd_back(&shell->environment, new_node);
-
 	return (0);
 }
 
@@ -131,25 +115,23 @@ int	unset_env_var(t_shell *shell, char *key)
 {
 	t_list	*current;
 	t_list	*prev;
+	size_t	key_len;
 
 	if (!key)
 		return (1);
-
 	current = shell->environment;
 	prev = NULL;
-
+	key_len = ft_strlen(key);
 	while (current)
 	{
-		if (ft_strncmp((char *)current->content, key, ft_strlen(key)) == 0 &&
-			(((char *)current->content)[ft_strlen(key)] == '=' ||
-			 ((char *)current->content)[ft_strlen(key)] == '\0'))
+		if (ft_strncmp((char *)current->content, key, key_len) == 0
+			&& (((char *)current->content)[key_len] == '='
+			|| ((char *)current->content)[key_len] == '\0'))
 		{
-			// Found variable to remove
 			if (prev)
 				prev->next = current->next;
 			else
 				shell->environment = current->next;
-			
 			free(current->content);
 			free(current);
 			return (0);
@@ -157,8 +139,7 @@ int	unset_env_var(t_shell *shell, char *key)
 		prev = current;
 		current = current->next;
 	}
-
-	return (0); // Variable not found is not an error
+	return (0);
 }
 
 int	is_valid_identifier(char *str)
@@ -167,12 +148,8 @@ int	is_valid_identifier(char *str)
 
 	if (!str || !str[0])
 		return (0);
-
-	// First character must be letter or underscore
 	if (!ft_isalpha(str[0]) && str[0] != '_')
 		return (0);
-
-	// Rest can be letters, digits, or underscores
 	i = 1;
 	while (str[i])
 	{
@@ -180,6 +157,5 @@ int	is_valid_identifier(char *str)
 			return (0);
 		i++;
 	}
-
 	return (1);
 }

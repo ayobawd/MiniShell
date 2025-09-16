@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free_all.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aradwan <aradwan@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/XX XX:XX:XX by aradwan           #+#    #+#             */
+/*   Updated: 2025/01/XX XX:XX:XX by aradwan          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-static void free_redirects(t_cmds *cmd)
+static void	free_redirects(t_cmds *cmd)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < cmd->red_len)
@@ -16,10 +28,10 @@ static void free_redirects(t_cmds *cmd)
 
 void	free_strings(char **av)
 {
-	int i;
+	int	i;
 
 	if (!av)
-		return;
+		return ;
 	i = 0;
 	while (av[i])
 		free(av[i++]);
@@ -28,7 +40,7 @@ void	free_strings(char **av)
 
 void	free_all(t_shell *pipe, t_cmds *cmd)
 {
-	int		i;
+	int	i;
 
 	if (pipe && pipe->cmds)
 	{
@@ -50,8 +62,6 @@ void	free_all(t_shell *pipe, t_cmds *cmd)
 		}
 		free(cmd);
 	}
-	// Don't free environment during normal operation
-	// Environment should only be freed at shell exit
 }
 
 void	free_environment(t_shell *pipe)
@@ -61,9 +71,6 @@ void	free_environment(t_shell *pipe)
 	while (pipe && pipe->environment)
 	{
 		tmp = pipe->environment->next;
-		// For dynamically allocated environment variables, we need to free content
-		// For original environment variables, they should not be freed
-		// To be safe, we assume all are dynamically allocated after modifications
 		if (pipe->environment->content)
 			free(pipe->environment->content);
 		free(pipe->environment);
