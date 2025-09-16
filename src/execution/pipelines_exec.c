@@ -107,4 +107,3 @@ int	execute_single_command_with_redirections(t_shell *shell, t_cmds *cmd)
 	}
 	return (status);
 }
-

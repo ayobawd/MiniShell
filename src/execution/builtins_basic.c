@@ -54,7 +54,7 @@ int	builtin_pwd(void)
 
 int	builtin_env(t_shell *shell)
 {
-	t_list *current;
+	t_list	*current;
 
 	current = shell->environment;
 	while (current)

@@ -57,8 +57,8 @@ int	setup_heredoc(char *delimiter)
 
 int	restore_std_fds(void)
 {
-	static int saved_stdin = -1;
-	static int saved_stdout = -1;
+	static int	saved_stdin = -1;
+	static int	saved_stdout = -1;
 
 	if (saved_stdin == -1)
 	{
