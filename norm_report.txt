@@ -1,0 +1,46 @@
+=== NORMINETTE ANALYSIS SUMMARY ===
+
+Total findings: 122
+Category A (parsing - do not fix): 7 errors
+Category B (non-parsing - must fix): 115 errors
+
+=== CATEGORY A (PARSING - UNTOUCHED) ===
+
+cmds.c: 7 errors
+  - Line 86: CONSECUTIVE_SPC - [94mTwo or more consecutives spaces[0m
+  - Line 86: WRONG_SCOPE_COMMENT - [95mComment is invalid in this scope[0m
+  - Line 86: WRONG_SCOPE_COMMENT - [95mComment is invalid in this scope[0m
+  ... and 4 more errors
+
+=== CATEGORY B (NON-PARSING - FIXED/TO FIX) ===
+
+builtins.c: 40 errors
+  - Line 19: EMPTY_LINE_FUNCTION - Empty line in function
+  - Line 34: EMPTY_LINE_FUNCTION - Empty line in function
+  - Line 45: EMPTY_LINE_FUNCTION - Empty line in function
+  - Line 46: WRONG_SCOPE_COMMENT - [95mComment is invalid in this scope[0m
+  - Line 52: EMPTY_LINE_FUNCTION - Empty line in function
+  ... and 35 more errors
+
+env_utils.c: 1 errors
+  - Line 98: TOO_MANY_LINES - Function has more than 25 lines
+
+execution.c: 31 errors
+  - Line 21: EMPTY_LINE_FUNCTION - Empty line in function
+  - Line 21: SPACE_EMPTY_LINE - Space on empty line
+  - Line 22: WRONG_SCOPE_COMMENT - [95mComment is invalid in this scope[0m
+  - Line 24: EMPTY_LINE_FUNCTION - Empty line in function
+  - Line 24: SPACE_EMPTY_LINE - Space on empty line
+  ... and 26 more errors
+
+pipelines.c: 41 errors
+  - Line 24: EMPTY_LINE_FUNCTION - Empty line in function
+  - Line 28: EMPTY_LINE_FUNCTION - Empty line in function
+  - Line 35: EMPTY_LINE_FUNCTION - Empty line in function
+  - Line 42: WRONG_SCOPE_COMMENT - [95mComment is invalid in this scope[0m
+  - Line 45: EMPTY_LINE_FUNCTION - Empty line in function
+  ... and 36 more errors
+
+redirections.c: 2 errors
+  - Line 54: TOO_MANY_LINES - Function has more than 25 lines
+  - Line 91: TOO_MANY_LINES - Function has more than 25 lines
