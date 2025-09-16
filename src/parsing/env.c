@@ -20,7 +20,7 @@ void	copy_env(t_shell *s, char **env)
 	s->environment = NULL;
 	while (env[i])
 	{
-		ft_lstadd_back(&s->environment, ft_lstnew(env[i]));
+		ft_lstadd_back(&s->environment, ft_lstnew(ft_strdup(env[i])));
 		i++;
 	}
 	s->environment_num = i;
