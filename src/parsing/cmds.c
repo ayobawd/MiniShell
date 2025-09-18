@@ -12,6 +12,8 @@
 
 #include "../../minishell.h"
 
+static char	**split_args_quoted(const char *s);
+
 void	remove_substr(char *s, unsigned int start, size_t len)
 {
 	size_t	i;
@@ -55,7 +57,7 @@ void	store_the_file_name(char *str, char **file_name, int i, t_variables *v)
 
 void	files_fillings(t_shell *pipe, t_cmds *cmds, t_variables *v)
 {
-	v->start = v->char_i - 1;
+	v->start = v->char_i;
 	if (pipe->cmds[v->cmd_i][v->char_i + 1] == '>'
 		|| pipe->cmds[v->cmd_i][v->char_i + 1] == '<')
 	{
@@ -129,7 +131,7 @@ void	init_commands(t_shell *pipe, t_cmds **tmp)
 			cmds[v.cmd_i].outs = NULL;
 		}
 		utils_saving(pipe, cmds, &v);
-		cmds[v.cmd_i].cmds = ft_split(pipe->cmds[v.cmd_i], ' ');
+		cmds[v.cmd_i].cmds = split_args_quoted(pipe->cmds[v.cmd_i]);
 		v.arg_i = 0;
 		while (cmds[v.cmd_i].cmds[v.arg_i])
 		{
@@ -137,4 +139,82 @@ void	init_commands(t_shell *pipe, t_cmds **tmp)
 			clean_quotes(cmds[v.cmd_i].cmds[v.arg_i++]);
 		}
 	}
+}
+
+static int	count_tokens_quoted(const char *s)
+{
+	int i;
+	int count;
+	int in_s;
+	int in_d;
+
+	i = 0;
+	count = 0;
+	in_s = 0;
+	in_d = 0;
+	while (s && s[i])
+	{
+		while (s[i] == ' ')
+			i++;
+		if (!s[i])
+			break;
+		count++;
+		while (s[i])
+		{
+			if (s[i] == '"' && !in_s)
+				in_d = !in_d;
+			else if (s[i] == '\'' && !in_d)
+				in_s = !in_s;
+			else if (s[i] == ' ' && !in_s && !in_d)
+				break;
+			i++;
+		}
+	}
+	return (count);
+}
+
+static char	*substr_quoted(const char *s, int start, int end)
+{
+	return (ft_substr(s, start, end - start));
+}
+
+static char	**split_args_quoted(const char *s)
+{
+	int	 i;
+	int	 start;
+	int	 in_s;
+	int	 in_d;
+	int	 idx;
+	int	 tokens;
+	char **out;
+
+	tokens = count_tokens_quoted(s);
+	out = (char **)malloc(sizeof(char *) * (tokens + 1));
+	if (!out)
+		return (NULL);
+	i = 0;
+	idx = 0;
+	in_s = 0;
+	in_d = 0;
+	while (s && s[i])
+	{
+		while (s[i] == ' ')
+			i++;
+		if (!s[i])
+			break;
+		start = i;
+		while (s[i])
+		{
+			if (s[i] == '"' && !in_s)
+				in_d = !in_d;
+			else if (s[i] == '\'' && !in_d)
+				in_s = !in_s;
+			else if (s[i] == ' ' && !in_s && !in_d)
+				break;
+			i++;
+		}
+		out[idx++] = substr_quoted(s, start, i);
+	}
+	out[idx] = NULL;
+	return (out);
 }
