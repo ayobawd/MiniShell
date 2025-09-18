@@ -21,6 +21,8 @@ SRCS = \
 	$(EXECUTION_DIR)/builtins.c \
 	$(EXECUTION_DIR)/builtins_basic.c \
 	$(EXECUTION_DIR)/builtins_env.c \
+	$(EXECUTION_DIR)/builtins_exit.c \
+	$(EXECUTION_DIR)/builtins_unset.c \
 	$(EXECUTION_DIR)/env_utils.c \
 	$(EXECUTION_DIR)/env_helpers.c \
 	$(EXECUTION_DIR)/redirections.c \

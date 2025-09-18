@@ -85,27 +85,3 @@ int	builtin_export(t_shell *shell, t_cmds *cmd)
 	}
 	return (status);
 }
-
-int	builtin_unset(t_shell *shell, t_cmds *cmd)
-{
-	int	i;
-	int	status;
-
-	if (!cmd->cmds[1])
-		return (0);
-	status = 0;
-	i = 1;
-	while (cmd->cmds[i])
-	{
-		if (is_valid_identifier(cmd->cmds[i]))
-		{
-			unset_env_var(shell, cmd->cmds[i]);
-		}
-		else
-		{
-			status = print_ident_err("unset", cmd->cmds[i]);
-		}
-		i++;
-	}
-	return (status);
-}
