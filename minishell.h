@@ -153,6 +153,8 @@ int		builtin_env(t_shell *shell);
 int		builtin_export(t_shell *shell, t_cmds *cmd);
 int		builtin_unset(t_shell *shell, t_cmds *cmd);
 int		builtin_exit(t_cmds *cmd);
+int		parse_exit_number(const char *s, int *out);
+int		print_ident_err(const char *cmd, const char *arg);
 
 //          env_utils           \\.
 char	**create_env_array(t_shell *shell);

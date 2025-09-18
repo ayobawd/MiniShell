@@ -12,15 +12,6 @@
 
 #include "../../minishell.h"
 
-static int	print_ident_err(const char *cmd, const char *arg)
-{
-	ft_putstr_fd((char *)cmd, 2);
-	ft_putstr_fd(": `", 2);
-	ft_putstr_fd((char *)arg, 2);
-	ft_putstr_fd("': not a valid identifier\n", 2);
-	return (1);
-}
-
 static int	handle_export_with_equal(t_shell *shell, char *arg)
 {
 	char	*key;

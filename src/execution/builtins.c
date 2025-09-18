@@ -35,7 +35,7 @@ int	execute_builtin(t_shell *shell, t_cmds *cmd)
 
 static int	cd_home_path(t_shell *shell, char **out)
 {
-	char    *home;
+	char	*home;
 
 	home = my_getenv("HOME", shell);
 	if (!home)
@@ -68,37 +68,6 @@ int	builtin_cd(t_shell *shell, t_cmds *cmd)
 		return (1);
 	}
 	return (0);
-}
-
-static int	is_space_tab(char c)
-{
-	return (c == ' ' || c == '\t');
-}
-
-static int	is_sign(char c)
-{
-	return (c == '+' || c == '-');
-}
-
-static int	parse_exit_number(const char *s, int *out)
-{
-	int	 i;
-	int	 has_digit;
-
-	i = 0;
-	while (s[i] && is_space_tab(s[i]))
-		i++;
-	if (s[i] && is_sign(s[i]))
-		i++;
-	has_digit = (s[i] && ft_isdigit(s[i]));
-	if (!has_digit)
-		return (0);
-	while (s[i] && ft_isdigit(s[i]))
-		i++;
-	if (s[i] != '\0')
-		return (0);
-	*out = ft_atoi(s);
-	return (1);
 }
 
 int	builtin_exit(t_cmds *cmd)
