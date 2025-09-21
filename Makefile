@@ -33,7 +33,7 @@ SRCS = \
 
 OBJS = $(SRCS:.c=.o)
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g -I.
+CFLAGS = -Wall -Wextra -Werror -g -I. -fsanitize=address
 
 all: $(NAME)
 
