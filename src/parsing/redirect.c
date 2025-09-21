@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aradwan <aradwan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ayal-awa <ayal-awa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 12:35:26 by aradwan           #+#    #+#             */
-/*   Updated: 2025/09/14 14:58:35 by aradwan          ###   ########.fr       */
+/*   Updated: 2025/09/21 16:51:35 by ayal-awa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,22 @@ static int	check_last(char *input)
 	return (1);
 }
 
-static int	handle_redirections(char **input, t_variables *v)
+static int	handle_redirections(char **str, t_variables *vars)
 {
-	char	*str;
-
-	str = *input;
-	if (!check_last(str))
+	if (!check_last(*str))
 		return (0);
-	v->i = 0;
-	while (str[v->i])
+	vars->i = 0;
+	while ((*str)[vars->i])
 	{
-		quotes_check(&str, v);
-		if (!is_redirect(input, v))
+		if ((*str)[vars->i] == '\'' || (*str)[vars->i] == '\"')
+		{
+			if (!vars->in_quotes)
+				vars->in_quotes = (*str)[vars->i];
+			else if (vars->in_quotes == (*str)[vars->i])
+				vars->in_quotes = 0;
+		}
+		if (!is_redirect(str, vars))
 			return (0);
-		v->i++;
 	}
 	return (1);
 }
@@ -72,7 +74,7 @@ int	redirections_parse(char *str)
 	t_variables	v;
 
 	v.i = 0;
-	v.indx = 0;
+	v.j = 0;
 	v.in_d_quotes = 0;
 	v.in_quotes = 0;
 	if (!handle_redirections(&str, &v))

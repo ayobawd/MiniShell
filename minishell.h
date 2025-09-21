@@ -62,6 +62,7 @@ typedef struct s_variables
 	int	indx;
 	int	cmd_i;
 	int	arg_i;
+	int j;
 	int	space_found;
 	int	quote_char;
 	int	char_i;
