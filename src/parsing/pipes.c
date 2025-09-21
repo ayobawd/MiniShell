@@ -180,6 +180,7 @@ int	handle_pipes(t_shell *pipe, char *input, t_cmds *cmds)
 	{
 		pipe->cmds[i] = ft_add_spaces(pipe->cmds[i]);
 		replace_spaces_tabs(pipe->cmds[i]);
+		dollar_expansion(&pipe->cmds[i], pipe);
 		i++;
 	}
 	pipe->cmd_len = i;
