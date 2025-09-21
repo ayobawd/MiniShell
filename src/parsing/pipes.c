@@ -13,6 +13,64 @@
 
 #include "../../minishell.h"
 
+static int count_pipes_outside_quotes(char *input)
+{
+	int i;
+	int count;
+	int in_quote;
+	int in_dquote;
+
+	i = 0;
+	count = 0;
+	in_quote = 0;
+	in_dquote = 0;
+	while (input[i])
+	{
+		if (input[i] == '\'' && !in_dquote)
+			in_quote = !in_quote;
+		else if (input[i] == '\"' && !in_quote)
+			in_dquote = !in_dquote;
+		else if (input[i] == '|' && !in_quote && !in_dquote)
+			count++;
+		i++;
+	}
+	return (count);
+}
+
+static char **split_pipes_respect_quotes(char *input)
+{
+	char **result;
+	int pipe_count;
+	int i, start, cmd_idx;
+	int in_quote, in_dquote;
+
+	pipe_count = count_pipes_outside_quotes(input);
+	result = malloc(sizeof(char *) * (pipe_count + 2));
+	if (!result)
+		return (NULL);
+	i = 0;
+	start = 0;
+	cmd_idx = 0;
+	in_quote = 0;
+	in_dquote = 0;
+	while (input[i])
+	{
+		if (input[i] == '\'' && !in_dquote)
+			in_quote = !in_quote;
+		else if (input[i] == '\"' && !in_quote)
+			in_dquote = !in_dquote;
+		else if (input[i] == '|' && !in_quote && !in_dquote)
+		{
+			result[cmd_idx] = ft_substr(input, start, i - start);
+			cmd_idx++;
+			start = i + 1;
+		}
+		i++;
+	}
+	result[cmd_idx] = ft_substr(input, start, i - start);
+	result[cmd_idx + 1] = NULL;
+	return (result);
+}
 
 static int pipe_from_back(char *input)
 {
@@ -43,7 +101,7 @@ static int pipe_in_quotes(char *input, int i, int quotes, int j)
 		{
 			if (quotes == 0)
 				quotes = input[i];
-			else if (!quotes)
+			else if (quotes == input[i])
 				quotes = 0;
 			i++;
 			continue ;
@@ -116,7 +174,7 @@ int	handle_pipes(t_shell *pipe, char *input, t_cmds *cmds)
 		return (0);
 	if (!check_input(input))
 		return (0);
-	pipe->cmds = ft_split(input, '|');
+	pipe->cmds = split_pipes_respect_quotes(input);
 	i = 0;
 	while (pipe->cmds[i])
 	{
