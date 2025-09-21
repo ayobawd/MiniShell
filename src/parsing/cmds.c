@@ -12,6 +12,91 @@
 
 #include "../../minishell.h"
 
+static int count_args_outside_quotes(char *input)
+{
+	int i;
+	int count;
+	int in_quote;
+	int in_dquote;
+	int in_arg;
+
+	i = 0;
+	count = 0;
+	in_quote = 0;
+	in_dquote = 0;
+	in_arg = 0;
+	while (input[i])
+	{
+		if (input[i] == '\'' && !in_dquote)
+			in_quote = !in_quote;
+		else if (input[i] == '\"' && !in_quote)
+			in_dquote = !in_dquote;
+		else if ((input[i] == ' ' || input[i] == '\t') && !in_quote && !in_dquote)
+		{
+			if (in_arg)
+			{
+				in_arg = 0;
+			}
+		}
+		else if (!in_arg)
+		{
+			in_arg = 1;
+			count++;
+		}
+		i++;
+	}
+	return (count);
+}
+
+static char **split_args_respect_quotes(char *input)
+{
+	char **result;
+	int arg_count;
+	int i, start, arg_idx;
+	int in_quote, in_dquote, in_arg;
+
+	arg_count = count_args_outside_quotes(input);
+	result = malloc(sizeof(char *) * (arg_count + 1));
+	if (!result)
+		return (NULL);
+	i = 0;
+	start = 0;
+	arg_idx = 0;
+	in_quote = 0;
+	in_dquote = 0;
+	in_arg = 0;
+	while (input[i])
+	{
+		if (input[i] == '\'' && !in_dquote)
+			in_quote = !in_quote;
+		else if (input[i] == '\"' && !in_quote)
+			in_dquote = !in_dquote;
+		
+		if ((input[i] == ' ' || input[i] == '\t') && !in_quote && !in_dquote)
+		{
+			if (in_arg)
+			{
+				result[arg_idx] = ft_substr(input, start, i - start);
+				arg_idx++;
+				in_arg = 0;
+			}
+		}
+		else if (!in_arg)
+		{
+			start = i;
+			in_arg = 1;
+		}
+		i++;
+	}
+	if (in_arg)
+	{
+		result[arg_idx] = ft_substr(input, start, i - start);
+		arg_idx++;
+	}
+	result[arg_idx] = NULL;
+	return (result);
+}
+
 void	remove_substr(char *s, unsigned int start, size_t len)
 {
 	size_t	i;
@@ -123,7 +208,7 @@ void	init_commands(t_shell *pipe, t_cmds **tmp)
 			cmds[v.cmd_i].outs = malloc(sizeof(t_redirect) * \
 cmds[v.cmd_i].red_len);
 		utils_saving(pipe, cmds, &v);
-		cmds[v.cmd_i].cmds = ft_split(pipe->cmds[v.cmd_i], ' ');
+		cmds[v.cmd_i].cmds = split_args_respect_quotes(pipe->cmds[v.cmd_i]);
 		v.arg_i = 0;
 		while (cmds[v.cmd_i].cmds[v.arg_i])
 			clean_quotes(cmds[v.cmd_i].cmds[v.arg_i++]);
