@@ -45,7 +45,7 @@ int	expand(char **str, char *expanded, t_variables *v)
 {
 	expanded = NULL;
 	v->i++;
-	if ((*str)[v->i] == '?' && v->i == 1 && (*str)[v->i - 1] == '$')
+	if ((*str)[v->i] == '?' && (*str)[v->i - 1] == '$')
 	{
 		expanded = ft_itoa(g_exit_code);
 		*str = storing(*str, v->i - 1, 2, expanded);
