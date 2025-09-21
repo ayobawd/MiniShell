@@ -81,8 +81,11 @@ void	utils_saving(t_shell *pipe, t_cmds *cmds, t_variables *v)
 {
 	v->xy = 0;
 	v->char_i = -1;
+	v->in_quotes = 0;
+	v->in_d_quotes = 0;
 	while (pipe->cmds[v->cmd_i][++v->char_i])
 	{
+		v->i = v->char_i;
 		quotes_check(&pipe->cmds[v->cmd_i], v);
 		if ((pipe->cmds[v->cmd_i][v->char_i] == '>' || \
 pipe->cmds[v->cmd_i][v->char_i] == '<') && !v->quote_char)
@@ -93,8 +96,6 @@ pipe->cmds[v->cmd_i][v->char_i] == '<') && !v->quote_char)
 			clean_quotes(cmds[v->cmd_i].outs[v->xy].file_name);
 			remove_substr(pipe->cmds[v->cmd_i], v->start, v->i);
 			v->char_i = v->start - 1;
-			printf("file name : %s\n", cmds[v->cmd_i].outs[v->xy].file_name);
-			printf("flag	  : %d\n", cmds[v->cmd_i].outs[v->xy].flag);
 			v->xy++;
 		}
 	}
@@ -110,12 +111,14 @@ void	init_commands(t_shell *pipe, t_cmds **tmp)
 	v.arg_i = 0;
 	v.cmd_i = -1;
 	v.char_i = 0;
+	v.in_quotes = 0;
+	v.in_d_quotes = 0;
 	*tmp = malloc(sizeof(t_cmds) * pipe->cmd_len);
 	cmds = *tmp;
-	cmds->red_len = 0;
 	while (++v.cmd_i < pipe->cmd_len)
 	{
 		cmds[v.cmd_i].red_len = num_of_redirects(pipe->cmds[v.cmd_i]);
+		cmds[v.cmd_i].outs = NULL;
 		if (cmds[v.cmd_i].red_len)
 			cmds[v.cmd_i].outs = malloc(sizeof(t_redirect) * \
 cmds[v.cmd_i].red_len);
@@ -124,8 +127,5 @@ cmds[v.cmd_i].red_len);
 		v.arg_i = 0;
 		while (cmds[v.cmd_i].cmds[v.arg_i])
 			clean_quotes(cmds[v.cmd_i].cmds[v.arg_i++]);
-		v.arg_i = 0;
-		while (cmds[v.cmd_i].cmds[v.arg_i])
-			puts(cmds[v.cmd_i].cmds[v.arg_i++]);
 	}
 }
