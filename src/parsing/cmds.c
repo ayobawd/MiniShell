@@ -88,7 +88,7 @@ void	utils_saving(t_shell *pipe, t_cmds *cmds, t_variables *v)
 		v->i = v->char_i;
 		quotes_check(&pipe->cmds[v->cmd_i], v);
 		if ((pipe->cmds[v->cmd_i][v->char_i] == '>' || \
-pipe->cmds[v->cmd_i][v->char_i] == '<') && !v->quote_char)
+pipe->cmds[v->cmd_i][v->char_i] == '<') && !v->in_quotes && !v->in_d_quotes)
 		{
 			files_fillings(pipe, cmds, v);
 			store_the_file_name(pipe->cmds[v->cmd_i], \
