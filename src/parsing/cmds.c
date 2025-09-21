@@ -121,6 +121,9 @@ void	store_the_file_name(char *str, char **file_name, int i, t_variables *v)
 	int			start;
 	t_variables	qv;
 
+	// Skip leading spaces
+	while (str[i] && (str[i] == ' ' || str[i] == '\t'))
+		i++;
 	start = i;
 	qv.i = i;
 	qv.in_quotes = 0;
@@ -129,8 +132,8 @@ void	store_the_file_name(char *str, char **file_name, int i, t_variables *v)
 	{
 		qv.i = i;
 		quotes_check(&str, &qv);
-		if ((str[i] == ' ' || str[i] == '\t') && \
-!qv.in_quotes && !qv.in_d_quotes)
+		if (((str[i] == ' ' || str[i] == '\t' || str[i] == '>' || str[i] == '<') && \
+!qv.in_quotes && !qv.in_d_quotes))
 			break ;
 		i++;
 	}
@@ -177,7 +180,7 @@ pipe->cmds[v->cmd_i][v->char_i] == '<') && !v->in_quotes && !v->in_d_quotes)
 		{
 			files_fillings(pipe, cmds, v);
 			store_the_file_name(pipe->cmds[v->cmd_i], \
-&cmds[v->cmd_i].outs[v->xy].file_name, v->char_i + 1, v);
+&cmds[v->cmd_i].outs[v->xy].file_name, v->char_i, v);
 			clean_quotes(cmds[v->cmd_i].outs[v->xy].file_name);
 			remove_substr(pipe->cmds[v->cmd_i], v->start, v->i);
 			v->char_i = v->start - 1;
