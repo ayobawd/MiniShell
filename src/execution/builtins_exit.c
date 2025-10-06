@@ -43,16 +43,32 @@ static int	parse_exit_number(const char *s, int *out)
 	return (1);
 }
 
+static void	cleanup_before_exit(void)
+{
+	int	fd;
+
+	fd = 3;
+	while (fd < 10)
+	{
+		close(fd);
+		fd++;
+	}
+}
+
 int	builtin_exit(t_cmds *cmd)
 {
 	int	exit_code;
 
 	printf("exit\n");
 	if (!cmd->cmds[1])
+	{
+		cleanup_before_exit();
 		exit(0);
+	}
 	if (!parse_exit_number(cmd->cmds[1], &exit_code))
 	{
 		ft_putstr_fd("exit: numeric argument required\n", 2);
+		cleanup_before_exit();
 		exit(2);
 	}
 	if (cmd->cmds[2])
@@ -60,6 +76,7 @@ int	builtin_exit(t_cmds *cmd)
 		ft_putstr_fd("exit: too many arguments\n", 2);
 		return (1);
 	}
+	cleanup_before_exit();
 	exit(exit_code);
 	return (0);
 }
