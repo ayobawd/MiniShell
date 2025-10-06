@@ -119,9 +119,14 @@ int		num_of_redirects(char *str);
 
 //             pipes             \\.
 int		handle_pipes(t_shell *pipe, char *input, t_cmds *cmds);
+int		count_pipes_outside_quotes(char *input);
+int		check_input_helper(char *input, int in_quote, int in_dquote, int i);
+int		check_input(char *input);
+void	process_pipe_commands(t_shell *pipe);
 
 //             cmds              \\.
 void	init_commands(t_shell *pipe, t_cmds **tmp);
+char	**split_args_respect_quotes(char *input);
 
 //           execution           \\.
 int		execute_commands(t_shell *shell, t_cmds *cmds);

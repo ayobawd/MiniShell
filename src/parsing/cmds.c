@@ -12,91 +12,6 @@
 
 #include "../../minishell.h"
 
-static int count_args_outside_quotes(char *input)
-{
-	int i;
-	int count;
-	int in_quote;
-	int in_dquote;
-	int in_arg;
-
-	i = 0;
-	count = 0;
-	in_quote = 0;
-	in_dquote = 0;
-	in_arg = 0;
-	while (input[i])
-	{
-		if (input[i] == '\'' && !in_dquote)
-			in_quote = !in_quote;
-		else if (input[i] == '\"' && !in_quote)
-			in_dquote = !in_dquote;
-		else if ((input[i] == ' ' || input[i] == '\t') && !in_quote && !in_dquote)
-		{
-			if (in_arg)
-			{
-				in_arg = 0;
-			}
-		}
-		else if (!in_arg)
-		{
-			in_arg = 1;
-			count++;
-		}
-		i++;
-	}
-	return (count);
-}
-
-static char **split_args_respect_quotes(char *input)
-{
-	char **result;
-	int arg_count;
-	int i, start, arg_idx;
-	int in_quote, in_dquote, in_arg;
-
-	arg_count = count_args_outside_quotes(input);
-	result = malloc(sizeof(char *) * (arg_count + 1));
-	if (!result)
-		return (NULL);
-	i = 0;
-	start = 0;
-	arg_idx = 0;
-	in_quote = 0;
-	in_dquote = 0;
-	in_arg = 0;
-	while (input[i])
-	{
-		if (input[i] == '\'' && !in_dquote)
-			in_quote = !in_quote;
-		else if (input[i] == '\"' && !in_quote)
-			in_dquote = !in_dquote;
-		
-		if ((input[i] == ' ' || input[i] == '\t') && !in_quote && !in_dquote)
-		{
-			if (in_arg)
-			{
-				result[arg_idx] = ft_substr(input, start, i - start);
-				arg_idx++;
-				in_arg = 0;
-			}
-		}
-		else if (!in_arg)
-		{
-			start = i;
-			in_arg = 1;
-		}
-		i++;
-	}
-	if (in_arg)
-	{
-		result[arg_idx] = ft_substr(input, start, i - start);
-		arg_idx++;
-	}
-	result[arg_idx] = NULL;
-	return (result);
-}
-
 void	remove_substr(char *s, unsigned int start, size_t len)
 {
 	size_t	i;
@@ -121,7 +36,6 @@ void	store_the_file_name(char *str, char **file_name, int i, t_variables *v)
 	int			start;
 	t_variables	qv;
 
-	// Skip leading spaces
 	while (str[i] && (str[i] == ' ' || str[i] == '\t'))
 		i++;
 	start = i;
@@ -132,8 +46,8 @@ void	store_the_file_name(char *str, char **file_name, int i, t_variables *v)
 	{
 		qv.i = i;
 		quotes_check(&str, &qv);
-		if (((str[i] == ' ' || str[i] == '\t' || str[i] == '>' || str[i] == '<') && \
-!qv.in_quotes && !qv.in_d_quotes))
+		if (((str[i] == ' ' || str[i] == '\t' || str[i] == '>'
+					|| str[i] == '<') && !qv.in_quotes && !qv.in_d_quotes))
 			break ;
 		i++;
 	}

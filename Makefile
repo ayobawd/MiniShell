@@ -15,6 +15,8 @@ SRCS = \
 	$(PARSING_DIR)/pipes.c \
 	$(PARSING_DIR)/dollar.c \
 	$(PARSING_DIR)/cmds.c \
+	$(PARSING_DIR)/cmds_split.c \
+	$(PARSING_DIR)/pipes_helpers.c \
 	$(PARSING_DIR)/utils2.c \
 	$(EXECUTION_DIR)/execution.c \
 	$(EXECUTION_DIR)/execution_utils.c \
