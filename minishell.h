@@ -62,7 +62,7 @@ typedef struct s_variables
 	int	indx;
 	int	cmd_i;
 	int	arg_i;
-	int j;
+	int	j;
 	int	space_found;
 	int	quote_char;
 	int	char_i;
@@ -129,6 +129,8 @@ int		execute_single_command(t_shell *shell, t_cmds *cmd);
 int		execute_external_command(t_shell *shell, t_cmds *cmd);
 int		is_builtin(char *cmd);
 char	*find_command_path(char *cmd, t_shell *shell);
+void	execute_forked_child(t_shell *shell, t_cmds *cmd,
+			int saved_stdin, int saved_stdout);
 
 //          redirections        \\.
 int		setup_redirections(t_cmds *cmd);

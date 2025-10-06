@@ -79,3 +79,16 @@ char	*find_command_path(char *cmd, t_shell *shell)
 		return (NULL);
 	return (search_in_paths(cmd, paths));
 }
+
+void	execute_forked_child(t_shell *shell, t_cmds *cmd,
+		int saved_stdin, int saved_stdout)
+{
+	close(saved_stdin);
+	close(saved_stdout);
+	if (setup_redirections(cmd) == -1)
+		exit(1);
+	if (is_builtin(cmd->cmds[0]))
+		exit(execute_builtin(shell, cmd));
+	else
+		exit(execute_external_command(shell, cmd));
+}
