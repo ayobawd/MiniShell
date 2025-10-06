@@ -74,6 +74,8 @@ char	*ft_add_spaces(char *input)
 	single_q = 0;
 	double_q = 0;
 	new_input = malloc(ft_strlen(input) * 3 + 2);
+	if (!new_input)
+		return (NULL);
 	while (input[++i])
 	{
 		if (input[i] == '\'' && double_q == 0)

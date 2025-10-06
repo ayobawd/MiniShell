@@ -72,7 +72,14 @@ void	generate_strings_helper(char **str, char *expanded, t_variables *v)
 	if (!v->in_d_quotes)
 	{
 		joined = ft_strjoin(expanded, "\"");
+		if (!joined)
+			return ;
 		joined2 = ft_strjoin("\"", joined);
+		if (!joined2)
+		{
+			free(joined);
+			return ;
+		}
 		*str = storing(*str, v->i - v->len - 1, v->len + 1, joined2);
 		v->i += ft_strlen(expanded) - v->len - 1;
 		free(joined2);
@@ -127,6 +134,8 @@ void	dollar_expansion(char **str, t_shell *pipe)
 			if (expand(str, expanded, &v))
 				continue ;
 			tmp = ft_substr(*str, v.i - v.len, v.len);
+			if (!tmp)
+				return ;
 			if (generate_string(str, &tmp, &v, pipe))
 				continue ;
 		}

@@ -62,12 +62,16 @@ static char **split_pipes_respect_quotes(char *input)
 		else if (input[i] == '|' && !in_quote && !in_dquote)
 		{
 			result[cmd_idx] = ft_substr(input, start, i - start);
+			if (!result[cmd_idx])
+				return (free_strings(result), NULL);
 			cmd_idx++;
 			start = i + 1;
 		}
 		i++;
 	}
 	result[cmd_idx] = ft_substr(input, start, i - start);
+	if (!result[cmd_idx])
+		return (free_strings(result), NULL);
 	result[cmd_idx + 1] = NULL;
 	return (result);
 }
@@ -179,6 +183,8 @@ int	handle_pipes(t_shell *pipe, char *input, t_cmds *cmds)
 	while (pipe->cmds[i])
 	{
 		pipe->cmds[i] = ft_add_spaces(pipe->cmds[i]);
+		if (!pipe->cmds[i])
+			return (0);
 		replace_spaces_tabs(pipe->cmds[i]);
 		dollar_expansion(&pipe->cmds[i], pipe);
 		i++;

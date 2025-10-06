@@ -77,6 +77,8 @@ static char **split_args_respect_quotes(char *input)
 			if (in_arg)
 			{
 				result[arg_idx] = ft_substr(input, start, i - start);
+				if (!result[arg_idx])
+					return (free_strings(result), NULL);
 				arg_idx++;
 				in_arg = 0;
 			}
@@ -91,6 +93,8 @@ static char **split_args_respect_quotes(char *input)
 	if (in_arg)
 	{
 		result[arg_idx] = ft_substr(input, start, i - start);
+		if (!result[arg_idx])
+			return (free_strings(result), NULL);
 		arg_idx++;
 	}
 	result[arg_idx] = NULL;
@@ -139,6 +143,8 @@ void	store_the_file_name(char *str, char **file_name, int i, t_variables *v)
 	}
 	v->i = i;
 	(*file_name) = ft_substr(str, start, i - start);
+	if (!*file_name)
+		return ;
 }
 
 void	files_fillings(t_shell *pipe, t_cmds *cmds, t_variables *v)
@@ -202,14 +208,20 @@ void	init_commands(t_shell *pipe, t_cmds **tmp)
 	v.in_quotes = 0;
 	v.in_d_quotes = 0;
 	*tmp = malloc(sizeof(t_cmds) * pipe->cmd_len);
+	if (!*tmp)
+		return ;
 	cmds = *tmp;
 	while (++v.cmd_i < pipe->cmd_len)
 	{
 		cmds[v.cmd_i].red_len = num_of_redirects(pipe->cmds[v.cmd_i]);
 		cmds[v.cmd_i].outs = NULL;
 		if (cmds[v.cmd_i].red_len)
+		{
 			cmds[v.cmd_i].outs = malloc(sizeof(t_redirect) * \
 cmds[v.cmd_i].red_len);
+			if (!cmds[v.cmd_i].outs)
+				return ;
+		}
 		utils_saving(pipe, cmds, &v);
 		cmds[v.cmd_i].cmds = split_args_respect_quotes(pipe->cmds[v.cmd_i]);
 		v.arg_i = 0;

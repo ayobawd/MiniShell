@@ -14,13 +14,24 @@
 
 void	copy_env(t_shell *s, char **env)
 {
-	int	i;
+	int		i;
+	char	*dup;
+	t_list	*node;
 
 	i = 0;
 	s->environment = NULL;
 	while (env[i])
 	{
-		ft_lstadd_back(&s->environment, ft_lstnew(ft_strdup(env[i])));
+		dup = ft_strdup(env[i]);
+		if (!dup)
+			return ;
+		node = ft_lstnew(dup);
+		if (!node)
+		{
+			free(dup);
+			return ;
+		}
+		ft_lstadd_back(&s->environment, node);
 		i++;
 	}
 	s->environment_num = i;
