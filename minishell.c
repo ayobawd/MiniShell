@@ -12,6 +12,17 @@
 
 #include "minishell.h"
 
+static int	process_input(t_shell *s, char *input, t_cmds **cmd)
+{
+	if (parsing(s, *cmd, input))
+		return (1);
+	init_commands(s, cmd);
+	g_exit_code = execute_commands(s, *cmd);
+	free_all(s, *cmd);
+	add_history(input);
+	return (0);
+}
+
 static void	shell_loop(t_shell *s)
 {
 	char	*input;
@@ -30,15 +41,7 @@ static void	shell_loop(t_shell *s)
 			return ;
 		}
 		cmd = NULL;
-		if (parsing(s, cmd, input))
-		{
-			free(input);
-			continue ;
-		}
-		init_commands(s, &cmd);
-		g_exit_code = execute_commands(s, cmd);
-		free_all(s, cmd);
-		add_history(input);
+		process_input(s, input, &cmd);
 		free(input);
 	}
 }

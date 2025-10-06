@@ -54,14 +54,8 @@ static int	fork_and_execute_command(t_shell *shell, t_cmds *cmd,
 	pid = fork();
 	if (pid == 0)
 	{
-		close(saved_stdin);
-		close(saved_stdout);
-		if (setup_redirections(cmd) == -1)
-			exit(1);
-		if (is_builtin(cmd->cmds[0]))
-			exit(execute_builtin(shell, cmd));
-		else
-			exit(execute_external_command(shell, cmd));
+		execute_forked_child(shell, cmd, saved_stdin, saved_stdout);
+		return (1);
 	}
 	else if (pid > 0)
 	{
