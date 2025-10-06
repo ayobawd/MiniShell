@@ -29,7 +29,7 @@ int	execute_builtin(t_shell *shell, t_cmds *cmd)
 	if (ft_strncmp(cmd->cmds[0], "env", 4) == 0)
 		return (builtin_env(shell));
 	if (ft_strncmp(cmd->cmds[0], "exit", 5) == 0)
-		return (builtin_exit(cmd));
+		return (builtin_exit(shell, cmd));
 	return (0);
 }
 

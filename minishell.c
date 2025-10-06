@@ -25,6 +25,8 @@ static void	shell_loop(t_shell *s)
 		if (!input)
 		{
 			printf("exit\n");
+			free_environment(s);
+			rl_clear_history();
 			return ;
 		}
 		cmd = NULL;
@@ -52,5 +54,7 @@ int	main(int ac, char **av, char **env)
 	s.cmd_len = 0;
 	s.cmds = NULL;
 	shell_loop(&s);
+	free_environment(&s);
+	rl_clear_history();
 	return (0);
 }
