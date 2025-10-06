@@ -48,7 +48,14 @@ int	expand(char **str, char *expanded, t_variables *v)
 	if ((*str)[v->i] == '?' && (*str)[v->i - 1] == '$')
 	{
 		expanded = ft_itoa(g_exit_code);
+		if (!expanded)
+			return (1);
 		*str = storing(*str, v->i - 1, 2, expanded);
+		if (!*str)
+		{
+			free(expanded);
+			return (1);
+		}
 		v->i += ft_strlen(expanded) - 2;
 		free(expanded);
 		return (1);
@@ -81,14 +88,16 @@ void	generate_strings_helper(char **str, char *expanded, t_variables *v)
 			return ;
 		}
 		*str = storing(*str, v->i - v->len - 1, v->len + 1, joined2);
-		v->i += ft_strlen(expanded) - v->len - 1;
+		if (*str)
+			v->i += ft_strlen(expanded) - v->len - 1;
 		free(joined2);
 		free(joined);
 	}
 	else
 	{
 		*str = storing(*str, v->i - v->len - 1, v->len + 1, expanded);
-		v->i += ft_strlen(expanded) - v->len - 1;
+		if (*str)
+			v->i += ft_strlen(expanded) - v->len - 1;
 	}
 }
 
@@ -107,7 +116,8 @@ int	generate_string(char **str, char **tmp, t_variables *v, t_shell *pipe)
 		else if (!expanded)
 		{
 			*str = storing(*str, v->i - v->len - 1, v->len + 1, "");
-			v->i -= v->len + 1;
+			if (*str)
+				v->i -= v->len + 1;
 		}
 		free(*tmp);
 		return (1);
