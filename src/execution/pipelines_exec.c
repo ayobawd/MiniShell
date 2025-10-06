@@ -45,7 +45,8 @@ int	should_fork_builtin(t_cmds *cmd)
 	return (1);
 }
 
-static int	fork_and_execute_command(t_shell *shell, t_cmds *cmd)
+static int	fork_and_execute_command(t_shell *shell, t_cmds *cmd,
+		int saved_stdin, int saved_stdout)
 {
 	pid_t	pid;
 	int		status;
@@ -53,6 +54,8 @@ static int	fork_and_execute_command(t_shell *shell, t_cmds *cmd)
 	pid = fork();
 	if (pid == 0)
 	{
+		close(saved_stdin);
+		close(saved_stdout);
 		if (setup_redirections(cmd) == -1)
 			exit(1);
 		if (is_builtin(cmd->cmds[0]))
@@ -102,7 +105,8 @@ int	execute_single_command_with_redirections(t_shell *shell, t_cmds *cmd)
 				saved_stdout);
 	else
 	{
-		status = fork_and_execute_command(shell, cmd);
+		status = fork_and_execute_command(shell, cmd, saved_stdin,
+				saved_stdout);
 		restore_fds(saved_stdin, saved_stdout);
 	}
 	return (status);

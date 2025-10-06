@@ -107,6 +107,7 @@ int		spaces(char *str);
 int		is_spacee(int c);
 void	free_all(t_shell *pipe, t_cmds *cmd);
 void	free_strings(char **av);
+void	free_environment(t_shell *pipe);
 void	remove_substr(char *s, unsigned int start, size_t len);
 
 //            signals            \\.
@@ -153,7 +154,7 @@ int		builtin_pwd(void);
 int		builtin_env(t_shell *shell);
 int		builtin_export(t_shell *shell, t_cmds *cmd);
 int		builtin_unset(t_shell *shell, t_cmds *cmd);
-int		builtin_exit(t_cmds *cmd);
+int		builtin_exit(t_shell *shell, t_cmds *cmd);
 
 //          env_utils           \\.
 char	**create_env_array(t_shell *shell);
