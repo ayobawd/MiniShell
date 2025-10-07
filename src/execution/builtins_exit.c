@@ -43,15 +43,28 @@ static int	parse_exit_number(const char *s, int *out)
 	return (1);
 }
 
-static void	cleanup_before_exit(t_shell *shell)
+static void	cleanup_before_exit(t_shell *shell, t_cmds *cmd)
 {
 	int	fd;
+	int	i;
 
 	fd = 3;
 	while (fd < 10)
 	{
 		close(fd);
 		fd++;
+	}
+	if (shell->current_cmds)
+		free_all(shell, shell->current_cmds);
+	else if (cmd)
+		free_all(shell, cmd);
+	if (shell->cmds)
+	{
+		i = 0;
+		while (i < shell->cmd_len)
+			free(shell->cmds[i++]);
+		free(shell->cmds);
+		shell->cmds = NULL;
 	}
 	free_environment(shell);
 	rl_clear_history();
@@ -64,13 +77,13 @@ int	builtin_exit(t_shell *shell, t_cmds *cmd)
 	printf("exit\n");
 	if (!cmd->cmds[1])
 	{
-		cleanup_before_exit(shell);
+		cleanup_before_exit(shell, cmd);
 		exit(0);
 	}
 	if (!parse_exit_number(cmd->cmds[1], &exit_code))
 	{
 		ft_putstr_fd("exit: numeric argument required\n", 2);
-		cleanup_before_exit(shell);
+		cleanup_before_exit(shell, cmd);
 		exit(2);
 	}
 	if (cmd->cmds[2])
@@ -78,7 +91,7 @@ int	builtin_exit(t_shell *shell, t_cmds *cmd)
 		ft_putstr_fd("exit: too many arguments\n", 2);
 		return (1);
 	}
-	cleanup_before_exit(shell);
+	cleanup_before_exit(shell, cmd);
 	exit(exit_code);
 	return (0);
 }

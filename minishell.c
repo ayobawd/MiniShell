@@ -17,8 +17,10 @@ static int	process_input(t_shell *s, char *input, t_cmds **cmd)
 	if (parsing(s, *cmd, input))
 		return (1);
 	init_commands(s, cmd);
+	s->current_cmds = *cmd;
 	g_exit_code = execute_commands(s, *cmd);
 	free_all(s, *cmd);
+	s->current_cmds = NULL;
 	add_history(input);
 	return (0);
 }
@@ -56,6 +58,7 @@ int	main(int ac, char **av, char **env)
 	copy_env(&s, env);
 	s.cmd_len = 0;
 	s.cmds = NULL;
+	s.current_cmds = NULL;
 	shell_loop(&s);
 	free_environment(&s);
 	rl_clear_history();
