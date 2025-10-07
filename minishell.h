@@ -80,6 +80,7 @@ typedef struct s_shell
 	t_list	*environment;
 	int		environment_num;
 	char	**cmds;
+	t_cmds	*current_cmds;
 }	t_shell;
 
 typedef struct s_pipe_context
