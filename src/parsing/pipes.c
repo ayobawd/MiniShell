@@ -6,16 +6,15 @@
 /*   By: aradwan <aradwan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 14:08:56 by aradwan           #+#    #+#             */
-/*   Updated: 2025/10/10 14:59:28 by aradwan          ###   ########.fr       */
+/*   Updated: 2025/10/10 16:19:02 by aradwan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../minishell.h"
 
-static int pipe_from_back(char *input)
+static int	pipe_from_back(char *input)
 {
-    int	len;
+	int	len;
 	int	i;
 
 	len = ft_strlen(input);
@@ -34,9 +33,9 @@ static int pipe_from_back(char *input)
 	return (0);
 }
 
-static int pipe_in_quotes(char *input, int i, int quotes, int j)
+static int	pipe_in_quotes(char *input, int i, int quotes, int j)
 {
-    while (input[i])
+	while (input[i])
 	{
 		if (input[i] == '\"' || input[i] == '\'')
 		{
