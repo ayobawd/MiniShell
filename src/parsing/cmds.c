@@ -125,7 +125,7 @@ void	init_commands(t_shell *pipe, t_cmds **tmp)
 			cmds[v.cmd_i].outs = malloc(sizeof(t_redirect) * \
 cmds[v.cmd_i].red_len);
 		utils_saving(pipe, cmds, &v);
-		cmds[v.cmd_i].cmds = ft_split(pipe->cmds[v.cmd_i]);
+		cmds[v.cmd_i].cmds = ft_split(pipe->cmds[v.cmd_i], ' ');
 		v.arg_i = 0;
 		while (cmds[v.cmd_i].cmds[v.arg_i])
 			clean_quotes(cmds[v.cmd_i].cmds[v.arg_i++]);

@@ -115,7 +115,7 @@ int	handle_pipes(t_shell *pipe, char *input, t_cmds *cmds)
 		return (0);
 	if (!check_input(input))
 		return (0);
-	pipe->cmds = ft_split(input);
+	pipe->cmds = ft_split(input, '|');
 	i = 0;
 	while (pipe->cmds[i])
 	{
