@@ -3,102 +3,106 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayal-awa <ayal-awa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aradwan <aradwan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/01 19:31:13 by ayal-awa          #+#    #+#             */
-/*   Updated: 2025/01/06 15:26:07 by ayal-awa         ###   ########.fr       */
+/*   Created: 2025/10/10 14:56:07 by aradwan           #+#    #+#             */
+/*   Updated: 2025/10/10 14:56:08 by aradwan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "libft.h"
 
-static void	be_free(char **str, int index)
+static void	ft_undoalloc(char **split, int i)
 {
-	int	i;
-
-	i = 0;
-	while (i <= index)
+	while (i >= 0)
 	{
-		free(str[i]);
-		i++;
+		free(split[i]);
+		i--;
 	}
-	free(str);
+	free(split);
 }
 
-static int	num_of_words(char const *str, char c)
+static int	ft_worddet(char const *s, char c)
 {
-	int	i;
-	int	count;
+	int		i;
+	int		count;
+	char	quote;
 
 	i = 0;
 	count = 0;
-	while (str[i] != '\0')
+	quote = 0;
+	while (s[i])
 	{
-		while (str[i] != '\0' && str[i] == c)
-			i++;
-		if (str[i] != '\0')
+		if (s[i] == '\'' || s[i] == '\"')
+		{
+			if (!quote)
+				quote = s[i];
+			else if (quote == s[i])
+				quote = 0;
+		}
+		if (!quote && s[i] == c && i > 0 && s[i - 1] != c)
 			count++;
-		while (str[i] != '\0' && str[i] != c)
-			i++;
+		i++;
 	}
+	if (i > 0 && s[i - 1] != c)
+		count++;
 	return (count);
 }
 
-static int	strlen_sep(char const *str, char c)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0' && str[i] != c)
-		i++;
-	return (i);
-}
-
-static char	*alloc_word(char const *str, char c)
+static char	*ft_cpystr(char const *s, char c)
 {
 	int		i;
-	int		word_len;
-	char	*final;
+	char	*str;
+	char	quote;
 
-	word_len = strlen_sep(str, c);
-	final = (char *)malloc(sizeof(char) * (word_len + 1));
-	if (!final)
-		return (NULL);
 	i = 0;
-	while (i < word_len)
+	quote = 0;
+	while (s[i])
 	{
-		final[i] = str[i];
+		if (s[i] == '\'' || s[i] == '\"')
+		{
+			if (!quote)
+				quote = s[i];
+			else if (quote == s[i])
+				quote = 0;
+		}
+		if (!quote && s[i] == c)
+			break ;
 		i++;
 	}
-	final[i] = '\0';
-	return (final);
+	str = malloc(sizeof(char) * (i + 1));
+	if (!str)
+		return (NULL);
+	str[i] = '\0';
+	return (ft_memcpy(str, s, i));
 }
 
 char	**ft_split(char const *s, char c)
 {
 	int		i;
-	char	**arr;
+	int		j;
+	int		count;
+	char	**split;
 
-	arr = (char **)ft_calloc((num_of_words(s, c) + 1), sizeof(char *));
-	i = 0;
-	if (arr == NULL || s == NULL)
+	if (!s)
 		return (NULL);
-	while (*s != '\0')
+	count = ft_worddet(s, c);
+	split = malloc(sizeof(char *) * (count + 1));
+	if (!split)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (i < count)
 	{
-		while (*s != '\0' && *s == c)
-			s++;
-		if (*s != '\0')
-		{
-			arr[i] = alloc_word(s, c);
-			if (arr[i] == NULL)
-			{
-				be_free(arr, i);
-				return (NULL);
-			}
-			i++;
-		}
-		while (*s != '\0' && *s != c)
-			s++;
+		while (s[j] && (s[j] == c || s[j] == '\t'))
+			j++;
+		split[i] = ft_cpystr(s + j, c);
+		if (!split[i])
+			ft_undoalloc(split, i);
+		j += ft_strlen(split[i]);
+		i++;
 	}
-	return (arr);
+	split[i] = NULL;
+	return (split);
 }
