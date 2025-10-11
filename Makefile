@@ -41,6 +41,7 @@ $(NAME): $(OBJS)
 	$(MAKE) -C ./libft && $(MAKE) bonus -C ./libft
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L ./libft -lft -lreadline -I.brew/opt/readline/include -L/opt/vagrant/embedded/lib -lreadline
 
+
 clean:
 	$(MAKE) -C libft fclean
 	rm -f $(OBJS)

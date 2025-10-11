@@ -168,6 +168,7 @@ int		is_valid_identifier(char *str);
 
 void	rl_replace_line(const char *text, int clear_undo);
 void	rl_redisplay(void);
+void	rl_clear_history(void);
 void	quotes_check(char **str, t_variables *v);
 
 #endif
