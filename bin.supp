@@ -1,0 +1,14 @@
+{
+   readline_leaks
+   Memcheck:Leak
+   match-leak-kinds: all
+   fun:readline
+   fun:*
+}
+{
+    readline_lib_leaks
+    Memcheck:Leak
+    match-leak-kinds: all
+    fun:*
+    obj:/usr/lib/*
+}

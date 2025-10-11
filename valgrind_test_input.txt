@@ -1,0 +1,11 @@
+echo hi
+export FOO=bar
+echo $FOO
+unset FOO
+pwd
+/bin/echo yo
+echo hello | cat
+cat < Makefile | grep cc > /tmp/minishell_test_out.txt
+cat /tmp/minishell_test_out.txt
+cat <<EOF
+line1
