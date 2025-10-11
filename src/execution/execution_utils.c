@@ -83,12 +83,21 @@ char	*find_command_path(char *cmd, t_shell *shell)
 void	execute_forked_child(t_shell *shell, t_cmds *cmd,
 		int saved_stdin, int saved_stdout)
 {
+	int	exit_code;
+
 	close(saved_stdin);
 	close(saved_stdout);
 	if (setup_redirections(cmd) == -1)
+	{
+		free_all(shell, cmd);
+		free_environment(shell);
 		exit(1);
+	}
 	if (is_builtin(cmd->cmds[0]))
-		exit(execute_builtin(shell, cmd));
+		exit_code = execute_builtin(shell, cmd);
 	else
-		exit(execute_external_command(shell, cmd));
+		exit_code = execute_external_command(shell, cmd);
+	free_all(shell, cmd);
+	free_environment(shell);
+	exit(exit_code);
 }
