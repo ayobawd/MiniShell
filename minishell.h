@@ -88,6 +88,7 @@ typedef struct s_pipe_context
 	t_shell		*shell;
 	t_cmds		*cmds;
 	int			**pipes;
+	pid_t		*pids;
 	int			cmd_index;
 	int			cmd_count;
 }	t_pipe_context;

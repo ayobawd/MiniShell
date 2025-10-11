@@ -14,18 +14,27 @@
 
 static void	execute_child_process(t_pipe_context *ctx)
 {
+	int	exit_code;
+
 	setup_pipe_redirections(ctx->pipes, ctx->cmd_index, ctx->cmd_count);
 	close_all_pipes(ctx->pipes, ctx->cmd_count - 1);
 	if (setup_redirections(&ctx->cmds[ctx->cmd_index]) == -1)
+	{
+		free_all(ctx->shell, ctx->cmds);
+		free_environment(ctx->shell);
+		free_pipes(ctx->pipes, ctx->cmd_count - 1);
+		free(ctx->pids);
 		exit(1);
+	}
 	if (is_builtin(ctx->cmds[ctx->cmd_index].cmds[0]))
-	{
-		exit(execute_builtin(ctx->shell, &ctx->cmds[ctx->cmd_index]));
-	}
+		exit_code = execute_builtin(ctx->shell, &ctx->cmds[ctx->cmd_index]);
 	else
-	{
-		exit(execute_external_command(ctx->shell, &ctx->cmds[ctx->cmd_index]));
-	}
+		exit_code = execute_external_command(ctx->shell, &ctx->cmds[ctx->cmd_index]);
+	free_all(ctx->shell, ctx->cmds);
+	free_environment(ctx->shell);
+	free_pipes(ctx->pipes, ctx->cmd_count - 1);
+	free(ctx->pids);
+	exit(exit_code);
 }
 
 static int	setup_pipeline_resources(t_pipe_context *ctx)
@@ -77,7 +86,6 @@ static int	fork_pipeline_processes(t_pipe_context *ctx, pid_t *pids)
 int	execute_pipeline(t_shell *shell, t_cmds *cmds, int cmd_count)
 {
 	t_pipe_context	ctx;
-	pid_t			*pids;
 	int				status;
 
 	if (cmd_count == 1)
@@ -87,14 +95,14 @@ int	execute_pipeline(t_shell *shell, t_cmds *cmds, int cmd_count)
 	ctx.cmd_count = cmd_count;
 	if (setup_pipeline_resources(&ctx) != 0)
 		return (1);
-	pids = allocate_pids(cmd_count, ctx.pipes);
-	if (!pids)
+	ctx.pids = allocate_pids(cmd_count, ctx.pipes);
+	if (!ctx.pids)
 		return (1);
-	if (fork_pipeline_processes(&ctx, pids) != 0)
+	if (fork_pipeline_processes(&ctx, ctx.pids) != 0)
 		return (1);
 	close_all_pipes(ctx.pipes, cmd_count - 1);
-	status = wait_for_children(pids, cmd_count);
+	status = wait_for_children(ctx.pids, cmd_count);
 	free_pipes(ctx.pipes, cmd_count - 1);
-	free(pids);
+	free(ctx.pids);
 	return (status);
 }
