@@ -13,6 +13,7 @@
 #include "../../minishell.h"
 
 int	g_exit_code = 0;
+int	g_in_child_process = 0;
 
 int	parsing(t_shell *pipe, t_cmds *cmds, char *input)
 {

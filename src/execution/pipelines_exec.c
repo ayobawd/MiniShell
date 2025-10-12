@@ -20,6 +20,7 @@ int	wait_for_children(pid_t *pids, int count)
 
 	last_status = 0;
 	i = 0;
+	g_in_child_process = 1;
 	while (i < count)
 	{
 		waitpid(pids[i], &status, 0);
@@ -29,6 +30,7 @@ int	wait_for_children(pid_t *pids, int count)
 			last_status = 1;
 		i++;
 	}
+	g_in_child_process = 0;
 	return (last_status);
 }
 
@@ -59,7 +61,9 @@ static int	fork_and_execute_command(t_shell *shell, t_cmds *cmd,
 	}
 	else if (pid > 0)
 	{
+		g_in_child_process = 1;
 		waitpid(pid, &status, 0);
+		g_in_child_process = 0;
 		if (WIFEXITED(status))
 			return (WEXITSTATUS(status));
 		return (1);

@@ -35,7 +35,9 @@ static int	wait_for_child(pid_t pid)
 {
 	int	status;
 
+	g_in_child_process = 1;
 	waitpid(pid, &status, 0);
+	g_in_child_process = 0;
 	if (WIFEXITED(status))
 		return (WEXITSTATUS(status));
 	return (1);

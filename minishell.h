@@ -33,6 +33,7 @@
 # include <unistd.h>
 
 extern int	g_exit_code;
+extern int	g_in_child_process;
 
 enum e_types
 {
