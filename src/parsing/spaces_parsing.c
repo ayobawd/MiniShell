@@ -48,7 +48,7 @@ static void	add_spaces_helper(char **input, int *i, int *j, char **new_input)
 		(*i)++;
 		add_space(j, new_input, 1);
 	}
-	else if (c == '>' && c != '>')
+	else if (c == '>' && next != '>')
 		add_space(j, new_input, 2);
 	else if (c == '>' && next == '>')
 	{

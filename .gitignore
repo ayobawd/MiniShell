@@ -1,0 +1,11 @@
+# Object files
+*.o
+
+# Executables
+minishell
+
+# Library archives
+*.a
+
+# Test files
+text.txt
