@@ -33,6 +33,7 @@
 # include <unistd.h>
 
 extern int	g_exit_code;
+extern int	rl_done;
 
 enum e_types
 {

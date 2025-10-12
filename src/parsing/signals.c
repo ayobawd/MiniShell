@@ -30,7 +30,7 @@ void	handle_heredoc_signals(int signal)
 	{
 		g_exit_code = 130;
 		write(1, "\n", 1);
-		close(STDIN_FILENO);
+		rl_done = 1;
 	}
 }
 
