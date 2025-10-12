@@ -40,6 +40,14 @@ static int	wait_for_child(pid_t pid)
 	signal(SIGINT, handle_signals);
 	if (WIFEXITED(status))
 		return (WEXITSTATUS(status));
+	if (WIFSIGNALED(status))
+	{
+		if (WTERMSIG(status) == SIGINT)
+		{
+			write(1, "\n", 1);
+			return (130);
+		}
+	}
 	return (1);
 }
 
