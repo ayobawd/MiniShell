@@ -32,8 +32,7 @@ static void	shell_loop(t_shell *s)
 
 	while (1)
 	{
-		signal(SIGINT, handle_signals);
-		signal(SIGQUIT, SIG_IGN);
+		setup_signals_interactive();
 		input = readline("minishell> ");
 		if (!input)
 		{

@@ -113,6 +113,11 @@ void	remove_substr(char *s, unsigned int start, size_t len);
 
 //            signals            \\.
 void	handle_signals(int signal);
+void	handle_heredoc_signals(int signal);
+void	setup_signals_interactive(void);
+void	setup_signals_child(void);
+void	setup_signals_heredoc(void);
+void	setup_signals_ignore(void);
 
 //            redirect           \\.
 int		redirections_parse(char *str);

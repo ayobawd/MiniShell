@@ -18,11 +18,15 @@ static void	read_heredoc_input(int write_fd, char *delimiter)
 	int		delim_len;
 
 	delim_len = ft_strlen(delimiter);
+	setup_signals_heredoc();
 	while (1)
 	{
 		line = readline("> ");
 		if (!line)
+		{
+			g_exit_code = 130;
 			break ;
+		}
 		if (ft_strncmp(line, delimiter, delim_len + 1) == 0)
 		{
 			free(line);
@@ -32,6 +36,7 @@ static void	read_heredoc_input(int write_fd, char *delimiter)
 		write(write_fd, "\n", 1);
 		free(line);
 	}
+	setup_signals_interactive();
 }
 
 int	setup_heredoc(char *delimiter)

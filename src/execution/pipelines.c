@@ -14,6 +14,7 @@
 
 static void	execute_child_process(t_pipe_context *ctx)
 {
+	setup_signals_child();
 	setup_pipe_redirections(ctx->pipes, ctx->cmd_index, ctx->cmd_count);
 	close_all_pipes(ctx->pipes, ctx->cmd_count - 1);
 	if (setup_redirections(&ctx->cmds[ctx->cmd_index]) == -1)
@@ -93,7 +94,9 @@ int	execute_pipeline(t_shell *shell, t_cmds *cmds, int cmd_count)
 	if (fork_pipeline_processes(&ctx, pids) != 0)
 		return (1);
 	close_all_pipes(ctx.pipes, cmd_count - 1);
+	setup_signals_ignore();
 	status = wait_for_children(pids, cmd_count);
+	setup_signals_interactive();
 	free_pipes(ctx.pipes, cmd_count - 1);
 	free(pids);
 	return (status);
