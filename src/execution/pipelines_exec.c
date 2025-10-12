@@ -17,9 +17,11 @@ int	wait_for_children(pid_t *pids, int count)
 	int	i;
 	int	status;
 	int	last_status;
+	int	sigint_received;
 
 	signal(SIGINT, SIG_IGN);
 	last_status = 0;
+	sigint_received = 0;
 	i = 0;
 	while (i < count)
 	{
@@ -30,7 +32,7 @@ int	wait_for_children(pid_t *pids, int count)
 		{
 			if (WTERMSIG(status) == SIGINT)
 			{
-				write(1, "\n", 1);
+				sigint_received = 1;
 				last_status = 130;
 			}
 			else
@@ -40,6 +42,8 @@ int	wait_for_children(pid_t *pids, int count)
 			last_status = 1;
 		i++;
 	}
+	if (sigint_received)
+		write(1, "\n", 1);
 	signal(SIGINT, handle_signals);
 	return (last_status);
 }
