@@ -26,6 +26,16 @@ int	wait_for_children(pid_t *pids, int count)
 		waitpid(pids[i], &status, 0);
 		if (WIFEXITED(status))
 			last_status = WEXITSTATUS(status);
+		else if (WIFSIGNALED(status))
+		{
+			if (WTERMSIG(status) == SIGINT)
+			{
+				write(1, "\n", 1);
+				last_status = 130;
+			}
+			else
+				last_status = 1;
+		}
 		else
 			last_status = 1;
 		i++;
@@ -66,6 +76,14 @@ static int	fork_and_execute_command(t_shell *shell, t_cmds *cmd,
 		signal(SIGINT, handle_signals);
 		if (WIFEXITED(status))
 			return (WEXITSTATUS(status));
+		if (WIFSIGNALED(status))
+		{
+			if (WTERMSIG(status) == SIGINT)
+			{
+				write(1, "\n", 1);
+				return (130);
+			}
+		}
 		return (1);
 	}
 	else
