@@ -17,34 +17,18 @@ int	wait_for_children(pid_t *pids, int count)
 	int	i;
 	int	status;
 	int	last_status;
-	int	sigint_received;
 
-	signal(SIGINT, SIG_IGN);
 	last_status = 0;
-	sigint_received = 0;
 	i = 0;
 	while (i < count)
 	{
 		waitpid(pids[i], &status, 0);
 		if (WIFEXITED(status))
 			last_status = WEXITSTATUS(status);
-		else if (WIFSIGNALED(status))
-		{
-			if (WTERMSIG(status) == SIGINT)
-			{
-				sigint_received = 1;
-				last_status = 130;
-			}
-			else
-				last_status = 1;
-		}
 		else
 			last_status = 1;
 		i++;
 	}
-	if (sigint_received)
-		write(1, "\n", 1);
-	signal(SIGINT, handle_signals);
 	return (last_status);
 }
 
@@ -75,19 +59,9 @@ static int	fork_and_execute_command(t_shell *shell, t_cmds *cmd,
 	}
 	else if (pid > 0)
 	{
-		signal(SIGINT, SIG_IGN);
 		waitpid(pid, &status, 0);
-		signal(SIGINT, handle_signals);
 		if (WIFEXITED(status))
 			return (WEXITSTATUS(status));
-		if (WIFSIGNALED(status))
-		{
-			if (WTERMSIG(status) == SIGINT)
-			{
-				write(1, "\n", 1);
-				return (130);
-			}
-		}
 		return (1);
 	}
 	else
